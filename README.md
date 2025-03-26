@@ -18,7 +18,6 @@ Desarrollar un MVP (Producto Mínimo Viable) de una aplicación móvil que facil
 - **Plataforma:** Aplicación móvil híbrida
 - **Lenguajes:** TypeScript, HTML, SCSS
 
-### Imágenes de Tecnologías
 <p align="center">
   <img src="https://upload.wikimedia.org/wikipedia/commons/d/d1/Ionic_Logo.svg" alt="Ionic" width="100" height="100">
   <img src="https://angular.io/assets/images/logos/angular/angular.svg" alt="Angular" width="100" height="100">
