@@ -33,7 +33,7 @@ Este proyecto es parte del curso **Taller de Diseño Digital 2**, con el objetiv
 ## Instalación y Ejecución
 1. Clona este repositorio:
    ```sh
-   git clone https://github.com/tu-repositorio/nox-app.git
+   git clone https://github.com/ITLAZ/NOX.git
    ```
 2. Ingresa al directorio del proyecto:
    ```sh
@@ -47,16 +47,14 @@ Este proyecto es parte del curso **Taller de Diseño Digital 2**, con el objetiv
    ```sh
    ionic serve
    ```
+## Autores
 
-## Grupo 2
+### Grupo 2
 - Danna Alcázar
 - Grecia Castillo
 - Cecilia Flores
 - Gabriel Flores
 - Ignacio Tapia
-
-## Materia
-- Taller de Diseño Digital 2 - Universidad Católica Boliviana "San Pablo" (UCB)
 
 ## Licencia
 Este proyecto es de uso académico y no se encuentra bajo ninguna licencia comercial.
