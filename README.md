@@ -19,11 +19,13 @@ Desarrollar un MVP (Producto Mínimo Viable) de una aplicación móvil que facil
 - **Lenguajes:** TypeScript, HTML, SCSS
 
 ### Imágenes de Tecnologías
-![Ionic](https://upload.wikimedia.org/wikipedia/commons/d/d1/Ionic_Logo.svg)
-![Angular](https://angular.io/assets/images/logos/angular/angular.svg)
-![TypeScript](https://upload.wikimedia.org/wikipedia/commons/4/4c/Typescript_logo_2020.svg)
-![HTML5](https://upload.wikimedia.org/wikipedia/commons/6/61/HTML5_logo_and_wordmark.svg)
-![SCSS](https://upload.wikimedia.org/wikipedia/commons/9/96/Sass_Logo_Color.svg)
+<p align="center">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/d/d1/Ionic_Logo.svg" alt="Ionic" width="100" height="100">
+  <img src="https://angular.io/assets/images/logos/angular/angular.svg" alt="Angular" width="100" height="100">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/4/4c/Typescript_logo_2020.svg" alt="TypeScript" width="100" height="100">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/6/61/HTML5_logo_and_wordmark.svg" alt="HTML5" width="100" height="100">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/9/96/Sass_Logo_Color.svg" alt="SCSS" width="100" height="100">
+</p>
 
 ## Desarrollo Académico
 Este proyecto es parte del curso **Taller de Diseño Digital 2**, con el objetivo de aplicar conocimientos en diseño y desarrollo de aplicaciones móviles, integrando funcionalidades clave para mejorar la experiencia del usuario.
@@ -31,7 +33,7 @@ Este proyecto es parte del curso **Taller de Diseño Digital 2**, con el objetiv
 ## Instalación y Ejecución
 1. Clona este repositorio:
    ```sh
-   git clone https://github.com/ITLAZ/NOX.git
+   git clone https://github.com/tu-repositorio/nox-app.git
    ```
 2. Ingresa al directorio del proyecto:
    ```sh
@@ -46,14 +48,14 @@ Este proyecto es parte del curso **Taller de Diseño Digital 2**, con el objetiv
    ionic serve
    ```
 
-## Autores
-### Grupo 2
+## Grupo 2
 - Danna Alcázar
 - Grecia Castillo
 - Cecilia Flores
 - Gabriel Flores
 - Ignacio Tapia
 
+## Materia
 - Taller de Diseño Digital 2 - Universidad Católica Boliviana "San Pablo" (UCB)
 
 ## Licencia
