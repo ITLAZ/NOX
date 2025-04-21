@@ -1,0 +1,7 @@
+{
+  "name": "NOX",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
