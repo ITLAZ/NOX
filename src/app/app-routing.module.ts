@@ -31,6 +31,10 @@ const routes: Routes = [
     ],
   },
   {
+    path: 'panel-admin',
+    loadChildren: () => import('./pages/panel-admin/panel-admin.module').then(m => m.PanelAdminPageModule),
+  },
+  {
     path: '**',
     redirectTo: '/home',
   },
