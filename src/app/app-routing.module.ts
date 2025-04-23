@@ -1,22 +1,43 @@
 import { NgModule } from '@angular/core';
-import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
+import { MenuComponent } from './shared/menu/components/menu/menu.component';
 
 const routes: Routes = [
   {
-    path: 'home',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+    path: '',
+    component: MenuComponent, // Componente que contiene <ion-tabs>
+    children: [
+      {
+        path: 'home',
+        loadChildren: () => import('./home/home.module').then(m => m.HomePageModule),
+      },
+      {
+        path: 'lugares',
+        loadChildren: () => import('./pages/tabs/lugares/lugares.module').then(m => m.LugaresPageModule),
+      },
+      {
+        path: 'eventos',
+        loadChildren: () => import('./pages/tabs/eventos/eventos.module').then(m => m.EventosPageModule),
+      },
+      {
+        path: 'perfil',
+        loadChildren: () => import('./pages/tabs/perfil/perfil.module').then(m => m.PerfilPageModule),
+      },
+      {
+        path: '',
+        redirectTo: 'home',
+        pathMatch: 'full',
+      },
+    ],
   },
   {
-    path: '',
-    redirectTo: 'home',
-    pathMatch: 'full'
+    path: '**',
+    redirectTo: '/home',
   },
 ];
 
 @NgModule({
-  imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
-  ],
-  exports: [RouterModule]
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

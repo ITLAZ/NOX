@@ -23,10 +23,10 @@ Desarrollar un **MVP** (Producto Mínimo Viable) de una aplicación móvil que f
 - **Lenguajes**: TypeScript, HTML, SCSS
 
 <p align="center">
-    <img src="https://angular.io/assets/images/logos/angular/angular.svg" alt="Angular" width="80">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Ionic_Logo.svg/512px-Ionic_Logo.svg.png" alt="Ionic" width="80">
-    <img src="https://git-scm.com/images/logos/downloads/Git-Icon-1788C.png" alt="Git" width="80">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/3/33/Figma-logo.svg" alt="Figma" width="80">
+  <img src="https://angular.io/assets/images/logos/angular/angular.svg" alt="Angular" height="60">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Ionic_Logo.svg/512px-Ionic_Logo.svg.png" alt="Ionic" height="60">
+  <img src="https://git-scm.com/images/logos/downloads/Git-Icon-1788C.png" alt="Git" height="60">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/3/33/Figma-logo.svg" alt="Figma" height="60">
 </p>
 
 ## Desarrollo Académico
