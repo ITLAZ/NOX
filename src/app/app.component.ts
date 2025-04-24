@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { DatabaseService } from './services/database.service';
 
 @Component({
   selector: 'app-root',
@@ -7,5 +8,12 @@ import { Component } from '@angular/core';
   standalone: false,
 })
 export class AppComponent {
-  constructor() {}
+  constructor(
+    public db: DatabaseService
+  ) {
+    this.db.test();
+    this.db.fetchFirestoreCollection('prueba').subscribe((res: any) => {
+      console.log('res', res);
+    });
+  }
 }

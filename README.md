@@ -38,13 +38,13 @@ Este proyecto es parte del curso **Taller de Diseño Digital 2**, con el objetiv
 1. Clona este repositorio:
 
      ```bash
-     git clone https://github.com/tu-repositorio/nox-app.git
+     git clone https://github.com/ITLAZ/NOX
      ```
 
 2. Ingresa al directorio del proyecto:
 
      ```bash
-     cd nox-app
+     cd NOX/
      ```
 
 3. Instala las dependencias:
