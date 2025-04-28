@@ -39,3 +39,43 @@
 @import "./theme/variables.scss";
 @import "./theme/components.scss";
 
+@font-face {
+    font-family: "Forta";
+    src: url(./assets/fonts/Forta.ttf);
+}
+
+@font-face {
+    font-family: "Futura MD BT";
+    src: url(./assets/fonts/futura-md-bt.ttf);
+}
+
+@font-face {
+    font-family: "Monstserrat Bold";
+    src: url(./assets/fonts/Montserrat-Bold.ttf);
+}
+
+@font-face {
+    font-family: "Monstserrat Regular";
+    src: url(./assets/fonts/Montserrat-Regular.ttf);
+}
+
+@font-face {
+    font-family: "Monstserrat Light";
+    src: url(./assets/fonts/Montserrat-Light.ttf);
+}
+
+@font-face {
+    font-family: "Monstserrat Thin";
+    src: url(./assets/fonts/Montserrat-Thin.ttf);
+}
+
+@font-face {
+    font-family: "Monstserrat SemiBold";
+    src: url(./assets/fonts/Montserrat-SemiBold.ttf);
+}
+
+@font-face {
+    font-family: "Monstserrat Medium";
+    src: url(./assets/fonts/Montserrat-Medium.ttf);
+}
+
