@@ -11,8 +11,7 @@ export class AppComponent {
   constructor(
     public db: DatabaseService
   ) {
-    this.db.test();
-    this.db.fetchFirestoreCollection('prueba').subscribe((res: any) => {
+    this.db.fetchFirestoreCollection('locales').subscribe((res: any) => {
       console.log('res', res);
     });
   }
