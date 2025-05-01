@@ -35,6 +35,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/panel-admin/panel-admin.module').then(m => m.PanelAdminPageModule),
   },
   {
+    path: 'registro',
+    loadChildren: () => import('./pages/registro/registro.module').then(m => m.RegistroPageModule),
+  },
+  {
     path: '**',
     redirectTo: '/home',
   },
