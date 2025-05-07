@@ -17,6 +17,7 @@ import { MediaCardModule } from '../shared/media-card/media-card.module';
     HomePageRoutingModule,
     MediaCardModule
   ],
+  
   declarations: [
     HomePage
   ],
