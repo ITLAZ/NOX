@@ -13,7 +13,7 @@ import { LugaresPage } from './lugares.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    LugaresPageRoutingModule
+    LugaresPageRoutingModule,
   ],
   declarations: [LugaresPage]
 })
