@@ -39,6 +39,14 @@ const routes: Routes = [
     loadChildren: () => import('./pages/registro/registro.module').then(m => m.RegistroPageModule),
   },
   {
+    path: 'start',
+    loadChildren: () => import('./pages/start/start.module').then( m => m.StartPageModule)
+  },
+  {
+    path: 'components-test',
+    loadChildren: () => import('./testing/components-test/components-test.module').then( m => m.ComponentsTestPageModule)
+  },
+  {
     path: '**',
     redirectTo: '/home',
   },
