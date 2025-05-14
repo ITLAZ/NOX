@@ -10,10 +10,14 @@
       <ion-col>
         <h1>Login</h1>
         <form [formGroup]="form" (ngSubmit)="login()">
-          <ion-input formControlName="email" labelPlacement="floating"  label="Email *" type="email" fill="outline" mode="md"></ion-input>
+          <!-- <ion-input formControlName="email" labelPlacement="floating"  label="Email *" type="email" fill="outline" mode="md"></ion-input>
           <ion-text *ngIf="form.get('email')?.touched && form.get('email')?.valid === false">
             <p *ngIf="form.get('email')?.errors?.['required']">El Email es requerido</p>
             <p *ngIf="form.get('email')?.valid===false">Email invalido</p>
+          </ion-text> -->
+          <ion-input formControlName="username" labelPlacement="floating" label="Nombre de usuario *" type="text" fill="outline" mode="md"></ion-input>
+          <ion-text *ngIf="form.get('username')?.touched && form.get('username')?.valid === false">
+            <p *ngIf="form.get('username')?.errors?.['required']">El nombre de usuario es requerido</p>
           </ion-text>
           <ion-input formControlName="password" label="Contraseña *" type="password" fill="outline"
             mode="md"></ion-input>

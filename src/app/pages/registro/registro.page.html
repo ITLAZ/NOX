@@ -19,10 +19,10 @@
             <p *ngIf="registerForm.get('email')?.errors?.['required']">El Email es requerido</p>
             <p *ngIf="registerForm.get('email')?.valid===false">Email invalido</p>
           </ion-text>
-          <ion-input formControlName="nick" label="Nombre de usuario:" type="text" fill="outline" mode="md"></ion-input>
-          <ion-text *ngIf="registerForm.get('nick')?.touched && registerForm.get('nick')?.valid === false">
-            <p *ngIf="registerForm.get('nick')?.errors?.['required']">El nombre es requerido</p>
-            <p *ngIf="registerForm.get('nick')?.errors?.['minlength']">El nombre debe tener al menos 3 caracteres</p>
+          <ion-input formControlName="username" label="Nombre de usuario:" type="text" fill="outline" mode="md"></ion-input>
+          <ion-text *ngIf="registerForm.get('username')?.touched && registerForm.get('username')?.valid === false">
+            <p *ngIf="registerForm.get('username')?.errors?.['required']">El nombre es requerido</p>
+            <p *ngIf="registerForm.get('username')?.errors?.['minlength']">El nombre debe tener al menos 3 caracteres</p>
           </ion-text>
           <ion-input formControlName="name" label="Nombre:" type="text" fill="outline" mode="md"></ion-input>
           <ion-text *ngIf="registerForm.get('name')?.touched && registerForm.get('name')?.valid === false">

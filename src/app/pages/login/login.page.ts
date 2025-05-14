@@ -22,19 +22,18 @@ interface Book {
     public formBuilder: FormBuilder
   ) {
     this.form = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.email]],
+      username: ['', [Validators.required]],
       password: ['', [Validators.required, Validators.minLength(4)]],
     })
   }
 
   login() {
-    if(this.form.valid){
-      console.log('formulario valido', this.form.valid);
-      console.log('valores del formulario', this.form.value);
-      this.auth.loginUser(this.form.value.email, this.form.value.password)
-    }
-    else{
-      this.form.markAllAsTouched();
-    }
+  if (this.form.valid) {
+    const { username, password } = this.form.value;
+    this.auth.loginByUsername(username, password);
+  } else {
+    this.form.markAllAsTouched();
   }
+}
+
 }
