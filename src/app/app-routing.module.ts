@@ -51,16 +51,18 @@ const routes: Routes = [
     loadChildren: () => import('./testing/components-test/components-test.module').then( m => m.ComponentsTestPageModule)
   },
   {
-    path: '**',
-    redirectTo: '/home',
-  },  {
     path: 'cart',
     loadChildren: () => import('./pages/cart/cart.module').then( m => m.CartPageModule)
   },
   {
-    path: 'profile',
-    loadChildren: () => import('./pages/profile/profile.module').then( m => m.ProfilePageModule)
+    path: 'lugares-test',
+    loadChildren: () => import('./pages/lugares-test/lugares-test.module').then( m => m.LugaresTestPageModule)
   },
+  {
+    path: '**',
+    redirectTo: '/home',
+  },
+  
 
 ];
 
