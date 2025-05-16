@@ -1,0 +1,25 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Menú del Lugar</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <ion-list *ngIf="menu.length > 0; else loading">
+    <ion-item *ngFor="let item of menu">
+      <ion-label>
+        <h2>{{ item.name }}</h2>
+        <p>{{ item.description }}</p>
+        <strong>${{ item.price }}</strong>
+      </ion-label>
+      <ion-button slot="end" color="primary" (click)="addToCart(item)">
+        Añadir
+      </ion-button>
+    </ion-item>
+  </ion-list>
+
+  <ng-template #loading>
+    <ion-spinner name="crescent"></ion-spinner>
+    <p>Cargando menú...</p>
+  </ng-template>
+</ion-content>

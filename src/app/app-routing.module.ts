@@ -51,9 +51,24 @@ const routes: Routes = [
     loadChildren: () => import('./testing/components-test/components-test.module').then( m => m.ComponentsTestPageModule)
   },
   {
+    path: 'cart',
+    loadChildren: () => import('./pages/cart/cart.module').then( m => m.CartPageModule)
+  },
+  {
+    path: 'lugares-test',
+    loadChildren: () => import('./pages/lugares-test/lugares-test.module').then( m => m.LugaresTestPageModule)
+  },
+  {
+    path: 'ticket-test',
+    loadChildren: () => import('./pages/ticket-test/ticket-test.module').then( m => m.TicketTestPageModule)
+  },
+  {
     path: '**',
     redirectTo: '/home',
   },
+
+  
+
 ];
 
 @NgModule({
