@@ -1,0 +1,48 @@
+ion-content {
+  margin: 0;
+  padding: 0;
+  --background: url('../../../assets/images/Degrade.png') no-repeat center center / cover;
+  overflow: hidden;
+  height: 100vh;
+}
+
+#logo {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+#logo img {
+  max-width: 100%; /* Ajusta el tamaño del logo si es necesario */
+  height: auto;
+}
+
+#welcome {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  top: 90%;
+  transform: translateY(-60%);
+}
+
+h1 {
+  font-family: "Forta";
+}
+
+#actions {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+ion-button {
+  --background: #ac95df;
+  width: 80%;
+  margin-bottom: 10px;
+}

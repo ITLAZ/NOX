@@ -1,13 +1,13 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>start</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">start</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <div id="logo" *ngIf="showLogo">
+    <img src="../../../assets/images/NOX.png" alt="NOX logo"/>
+  </div>
+
+  <div id="welcome" *ngIf="showWelcome">
+    <h1>La noche te espera llena de planes increíbles.</h1>
+    <div id="actions">
+      <ion-button id="logIn" [routerLink]="'/login'" expand="full">Iniciar Sesión</ion-button>
+      <ion-button id="signUp" [routerLink]="'/registro'" expand="full">Registrarse</ion-button>
+    </div>
+  </div>
 </ion-content>
