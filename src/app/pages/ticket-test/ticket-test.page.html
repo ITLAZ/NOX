@@ -1,6 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>Menú del Lugar</ion-title>
+    <ion-title>Entradas Disponibles</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -8,9 +8,9 @@
   <ion-list *ngIf="menu.length > 0; else loading">
     <ion-item *ngFor="let item of menu">
       <ion-label>
-        <h2>{{ item.name }}</h2>
-        <p>{{ item.description }}</p>
-        <strong>${{ item.price }}</strong>
+        <h2>{{ item.tipo }}</h2>
+        <p>{{ item.descripcion }}</p>
+        <strong>Bs {{ item.precio }}</strong>
       </ion-label>
       <ion-button slot="end" color="primary" (click)="addToCart(item)">
         Añadir
@@ -20,6 +20,6 @@
 
   <ng-template #loading>
     <ion-spinner name="crescent"></ion-spinner>
-    <p>Cargando menú...</p>
+    <p>Cargando entradas...</p>
   </ng-template>
 </ion-content>

@@ -59,9 +59,14 @@ const routes: Routes = [
     loadChildren: () => import('./pages/lugares-test/lugares-test.module').then( m => m.LugaresTestPageModule)
   },
   {
+    path: 'ticket-test',
+    loadChildren: () => import('./pages/ticket-test/ticket-test.module').then( m => m.TicketTestPageModule)
+  },
+  {
     path: '**',
     redirectTo: '/home',
   },
+
   
 
 ];

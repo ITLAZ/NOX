@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { DatabaseService } from 'src/app/services/database.service';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-lugares-test',
@@ -8,9 +10,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LugaresTestPage implements OnInit {
 
-  constructor() { }
+  menu: any[] = [];
+
+  constructor(
+    private databaseService: DatabaseService,
+    private cartService: CartService
+  ) { }
 
   ngOnInit() {
+    this.databaseService.fetchFirestoreCollection('menuPruebas').subscribe(data => {
+      this.menu = data;
+    });
   }
-
+  addToCart(item: any) {
+    this.cartService.addToCart(item);
+  }
 }
