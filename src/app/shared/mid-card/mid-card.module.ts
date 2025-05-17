@@ -12,6 +12,8 @@ import { MidCardComponent } from '../../components/cards/mid-card/mid-card.compo
   imports: [
     CommonModule,
     IonicModule
-  ]
+  ],
+  exports: [
+    MidCardComponent]
 })
 export class MidCardModule { }
