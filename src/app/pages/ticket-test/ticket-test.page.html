@@ -1,25 +1,32 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>Entradas Disponibles</ion-title>
+    <ion-title>Entradas</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true" class="ion-padding">
-  <ion-list *ngIf="menu.length > 0; else loading">
+  <ion-list>
     <ion-item *ngFor="let item of menu">
       <ion-label>
-        <h2>{{ item.tipo }}</h2>
-        <p>{{ item.descripcion }}</p>
-        <strong>Bs {{ item.precio }}</strong>
+        <h3>{{ item.tipo }}</h3>
+        <p>{{ item.description || item.descripcion }}</p>
+        <strong>Bs {{ item.price || item.precio }}</strong>
       </ion-label>
-      <ion-button slot="end" color="primary" (click)="addToCart(item)">
-        Añadir
-      </ion-button>
+
+      <ion-buttons slot="end">
+        <ion-button (click)="decrement(item)" [disabled]="item.quantity === 0">-</ion-button>
+        <ion-label>{{ item.quantity }}</ion-label>
+        <ion-button (click)="increment(item)">+</ion-button>
+      </ion-buttons>
     </ion-item>
   </ion-list>
 
-  <ng-template #loading>
-    <ion-spinner name="crescent"></ion-spinner>
-    <p>Cargando entradas...</p>
-  </ng-template>
+  <ion-card *ngIf="total > 0">
+    <ion-card-content>
+      <p><strong>Total:</strong> Bs {{ total }}</p>
+      <ion-button expand="block" color="success" (click)="addToCart()">
+        Agregar al carrito
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

@@ -63,11 +63,23 @@ const routes: Routes = [
     loadChildren: () => import('./pages/ticket-test/ticket-test.module').then( m => m.TicketTestPageModule)
   },
   {
+    path: 'buy-check',
+    loadChildren: () => import('./pages/buy-check/buy-check.module').then( m => m.BuyCheckPageModule)
+  },
+  {
+    path: 'pay-card',
+    loadChildren: () => import('./pages/pay-card/pay-card.module').then( m => m.PayCardPageModule)
+  },
+  {
+    path: 'pay-qr',
+    loadChildren: () => import('./pages/pay-qr/pay-qr.module').then( m => m.PayQRPageModule)
+  },
+  {
     path: '**',
     redirectTo: '/home',
   },
 
-  
+
 
 ];
 

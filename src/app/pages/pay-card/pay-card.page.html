@@ -1,0 +1,92 @@
+<ion-header *ngIf="!isProcessing && paymentSuccess === null" [translucent]="true">
+  <ion-toolbar color="warning">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/buy-check"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Pago con tarjeta</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <!-- FORMULARIO -->
+  <form *ngIf="!isProcessing && paymentSuccess === null" [formGroup]="cardForm" (ngSubmit)="submitPayment()">
+
+    <ion-item>
+      <ion-label position="stacked">Número de tarjeta:</ion-label>
+      <ion-input formControlName="cardNumber" type="text" maxlength="16"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Fecha de vencimiento:</ion-label>
+      <ion-datetime
+        formControlName="expiry"
+        presentation="month-year"
+        display-format="MM/YYYY"
+        placeholder="Selecciona mes/año">
+      </ion-datetime>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">CVV:</ion-label>
+      <ion-input formControlName="cvv" type="password" maxlength="3"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Nombre(s):</ion-label>
+      <ion-input formControlName="firstName"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Apellido(s):</ion-label>
+      <ion-input formControlName="lastName"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Dirección de facturación:</ion-label>
+      <ion-input formControlName="address"></ion-input>
+    </ion-item>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col size="7">
+          <ion-item>
+            <ion-label position="stacked">Celular:</ion-label>
+            <ion-input formControlName="phone" placeholder="+591 77776666"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col size="5">
+          <ion-item>
+            <ion-label position="stacked">Código postal:</ion-label>
+            <ion-input formControlName="postalCode" placeholder="0000"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-button expand="block" color="warning" type="submit">Verificar pago</ion-button>
+  </form>
+
+  <!-- PANTALLA DE PROCESANDO -->
+  <div *ngIf="isProcessing" class="full-screen center-content">
+    <ion-spinner name="circles" color="warning" style="transform: scale(2);"></ion-spinner>
+    <p class="mensaje">Procesando pago...<br><small>Este proceso puede demorar algunos minutos.</small></p>
+  </div>
+
+  <!-- PANTALLA DE RESULTADO -->
+  <div *ngIf="!isProcessing && paymentSuccess !== null" class="full-screen center-content">
+    <ion-icon
+      [name]="paymentSuccess ? 'checkmark-circle-outline' : 'close-circle-outline'"
+      [color]="paymentSuccess ? 'success' : 'danger'"
+      style="font-size: 80px;">
+    </ion-icon>
+    <h2>{{ paymentSuccess ? 'Pago realizado correctamente' : 'El pago ha fallado' }}</h2>
+    <ion-button expand="block" color="success" *ngIf="paymentSuccess" (click)="volverInicio()">
+      Volver a la página principal
+    </ion-button>
+    <ion-button expand="block" color="danger" *ngIf="!paymentSuccess" (click)="reintentarPago()">
+      Reintentar pago
+    </ion-button>
+  </div>
+
+</ion-content>

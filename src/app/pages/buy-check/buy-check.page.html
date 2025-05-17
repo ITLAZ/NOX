@@ -1,0 +1,78 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/cart"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Confirmar compra</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+
+  <!-- Lista de productos -->
+  <ion-list>
+    <ion-item *ngFor="let item of items">
+      <ion-thumbnail slot="start">
+        <!-- <img [src]="item.image || 'assets/default.png'" /> -->
+      </ion-thumbnail>
+      <ion-label>
+        <h2>{{ item.name || item.tipo }}</h2>
+        <p>{{ item.description || item.descripcion }}</p>
+        <p>Cantidad: {{ item.quantity || 1 }}</p>
+      </ion-label>
+      <ion-note slot="end" color="warning">
+        {{ (item.price || item.precio) }} bs.
+      </ion-note>
+    </ion-item>
+  </ion-list>
+
+  <ion-card class="ion-margin-top">
+    <ion-card-content>
+
+      <!-- Selector de cupón -->
+      <ion-item>
+        <ion-label> Añadir cupón </ion-label>
+        <ion-select placeholder="Seleccionar cupón" interface="popover"
+                    [(ngModel)]="discountPercentage"
+                    (ionChange)="onCouponChange($event.detail.value)">
+          <ion-select-option *ngFor="let c of coupons" [value]="c.value">
+            {{ c.label }}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <!-- Detalle de totales -->
+      <ion-grid>
+        <ion-row>
+          <ion-col>Total:</ion-col>
+          <ion-col class="ion-text-right">{{ subtotal }} bs.</ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>Descuento:</ion-col>
+          <ion-col class="ion-text-right">- {{ discountPercentage }}%({{ discountAmount | number:'1.2-2' }} Bs)</ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>Comisión por uso de app:</ion-col>
+          <ion-col class="ion-text-right">+ {{ commission }} bs.</ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col><strong>Total final:</strong></ion-col>
+          <ion-col class="ion-text-right"><strong>{{ total.toFixed(2) }} bs.</strong></ion-col>
+        </ion-row>
+      </ion-grid>
+
+      <!-- Botones de pago -->
+      <ion-button expand="block" color="warning" [routerLink]="['/pay-card']">
+        Pagar con tarjeta
+      </ion-button>
+
+      <ion-range min="0" max="100" value="0" color="medium"></ion-range>
+
+      <ion-button expand="block" color="secondary">
+        Pagar con QR
+      </ion-button>
+
+    </ion-card-content>
+  </ion-card>
+  
+</ion-content>

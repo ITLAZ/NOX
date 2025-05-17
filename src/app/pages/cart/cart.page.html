@@ -4,24 +4,52 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" class="ion-padding">
   <ion-list *ngIf="cartItems.length > 0; else emptyCart">
     <ion-item *ngFor="let item of cartItems; let i = index">
       <ion-label>
-        <h2>{{ item.tipo || item.name }}</h2>
-        <p>{{ item.descripcion || item.description }}</p>
-        <p><strong>Bs {{ item.precio || item.price }}</strong></p>
+        <h2>{{ item.name || item.tipo }}</h2>
+        <p>{{ item.description || item.descripcion }}</p>
+        <p><strong>Bs {{ item.price || item.precio }}</strong></p>
+        <p>Cantidad: {{ item.quantity || 1 }}</p>
       </ion-label>
-      <ion-button fill="clear" color="danger" (click)="removeItem(i)">
-        <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
-      </ion-button>
+      <ion-buttons slot="end">
+        <ion-button (click)="decrement(item)">-</ion-button>
+        <ion-button (click)="increment(item)">+</ion-button>
+        <ion-button fill="clear" color="danger" (click)="removeItem(i)">
+          <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
     </ion-item>
   </ion-list>
 
   <ion-card *ngIf="cartItems.length > 0">
     <ion-card-content>
-      <h3>Total: Bs {{ total }}</h3>
-      <ion-button expand="block" color="danger" (click)="clearCart()">Vaciar Carrito</ion-button>
+
+      <!-- ✅ Mostrar nota SOLO si es comida (NO tiene tipo) -->
+      <ion-item *ngIf="!cartItems[0]?.tipo">
+        <ion-label position="stacked">Nota para el restaurante</ion-label>
+        <ion-textarea [(ngModel)]="note" placeholder="Sin cebolla, sin picante..."></ion-textarea>
+      </ion-item>
+
+      <h3 class="ion-padding-top">Total: <strong>Bs {{ total }}</strong></h3>
+
+      <ion-button expand="block" color="danger" (click)="clearCart()">
+        Vaciar Carrito
+      </ion-button>
+
+      <!-- ✅ Botón según tipo -->
+      <ion-button expand="block" color="secondary"
+        *ngIf="!cartItems[0]?.tipo"
+        (click)="goToMenu()">
+        Volver al Menú
+      </ion-button>
+
+      <ion-button expand="block" color="primary"
+        *ngIf="cartItems[0]?.tipo"
+        (click)="goToTickets()">
+        Volver a Entradas
+      </ion-button>
     </ion-card-content>
   </ion-card>
 
@@ -29,5 +57,10 @@
     <ion-text color="medium">
       <p class="ion-padding">Tu carrito está vacío.</p>
     </ion-text>
+    <ion-button expand="block" color="secondary" (click)="goToMenu()">Ir al Menú</ion-button>
+    <ion-button expand="block" color="primary" (click)="goToTickets()">Ir a Entradas</ion-button>
   </ng-template>
+  <ion-button expand="block" color="success" (click)="goToBuyCheck()">
+  Ir a Pagar
+</ion-button>
 </ion-content>
