@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { trigger, style, animate, transition, sequence } from '@angular/animations';
 
 @Component({
@@ -13,14 +13,12 @@ import { trigger, style, animate, transition, sequence } from '@angular/animatio
         sequence([
           animate('300ms ease-in-out', style({ opacity: 1, transform: 'scale(1.05)' })),
           animate('300ms ease-in-out', style({ transform: 'scale(1)' })),
-          animate('300ms ease-in-out', style({ transform: 'scale(1.03)' })),
+          animate('300ms ease-in-out', style({ transform: 'scale(1.5)' })),
           animate('300ms ease-in-out', style({ transform: 'scale(1)' })),
-          animate('2100ms ease-in-out', style({})) // Espera el resto de los 3 segundos
-        ]),
+        ])
       ]),
       transition(':leave', [
-        style({ opacity: 1 }), // Comenzar con opacidad 1 para la transición
-        animate('500ms ease-in-out', style({ opacity: 0 })) // Desvanecer el logo
+        animate('500ms ease-in-out', style({ opacity: 0 }))
       ])
     ]),
     trigger('slideUp', [
@@ -32,19 +30,17 @@ import { trigger, style, animate, transition, sequence } from '@angular/animatio
   ]
 })
 export class StartPage implements OnInit {
-  @ViewChild('logoContainer') logoContainer!: ElementRef; // Para manipulación directa del DOM
-
-  constructor() { }
-
   showLogo = true;
   showWelcome = false;
 
+  constructor() { }
+
   ngOnInit() {
     setTimeout(() => {
-      this.showLogo = false; // Inicia la transición de salida del logo
+      this.showLogo = false;
       setTimeout(() => {
-        this.showWelcome = true; // Muestra el contenido de bienvenida después de que el logo se desvanece
-      }, 500); // Espera 500ms para que coincida con la duración del fadeOut
+        this.showWelcome = true;
+      }, 500);
     }, 3000);
   }
 }

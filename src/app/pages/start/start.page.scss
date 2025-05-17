@@ -9,13 +9,13 @@ ion-content {
 #logo {
   display: flex;
   justify-content: center;
-  position: relative;
-  top: 50%;
-  transform: translateY(-50%);
+  align-items: center;
+  height: 100vh;
+  width: 100%;
 }
 
 #logo img {
-  max-width: 100%; /* Ajusta el tamaño del logo si es necesario */
+  width: 200px; /* Tamaño fijo para mejor control de la animación */
   height: auto;
 }
 
@@ -24,13 +24,16 @@ ion-content {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  position: relative;
-  top: 90%;
-  transform: translateY(-60%);
+  height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
+  text-align: center;
 }
 
 h1 {
   font-family: "Forta";
+  color: white;
+  margin-bottom: 30px;
 }
 
 #actions {
@@ -38,11 +41,12 @@ h1 {
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  margin-top: 20px;
+  width: 100%;
+  max-width: 300px;
 }
 
 ion-button {
   --background: #ac95df;
-  width: 80%;
+  width: 100%;
   margin-bottom: 10px;
 }

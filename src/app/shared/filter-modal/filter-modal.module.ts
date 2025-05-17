@@ -11,6 +11,9 @@ import { FilterModalComponent } from '../../components/filter-modal/filter-modal
   imports: [
     CommonModule,
     IonicModule,
-  ]
+  ],
+  exports: [FilterModalComponent]
 })
-export class FilterModalModule { }
+export class FilterModalModule { 
+
+}

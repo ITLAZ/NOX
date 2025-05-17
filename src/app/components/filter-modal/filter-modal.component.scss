@@ -1,0 +1,10 @@
+ion-modal {
+    --background: transparent;
+    --backdrop-opacity: 0.5;
+    --border-radius: 20px;
+    --width: 100%;
+}
+
+.modal-handle::before {
+    --width: 80%;
+}
