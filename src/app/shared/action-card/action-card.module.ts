@@ -13,6 +13,8 @@ import { ActionCardComponent } from '../../components/cards/action-card/action-c
   imports: [
     CommonModule,
     IonicModule
-  ]
+  ],
+  exports: [
+    ActionCardComponent]
 })
 export class ActionCardModule { }

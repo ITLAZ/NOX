@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-action-card',
+  selector: 'action-card',
   templateUrl: './action-card.component.html',
   styleUrls: ['./action-card.component.scss'],
   standalone: false,
