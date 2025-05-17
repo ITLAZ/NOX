@@ -12,6 +12,8 @@ import { MiniCardComponent } from '../../components/cards/mini-card/mini-card.co
   imports: [
     CommonModule,
     IonicModule
-  ]
+  ],
+  exports: [
+    MiniCardComponent]
 })
 export class MiniCardModule { }
