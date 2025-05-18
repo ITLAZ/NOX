@@ -1,0 +1,43 @@
+<ion-item >
+  <!-- Sección izquierda: Imagen -->
+  <ion-avatar slot="start">
+    <img alt="Delicious food" src="https://ionicframework.com/docs/img/demos/card-media.png" />
+  </ion-avatar>
+
+  <!-- Sección central: Título + Subtítulo -->
+  <ion-label class="ion-text-wrap">
+    <h2>Poke de Langostinos</h2>
+    <p>6 piezas de langostinos</p>
+  </ion-label>
+
+  <!-- Sección derecha: Dos elementos apilados -->
+  <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 4px;">
+    <ion-text color="primary">46 Bs</ion-text>
+    <div class="mas">
+      <div class="custom-counter">
+        <!-- Estado: solo "+" -->
+        <ng-container *ngIf="quantity === 0">
+          <ion-button fill="outline" shape="round" size="small" color="success" (click)="increase()">
+            <ion-icon slot="icon-only" name="add-outline"></ion-icon>
+          </ion-button>
+        </ng-container>
+
+        <!-- Estado: cantidad > 0 -->
+        <ng-container *ngIf="quantity > 0">
+          <ion-button fill="clear" shape="round" size="small" color="success"
+            (click)="quantity === 1 ? delete() : decrease()">
+            <ion-icon slot="icon-only" [name]="quantity === 1 ? 'trash-outline' : 'remove-outline'"></ion-icon>
+          </ion-button>
+
+          <div class="quantity-display">
+            {{ quantity }}
+          </div>
+
+          <ion-button fill="clear" shape="round" size="small" color="success" (click)="increase()">
+            <ion-icon slot="icon-only" name="add-outline"></ion-icon>
+          </ion-button>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</ion-item>
