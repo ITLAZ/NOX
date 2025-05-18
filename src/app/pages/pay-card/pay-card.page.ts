@@ -14,6 +14,11 @@ export class PayCardPage implements OnInit {
   isProcessing = false;
   paymentSuccess: boolean | null = null;
 
+  // Variables para el selector de fecha
+  fechaTemp: string = ''; // valor temporal YYYY-MM
+  fechaSeleccionada: string = ''; // mostrado en botón como MM/YYYY
+  mostrarFecha: boolean = false;
+
   constructor(
     private fb: FormBuilder,
     private navCtrl: NavController
@@ -32,6 +37,27 @@ export class PayCardPage implements OnInit {
     });
   }
 
+  toggleFecha() {
+    this.mostrarFecha = !this.mostrarFecha;
+  }
+
+  onFechaChange(event: any) {
+    this.fechaTemp = event.detail.value; // Formato: YYYY-MM
+  }
+
+  confirmarFecha() {
+    if (this.fechaTemp) {
+      this.fechaSeleccionada = this.formatDate(this.fechaTemp); // MM/YYYY
+      this.cardForm.get('expiry')?.setValue(this.fechaSeleccionada);
+    }
+    this.mostrarFecha = false;
+  }
+
+  formatDate(value: string): string {
+    const [year, month] = value.split('-');
+    return `${month}/${year}`;
+  }
+
   submitPayment() {
     if (this.cardForm.invalid) {
       this.cardForm.markAllAsTouched();
@@ -41,9 +67,9 @@ export class PayCardPage implements OnInit {
     this.isProcessing = true;
     this.paymentSuccess = null;
 
-    // Simular el procesamiento
+    // Simular el procesamiento del pago
     setTimeout(() => {
-      const success = true; // o usa: Math.random() > 0.5;
+      const success = true;
       this.paymentSuccess = success;
       this.isProcessing = false;
     }, 5000);
@@ -56,5 +82,7 @@ export class PayCardPage implements OnInit {
   reintentarPago() {
     this.cardForm.reset();
     this.paymentSuccess = null;
+    this.fechaSeleccionada = '';
+    this.fechaTemp = '';
   }
 }

@@ -18,14 +18,28 @@
     </ion-item>
 
     <ion-item>
-      <ion-label position="stacked">Fecha de vencimiento:</ion-label>
-      <ion-datetime
-        formControlName="expiry"
-        presentation="month-year"
-        display-format="MM/YYYY"
-        placeholder="Selecciona mes/año">
-      </ion-datetime>
-    </ion-item>
+  <ion-label position="stacked">Fecha de vencimiento:</ion-label>
+  <ion-button expand="block" (click)="toggleFecha()">
+    {{ fechaSeleccionada ? fechaSeleccionada : 'Seleccionar mes/año' }}
+  </ion-button>
+</ion-item>
+
+<!-- Selector de fecha desplegable -->
+<ng-container *ngIf="mostrarFecha">
+  <ion-item>
+    <ion-datetime
+      [value]="fechaTemp"
+      presentation="month-year"
+      [min]="'2025-01-01'"
+      [max]="'2040-12-31'"
+      display-format="MM/YYYY"
+      placeholder="Selecciona mes/año"
+      (ionChange)="onFechaChange($event)">
+    </ion-datetime>
+  </ion-item>
+  <ion-button expand="block" color="success" (click)="confirmarFecha()">OK</ion-button>
+</ng-container>
+
 
     <ion-item>
       <ion-label position="stacked">CVV:</ion-label>
