@@ -74,6 +74,18 @@ const routes: Routes = [
     path: 'pay-qr',
     loadChildren: () => import('./pages/pay-qr/pay-qr.module').then( m => m.PayQRPageModule)
   },
+    {
+    path: 'edit-profile',
+    loadChildren: () => import('./pages/edit-profile/edit-profile.module').then( m => m.EditProfilePageModule)
+  },
+  {
+    path: 'historial',
+    loadChildren: () => import('./pages/historial/historial.module').then( m => m.HistorialPageModule)
+  },
+  {
+    path: 'favorites',
+    loadChildren: () => import('./pages/favorites/favorites.module').then( m => m.FavoritesPageModule)
+  },
   {
     path: '**',
     redirectTo: '/home',

@@ -1,14 +1,75 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>perfil</ion-title>
+    <ion-title>Perfil</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">perfil</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true" class="perfil-page">
+  <div class="perfil-header">
+    <ion-avatar>
+      <!-- <img [src]="auth.profile?.photo || 'assets/avatar-default.png'" /> -->
+    </ion-avatar>
+    <div class="user-info">
+      <h2>{{ auth.profile?.name || 'Nombre' }}</h2>
+      <p>{{ auth.profile?.email }}</p>
+    </div>
+    <ion-icon name="create-outline" class="edit-icon" (click)="editarPerfil()"></ion-icon>
+  </div>
 
+  <ion-list lines="full">
+    <ion-item button (click)="goTo('historial')">
+      <ion-label>Historial</ion-label>
+      <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
+    </ion-item>
+    <ion-item button (click)="goTo('favorites')">
+      <ion-label>Favoritos</ion-label>
+      <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
+    </ion-item>
+    <ion-item>
+      <ion-label>Mis entradas</ion-label>
+      <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
+    </ion-item>
+    <ion-item>
+      <ion-label>Membresía premium</ion-label>
+      <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
+    </ion-item>
+
+    <ion-item-divider color="light">Actividad</ion-item-divider>
+    <ion-item>
+      <ion-label>Recompensas y puntos</ion-label>
+      <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
+    </ion-item>
+
+    <ion-item-divider color="light">Configuración y ayuda</ion-item-divider>
+    <ion-item>
+      <ion-label>Configuración</ion-label>
+      <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
+    </ion-item>
+    <ion-item>
+      <ion-label>Preferencias</ion-label>
+      <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
+    </ion-item>
+    <ion-item>
+      <ion-label>Información legal</ion-label>
+      <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
+    </ion-item>
+    <ion-item>
+      <ion-label>Call Center</ion-label>
+      <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
+    </ion-item>
+
+    <ion-item-divider color="light">Modos administrativo</ion-item-divider>
+    <ion-item>
+      <ion-label>Administrar mi local</ion-label>
+      <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
+    </ion-item>
+    <ion-item>
+      <ion-label>Administrar mi evento</ion-label>
+      <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
+    </ion-item>
+
+    <ion-button expand="block" color="danger" (click)="cerrarSesion()">
+      Cerrar sesión
+    </ion-button>
+  </ion-list>
 </ion-content>

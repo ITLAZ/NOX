@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-perfil',
@@ -8,9 +10,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PerfilPage implements OnInit {
 
-  constructor() { }
+  constructor(public auth: AuthService, private router: Router) {}
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  editarPerfil() {
+    this.router.navigate(['/edit-profile']);
   }
 
+  goTo(destino: string) {
+    switch (destino) {
+      case 'historial':
+        this.router.navigate(['/historial']);
+        break;
+      case 'favorites':
+        this.router.navigate(['/favorites']);
+        break;
+    }
+  }
+  cerrarSesion() {
+    this.auth.logout();
+  }
 }

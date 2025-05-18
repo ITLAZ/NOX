@@ -142,6 +142,21 @@ export class AuthService {
       throw error;
     }
   }
+  async logout() {
+    try {
+      await this.afAuth.signOut();
+
+      // ✅ Limpiar localStorage
+      localStorage.clear();
+
+      // ✅ Redirigir al login
+      this.router.navigate(['/start']);
+
+      console.log('Sesión cerrada correctamente');
+    } catch (error) {
+      console.error('Error al cerrar sesión:', error);
+    }
+  }
 
   /* Método opcional para saber si hay un usuario logueado
   verifyIsLogued() {
