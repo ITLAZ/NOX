@@ -50,7 +50,7 @@ ion-icon[name^="heart-"] {
 
    
     ion-badge {
-        display: none;
+        display: flex;
         background: transparent;
         font-size: 14px;
         font-weight: 700;
@@ -67,10 +67,6 @@ ion-icon[name^="heart-"] {
         }
     }
 
-  
-    .show-badge ion-badge {
-        display: flex;
-    }
   }
 
   ion-card-content {

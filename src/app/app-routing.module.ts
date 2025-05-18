@@ -87,9 +87,15 @@ const routes: Routes = [
     loadChildren: () => import('./pages/favorites/favorites.module').then( m => m.FavoritesPageModule)
   },
   {
+    path: 'event-detail',
+    loadChildren: () => import('./pages/event-detail/event-detail.module').then( m => m.EventDetailPageModule)
+  },
+  {
     path: '**',
     redirectTo: '/home',
   },
+  
+
 
 
 

@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { EventosPageRoutingModule } from './eventos-routing.module';
 
 import { EventosPage } from './eventos.page';
+import { MidCardModule } from 'src/app/shared/mid-card/mid-card.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    EventosPageRoutingModule
+    EventosPageRoutingModule,
+    MidCardModule
   ],
   declarations: [EventosPage]
 })
