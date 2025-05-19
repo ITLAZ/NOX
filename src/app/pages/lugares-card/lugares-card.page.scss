@@ -1,0 +1,131 @@
+ion-toolbar {
+    --background: var(--ion-color-primary);
+}
+
+ion-title {
+    font-size: 20px;
+    font-family: "Futura MD BT";
+    color: var(--ion-color-primary-contrast);
+}
+
+ion-icon {
+    color: var(--ion-color-primary-contrast);
+    font-size: 24px;
+    width: 24px;
+    height: 24px;
+}
+
+ion-back-button {
+    color: var(--ion-color-primary-contrast); // Cambia el color del icono
+    --icon-font-size: 24px; // Cambia el tamaño del icono
+    --icon-size: 24px; // Otra forma compatible
+}
+
+/* 🟠 Sección 1: Imagen + info */
+.seccion-imagen img {
+    height: 200px;
+    width: 100%;
+    object-fit: cover;
+}
+
+.seccion-imagen .info-local {
+    padding: 10px 20px;
+    font-size: 14px;
+    font-family: "Monstserrat Regular";
+}
+
+.seccion-imagen .info-local p:first-of-type {
+    color: var(--ion-color-secondary);
+    /* Dirección */
+}
+
+.seccion-imagen .info-local p:not(:first-of-type) {
+    color: var(--ion-color-light);
+    /* Otros textos */
+}
+
+/* 🟡 Sección 2: Más vendidos */
+.seccion-mas-vendidos h2,
+.seccion-como-llegar h2,
+.seccion-comentarios h2 {
+    margin-top: 10px;
+    margin-bottom: 0px;
+    padding: 0 20px;
+    font-size: 20px;
+    font-family: "Futura MD BT";
+    color: var(--ion-color-primary);
+    text-align: left;
+}
+
+/* ✅ Botones de todas las secciones */
+.seccion-mas-vendidos ion-button,
+.seccion-como-llegar ion-button,
+.seccion-comentarios ion-button {
+    width: 335px;
+    height: 36px;
+    margin: 10px auto;
+    margin-bottom: 20px;
+    border-radius: 100px;
+    background: linear-gradient(90deg, var(--ion-color-secondary), var(--ion-color-primary));
+    font-size: 14px;
+    font-family: "Monstserrat Regular";
+    color: var(--ion-color-primary-contrast);
+    --color: var(--ion-color-primary-contrast);
+}
+
+/* ✅ Flechas (iconos dentro de botones) */
+ion-button ion-icon {
+    color: var(--ion-color-primary-contrast);
+}
+
+ion-button {
+    text-transform: none;
+    
+}
+
+swiper-container{
+  padding: 10px;
+}
+
+.contenedor-opinion {
+  width: 278px;
+  height: 90px;
+  background-color: white;
+  border: 1px solid #ccc; /* Opcional: para ver el borde de la caja */
+  padding: 10px; /* Opcional: padding general si lo deseas */
+  padding-left: 10px; /* Padding de 10px a la izquierda */
+  border-radius: 20px; /* Borde redondeado de 20px */
+  box-sizing: border-box; /* Incluye el padding y el borde en el ancho y alto */
+  margin-left: 10px; /* Espacio entre las opiniones */
+}
+
+.seccion-superior {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px; /* Espacio entre las secciones */
+}
+
+.nombre-usuario {
+  font-family: "Monstserrat SemiBold";
+  font-size: 14px;
+  color: var(--ion-color-primary-contrast); /* Color de contraste del primario */
+}
+
+.calificacion {
+  display: flex;
+  align-items: center;
+}
+
+.calificacion ion-icon {
+  font-size: 24px;
+  color: var(--ion-color-primary);
+  margin-left: 2px; /* Espacio entre las estrellas */
+}
+
+.seccion-inferior .comentario {
+  font-family: "Monstserrat Regular";
+  font-size: 14px;
+  margin: 0; /* Elimina márgenes predeterminados del párrafo */
+  color: var(--ion-color-primary-contrast); /* Color de contraste del primario */
+}
