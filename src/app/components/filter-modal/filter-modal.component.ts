@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, ViewChild } from '@angular/core';
 import { IonModal } from '@ionic/angular';
 
 @Component({
@@ -7,20 +7,21 @@ import { IonModal } from '@ionic/angular';
   styleUrls: ['./filter-modal.component.scss'],
   standalone: false,
 })
-export class FilterModalComponent implements OnInit {
+export class FilterModalComponent {
   @ViewChild(IonModal) modal!: IonModal;
   selectedTab: string = 'tab1';
-  currentBreakpoint: number = 0.25; // Valor inicial
-  @Input() search: any;
-  constructor() { }
+  currentBreakpoint: number = 0.25;
 
-  ngOnInit() {}
+  @Input() search: any;
 
   onSegmentChange(event: any) {
     this.selectedTab = event.detail.value;
+    // Forzar la detección de cambios si es necesario
+    setTimeout(() => {
+      this.modal?.setCurrentBreakpoint(this.currentBreakpoint);
+    });
   }
 
-  // Método para actualizar el breakpoint actual
   updateCurrentBreakpoint(breakpoint: number) {
     this.currentBreakpoint = breakpoint;
   }

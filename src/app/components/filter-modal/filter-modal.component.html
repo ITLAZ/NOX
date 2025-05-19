@@ -1,21 +1,22 @@
 <ion-content class="ion-padding">
-  <ion-modal #modal trigger="open-modal" [initialBreakpoint]="0.25" [breakpoints]="[0, 0.25, 0.5, 0.75]">
+  <ion-modal #modal trigger="open-modal" [initialBreakpoint]="0.25" [breakpoints]="[0, 0.25, 0.5, 0.85]" 
+              (ionBreakpointDidChange)="updateCurrentBreakpoint($event.detail.breakpoint)">
     <ng-template>
       <ion-content>
-        <ion-searchbar placeholder="Search" (click)="modal.setCurrentBreakpoint(0.75)"></ion-searchbar>
+        <ion-searchbar placeholder="Search" (click)="modal.setCurrentBreakpoint(0.80)"></ion-searchbar>
         
-        <ion-segment value="tab1" (ionChange)="onSegmentChange($event)">
+        <ion-segment [value]="selectedTab" (ionChange)="onSegmentChange($event)">
           <ion-segment-button value="tab1">
-            <ion-label>Pestaña 1</ion-label>
+            <ion-label>Lugares</ion-label>
           </ion-segment-button>
           <ion-segment-button value="tab2">
-            <ion-label>Pestaña 2</ion-label>
+            <ion-label>Eventos</ion-label>
           </ion-segment-button>
         </ion-segment>
 
-        <ion-list *ngIf="currentBreakpoint >= 0.5">
+        <ion-list *ngIf="currentBreakpoint >= 0.2">
           <!-- Contenido de la pestaña 1 -->
-          <div *ngIf="selectedTab === 'tab1'">
+          <ng-container *ngIf="selectedTab === 'tab1'">
             <ion-item>
               <ion-avatar slot="start">
                 <ion-img src="https://i.pravatar.cc/300?u=b"></ion-img>
@@ -34,10 +35,10 @@
                 <p>Product Designer</p>
               </ion-label>
             </ion-item>
-          </div>
+          </ng-container>
 
           <!-- Contenido de la pestaña 2 -->
-          <div *ngIf="selectedTab === 'tab2'">
+          <ng-container *ngIf="selectedTab === 'tab2'">
             <ion-item>
               <ion-avatar slot="start">
                 <ion-img src="https://i.pravatar.cc/300?u=d"></ion-img>
@@ -56,7 +57,7 @@
                 <p>CEO</p>
               </ion-label>
             </ion-item>
-          </div>
+          </ng-container>
         </ion-list>
       </ion-content>
     </ng-template>
