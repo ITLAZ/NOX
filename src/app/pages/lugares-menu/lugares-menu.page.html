@@ -38,18 +38,16 @@
 <!-- Sección fija al fondo -->
 <ion-footer>
   <ion-toolbar>
-    <ion-row class="ion-align-items-center ion-justify-content-between" style="width: 100%;">
-      <!-- Lado izquierdo -->
-      <ion-col size="6">
-        <div style="display: flex; flex-direction: column;">
-          <span><strong>3 productos</strong></span>
-          <span>56 Bs</span>
+    <ion-row class="ion-align-items-center">
+      <ion-col size="auto">
+        <div class="footer-info">
+          <span class="productos"><strong>3 productos</strong></span>
+          <span class="precio">56 Bs</span>
         </div>
       </ion-col>
 
-      <!-- Lado derecho -->
-      <ion-col size="6" class="ion-text-right">
-        <ion-button color="primary">
+      <ion-col class="ion-text-right">
+        <ion-button class="footer-button" >
           Agregar a tu carrito
           <ion-icon name="arrow-forward-outline" slot="end"></ion-icon>
         </ion-button>

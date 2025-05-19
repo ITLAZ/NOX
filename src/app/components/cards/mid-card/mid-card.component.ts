@@ -7,9 +7,11 @@ import { Component, OnInit } from '@angular/core';
   standalone: false
 })
 export class MidCardComponent  implements OnInit {
+  
 
   constructor() { }
 
   ngOnInit() {}
 
 }
+

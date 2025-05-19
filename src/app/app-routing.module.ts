@@ -91,12 +91,30 @@ const routes: Routes = [
     loadChildren: () => import('./pages/event-detail/event-detail.module').then( m => m.EventDetailPageModule)
   },
   {
+    path: 'notificaciones',
+    loadChildren: () => import('./pages/notificaciones/notificaciones.module').then( m => m.NotificacionesPageModule)
+  },
+  {
+    path: 'lugares-card',
+    loadChildren: () => import('./pages/lugares-card/lugares-card.module').then( m => m.LugaresCardPageModule)
+  },
+  {
+    path: 'lugares-menu',
+    loadChildren: () => import('./pages/lugares-menu/lugares-menu.module').then( m => m.LugaresMenuPageModule)
+  },
+
+  {
     path: '**',
     redirectTo: '/home',
   },
   
 
+  
+  
 
+  
+
+  
 
 
 ];

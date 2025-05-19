@@ -7,4 +7,52 @@
     height: 200px;
     object-fit: cover;
   }
-  
+
+  ion-title {
+    font-size: 20px;
+    font-family: "Futura MD BT";
+  }
+
+ion-toolbar {
+  --background: var(--ion-color-primary);
+}
+
+swiper-container{
+  padding: 20px;
+}
+
+.mySwiper swiper-slide {
+  margin-right: 0px; /* Para espacio a la derecha de cada slide */
+}
+
+ion-content h2 {
+  margin-top: 10px;
+  margin-bottom: 0px;
+  padding: 0 20px;
+  font-size: 20px;
+  font-family: "Futura MD BT";
+  color: var(--ion-color-primary);
+  text-align: left;
+}
+swiper-container.mySwiper {
+  margin-bottom: 10px !important;
+  margin-top: 10px !important; /* También podrías necesitar un margen superior aquí */
+}
+
+ion-header:first-of-type ion-toolbar:first-of-type ion-title {
+  color: var(--ion-color-primary-contrast) !important; /* Cambia a tu color deseado */
+}
+
+ion-icon {
+  color: var(--ion-color-primary-contrast);
+  font-size: 24px;
+  width: 24px;
+  height: 24px;
+}
+
+ion-back-button {
+  color: var(--ion-color-primary-contrast);        // Cambia el color del icono
+  --icon-font-size: 24px; // Cambia el tamaño del icono
+  --icon-size: 24px;      // Otra forma compatible
+}
+
