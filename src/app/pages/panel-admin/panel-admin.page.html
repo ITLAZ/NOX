@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-icon name="arrow-back-outline" size="large" routerLink="/perfil"></ion-icon>
     </ion-buttons>
-    <ion-title>panelAdmin</ion-title>
+    <ion-title>Gestionar Establecimiento</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -15,11 +15,83 @@
   </ion-header>
 
   <div class = "cover-container">
-    <img src="assets/img/default-cover.png" alt="Portada" class="cover-img" />
-    <ion-button>
+    <img src="" alt="Portada" class="cover-img" />
+    <ion-button expand="block" shape="round" class="gradient-button">
       Cambiar portada
     </ion-button>
   </div>
+
+  <info-row
+    icon = "storefront-outline"
+    label = "Nombre del Establecimiento"
+    [value] = "'Silpanchos - Tienda de Viveres'"
+    [editable] = "false"
+    type = "text">
+  </info-row>
+  <info-row
+    icon="location-outline"
+    label="Dirección"
+    [value]="'Avenida Juan de Vargas #2370, Miraflores'">
+  </info-row>
+
+  <info-row
+    icon="time-outline"
+    label="Horario de Atención"
+    [value]="'11:00 - 20:00'"
+    [editable]="true">
+  </info-row>
+
+  <info-row
+    icon="calendar-outline"
+    label="Días de Atención"
+    [value]="'Lunes - Sábado'"
+    [editable]="true">
+  </info-row>
+
+  <info-row
+    icon="restaurant-outline"
+    label="Tipo de Establecimiento"
+    [value]="'Restaurante'"
+    type="select">
+  </info-row>
+
+  <div class="Etiquetas">
+    <h4>Etiquetas del Local</h4>
+    <p>Usa etiquetas para que tu negocio sea más fácil de encontrar</p>
+    <div class="chips-row">
+      <ion-chip color = "secondary">
+        <ion-icon name="restaurant" color="secondary" ></ion-icon>
+        <ion-label>Tipo de Comida</ion-label>
+        <ion-icon name="caret-down-outline" color="secondary"></ion-icon>
+      </ion-chip>
+      
+      <ion-chip color = "secondary">
+        <ion-icon name="card" color="secondary"></ion-icon>
+        <ion-label>Tipos de Pago</ion-label>
+        <ion-icon name="caret-down-outline" color="secondary"></ion-icon>
+      </ion-chip>
+
+      <ion-chip color = "secondary">
+        <ion-icon name="cash" color="secondary"></ion-icon>
+        <ion-label>Rango de Precios</ion-label>
+        <ion-icon name="caret-down-outline" color="secondary"></ion-icon>
+      </ion-chip>
+    </div>
+  </div>
+
+  <ion-item lines="strong" color = "translucent">
+    <ion-label class="ion-text-wrap">
+      <h3>Gestionar Menú</h3>
+      <ion-icon name="chevron-up"></ion-icon>
+    </ion-label>
+  </ion-item>
+
+  <ion-item lines="none" button detail>
+    <ion-label color = primary>
+      Añadir elementos al Menú
+    </ion-label>
+  </ion-item>
+
 
   
 </ion-content>
