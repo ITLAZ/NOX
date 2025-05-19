@@ -34,6 +34,8 @@ export class AuthService {
         .then(userCredential => {
           const uid = userCredential.user?.uid;
           if (uid) {
+            return runInInjectionContext(this.injector, () => {
+
             return this.firestore.collection('usersPrueba').doc(uid).set(extraData)
               .then(async () => {
                 console.log('Usuario creado en Firestore', extraData);
@@ -58,13 +60,14 @@ export class AuthService {
                 await toast.present();
                 throw error;
               });
+            });
           }
           throw new Error('Usuario no creado');
         })
         .catch(async error => {
           console.error('Error al registrar usuario:', error);
           const toast = await this.toastCtrl.create({
-            message: 'Error al registrar usuario.',
+            message: error?.message || 'Error al registrar usuario.',
             duration: 2000,
             color: 'danger'
           });
@@ -78,12 +81,12 @@ export class AuthService {
     return runInInjectionContext(this.injector, () => {
       this.db.getDocumentById('usersPrueba', uid).subscribe(
         (res: any) => {
-          console.log('perfil desde firebase', res);
+          console.log('Perfil desde Firestore:', res);
           localStorage.setItem('profile', JSON.stringify(res));
           this.profile = res;
         },
         (error: any) => {
-          console.log(error);
+          console.error('Error al obtener perfil:', error);
         }
       );
     });
@@ -142,27 +145,31 @@ export class AuthService {
       throw error;
     }
   }
+
   async logout() {
     try {
       await this.afAuth.signOut();
-
-      // ✅ Limpiar localStorage
       localStorage.clear();
+      this.profile = null;
 
-      // ✅ Redirigir al login
+      const toast = await this.toastCtrl.create({
+        message: 'Sesión cerrada correctamente.',
+        duration: 2000,
+        color: 'medium'
+      });
+      await toast.present();
+
       this.router.navigate(['/start']);
-
-      console.log('Sesión cerrada correctamente');
     } catch (error) {
       console.error('Error al cerrar sesión:', error);
     }
   }
 
-  /* Método opcional para saber si hay un usuario logueado
-  verifyIsLogued() {
-    let user = localStorage.getItem('user');
-    this.isLogued = user ? true : false;
-    return this.isLogued;
+  // Método opcional para comprobar si hay sesión activa
+  /*
+  verifyIsLogued(): boolean {
+    const user = localStorage.getItem('user');
+    return !!user;
   }
   */
 }
