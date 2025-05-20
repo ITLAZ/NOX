@@ -59,11 +59,11 @@
     </ion-item>
 
     <ion-item-divider color="light">Modos administrativo</ion-item-divider>
-    <ion-item>
+    <ion-item [routerLink]="'/panel-admin'" routerDirection="forward">
       <ion-label>Administrar mi local</ion-label>
       <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
     </ion-item>
-    <ion-item>
+    <ion-item [routerLink]="'/panel-admin-2'" routerDirection="forward">
       <ion-label>Administrar mi evento</ion-label>
       <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
     </ion-item>
