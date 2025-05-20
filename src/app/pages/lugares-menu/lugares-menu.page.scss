@@ -1,0 +1,79 @@
+ion-header:first-of-type ion-toolbar:first-of-type ion-title {
+  color: var(--ion-color-primary-contrast) !important; /* Cambia a tu color deseado */
+}
+
+ion-icon {
+  color: var(--ion-color-primary-contrast);
+  font-size: 24px;
+  width: 24px;
+  height: 24px;
+}
+
+ion-toolbar {
+  --background: var(--ion-color-primary);
+}
+
+ion-back-button {
+  color: var(--ion-color-primary-contrast);        // Cambia el color del icono
+  --icon-font-size: 24px; // Cambia el tamaño del icono
+  --icon-size: 24px;      // Otra forma compatible
+}
+
+ion-title {
+    font-size: 20px;
+    font-family: "Futura MD BT";
+  }
+
+
+/* Estilos para la sección fija del carrito */
+ion-footer {
+  /* Nuevo color de fondo para el footer */
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+ion-footer ion-toolbar {
+  padding: 20px 12px 20px 12px; /* Padding para el contenido dentro del toolbar */
+  --background: var(--ion-color-medium);
+  border-radius: 20px 20px 0 0; /* Bordes redondeados solo en la parte superior */
+}
+
+ion-row {
+  display: flex; /* Aseguramos que los elementos dentro de la fila se comporten como flex items */
+  align-items: center; /* Centramos verticalmente los elementos dentro de la fila */
+}
+
+.footer-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-info .productos {
+  color: var(--ion-color-secondary);
+  font-size: 12px;
+  font-family: 'Montserrat Regular', sans-serif;
+}
+
+.footer-info .precio {
+  color: var(--ion-color-tertiary);
+  font-size: 14px;
+  font-family: 'Montserrat SemiBold', sans-serif;
+}
+
+.footer-button {
+  --background: linear-gradient(90deg, var(--ion-color-secondary), var(--ion-color-primary)); /* Degrade del botón */
+  font-size: 14px;
+  font-family: 'Montserrat SemiBold', sans-serif;
+  text-transform: none; /* Quita las mayúsculas del botón */
+  width: 220px; /* Ancho del botón */
+  height: 36px; /* Alto del botón */
+  border-radius: 1000px; /* Redondeado completo del botón */
+  display: block; /* Hace que el botón ocupe todo el ancho de su contenedor */
+  margin-left: auto; /* Alinea el botón a la derecha */
+}
+
+.footer-button ion-icon {
+  color: black;
+}

@@ -8,12 +8,19 @@ import { LugaresPageRoutingModule } from './lugares-routing.module';
 
 import { LugaresPage } from './lugares.page';
 
+import { MidCardModule } from 'src/app/shared/mid-card/mid-card.module';
+import { ActionCardModule } from 'src/app/shared/action-card/action-card.module';
+import { MiniCardModule } from 'src/app/shared/mini-card/mini-card.module';
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
     LugaresPageRoutingModule,
+    MidCardModule,
+    ActionCardModule,
+    MiniCardModule,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   declarations: [LugaresPage]

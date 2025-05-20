@@ -1,0 +1,88 @@
+.perfil-page {
+  color: #fff;
+
+  .perfil-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  border-bottom: 1px solid #333;
+
+  ion-avatar {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    border: 2px solid #4c4cff;
+    overflow: hidden;
+    margin-right: 1rem;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .user-info {
+    flex: 1;
+    margin-left: 1rem;
+
+    h2 {
+      margin: 0;
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+
+    p {
+      margin: 0;
+      color: #aaa;
+      font-size: 0.9rem;
+    }
+  }
+
+  .edit-icon {
+    font-size: 1.4rem;
+    color: #4c4cff;
+    cursor: pointer;
+    margin-left: auto;
+  }
+}
+
+
+  ion-list {
+    background: transparent;
+
+    ion-item {
+      --color: #fff;
+      --inner-padding-end: 10px;
+      margin: 0.3rem 0;
+      border-radius: 12px;
+      padding: 0 0.5rem;
+
+      ion-icon {
+        color: #aaa;
+        font-size: 1.2rem;
+      }
+
+      ion-label {
+        font-size: 1rem;
+      }
+    }
+
+    ion-item-divider {
+      background: transparent;
+      color: #888;
+      font-size: 0.9rem;
+      margin-top: 1rem;
+      padding: 0 0.5rem;
+    }
+
+    ion-button {
+      margin: 1.5rem auto 2rem;
+      width: 90%;
+      --border-radius: 16px;
+      font-weight: bold;
+      --background: linear-gradient(to right, #ff4c4c, #ff1e56);
+    }
+  }
+}

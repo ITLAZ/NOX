@@ -1,43 +1,12 @@
-
-ion-content {
-  --background: var(--ion-color-dark);
-  color: var(--ion-color-light);
-  padding: 1rem;
-}
-
-ion-title {
-  color: var(--ion-color-light);
-}
-
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-
-ion-input {
-    --background: rgba(255, 255, 255, 0.05);
-    --color: var(--ion-color-light);
-    --padding-start: 16px;
-    --padding-end: 16px;
-    --border-radius: 12px;
-    --highlight-color-focused: var(--ion-color-secondary);
-    border-radius: 12px;
-    color: var(--ion-color-light);
-    --border-width: 0;
-    border: none;
-
-}
-
-  ion-text {
-    font-size: 0.8rem;
-    color: var(--ion-color-danger);
-    margin-left: 8px;
-  }
-
-  ion-button[type="submit"] {
-    margin-top: 2rem;
-    --border-radius: 30px;
-    background: linear-gradient(90deg, #6030ff, #3FBA9A) border-box;
-    color: white;
-  }
+ion-button {
+        margin-top: 1rem;
+        background: linear-gradient(90deg, #6030ff,#3FBA9A) border-box;
+        border-radius: 30px;
+    }
+    ion-title {
+        color: white;
+    }
+.mini{
+  
+  font-size: small;
 }

@@ -1,0 +1,140 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/home"></ion-back-button>
+      <ion-title>Make Sushi</ion-title>
+    </ion-buttons>
+
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon slot="icon-only" name="notifications-outline"></ion-icon>
+      </ion-button>
+      <ion-button>
+        <ion-icon slot="icon-only" name="cart-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="contenido-local">
+
+  <!-- 🟠 Sección 1: Imagen + info -->
+  <div class="seccion-imagen">
+    <img src="https://ionicframework.com/docs/img/demos/card-media.png" alt="Local" />
+    <div class="info-local">
+      <p>Avenida Juan de Vargas #2370, Miraflores</p>
+      <p><strong>Horarios de atención:</strong><br>Lunes ~ viernes<br>8:00 ~ 22:00</p>
+    </div>
+  </div>
+
+  <!-- 🟡 Sección 2: Más vendidos -->
+  <div class="seccion-mas-vendidos">
+    <h2>Más vendidos</h2>
+
+    <swiper-container slides-per-view="1.2" navigation="false" pagination="false" class="mySwiper"
+      style="width: 375px; height: 325px;" space-between="10">
+      <swiper-slide>
+        <menu-card></menu-card>
+      </swiper-slide>
+      <swiper-slide>
+        <menu-card></menu-card>
+      </swiper-slide>
+      <swiper-slide>
+        <menu-card></menu-card>
+      </swiper-slide>
+      <swiper-slide>
+        <menu-card></menu-card>
+      </swiper-slide>
+      <swiper-slide>
+        <menu-card></menu-card>
+      </swiper-slide>
+    </swiper-container>
+
+    <ion-button expand="block" fill="clear">
+      Ver menú
+      <ion-icon slot="end" name="arrow-forward-outline"></ion-icon>
+    </ion-button>
+  </div>
+
+  <!-- 🟢 Sección 3: ¿Cómo llegar? -->
+  <div class="seccion-como-llegar">
+    <h2>¿Cómo llegar?</h2>
+    <img src="src/assets/images/mapa.png" alt="Mapa" style="width: 100%; height: auto;" />
+    <ion-button expand="block" fill="clear">
+      Abrir en Google Maps
+      <ion-icon slot="end" name="arrow-forward-outline"></ion-icon>
+    </ion-button>
+  </div>
+
+  <!-- 🔵 Sección 4: Comentarios -->
+  <div class="seccion-comentarios">
+    <h2>Comentarios destacados</h2>
+    <swiper-container
+      slides-per-view="1.2"
+      navigation="false"
+      pagination="false"
+      class="mySwiper"
+      style="width: 375px; height: 115px;"
+      space-between="10"
+    >
+      <swiper-slide>
+        <div class="contenedor-opinion">
+          <div class="seccion-superior">
+            <span class="nombre-usuario">Jacinto</span>
+            <div class="calificacion">
+              <ion-icon name="star" size="large"></ion-icon>
+              <ion-icon name="star" size="large"></ion-icon>
+              <ion-icon name="star" size="large"></ion-icon>
+              <ion-icon name="star" size="large"></ion-icon>
+              <ion-icon name="star-outline" size="large"></ion-icon>
+            </div>
+          </div>
+          <div class="seccion-inferior">
+            <p class="comentario">Me encanto la atención del lugar y la comida ;D</p>
+          </div>
+        </div>
+      </swiper-slide>
+      <swiper-slide>
+        <div class="contenedor-opinion">
+          <div class="seccion-superior">
+            <span class="nombre-usuario">Jacinto</span>
+            <div class="calificacion">
+              <ion-icon name="star" size="large"></ion-icon>
+              <ion-icon name="star" size="large"></ion-icon>
+              <ion-icon name="star" size="large"></ion-icon>
+              <ion-icon name="star" size="large"></ion-icon>
+              <ion-icon name="star-outline" size="large"></ion-icon>
+            </div>
+          </div>
+          <div class="seccion-inferior">
+            <p class="comentario">Me encanto la atención del lugar y la comida ;D</p>
+          </div>
+        </div>
+      </swiper-slide>
+      <swiper-slide>
+        <div class="contenedor-opinion">
+          <div class="seccion-superior">
+            <span class="nombre-usuario">Jacinto</span>
+            <div class="calificacion">
+              <ion-icon name="star" size="large"></ion-icon>
+              <ion-icon name="star" size="large"></ion-icon>
+              <ion-icon name="star" size="large"></ion-icon>
+              <ion-icon name="star" size="large"></ion-icon>
+              <ion-icon name="star-outline" size="large"></ion-icon>
+            </div>
+          </div>
+          <div class="seccion-inferior">
+            <p class="comentario">Me encanto la atención del lugar y la comida ;D</p>
+          </div>
+        </div>
+      </swiper-slide>
+    </swiper-container>
+    <ion-button expand="block" fill="clear">
+      Deja tu reseña
+      <ion-icon slot="end" name="arrow-forward-outline"></ion-icon>
+    </ion-button>
+  </div>
+
+</ion-content>

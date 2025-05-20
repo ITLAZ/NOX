@@ -1,0 +1,57 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/home"></ion-back-button>
+      <ion-title>Menú</ion-title>
+    </ion-buttons>
+
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon slot="icon-only" name="notifications-outline"></ion-icon>
+      </ion-button>
+      <ion-button>
+        <ion-icon slot="icon-only" name="cart-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Notificaciones</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <!-- Contenido repetido -->
+  <app-item-compras></app-item-compras>
+  <app-item-compras></app-item-compras>
+  <app-item-compras></app-item-compras>
+  <app-item-compras></app-item-compras>
+  <app-item-compras></app-item-compras>
+  <app-item-compras></app-item-compras>
+  <app-item-compras></app-item-compras>
+  <app-item-compras></app-item-compras>
+  <app-item-compras></app-item-compras>
+</ion-content>
+
+<!-- Sección fija al fondo -->
+<ion-footer>
+  <ion-toolbar>
+    <ion-row class="ion-align-items-center">
+      <ion-col size="auto">
+        <div class="footer-info">
+          <span class="productos"><strong>3 productos</strong></span>
+          <span class="precio">56 Bs</span>
+        </div>
+      </ion-col>
+
+      <ion-col class="ion-text-right">
+        <ion-button class="footer-button" >
+          Agregar a tu carrito
+          <ion-icon name="arrow-forward-outline" slot="end"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-footer>

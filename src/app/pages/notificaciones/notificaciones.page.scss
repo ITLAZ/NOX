@@ -1,0 +1,25 @@
+ion-toolbar {
+  --background: var(--ion-color-danger);
+}
+
+ion-title {
+    font-size: 20px;
+    font-family: "Futura MD BT";
+  }
+
+  ion-header:first-of-type ion-toolbar:first-of-type ion-title {
+  color: var(--ion-color-primary-contrast) !important; /* Cambia a tu color deseado */
+}
+
+ion-icon {
+  color: var(--ion-color-primary-contrast);
+  font-size: 24px;
+  width: 24px;
+  height: 24px;
+}
+
+ion-back-button {
+  color: var(--ion-color-primary-contrast);        // Cambia el color del icono
+  --icon-font-size: 24px; // Cambia el tamaño del icono
+  --icon-size: 24px;      // Otra forma compatible
+}
