@@ -1,21 +1,21 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>registro</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/start" text="" color="light"></ion-back-button>
+    </ion-buttons>
+    <ion-title >Crear cuenta</ion-title>
   </ion-toolbar>
 </ion-header>
 
+
+
 <ion-content [fullscreen]="true" class="edit-profile-content">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Crear cuenta</ion-title>
-    </ion-toolbar>
-  </ion-header>
 
   <ion-grid>
     <ion-row>
       <ion-col size="12">
         <form [formGroup]="registerForm" (ngSubmit)="register()">
-          
+
           <!-- Email -->
           <ion-item class="custom-item">
             <ion-label position="floating">
@@ -23,7 +23,7 @@
             </ion-label>
             <ion-input formControlName="email" type="email"></ion-input>
           </ion-item>
-          <ion-text *ngIf="registerForm.get('email')?.touched && registerForm.get('email')?.valid === false">
+          <ion-text color="danger" *ngIf="registerForm.get('email')?.touched && registerForm.get('email')?.invalid">
             <p *ngIf="registerForm.get('email')?.errors?.['required']">El Email es requerido</p>
             <p *ngIf="registerForm.get('email')?.errors?.['email']">Email inválido</p>
           </ion-text>
@@ -35,9 +35,9 @@
             </ion-label>
             <ion-input formControlName="username" type="text"></ion-input>
           </ion-item>
-          <ion-text *ngIf="registerForm.get('username')?.touched && registerForm.get('username')?.valid === false">
-            <p *ngIf="registerForm.get('username')?.errors?.['required']">El nombre es requerido</p>
-            <p *ngIf="registerForm.get('username')?.errors?.['minlength']">El nombre debe tener al menos 3 caracteres</p>
+          <ion-text color="danger" *ngIf="registerForm.get('username')?.touched && registerForm.get('username')?.invalid">
+            <p *ngIf="registerForm.get('username')?.errors?.['required']">El nombre de usuario es requerido</p>
+            <p *ngIf="registerForm.get('username')?.errors?.['minlength']">Debe tener al menos 3 caracteres</p>
           </ion-text>
 
           <!-- Name -->
@@ -47,9 +47,9 @@
             </ion-label>
             <ion-input formControlName="name" type="text"></ion-input>
           </ion-item>
-          <ion-text *ngIf="registerForm.get('name')?.touched && registerForm.get('name')?.valid === false">
+          <ion-text color="danger" *ngIf="registerForm.get('name')?.touched && registerForm.get('name')?.invalid">
             <p *ngIf="registerForm.get('name')?.errors?.['required']">El nombre es requerido</p>
-            <p *ngIf="registerForm.get('name')?.errors?.['minlength']">El nombre debe tener al menos 3 caracteres</p>
+            <p *ngIf="registerForm.get('name')?.errors?.['minlength']">Debe tener al menos 3 caracteres</p>
           </ion-text>
 
           <!-- Lastname -->
@@ -59,9 +59,9 @@
             </ion-label>
             <ion-input formControlName="lastname" type="text"></ion-input>
           </ion-item>
-          <ion-text *ngIf="registerForm.get('lastname')?.touched && registerForm.get('lastname')?.valid === false">
+          <ion-text color="danger" *ngIf="registerForm.get('lastname')?.touched && registerForm.get('lastname')?.invalid">
             <p *ngIf="registerForm.get('lastname')?.errors?.['required']">El apellido es requerido</p>
-            <p *ngIf="registerForm.get('lastname')?.errors?.['minlength']">El apellido debe tener al menos 3 caracteres</p>
+            <p *ngIf="registerForm.get('lastname')?.errors?.['minlength']">Debe tener al menos 3 caracteres</p>
           </ion-text>
 
           <!-- Password -->
@@ -71,14 +71,19 @@
             </ion-label>
             <ion-input formControlName="password" type="password"></ion-input>
           </ion-item>
-          <ion-text *ngIf="registerForm.get('password')?.touched && registerForm.get('password')?.valid === false">
+          <ion-text color="danger" *ngIf="registerForm.get('password')?.touched && registerForm.get('password')?.invalid">
             <p *ngIf="registerForm.get('password')?.errors?.['required']">La contraseña es requerida</p>
           </ion-text>
-
+          <ion-text color="secondary" class="mini"> 
+            <a routerLink="/login" style=" color: var(--ion-color-secondary); text-decoration: underline;">
+              Ya tengo una cuenta, iniciar sesión
+            </a>
+          </ion-text>
           <!-- Botón de registro -->
-          <ion-button expand="block" type="submit" class="ion-color-light">
+          <ion-button expand="block" color="gradient" type="submit">
             Registrar usuario
           </ion-button>
+
         </form>
       </ion-col>
     </ion-row>
