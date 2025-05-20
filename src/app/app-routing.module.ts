@@ -104,9 +104,14 @@ const routes: Routes = [
   },
 
   {
+    path: 'panel-admin-2',
+    loadChildren: () => import('./pages/panel-admin-2/panel-admin-2.module').then( m => m.PanelAdmin2PageModule)
+  },
+
+  {
     path: '**',
     redirectTo: '/home',
-  },
+  },  
   
 
   
