@@ -9,6 +9,7 @@ import { SearchComponent } from '../../components/search/search.component';
   imports: [
     CommonModule,
     IonicModule,
-  ]
+  ],
+  exports: [SearchComponent]
 })
 export class SearchModule { }
