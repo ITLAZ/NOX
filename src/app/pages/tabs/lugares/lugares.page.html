@@ -16,7 +16,11 @@
   </ion-header>
 
 <ion-content [fullscreen]="true">
-  
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Locales</ion-title>
+    </ion-toolbar>
+  </ion-header>
 
   <h2>Locales recomendados</h2>
   <swiper-container
@@ -27,19 +31,19 @@
     style="width: 375px; height: fit-content; margin-left: -10px;"
     space-between="10"  >
     <swiper-slide>
-      <mid-card></mid-card>
+      <mid-card [routerLink]="'/lugares-card'" imagen="https://picsum.photos/200/279"></mid-card>
     </swiper-slide>
     <swiper-slide>
-      <mid-card></mid-card>
+      <mid-card [routerLink]="'/lugares-card'" imagen="https://picsum.photos/200/278"></mid-card>
     </swiper-slide>
     <swiper-slide>
-      <mid-card></mid-card>
+      <mid-card [routerLink]="'/lugares-card'" imagen="https://picsum.photos/200/280"></mid-card>
     </swiper-slide>
     <swiper-slide>
-      <mid-card></mid-card>
+      <mid-card [routerLink]="'/lugares-card'" imagen="https://picsum.photos/200/277"></mid-card>
     </swiper-slide>
     <swiper-slide>
-      <mid-card></mid-card>
+      <mid-card [routerLink]="'/lugares-card'" imagen="https://picsum.photos/200/276"></mid-card>
     </swiper-slide>
   </swiper-container>
 
@@ -52,19 +56,19 @@
     style="width: 375px; height: fit-content;margin-left: 0px;"
     space-between="10"  >
     <swiper-slide>
-      <action-card></action-card>
+      <action-card [routerLink]="'/lugares-card'"></action-card>
     </swiper-slide>
     <swiper-slide>
-      <action-card></action-card>
+      <action-card [routerLink]="'/lugares-card'"></action-card>
     </swiper-slide>
     <swiper-slide>
-      <action-card></action-card>
+      <action-card [routerLink]="'/lugares-card'"></action-card>
     </swiper-slide>
     <swiper-slide>
-      <action-card></action-card>
+      <action-card [routerLink]="'/lugares-card'"></action-card>
     </swiper-slide>
     <swiper-slide>
-      <action-card></action-card>
+      <action-card [routerLink]="'/lugares-card'"></action-card>
     </swiper-slide>
   </swiper-container>
 
@@ -78,10 +82,10 @@
     space-between="15px" 
     sty >
     <swiper-slide>
-      <mini-card></mini-card>
+      <mini-card [routerLink]="'/lugares-card'"></mini-card>
     </swiper-slide>
     <swiper-slide>
-      <mini-card></mini-card>
+      <mini-card [routerLink]="'/lugares-card'"></mini-card>
     </swiper-slide>
   </swiper-container>
 
@@ -94,19 +98,19 @@
     style="width: 375px; height: fit-content; margin-left: -10px;"
     space-between="10"  >
     <swiper-slide>
-      <mid-card></mid-card>
+      <mid-card [routerLink]="'/lugares-card'" imagen="https://picsum.photos/200/276"></mid-card>
     </swiper-slide>
     <swiper-slide>
-      <mid-card></mid-card>
+      <mid-card [routerLink]="'/lugares-card'" imagen="https://picsum.photos/200/277"></mid-card>
     </swiper-slide>
     <swiper-slide>
-      <mid-card></mid-card>
+      <mid-card [routerLink]="'/lugares-card'" imagen="https://picsum.photos/200/280"></mid-card>
     </swiper-slide>
     <swiper-slide>
-      <mid-card></mid-card>
+      <mid-card [routerLink]="'/lugares-card'" imagen="https://picsum.photos/200/279"></mid-card>
     </swiper-slide>
     <swiper-slide>
-      <menu-card></menu-card>
+      <mid-card [routerLink]="'/lugares-card'" imagen="https://picsum.photos/200/278"></mid-card>
     </swiper-slide>
   </swiper-container>
 </ion-content>
