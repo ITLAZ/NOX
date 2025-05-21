@@ -60,10 +60,12 @@ export class HomePage implements OnInit{
   // Creamos contenido del popup con un botón
   const popupContent = document.createElement('div');
   popupContent.innerHTML = `
-    <strong>${element.name}</strong><br>
-    ${element.desc}<br>
-    <button class="go-to-card">Ver más</button>
-  `;
+  <strong>${element.name}</strong><br>
+  ${element.address}<br>
+  ${element.tipo}<br>
+  ${element.open ? 'Abierto' : 'Cerrado'}<br>
+  <ion-button class="go-to-card" size="small">Ir</ion-button>
+`;
 
   // Asociamos el popup al marcador
   markerInstance.bindPopup(popupContent);
