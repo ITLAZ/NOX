@@ -1,12 +1,16 @@
 .mySwiper {
-  height: 100%;
+    height: fit-content;
 }
 
 swiper-container {
   padding: 0; /* Remove padding from the swiper container itself */
-  margin-left: 8px; /* Adjust margin to align with the left edge */}
+  margin-left: 8px; /* Adjust margin to align with the left edge */
+  margin-right: 0px;
+  height: fit-content;
+}
 
 swiper-container.mySwiper {
+    height: fit-content;
   margin-bottom: 10px !important;
   margin-top: 10px !important;
 }
