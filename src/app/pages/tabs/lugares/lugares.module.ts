@@ -11,6 +11,7 @@ import { LugaresPage } from './lugares.page';
 import { MidCardModule } from 'src/app/shared/mid-card/mid-card.module';
 import { ActionCardModule } from 'src/app/shared/action-card/action-card.module';
 import { MiniCardModule } from 'src/app/shared/mini-card/mini-card.module';
+import { SearchModule } from 'src/app/shared/search/search.module';
 
 @NgModule({
   imports: [
@@ -21,6 +22,7 @@ import { MiniCardModule } from 'src/app/shared/mini-card/mini-card.module';
     MidCardModule,
     ActionCardModule,
     MiniCardModule,
+    SearchModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   declarations: [LugaresPage]

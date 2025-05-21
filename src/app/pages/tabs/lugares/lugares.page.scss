@@ -16,10 +16,16 @@ swiper-container.mySwiper {
 }
 
 .mySwiper swiper-slide {
-  margin-right: 10px; /* Maintain space between slides */
-  padding-left: 20px; /* Add left padding to the content inside each slide */
-  padding-right: 20px; /* Add right padding to the content inside each slide */
-  box-sizing: border-box; /* Ensure padding doesn't increase the slide's overall width */
+  margin-right: 10px;
+  padding-left: 20px; /* Padding general para los slides */
+  padding-right: 20px; /* Padding general para los slides */
+  box-sizing: border-box;
+}
+
+/* Estilos específicos para el padding dentro de los slides de "Favoritos" */
+.favoritos-swiper swiper-slide {
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 ion-card img {

@@ -1,16 +1,16 @@
 <ion-item>
   <!-- Sección izquierda: Imagen -->
   <ion-avatar slot="start">
-    <img alt="Delicious food" src="https://ionicframework.com/docs/img/demos/card-media.png" />
+    <img [src]="imagen" alt="Imagen de notificación" />
   </ion-avatar>
 
   <!-- Sección central: Título + Subtítulo -->
   <ion-label class="ion-text-wrap">
-    <h2>Evento por acabar</h2>
-    <p>Morat concierto</p>
+    <h2>{{ titulo }}</h2>
+    <p>{{ subtitulo }}</p>
   </ion-label>
 
-  <!-- Sección derecha: Dos elementos apilados -->
+  <!-- Sección derecha: Icono -->
   <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 4px;">
     <ion-icon name="chevron-forward-outline"></ion-icon>
   </div>

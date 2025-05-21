@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'mid-card',
@@ -6,12 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./mid-card.component.scss'],
   standalone: false
 })
-export class MidCardComponent  implements OnInit {
-  
+export class MidCardComponent implements OnInit {
+  @Input() imagen: string = ''; // Variable para recibir la imagen
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {}
-
 }
-

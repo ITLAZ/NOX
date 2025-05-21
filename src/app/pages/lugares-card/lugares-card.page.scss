@@ -1,131 +1,143 @@
+/* Estilos generales */
+body {
+  font-family: "Monstserrat Regular", sans-serif; /* Fuente por defecto para el cuerpo */
+  color: var(--ion-color-dark); /* Color de texto por defecto */
+}
+
+/* Estilos para la toolbar del header */
 ion-toolbar {
-    --background: var(--ion-color-primary);
+  --background: var(--ion-color-primary);
 }
 
+/* Estilos para el título del header */
 ion-title {
-    font-size: 20px;
-    font-family: "Futura MD BT";
-    color: var(--ion-color-primary-contrast);
+  font-size: 20px;
+  font-family: "Futura MD BT", sans-serif;
+  color: var(--ion-color-primary-contrast);
 }
 
+/* Estilos para los iconos */
 ion-icon {
-    color: var(--ion-color-primary-contrast);
-    font-size: 24px;
-    width: 24px;
-    height: 24px;
+  color: var(--ion-color-primary-contrast);
+  font-size: 24px;
+  width: 24px;
+  height: 24px;
 }
 
+/* Estilos para el botón de retroceso */
 ion-back-button {
-    color: var(--ion-color-primary-contrast); // Cambia el color del icono
-    --icon-font-size: 24px; // Cambia el tamaño del icono
-    --icon-size: 24px; // Otra forma compatible
+  color: var(--ion-color-primary-contrast);
+  --icon-font-size: 24px;
+  --icon-size: 24px;
 }
 
-/* 🟠 Sección 1: Imagen + info */
+/* Sección 1: Imagen + info */
 .seccion-imagen img {
-    height: 200px;
-    width: 100%;
-    object-fit: cover;
+  height: 200px;
+  width: 100%;
+  object-fit: cover;
 }
 
 .seccion-imagen .info-local {
-    padding: 10px 20px;
-    font-size: 14px;
-    font-family: "Monstserrat Regular";
+  padding: 10px 20px;
+  font-size: 14px;
+  font-family: "Monstserrat Regular", sans-serif;
 }
 
 .seccion-imagen .info-local p:first-of-type {
-    color: var(--ion-color-secondary);
-    /* Dirección */
+  color: var(--ion-color-secondary); /* Dirección */
 }
 
 .seccion-imagen .info-local p:not(:first-of-type) {
-    color: var(--ion-color-light);
-    /* Otros textos */
+  color: var(--ion-color-light); /* Otros textos */
 }
 
-/* 🟡 Sección 2: Más vendidos */
+/* Sección de títulos */
 .seccion-mas-vendidos h2,
 .seccion-como-llegar h2,
 .seccion-comentarios h2 {
-    margin-top: 10px;
-    margin-bottom: 0px;
-    padding: 0 20px;
-    font-size: 20px;
-    font-family: "Futura MD BT";
-    color: var(--ion-color-primary);
-    text-align: left;
+  margin-top: 10px;
+  margin-bottom: 0px;
+  padding: 0 20px;
+  font-size: 20px;
+  font-family: "Futura MD BT", sans-serif;
+  color: var(--ion-color-primary);
+  text-align: left;
 }
 
-/* ✅ Botones de todas las secciones */
+/* Botones de todas las secciones */
 .seccion-mas-vendidos ion-button,
 .seccion-como-llegar ion-button,
 .seccion-comentarios ion-button {
-    width: 335px;
-    height: 36px;
-    margin: 10px auto;
-    margin-bottom: 20px;
-    border-radius: 100px;
-    background: linear-gradient(90deg, var(--ion-color-secondary), var(--ion-color-primary));
-    font-size: 14px;
-    font-family: "Monstserrat Regular";
-    color: var(--ion-color-primary-contrast);
-    --color: var(--ion-color-primary-contrast);
+  width: 335px;
+  height: 36px;
+  margin: 10px auto;
+  margin-bottom: 20px;
+  border-radius: 100px;
+  background: linear-gradient(90deg, var(--ion-color-secondary), var(--ion-color-primary));
+  font-size: 14px;
+  font-family: "Monstserrat Regular", sans-serif;
+  color: var(--ion-color-primary-contrast);
+  --color: var(--ion-color-primary-contrast);
+  letter-spacing: normal; /* Corrección del espaciado de letras */
+  text-transform: none; /* Asegura que no haya transformación de texto */
 }
 
-/* ✅ Flechas (iconos dentro de botones) */
+/* Iconos dentro de los botones */
 ion-button ion-icon {
-    color: var(--ion-color-primary-contrast);
+  color: var(--ion-color-primary-contrast);
 }
 
-ion-button {
-    text-transform: none;
-    
-}
-
-swiper-container{
+/* Estilos para el contenedor del swiper */
+swiper-container {
   padding: 10px;
 }
 
+/* Estilos para el contenedor de opiniones */
 .contenedor-opinion {
   width: 278px;
   height: 90px;
   background-color: white;
-  border: 1px solid #ccc; /* Opcional: para ver el borde de la caja */
-  padding: 10px; /* Opcional: padding general si lo deseas */
-  padding-left: 10px; /* Padding de 10px a la izquierda */
-  border-radius: 20px; /* Borde redondeado de 20px */
-  box-sizing: border-box; /* Incluye el padding y el borde en el ancho y alto */
-  margin-left: 10px; /* Espacio entre las opiniones */
+  border: 1px solid #ccc;
+  padding: 10px;
+  padding-left: 10px;
+  border-radius: 20px;
+  box-sizing: border-box;
+  margin-left: 10px;
 }
 
+/* Sección superior de la opinión (usuario y calificación) */
 .seccion-superior {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 5px; /* Espacio entre las secciones */
+  margin-bottom: 5px;
 }
 
+/* Nombre del usuario */
 .nombre-usuario {
-  font-family: "Monstserrat SemiBold";
+  font-family: "Monstserrat SemiBold", sans-serif;
   font-size: 14px;
-  color: var(--ion-color-primary-contrast); /* Color de contraste del primario */
+  color: var(--ion-color-primary-contrast);
 }
 
+/* Contenedor de la calificación */
 .calificacion {
   display: flex;
   align-items: center;
 }
 
+/* Iconos de estrella en la calificación */
 .calificacion ion-icon {
   font-size: 24px;
   color: var(--ion-color-primary);
-  margin-left: 2px; /* Espacio entre las estrellas */
+  margin-left: 2px;
 }
 
+/* Sección inferior de la opinión (comentario) */
 .seccion-inferior .comentario {
-  font-family: "Monstserrat Regular";
+  font-family: "Monstserrat Regular", sans-serif;
   font-size: 14px;
-  margin: 0; /* Elimina márgenes predeterminados del párrafo */
-  color: var(--ion-color-primary-contrast); /* Color de contraste del primario */
+  margin: 0;
+  color: var(--ion-color-primary-contrast);
 }
