@@ -1,27 +1,22 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button defaultHref="/tabs/home"></ion-back-button>
-      <ion-title>Locales</ion-title>
-    </ion-buttons>
-
-    <ion-buttons slot="end">
-      <ion-button>
-        <ion-icon slot="icon-only" name="notifications-outline"></ion-icon>
-      </ion-button>
-      <ion-button>
-        <ion-icon slot="icon-only" name="cart-outline"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
+ <ion-header >
     <ion-toolbar>
-      <ion-title size="large">Locales</ion-title>
+      <ion-title size="large">Lugares</ion-title>
+      <ion-buttons slot="end">
+        <ion-button>
+          <ion-icon name="notifications-outline"></ion-icon>
+        </ion-button>
+        <ion-button>
+          <ion-icon name="search-outline"></ion-icon>
+        </ion-button>
+        <ion-button>
+          <ion-icon name="cart-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
     </ion-toolbar>
   </ion-header>
+
+<ion-content [fullscreen]="true">
+  
 
   <h2>Locales recomendados</h2>
   <swiper-container
@@ -29,7 +24,7 @@
     navigation="false"
     pagination="false"
     class="mySwiper"
-    style="width: 375px; height: 370px;"
+    style="width: 375px; height: fit-content; margin-left: -10px;"
     space-between="10"  >
     <swiper-slide>
       <mid-card></mid-card>
@@ -54,7 +49,7 @@
     navigation="false"
     pagination="false"
     class="mySwiper"
-    style="width: 375px; height: 160px;"
+    style="width: 375px; height: fit-content;margin-left: 0px;"
     space-between="10"  >
     <swiper-slide>
       <action-card></action-card>
@@ -75,12 +70,12 @@
 
   <h2>Favoritos</h2>
   <swiper-container
-    slides-per-view="2"
+    slides-per-view="2.3"
     navigation="false"
     pagination="false"
     class="mySwiper"
-    style="width: 375px; height: 190px;"
-    space-between="10" 
+    style="width: 375px; height: fit-content; margin-left: -15px;"
+    space-between="15px" 
     sty >
     <swiper-slide>
       <mini-card></mini-card>
@@ -96,7 +91,7 @@
     navigation="false"
     pagination="false"
     class="mySwiper"
-    style="width: 375px; height: 370px;"
+    style="width: 375px; height: fit-content; margin-left: -10px;"
     space-between="10"  >
     <swiper-slide>
       <mid-card></mid-card>

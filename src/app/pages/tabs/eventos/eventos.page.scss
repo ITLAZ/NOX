@@ -1,16 +1,22 @@
 .mySwiper {
-  height: 100%;
+  height: 80%;
 }
 ion-icon ion-header{
     stroke-width: 2.5px;
 }
 swiper-container {
   padding: 0; /* Remove padding from the swiper container itself */
+  margin-left: 8px; /* Adjust margin to align with the left edge */
+  margin-bottom: 0px;
 }
 
 swiper-container.mySwiper {
   margin-bottom: 0px !important;
   margin-top: 10px !important;
+
+}
+.mySwiper swiper-slide.active {
+  padding-bottom: 10px;
 }
 
 .mySwiper swiper-slide {
@@ -18,6 +24,7 @@ swiper-container.mySwiper {
   padding-left: 10px; /* Add left padding to the content inside each slide */
   padding-right: 20px; /* Add right padding to the content inside each slide */
   box-sizing: border-box; /* Ensure padding doesn't increase the slide's overall width */
+  padding-bottom: 0px;
 }
 
 ion-card img {
@@ -46,6 +53,7 @@ ion-toolbar {
 
 ion-title {
   font-size: 20px;
+  padding-top: 6px;
   font-family: "Futura MD BT";
 }
 
@@ -66,4 +74,7 @@ media-card-evento {
     justify-content: center;
     align-items: center;
     width: 100%;
+}
+media-card-evento:first-of-type {
+  margin-top: 10px;
 }
