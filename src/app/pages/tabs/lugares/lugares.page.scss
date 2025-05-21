@@ -4,7 +4,7 @@
 
 swiper-container {
   padding: 0; /* Remove padding from the swiper container itself */
-}
+  margin-left: 8px; /* Adjust margin to align with the left edge */}
 
 swiper-container.mySwiper {
   margin-bottom: 10px !important;
@@ -43,6 +43,7 @@ ion-toolbar {
 }
 
 ion-title {
+  padding-top: 6px;
   font-size: 20px;
   font-family: "Futura MD BT";
 }
