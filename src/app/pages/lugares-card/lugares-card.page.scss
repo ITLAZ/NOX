@@ -4,32 +4,8 @@ body {
   color: var(--ion-color-dark); /* Color de texto por defecto */
 }
 
-/* Estilos para la toolbar del header */
-ion-toolbar {
-  --background: var(--ion-color-primary);
-}
-
 /* Estilos para el título del header */
-ion-title {
-  font-size: 20px;
-  font-family: "Futura MD BT", sans-serif;
-  color: var(--ion-color-primary-contrast);
-}
 
-/* Estilos para los iconos */
-ion-icon {
-  color: var(--ion-color-primary-contrast);
-  font-size: 24px;
-  width: 24px;
-  height: 24px;
-}
-
-/* Estilos para el botón de retroceso */
-ion-back-button {
-  color: var(--ion-color-primary-contrast);
-  --icon-font-size: 24px;
-  --icon-size: 24px;
-}
 
 /* Sección 1: Imagen + info */
 .seccion-imagen img {

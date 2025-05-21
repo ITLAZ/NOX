@@ -1,116 +1,74 @@
- <ion-header >
-    <ion-toolbar>
-      <ion-title size="large">Lugares</ion-title>
-      <ion-buttons slot="end">
-        <ion-button>
-          <ion-icon name="notifications-outline"></ion-icon>
-        </ion-button>
-        <ion-button>
-          <ion-icon name="search-outline"></ion-icon>
-        </ion-button>
-        <ion-button>
-          <ion-icon name="cart-outline"></ion-icon>
-        </ion-button>
-      </ion-buttons>
-    </ion-toolbar>
-  </ion-header>
+<toolbar [pageTitle]="'Lugares'"></toolbar>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Locales</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+<h2>Locales recomendados</h2>
+<swiper-container slides-per-view="1.3" navigation="false" pagination="false" class="mySwiper"
+  style="width: 375px; height: fit-content; margin-left: -10px;" space-between="10">
+  <swiper-slide>
+    <mid-card [routerLink]="'/lugares-card'" imagen="https://picsum.photos/200/279"></mid-card>
+  </swiper-slide>
+  <swiper-slide>
+    <mid-card [routerLink]="'/lugares-card'" imagen="https://picsum.photos/200/278"></mid-card>
+  </swiper-slide>
+  <swiper-slide>
+    <mid-card [routerLink]="'/lugares-card'" imagen="https://picsum.photos/200/280"></mid-card>
+  </swiper-slide>
+  <swiper-slide>
+    <mid-card [routerLink]="'/lugares-card'" imagen="https://picsum.photos/200/277"></mid-card>
+  </swiper-slide>
+  <swiper-slide>
+    <mid-card [routerLink]="'/lugares-card'" imagen="https://picsum.photos/200/276"></mid-card>
+  </swiper-slide>
+</swiper-container>
 
-  <h2>Locales recomendados</h2>
-  <swiper-container
-    slides-per-view="1.3"
-    navigation="false"
-    pagination="false"
-    class="mySwiper"
-    style="width: 375px; height: fit-content; margin-left: -10px;"
-    space-between="10"  >
-    <swiper-slide>
-      <mid-card [routerLink]="'/lugares-card'" imagen="https://picsum.photos/200/279"></mid-card>
-    </swiper-slide>
-    <swiper-slide>
-      <mid-card [routerLink]="'/lugares-card'" imagen="https://picsum.photos/200/278"></mid-card>
-    </swiper-slide>
-    <swiper-slide>
-      <mid-card [routerLink]="'/lugares-card'" imagen="https://picsum.photos/200/280"></mid-card>
-    </swiper-slide>
-    <swiper-slide>
-      <mid-card [routerLink]="'/lugares-card'" imagen="https://picsum.photos/200/277"></mid-card>
-    </swiper-slide>
-    <swiper-slide>
-      <mid-card [routerLink]="'/lugares-card'" imagen="https://picsum.photos/200/276"></mid-card>
-    </swiper-slide>
-  </swiper-container>
+<h2>Ofertas</h2>
+<swiper-container slides-per-view="1.3" navigation="false" pagination="false" class="mySwiper"
+  style="width: 375px; height: fit-content;margin-left: 0px;" space-between="10">
+  <swiper-slide>
+    <action-card [routerLink]="'/lugares-card'"></action-card>
+  </swiper-slide>
+  <swiper-slide>
+    <action-card [routerLink]="'/lugares-card'"></action-card>
+  </swiper-slide>
+  <swiper-slide>
+    <action-card [routerLink]="'/lugares-card'"></action-card>
+  </swiper-slide>
+  <swiper-slide>
+    <action-card [routerLink]="'/lugares-card'"></action-card>
+  </swiper-slide>
+  <swiper-slide>
+    <action-card [routerLink]="'/lugares-card'"></action-card>
+  </swiper-slide>
+</swiper-container>
 
-  <h2>Ofertas</h2>
-  <swiper-container
-    slides-per-view="1.3"
-    navigation="false"
-    pagination="false"
-    class="mySwiper"
-    style="width: 375px; height: fit-content;margin-left: 0px;"
-    space-between="10"  >
-    <swiper-slide>
-      <action-card [routerLink]="'/lugares-card'"></action-card>
-    </swiper-slide>
-    <swiper-slide>
-      <action-card [routerLink]="'/lugares-card'"></action-card>
-    </swiper-slide>
-    <swiper-slide>
-      <action-card [routerLink]="'/lugares-card'"></action-card>
-    </swiper-slide>
-    <swiper-slide>
-      <action-card [routerLink]="'/lugares-card'"></action-card>
-    </swiper-slide>
-    <swiper-slide>
-      <action-card [routerLink]="'/lugares-card'"></action-card>
-    </swiper-slide>
-  </swiper-container>
+<h2>Favoritos</h2>
+<swiper-container slides-per-view="2.3" navigation="false" pagination="false" class="mySwiper"
+  style="width: 375px; height: fit-content; margin-left: -15px;" space-between="15px" sty>
+  <swiper-slide>
+    <mini-card [routerLink]="'/lugares-card'"></mini-card>
+  </swiper-slide>
+  <swiper-slide>
+    <mini-card [routerLink]="'/lugares-card'"></mini-card>
+  </swiper-slide>
+</swiper-container>
 
-  <h2>Favoritos</h2>
-  <swiper-container
-    slides-per-view="2.3"
-    navigation="false"
-    pagination="false"
-    class="mySwiper"
-    style="width: 375px; height: fit-content; margin-left: -15px;"
-    space-between="15px" 
-    sty >
-    <swiper-slide>
-      <mini-card [routerLink]="'/lugares-card'"></mini-card>
-    </swiper-slide>
-    <swiper-slide>
-      <mini-card [routerLink]="'/lugares-card'"></mini-card>
-    </swiper-slide>
-  </swiper-container>
-
-  <h2>Nuevos Locales</h2>
-  <swiper-container
-    slides-per-view="1.3"
-    navigation="false"
-    pagination="false"
-    class="mySwiper"
-    style="width: 375px; height: fit-content; margin-left: -10px;"
-    space-between="10"  >
-    <swiper-slide>
-      <mid-card [routerLink]="'/lugares-card'" imagen="https://picsum.photos/200/276"></mid-card>
-    </swiper-slide>
-    <swiper-slide>
-      <mid-card [routerLink]="'/lugares-card'" imagen="https://picsum.photos/200/277"></mid-card>
-    </swiper-slide>
-    <swiper-slide>
-      <mid-card [routerLink]="'/lugares-card'" imagen="https://picsum.photos/200/280"></mid-card>
-    </swiper-slide>
-    <swiper-slide>
-      <mid-card [routerLink]="'/lugares-card'" imagen="https://picsum.photos/200/279"></mid-card>
-    </swiper-slide>
-    <swiper-slide>
-      <mid-card [routerLink]="'/lugares-card'" imagen="https://picsum.photos/200/278"></mid-card>
-    </swiper-slide>
-  </swiper-container>
+<h2>Nuevos Locales</h2>
+<swiper-container slides-per-view="1.3" navigation="false" pagination="false" class="mySwiper"
+  style="width: 375px; height: fit-content; margin-left: -10px;" space-between="10">
+  <swiper-slide>
+    <mid-card [routerLink]="'/lugares-card'" imagen="https://picsum.photos/200/276"></mid-card>
+  </swiper-slide>
+  <swiper-slide>
+    <mid-card [routerLink]="'/lugares-card'" imagen="https://picsum.photos/200/277"></mid-card>
+  </swiper-slide>
+  <swiper-slide>
+    <mid-card [routerLink]="'/lugares-card'" imagen="https://picsum.photos/200/280"></mid-card>
+  </swiper-slide>
+  <swiper-slide>
+    <mid-card [routerLink]="'/lugares-card'" imagen="https://picsum.photos/200/279"></mid-card>
+  </swiper-slide>
+  <swiper-slide>
+    <mid-card [routerLink]="'/lugares-card'" imagen="https://picsum.photos/200/278"></mid-card>
+  </swiper-slide>
+</swiper-container>
 </ion-content>
