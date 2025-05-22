@@ -6,7 +6,7 @@ import { HomePage } from './home.page';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { HomePageRoutingModule } from './home-routing.module';
-
+import { ToolbarModule } from '../shared/toolbar/toolbar.module';
 import { MediaCardModule } from '../shared/media-card/media-card.module';
 
 @NgModule({
@@ -15,7 +15,8 @@ import { MediaCardModule } from '../shared/media-card/media-card.module';
     FormsModule,
     IonicModule,
     HomePageRoutingModule,
-    MediaCardModule
+    MediaCardModule,
+    ToolbarModule
   ],
   
   declarations: [

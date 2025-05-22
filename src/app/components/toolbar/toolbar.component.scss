@@ -1,0 +1,25 @@
+ion-toolbar {
+  --background: var(--ion-color-primary);
+  --color: var(--ion-color-primary-contrast);
+  font-weight: bold;
+}
+
+ion-title {
+  font-size: 20px;
+  font-family: "Futura MD BT", sans-serif;
+  color: var(--ion-color-primary-contrast);
+}
+
+ion-icon {
+  color: var(--ion-color-primary-contrast);
+  font-size: 24px;
+  width: 24px;
+  height: 24px;
+}
+
+ion-back-button {
+  color: var(--ion-color-primary-contrast);
+  --icon-font-size: 24px;
+  --icon-size: 24px;
+}
+

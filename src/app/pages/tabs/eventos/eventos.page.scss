@@ -2,7 +2,7 @@
   height: 80%;
 }
 ion-icon ion-header{
-    stroke-width: 2.5px;
+    
 }
 swiper-container {
   padding: 0; /* Remove padding from the swiper container itself */
@@ -41,14 +41,6 @@ ion-content h2 {
   font-family: "Futura MD BT";
   color: var(--ion-color-primary);
   text-align: left;
-}
-
-ion-header:first-of-type ion-toolbar:first-of-type ion-title {
-  color: var(--ion-color-primary-contrast) !important;
-}
-
-ion-toolbar {
-  --background: var(--ion-color-primary);
 }
 
 ion-title {
