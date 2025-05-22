@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'mini-card',
@@ -6,10 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./mini-card.component.scss'],
   standalone: false
 })
-export class MiniCardComponent  implements OnInit {
+export class MiniCardComponent implements OnInit {
+  @Input() imagenMini: string = ''; // Variable para la URL de la imagen
+  @Input() tituloLocal: string = ''; // Variable para el título del local
 
   constructor() { }
 
   ngOnInit() {}
-
 }

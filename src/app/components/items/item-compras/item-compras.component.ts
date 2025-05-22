@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-item-compras',
@@ -9,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 export class ItemComprasComponent implements OnInit {
   quantity = 0;
 
-  constructor() { }
+  // Variables solicitadas con @Input()
+  @Input() image: string = '';
+  @Input() nombreComida: string = '';
+  @Input() descripcion: string = '';
+  @Input() precio: string = '';
 
-  ngOnInit() { }
+  constructor() {}
+
+  ngOnInit() {}
 
   increase() {
     this.quantity++;

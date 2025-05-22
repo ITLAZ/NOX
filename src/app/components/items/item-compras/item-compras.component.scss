@@ -23,7 +23,7 @@ ion-label h2 {
   color: var(--ion-color-tertiary);
   font-family: "Monstserrat semiBold";
   font-size: 14px;
-  width: 203px;
+  width: 190px;
 }
 
 ion-label p {
@@ -32,7 +32,7 @@ ion-label p {
   color: var(--ion-color-secondary);
   font-family: "Monstserrat Regular";
   font-size: 14px;
-  width: 203px;
+  width: 190px;
 }
 ion-text{
   font-family: "Monstserrat semiBold";
@@ -52,7 +52,7 @@ ion-text{
   align-items: center;
   justify-content: center; 
   gap: 4px;
-  padding: 0px 5px;
+  padding: 0px 5px 0px -50px;
   border: 1px solid var(--ion-color-success);
   border-radius: 50px;
   background-color: transparent;

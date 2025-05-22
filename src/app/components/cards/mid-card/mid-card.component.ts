@@ -8,6 +8,8 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class MidCardComponent implements OnInit {
   @Input() imagen: string = ''; // Variable para recibir la imagen
+  @Input() nombreLocal: string = ''; // Variable para el nombre del local
+  @Input() distancia: string = ''; // Variable para la distancia
 
   constructor() {}
 
