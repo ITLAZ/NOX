@@ -107,11 +107,38 @@ const routes: Routes = [
     path: 'panel-admin-2',
     loadChildren: () => import('./pages/panel-admin-2/panel-admin-2.module').then( m => m.PanelAdmin2PageModule)
   },
+  {
+    path: 'aniadir-menu',
+    loadChildren: () => import('./pages/aniadir-menu/aniadir-menu.module').then( m => m.AniadirMenuPageModule)
+  },
+  {
+    path: 'gestion-entradas',
+    loadChildren: () => import('./pages/gestion-entradas/gestion-entradas.module').then( m => m.GestionEntradasPageModule)
+  },
+  {
+    path: 'recompensas',
+    loadChildren: () => import('./pages/recompensas/recompensas.module').then( m => m.RecompensasPageModule)
+  },
+  {
+    path: 'membresias',
+    loadChildren: () => import('./pages/membresias/membresias.module').then( m => m.MembresiasPageModule)
+  },
+  {
+    path: 'membresia-plan',
+    loadChildren: () => import('./pages/membresia-plan/membresia-plan.module').then( m => m.MembresiaPlanPageModule)
+  },
+  {
+    path: 'membresia-compra-confirmacion',
+    loadChildren: () => import('./pages/membresia-compra-confirmacion/membresia-compra-confirmacion.module').then( m => m.MembresiaCompraConfirmacionPageModule)
+  },
+
 
   {
     path: '**',
     redirectTo: '/home',
-  },  
+  },   
+  
+  
   
 
   
