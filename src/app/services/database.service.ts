@@ -1,4 +1,4 @@
-import { Injectable, Injector, runInInjectionContext } from '@angular/core';
+import { Injectable, Injector, NgZone, runInInjectionContext } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AngularFirestore, Query } from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
@@ -12,9 +12,18 @@ export class DatabaseService {
   constructor(
     public http: HttpClient,
     public firestore: AngularFirestore,
-    private injector: Injector
+    private injector: Injector,
+    private zone: NgZone
   ) { }
-
+private wrapInNgZone<T>(source$: Observable<T>): Observable<T> {
+    return new Observable<T>((observer) => {
+      return source$.subscribe({
+        next: (val) => this.zone.run(() => observer.next(val)),
+        error: (err) => observer.error(err),
+        complete: () => observer.complete()
+      });
+    });
+  }
   // Lee un archivo json en la carpeta /assets/db/ NOMBRE
   fetchLocalCollection(collection: string) {
     return this.http.get('assets/db/' + collection + '.json');
@@ -105,5 +114,50 @@ export class DatabaseService {
       }).valueChanges({ idField: 'id' });
     });
   }
+  getAllSubcollectionGroup(subcollection: string): Observable<any[]> {
+    const raw$ = runInInjectionContext(this.injector, () =>
+      this.firestore.collectionGroup(subcollection).valueChanges({ idField: 'id' })
+    );
+    return this.wrapInNgZone(raw$);
+  }
+
+  filterSubcollectionGroupByField(
+    subcollection: string,
+    field: string,
+    value: any
+  ): Observable<any[]> {
+    const raw$ = runInInjectionContext(this.injector, () =>
+      this.firestore
+        .collectionGroup(subcollection, ref => ref.where(field, '==', value))
+        .valueChanges({ idField: 'id' })
+    );
+    return this.wrapInNgZone(raw$);
+  }
+  addSubcollectionDocument(
+    parentCollection: string,
+    parentId: string,
+    subcollectionName: string,
+    data: any
+  ): Promise<any> {
+    const fullPath = `${parentCollection}/${parentId}/${subcollectionName}`;
+    const dataWithLocalId = { ...data, local: parentId }; // Asegura que incluya el campo 'local'
+
+    return runInInjectionContext(this.injector, () => {
+      return this.firestore.collection(fullPath).add(dataWithLocalId);
+    });
+  }
+getSubcollection(
+  parentCollection: string,
+  parentId: string,
+  subcollection: string
+): Observable<any[]> {
+  const fullPath = `${parentCollection}/${parentId}/${subcollection}`;
+
+  const raw$ = runInInjectionContext(this.injector, () => {
+    return this.firestore.collection(fullPath).valueChanges({ idField: 'id' });
+  });
+
+  return this.wrapInNgZone(raw$);
+}
 
 }
