@@ -17,7 +17,7 @@ export class HomePage implements OnInit{
     public db: DatabaseService,
     public router: Router
   ) {
-    this.db.fetchFirestoreCollection('restaurantPruebas')
+    this.db.fetchFirestoreCollection('locales')
       .subscribe((data: any) => {
         if (data.length > 0) {
           this.items = data
@@ -60,8 +60,8 @@ export class HomePage implements OnInit{
   // Creamos contenido del popup con un botón
   const popupContent = document.createElement('div');
   popupContent.innerHTML = `
-  <strong>${element.name}</strong><br>
-  ${element.address}<br>
+  <strong>${element.nombre}</strong><br>
+  ${element.direccion}<br>
   ${element.tipo}<br>
   ${element.open ? 'Abierto' : 'Cerrado'}<br>
   <ion-button class="go-to-card" size="small">Ir</ion-button>
