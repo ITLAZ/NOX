@@ -165,4 +165,22 @@ getLugarPorId(id: string): Observable<any> {
     return this.firestore.collection('locales').doc(id).valueChanges({ idField: 'id' });
   });
 }
+getLocales(): Observable<any[]> {
+  const raw$ = runInInjectionContext(this.injector, () => {
+    return this.firestore.collection('locales').valueChanges({ idField: 'id' });
+  });
+  return this.wrapInNgZone(raw$);
+}
+getEventPorId(id: string): Observable<any> {
+  return runInInjectionContext(this.injector, () => {
+    return this.firestore.collection('eventos').doc(id).valueChanges({ idField: 'id' });
+  });
+}
+
+getEvents(): Observable<any[]> {
+  const raw$ = runInInjectionContext(this.injector, () => {
+    return this.firestore.collection('eventos').valueChanges({ idField: 'id' });
+  });
+  return this.wrapInNgZone(raw$);
+}
 }

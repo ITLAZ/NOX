@@ -3,95 +3,49 @@
 <ion-content>
 
   <h2>Locales recomendados</h2>
-  <swiper-container slides-per-view="1.3" navigation="false" pagination="false" class="mySwiper"
-    style="width: 375px; height: fit-content; margin-left: -10px;" space-between="10">
-    <swiper-slide>
-      <mid-card [routerLink]="'/lugares-card'" imagen="https://picsum.photos/200/279" nombreLocal="Make sushi"
-        distancia="1.2 km ~ Centro"></mid-card>
-    </swiper-slide>
-    <swiper-slide>
-      <mid-card [routerLink]="'/lugares-card'" imagen="https://picsum.photos/200/278" nombreLocal="Sabor Andino"
-        distancia="850 m ~ Sopocachi"></mid-card>
-    </swiper-slide>
-    <swiper-slide>
-      <mid-card [routerLink]="'/lugares-card'" imagen="https://picsum.photos/200/280" nombreLocal="Pura Vida"
-        distancia="1.5 km ~ San Miguel"></mid-card>
-    </swiper-slide>
-    <swiper-slide>
-      <mid-card [routerLink]="'/lugares-card'" imagen="https://picsum.photos/200/277" nombreLocal="El Horno"
-        distancia="400 m ~ Zona Central"></mid-card>
-    </swiper-slide>
-    <swiper-slide>
-      <mid-card [routerLink]="'/lugares-card'" imagen="https://picsum.photos/200/276" nombreLocal="Wist'u Puncu"
-        distancia="900 m ~ Calacoto"></mid-card>
+  <swiper-container slides-per-view="1.3" space-between="10" style="width: 375px; margin-left: -10px;">
+    <swiper-slide *ngFor="let local of locales">
+      <mid-card 
+        (click)="irALocal(local)"
+        [imagen]="local.imagen"
+        [nombreLocal]="local.nombre"
+        [distancia]="local.distancia || '1 km ~ Zona X'">
+      </mid-card>
     </swiper-slide>
   </swiper-container>
 
   <h2>Ofertas</h2>
-  <swiper-container slides-per-view="1.3" navigation="false" pagination="false" class="mySwiper"
-    style="width: 375px; height: fit-content;margin-left: 0px;" space-between="10">
-    <swiper-slide>
-      <action-card [routerLink]="'/lugares-card'" nombreOferta="Oferta del Día"
-  textoOferta="Disfruta de un 30% de descuento"
-  imagenOferta="https://picsum.photos/105/135"></action-card>
-    </swiper-slide>
-    <swiper-slide>
-      <action-card [routerLink]="'/lugares-card'" nombreOferta="Oferta del Día"
-  textoOferta="Disfruta de un 30% de descuento"
-  imagenOferta="https://picsum.photos/105/135"></action-card>
-    </swiper-slide>
-    <swiper-slide>
-      <action-card [routerLink]="'/lugares-card'" nombreOferta="Oferta del Día"
-  textoOferta="Disfruta de un 30% de descuento"
-  imagenOferta="https://picsum.photos/105/135"></action-card>
-    </swiper-slide>
-    <swiper-slide>
-      <action-card [routerLink]="'/lugares-card'" nombreOferta="Oferta del Día"
-  textoOferta="Disfruta de un 30% de descuento"
-  imagenOferta="https://picsum.photos/105/135"></action-card>
-    </swiper-slide>
-    <swiper-slide>
-      <action-card [routerLink]="'/lugares-card'" nombreOferta="Oferta del Día"
-  textoOferta="Disfruta de un 30% de descuento"
-  imagenOferta="https://picsum.photos/105/135"></action-card>
+  <swiper-container slides-per-view="1.3" space-between="10" style="width: 375px;">
+    <swiper-slide *ngFor="let local of locales">
+      <action-card 
+        (click)="irALocal(local)"
+        [nombreOferta]="'Oferta del Día'"
+        [textoOferta]="'Disfruta de un 30% de descuento'"
+        [imagenOferta]="local.imagen || 'https://picsum.photos/105/135'">
+      </action-card>
     </swiper-slide>
   </swiper-container>
 
   <h2>Favoritos</h2>
-  <swiper-container slides-per-view="2.2" navigation="false" pagination="false" class="mySwiper"
-    style="width: 375px; height: fit-content; margin-left: -15px;" space-between="15px" sty>
-    <swiper-slide>
-      <mini-card [routerLink]="'/lugares-card'"imagenMini="https://picsum.photos/163/86"
-  tituloLocal="Panadería Sol"></mini-card>
-    </swiper-slide>
-    <swiper-slide>
-      <mini-card [routerLink]="'/lugares-card'" imagenMini="https://picsum.photos/163/86"
-  tituloLocal="Café Central"></mini-card>
+  <swiper-container slides-per-view="2.2" space-between="15" style="width: 375px; margin-left: -15px;">
+    <swiper-slide *ngFor="let local of locales.slice(0, 2)">
+      <mini-card 
+        (click)="irALocal(local)"
+        [imagenMini]="local.imagen || 'https://picsum.photos/163/86'"
+        [tituloLocal]="local.nombre">
+      </mini-card>
     </swiper-slide>
   </swiper-container>
 
   <h2>Nuevos Locales</h2>
-  <swiper-container slides-per-view="1.3" navigation="false" pagination="false" class="mySwiper"
-    style="width: 375px; height: fit-content; margin-left: -10px;" space-between="10">
-    <swiper-slide>
-      <mid-card [routerLink]="'/lugares-card'" imagen="https://picsum.photos/200/279" nombreLocal="Make sushi"
-        distancia="1.2 km ~ Centro"></mid-card>
-    </swiper-slide>
-    <swiper-slide>
-      <mid-card [routerLink]="'/lugares-card'" imagen="https://picsum.photos/200/278" nombreLocal="Sabor Andino"
-        distancia="850 m ~ Sopocachi"></mid-card>
-    </swiper-slide>
-    <swiper-slide>
-      <mid-card [routerLink]="'/lugares-card'" imagen="https://picsum.photos/200/280" nombreLocal="Pura Vida"
-        distancia="1.5 km ~ San Miguel"></mid-card>
-    </swiper-slide>
-    <swiper-slide>
-      <mid-card [routerLink]="'/lugares-card'" imagen="https://picsum.photos/200/277" nombreLocal="El Horno"
-        distancia="400 m ~ Zona Central"></mid-card>
-    </swiper-slide>
-    <swiper-slide>
-      <mid-card [routerLink]="'/lugares-card'" imagen="https://picsum.photos/200/276" nombreLocal="Wist'u Puncu"
-        distancia="900 m ~ Calacoto"></mid-card>
+  <swiper-container slides-per-view="1.3" space-between="10" style="width: 375px; margin-left: -10px;">
+    <swiper-slide *ngFor="let local of locales">
+      <mid-card 
+        (click)="irALocal(local)"
+        [imagen]="local.imagen"
+        [nombreLocal]="local.nombre"
+        [distancia]="local.distancia || '1 km ~ Zona X'">
+      </mid-card>
     </swiper-slide>
   </swiper-container>
 
