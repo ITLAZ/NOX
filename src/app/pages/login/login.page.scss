@@ -1,3 +1,39 @@
+.edit-profile-content {
+  --background: var(--ion-color-dark);
+
+  .custom-item {
+    --background: rgba(255, 255, 255, 0.05);
+    border-radius: 24px;
+    margin-bottom: 1rem;
+    padding: 0 0.5rem;
+
+    ion-label {
+      color: var(--ion-color-light);
+      font-size: 0.95rem;
+    }
+
+    ion-text[color="secondary"] {
+      font-weight: bold;
+    }
+
+    ion-input {
+      color: var(--ion-color-light);
+      font-size: 1rem;
+    }
+  }
+
+  ion-text[color="danger"] {
+    font-size: 0.8rem;
+    margin-top: 0.25rem;
+    display: block;
+  }
+
+}
+
+ion-title {
+  color: white;
+}
+
 ion-button {
         margin-top: 1rem;
         background: linear-gradient(90deg, #6030ff,#3FBA9A) border-box;
@@ -6,6 +42,7 @@ ion-button {
 ion-title {
         color: white;
     }
-    .mini{
+.mini{
   font-size: small;
+  text-align: left;
 }

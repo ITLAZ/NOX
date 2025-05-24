@@ -39,7 +39,7 @@ export class HomePage implements OnInit{
   loadMap() {
     this.map = L.map('map', {
       center: [-16.5, -68.15], // Coordenadas de La Paz, Bolivia
-      zoom: 13
+      zoom: 18,
     });
   
     // ✅ Esta es la capa de fondo del mapa (calles, terreno, etc.)

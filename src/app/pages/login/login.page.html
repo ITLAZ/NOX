@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/start" text="" color="light"></ion-back-button>
     </ion-buttons>
-    <ion-title >Iniciar sesión</ion-title>
+    <ion-title>Iniciar sesión</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -12,6 +12,7 @@
     <ion-row>
       <ion-col>
         <form [formGroup]="form" (ngSubmit)="login()">
+          <!-- Usuario -->
           <ion-item class="custom-item">
             <ion-label position="floating">
               <ion-text color="secondary">Nombre de usuario</ion-text>
@@ -22,6 +23,7 @@
             <p *ngIf="form.get('username')?.errors?.['required']">El nombre de usuario es requerido</p>
           </ion-text>
 
+          <!-- Contraseña -->
           <ion-item class="custom-item">
             <ion-label position="floating">
               <ion-text color="secondary">Contraseña</ion-text>
@@ -31,14 +33,18 @@
           <ion-text color="danger" *ngIf="form.get('password')?.touched && form.get('password')?.invalid">
             <p *ngIf="form.get('password')?.errors?.['required']">La contraseña es requerida</p>
           </ion-text>
-          <ion-text color="secondary" class="mini"> 
-            <p>Me olvide mi usuario o contraseña</p>
+
+          <!-- Enlaces adicionales -->
+          <ion-text color="secondary" class="mini" style="color: var(--ion-color-secondary); text-decoration: underline;"> 
+            <p>Me olvidé mi usuario o contraseña</p>
           </ion-text>
           <ion-text color="secondary" class="mini"> 
-            <a routerLink="/login" style=" color: var(--ion-color-secondary); text-decoration: underline;">
-              No tienes una cuenta? Regístrate
+            <a routerLink="/registro" style="color: var(--ion-color-secondary); text-decoration: underline;">
+              ¿No tienes una cuenta? Regístrate
             </a>
           </ion-text>
+
+          <!-- Botón -->
           <ion-button expand="block" color="gradient" type="submit">
             Iniciar sesión
           </ion-button>

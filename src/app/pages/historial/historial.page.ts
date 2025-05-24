@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import {register} from 'swiper/element/bundle';
   register();
   
@@ -10,9 +11,12 @@ import {register} from 'swiper/element/bundle';
 })
 export class HistorialPage implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
 
+navigateBack() {
+  this.router.navigate(['/perfil']); // Ajusta el path según la navegación deseada
+}
 }

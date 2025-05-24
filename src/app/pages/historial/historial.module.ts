@@ -9,6 +9,7 @@ import { HistorialPageRoutingModule } from './historial-routing.module';
 import { HistorialPage } from './historial.page';
 import { MidCardComponent } from 'src/app/components/cards/mid-card/mid-card.component';
 import { MidCardModule } from 'src/app/shared/mid-card/mid-card.module';
+import { ToolbarModule } from 'src/app/shared/toolbar/toolbar.module';
 
 @NgModule({
   imports: [
@@ -16,7 +17,8 @@ import { MidCardModule } from 'src/app/shared/mid-card/mid-card.module';
     FormsModule,
     IonicModule,
     HistorialPageRoutingModule,
-    MidCardModule
+    MidCardModule,
+    ToolbarModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   declarations: [HistorialPage]

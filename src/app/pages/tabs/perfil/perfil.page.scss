@@ -53,14 +53,15 @@
     background: transparent;
 
     ion-item {
-      --color: #fff;
-      --inner-padding-end: 10px;
-      margin: 0.3rem 0;
-      border-radius: 12px;
-      padding: 0 0.5rem;
+  --background: transparent !important;
+  --color: #fff;
+  --inner-padding-end: 10px;
+  margin: 0.3rem 0;
+  border-radius: 12px;
+  padding: 0 0.5rem;
 
       ion-icon {
-        color: #aaa;
+        color: #3fba9a;
         font-size: 1.2rem;
       }
 
