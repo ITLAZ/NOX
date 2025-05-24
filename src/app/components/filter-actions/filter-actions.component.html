@@ -1,11 +1,12 @@
 <ion-content class="ion-padding">
-  <ion-button fill="clear" class="filter-button">
-    <ion-icon name="filter" slot="start"></ion-icon>
-    <ion-label>Filtros</ion-label>
-  </ion-button>
+  <div class="filter-chips" style="display: flex; align-items: center; gap: 12px;">
+    <ion-button fill="clear" class="filter-button">
+      <ion-icon name="filter" slot="start"></ion-icon>
+      <ion-label>Filtros</ion-label>
+    </ion-button>
 
-  <div class="chips-scroll" style="overflow-x: auto; white-space: nowrap;">
-    <div class="chips-container">
+    <div class="chips-scroll" style="overflow-x: auto; white-space: nowrap;">
+      <div class="chips-container" style="display: inline-flex; gap: 8px;"></div>
       <ion-chip>
         <ion-label>Ordenar por</ion-label>
         <ion-icon name="chevron-down"></ion-icon>
@@ -26,6 +27,16 @@
         <ion-label>Precio</ion-label>
         <ion-icon name="chevron-down"></ion-icon>
       </ion-chip>
+    </div>
+  </div>
+
+  <div class="cards-scroll" style="overflow-x: auto; white-space: nowrap;">
+    <div class="cards-container" style="display: inline-flex; gap: 8px;">
+      <mini-card [tituloLocal]="'Card'" [imagenMini]="'imagenMini'"></mini-card>
+      <mini-card [tituloLocal]="'Card'" [imagenMini]="'imagenMini'"></mini-card>
+      <mini-card [tituloLocal]="'Card'" [imagenMini]="'imagenMini'"></mini-card>
+      <mini-card [tituloLocal]="'Card'" [imagenMini]="'imagenMini'"></mini-card>
+      <mini-card [tituloLocal]="'Card'" [imagenMini]="'imagenMini'"></mini-card>
     </div>
   </div>
 </ion-content>

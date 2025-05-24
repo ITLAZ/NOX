@@ -1,10 +1,21 @@
-ion-modal {
-    --background: transparent;
-    --backdrop-opacity: 0.5;
+ion-searchbar {
+    --background: #C9AEFF;
+    --color: var(--ion-color-medium);
+    --placeholder-color: var(--ion-color-dark);
+    --icon-color: var(--ion-color-medium);
+    margin: 12px 0;
     --border-radius: 20px;
-    --width: 100%;
 }
 
-.modal-handle::before {
-    --width: 80%;
+ion-content {
+    --background: var(--ion-color-medium);
+}
+
+ion-segment {
+    --indicator-color: var(--ion-color-dark);
+}
+
+ion-segment-button {
+    --color-checked: var(--ion-color-fucsia);
+    --color: var(--ion-color-tertiary-tint);
 }

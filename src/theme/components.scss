@@ -1,0 +1,12 @@
+.filter-modal {
+    --border-radius: 20px;
+    background: var(--ion-color-dark) opacity(0.9);
+}
+
+.filter-modal button.modal-handle{
+    --background: var(--ion-color-dark);
+    --border-radius: 20px;
+    width: 50px;
+    height: 5px;
+    margin: 0 auto;
+}

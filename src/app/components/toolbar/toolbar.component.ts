@@ -29,6 +29,8 @@ export class ToolbarComponent implements OnInit {
       component: FilterModalComponent,
       breakpoints: [0, 0.25, 0.5, 0.85],
       initialBreakpoint: 0.25,
+      cssClass: 'filter-modal',
+      handle: true,
     });
 
     await modal.present();
