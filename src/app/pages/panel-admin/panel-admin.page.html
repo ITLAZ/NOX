@@ -1,9 +1,9 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar class = "header">
     <ion-buttons slot="start">
-      <ion-icon name="arrow-back-outline" size="large" routerLink="/perfil"></ion-icon>
+      <ion-icon name="arrow-back-outline" size="large" routerLink="/perfil" color = "primary"></ion-icon>
     </ion-buttons>
-    <ion-title>Gestionar mi Local</ion-title>
+    <ion-title color = "primary">Gestionar mi Local</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -80,44 +80,50 @@
   </div>
 
   <ion-item lines="strong" color = "translucent">
-    <ion-label class="ion-text-wrap">
+    <ion-label  class="ion-text-wrap">
       <h3>Gestionar Menú</h3>
-      <ion-icon name="chevron-up"></ion-icon>
     </ion-label>
+    <ion-icon slot="end" name="chevron-up-outline" color = "secondary"></ion-icon>
   </ion-item>
 
-  <ion-item lines="strong" color = "translucent" button detail>
+  <ion-item lines="strong" color = "translucent" button [routerLink]="'/aniadir-menu'">
     <ion-label color = primary>
       Añadir elementos al Menú
     </ion-label>
+    <ion-icon name="chevron-forward-outline" slot="end" class="option-icon" color = "primary"></ion-icon>
   </ion-item>
-    <ion-item lines="strong" color = "translucent" button detail>
+    <ion-item lines="strong" color = "translucent" button>
     <ion-label color = primary>
       Editar el Menú
     </ion-label>
+    <ion-icon name="chevron-forward-outline" slot="end" class="option-icon" color = "primary"></ion-icon>
   </ion-item>
-    <ion-item lines="strong" color = "translucent" button detail>
+    <ion-item lines="strong" color = "translucent" button>
     <ion-label color = primary>
       Ubicación en el Mapa
     </ion-label>
+    <ion-icon name="chevron-forward-outline" slot="end" class="option-icon" color = "primary"></ion-icon>
   </ion-item>
-  <ion-item lines="strong" color = "translucent" button detail>
+  <ion-item lines="strong" color = "translucent" button>
     <ion-label color = primary>
       Gestionar Resenas
     </ion-label>
+    <ion-icon name="chevron-forward-outline" slot="end" class="option-icon" color = "primary"></ion-icon>
   </ion-item>
-  <ion-item lines="strong" color = "translucent" button detail>
+  <ion-item lines="strong" color = "translucent" button>
     <ion-label color = primary>
       Gestionar Publicidad
     </ion-label>
+    <ion-icon name="chevron-forward-outline" slot="end" class="option-icon" color = "primary"></ion-icon>
   </ion-item>
-    <ion-item lines="strong" color = "translucent" button detail>
+    <ion-item lines="strong" color = "translucent" button>
     <ion-label color = primary>
       Cargar fotos  del local
     </ion-label>
+    <ion-icon name="chevron-forward-outline" slot="end" class="option-icon" color = "primary"></ion-icon>
   </ion-item>
 
-    <div class = "cover-container">
+  <div class = "cover-container">
     <ion-button expand="block" shape="round" class="gradient-button">
       Guardar Cambios
     </ion-button>

@@ -1,31 +1,108 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>Añadir al Menu</ion-title>
+  <ion-toolbar class="header">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/panel-admin" color = "primary"></ion-back-button>
+    </ion-buttons>
+    <ion-title color = "primary">Añadir al Menu</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true" class="ion-padding">
+<ion-content [fullscreen]="true" >
   <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">Añadir al Menu</ion-title>
     </ion-toolbar>
   </ion-header> 
 
-  <div class="container-1">
-    <h3>Cargar Menu</h3>
-    <p> Formas de agregar Menu</p>
-    <ion-list>
-      <ion-item button detail = "true">
-        <ion-label>Cargar menu (archivo csv)</ion-label>
-      </ion-item>
-      <ion-item button detail = "true">
-        <ion-label>Añadir elemento manualmente</ion-label>
-      </ion-item>
-    </ion-list>
+<div class="menu-upload-card" color = "translucent">
+  <ion-card-header>
+    <ion-card-title class="section-title">Cargar Menú</ion-card-title>
+    <div class="subtitle-row">
+      <span class="subtitle">Formas de agregar el menú</span>
+      <ion-icon class="subtitle-icon" name="caret-down-outline" slot="end"></ion-icon>
+    </div>
+  </ion-card-header>
 
+  <ion-card-content>
+    <ion-item lines="none" class="menu-option" button color = "translucent" >
+      <ion-label>Cargar menú (archivo csv)</ion-label>
+      <ion-icon name="cloud-upload-outline" slot="end" class="option-icon"></ion-icon>
+    </ion-item>
+
+    <ion-item lines="none" class="menu-option" button color = "translucent" >
+      <ion-label>Añadir elemento manualmente</ion-label>
+      <ion-icon name="chevron-up-outline" slot="end" class="option-icon"></ion-icon>
+    </ion-item>
+  </ion-card-content>
+</div>
+
+ <div>
+    <ion-card-content>
+
+      <ion-item fill="solid" class="custom-input"  lines="none">
+        <ion-label position="floating">Nombre del Producto</ion-label>
+        <ion-input [(ngModel)]="productName" type="text"></ion-input>
+        <ion-icon
+          *ngIf="productName"
+          name="close-outline"
+          slot="end"
+          class="clear-icon"
+          (click)="productName = ''"
+        ></ion-icon>
+      </ion-item> 
+
+      <ion-item fill="solid" class="custom-input" lines="none">
+        <ion-label position="floating">Descripción</ion-label>
+        <ion-input [(ngModel)]="productDescription" type="text"></ion-input>
+        <ion-icon
+          *ngIf="productDescription"
+          name="close-outline"
+          slot="end"
+          class="clear-icon"
+          (click)="productDescription = ''"
+        ></ion-icon>
+      </ion-item>
+
+      <ion-item fill="solid" class="custom-input" lines="none">
+        <ion-label position="floating">Precio</ion-label>
+        <ion-input [(ngModel)]="productPrice" type="text"></ion-input>
+        <ion-icon
+          *ngIf="productPrice"
+          name="close-outline"
+          slot="end"
+          class="clear-icon"
+          (click)="productPrice = ''"
+        ></ion-icon>
+      </ion-item>
+
+      <ion-item class="cargaFotos" lines="none" >
+        <ion-label>Cargar fotos del producto</ion-label>
+        <ion-button fill="clear" color = "secondary">
+          <ion-icon slot="icon-only" name="cloud-upload-outline" color = "secondary"></ion-icon>
+        </ion-button>
+      </ion-item>
+    </ion-card-content>
+
+    <ion-grid class="image-preview-grid">
+      <ion-row>
+        <ion-col size="4" *ngFor="let image of images">
+          <ion-card class="image-preview">
+            <ng-container *ngIf="image; else empty">
+              <img [src]="image" alt="Preview" />
+            </ng-container>
+            <ng-template #empty>
+              <ion-icon name="image-outline" class="placeholder-icon"></ion-icon>
+            </ng-template>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+  </ion-grid>
   </div>
-
-    
+  <div class = "cover-container">
+    <ion-button expand="block" shape="round" class="gradient-button">
+      Añadir al Menu
+    </ion-button>
+  </div>
 
 </ion-content>
 

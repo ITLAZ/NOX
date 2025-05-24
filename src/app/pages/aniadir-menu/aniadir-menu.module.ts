@@ -17,4 +17,5 @@ import { AniadirMenuPage } from './aniadir-menu.page';
   ],
   declarations: [AniadirMenuPage]
 })
-export class AniadirMenuPageModule {}
+export class AniadirMenuPageModule {
+}
