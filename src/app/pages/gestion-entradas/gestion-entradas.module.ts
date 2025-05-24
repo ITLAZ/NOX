@@ -8,12 +8,17 @@ import { GestionEntradasPageRoutingModule } from './gestion-entradas-routing.mod
 
 import { GestionEntradasPage } from './gestion-entradas.page';
 
+import { ToolbarModule } from 'src/app/shared/toolbar/toolbar.module';
+
+import { ItemEntradasModule } from 'src/app/shared/item-entradas/item-entradas.module';
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    GestionEntradasPageRoutingModule
+    GestionEntradasPageRoutingModule,
+    ToolbarModule,
+    ItemEntradasModule
   ],
   declarations: [GestionEntradasPage]
 })

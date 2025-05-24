@@ -1,13 +1,14 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>gestion-entradas</ion-title>
-  </ion-toolbar>
-</ion-header>
+<toolbar [pageTitle]="'Gestion de Entradas'" [showSearch]="false" [showNotifications]="false"></toolbar>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">gestion-entradas</ion-title>
-    </ion-toolbar>
-  </ion-header>
+ <h4>Entradas Disponibles</h4>
+ <item-entradas></item-entradas>
+ <item-entradas></item-entradas>
+ <item-entradas></item-entradas>
+ <item-entradas></item-entradas>
+ <div class="seccion-mapa-asientos">
+    <h4>Mapa de Asientos</h4>
+    <img src="https://picsum.photos/id/237/200/300" alt="Mapa"  />
+    
+  </div>
 </ion-content>

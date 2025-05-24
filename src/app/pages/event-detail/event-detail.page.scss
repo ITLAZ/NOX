@@ -39,3 +39,21 @@ text-transform: none;
 .seccion-imagen .info-local p:not(:first-of-type) {
   color: var(--ion-color-light); /* Otros textos */
 }
+.seccion-como-llegar {
+  h2{
+  margin-top: 10px;
+  margin-bottom: 0px;
+  padding: 0 20px;
+  font-size: 20px;
+  font-family: "Futura MD BT", sans-serif;
+  color: var(--ion-color-primary);
+  text-align: left;
+  }
+  img{
+      width: 335px;
+    height: 200px;
+    margin-left: 15px;
+    border-radius: 24px;
+    padding: 5px;
+}
+}

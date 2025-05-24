@@ -1,23 +1,5 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
 
-    <ion-buttons slot="start">
-      <ion-back-button defaultHref="/tabs/home"></ion-back-button>
-      <ion-title>Heather: the Musical</ion-title>
-    </ion-buttons>
-
-    <ion-buttons slot="end">
-      <ion-button [routerLink]="'/notificaciones'">
-        <ion-icon slot="icon-only" name="notifications-outline"></ion-icon>
-      </ion-button>
-      <ion-button>
-        <ion-icon slot="icon-only" name="cart-outline"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-
-  </ion-toolbar>
-</ion-header>
-
+<toolbar [pageTitle]="'Gestion de Entradas'" [showSearch]="false" ></toolbar>
 <ion-content [fullscreen]="true" class="contenido-local">
 
   <!-- 🟠 Sección 1: Imagen + info -->
@@ -62,7 +44,7 @@
   <!-- 🟢 Sección 3: ¿Cómo llegar? -->
   <div class="seccion-como-llegar">
     <h2>¿Cómo llegar?</h2>
-    <img src="src/assets/images/mapa.png" alt="Mapa" style="width: 100%; height: auto;" />
+    <img src="https://picsum.photos/id/237/200/300" alt="Mapa"  />
     <ion-button expand="block" >
       Abrir en Google Maps
       <ion-icon slot="end" name="arrow-forward-outline"></ion-icon>
