@@ -135,7 +135,11 @@ const routes: Routes = [
     path: 'comprar-entradas',
     loadChildren: () => import('./pages/comprar-entradas/comprar-entradas.module').then( m => m.ComprarEntradasPageModule)
   },
-
+  {
+    path: 'editar-menu',
+    loadChildren: () => import('./pages/editar-menu/editar-menu.module').then( m => m.EditarMenuPageModule)
+  },
+  
   {
     path: '**',
     redirectTo: '/home',

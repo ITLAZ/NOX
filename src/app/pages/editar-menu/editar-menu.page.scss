@@ -1,0 +1,51 @@
+    ion-item{
+        margin: 5px 0;
+    }
+    ion-avatar{
+        width: 56px;
+        height: 56px;
+        border-radius: 0;
+    }
+    h2{
+        font-size: 16px;
+        color: var(--ion-color-primary);
+        font-family: "Monstserrat Regular", sans-serif;
+    }
+    p{
+        font-size: 14px;
+        color: var(--ion-color-secondary);
+        margin: 0;
+        font-family: "Monstserrat Regular", sans-serif;
+    }
+    ion-checkbox{
+        --border-radius: 5px;
+        --border-color: var(--ion-color-primary);
+    }
+    .buttons{
+        display: block;
+        justify-content: space-between;
+        margin: 0 auto;
+        position: fixed;
+        bottom: 15px;
+        left: 20px;
+        font-family: "Monstserrat Regular", sans-serif;
+        font-weight: 800;
+        
+    ion-button:first-child {
+        --background: linear-gradient(90deg, var(--ion-color-primary), var(--ion-color-secondary));
+        
+    }
+    ion-button{
+        font-family: "Monstserrat Regular", sans-serif;
+        width: 360px;
+        height: 28px;
+        align-items: center;
+        justify-content: center;
+        padding: auto;
+        margin: 10px auto;
+        --background: var(--ion-color-tertiary);
+        --color: var(--ion-color-dark);
+        --border-radius: 24px;
+        font-family: "Monstserrat Regular", sans-serif;
+        font-size: 14px;
+    }}
