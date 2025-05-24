@@ -1,13 +1,82 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>recompensas</ion-title>
+  <ion-toolbar class="header">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/perfil" color = "danger"></ion-back-button>
+    </ion-buttons>
+    <ion-title color = "danger">Recompensas</ion-title>
   </ion-toolbar>
+  <div class="banner">
+    <h2>Puntos de recompensa</h2>
+    <ion-chip >
+      <ion-icon src="assets/icon/puntos.svg "></ion-icon>
+      <ion-label>1500</ion-label>
+    </ion-chip>
+  </div>
+
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">recompensas</ion-title>
+      <ion-title size="large">Recompensas</ion-title>
     </ion-toolbar>
   </ion-header>
+
+  <div class = "titulo-seccion">
+    <h3>Recompensas canjeables</h3>
+    <swiper-container 
+      slides-per-view="1.2" 
+      navigation="false"
+      pagination="false" 
+      class="mySwiper"
+      style="height: 300px; width: 100%;" >
+      <swiper-slide>
+        <cupon-card 
+          [descuento]="50" 
+          [puntos]="1000" 
+          icono="shapes">
+        </cupon-card>
+      </swiper-slide>
+      <swiper-slide>
+        <cupon-card 
+          [descuento]="80" 
+          [puntos]="1500" 
+          icono="shapes">
+        </cupon-card>
+      </swiper-slide>
+      <swiper-slide>
+        <cupon-card 
+          [descuento]="30" 
+          [puntos]="500" 
+          icono="shapes">
+        </cupon-card>
+      </swiper-slide>
+      <swiper-slide>
+        <cupon-card 
+          [descuento]="10" 
+          [puntos]="250" 
+          icono="shapes">
+        </cupon-card>
+      </swiper-slide>      
+    </swiper-container>
+  </div>
+
+  <div class="titulo-seccion">
+  <h3>Historial de Canjeos</h3>
+</div>
+
+<div class="historial-container">
+  <div class="info-row" *ngFor="let canjeo of historialCanjeos">
+    <div class="info-left">
+      <h4>{{ canjeo.titulo }}</h4>
+      <p>{{ canjeo.fecha }}</p>
+    </div>
+    <div class="info-right">
+      <span class="puntos">{{ canjeo.puntos }}</span>
+      <ion-icon src="assets/icon/puntos.svg" class="icono"></ion-icon>
+    </div>
+  </div>
+</div>
+
+
 </ion-content>

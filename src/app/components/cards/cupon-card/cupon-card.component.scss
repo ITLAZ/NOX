@@ -1,0 +1,44 @@
+// cupon-card.component.scss
+.cupon-card {
+  border-radius: 24px;
+  overflow: hidden;
+  width: 278px;
+  height: 240px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.cupon-img {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.2;
+}
+
+.cupon-footer {
+  background: var(--ion-color-medium);
+  color: var(--ion-color-fucsia);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  font-size: 1rem;
+  border-bottom-left-radius: 24px;
+  border-bottom-right-radius: 24px;
+}
+
+.cupon-descuento {
+    font-weight: 400;
+    font-size: 14px;
+}
+
+.cupon-puntos {
+  font-size: 14px;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--ion-color-fucsia);
+}

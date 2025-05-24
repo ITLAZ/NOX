@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import {CUSTOM_ELEMENTS_SCHEMA, NgModule  } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -8,13 +8,21 @@ import { RecompensasPageRoutingModule } from './recompensas-routing.module';
 
 import { RecompensasPage } from './recompensas.page';
 
+import { CuponCardModule } from 'src/app/shared/cupon-card/cupon-card.module'; 
+
+import { InfoRowModule } from 'src/app/shared/info-row/info-row.module';
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    RecompensasPageRoutingModule
+    RecompensasPageRoutingModule,
+    CuponCardModule,
+    InfoRowModule,
   ],
-  declarations: [RecompensasPage]
+
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  declarations: [RecompensasPage],
+
 })
 export class RecompensasPageModule {}
