@@ -1,6 +1,6 @@
 import { Injectable, Injector, NgZone, runInInjectionContext } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { AngularFirestore, Query } from '@angular/fire/compat/firestore';
+import { AngularFirestore, Query } from '@angular/fire/compat/firestore'; 
 import { Observable } from 'rxjs';
 import { DocumentData } from 'firebase/firestore'; // Asegúrate de importar DocumentData
 
@@ -160,4 +160,9 @@ getSubcollection(
   return this.wrapInNgZone(raw$);
 }
 
+getLugarPorId(id: string): Observable<any> {
+  return runInInjectionContext(this.injector, () => {
+    return this.firestore.collection('locales').doc(id).valueChanges({ idField: 'id' });
+  });
+}
 }

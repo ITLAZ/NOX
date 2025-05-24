@@ -1,9 +1,8 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/tabs/home"></ion-back-button>
-      <ion-title>Make Sushi</ion-title>
+      <ion-title>{{ lugar?.nombre || 'Cargando...' }}</ion-title>
     </ion-buttons>
 
     <ion-buttons slot="end">
@@ -14,122 +13,73 @@
         <ion-icon slot="icon-only" name="cart-outline"></ion-icon>
       </ion-button>
     </ion-buttons>
-
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true" class="contenido-local">
-
   <div class="seccion-imagen">
     <img src="https://picsum.photos/375/200" alt="Local" />
-    <div class="info-local">
-      <p>Avenida Juan de Vargas #2370, Miraflores</p>
-      <p><strong>Horarios de atención:</strong><br>Lunes ~ viernes<br>8:00 ~ 22:00</p>
+    <div class="info-local" *ngIf="lugar">
+      <p>{{ lugar.direccion }}</p>
+      <p><strong>Horarios de atención:</strong><br>
+        {{ lugar.dias_atencion.join(', ') }}<br>
+        {{ lugar.horas_atencion.apertura }} ~ {{ lugar.horas_atencion.cierre }}
+      </p>
     </div>
   </div>
 
-  <div class="seccion-mas-vendidos">
-    <h2>Más vendidos</h2>
+  <div class="seccion-mas-vendidos" *ngIf="menu.length > 0">
+    <h2>Menú del Local</h2>
 
     <swiper-container slides-per-view="1.2" navigation="false" pagination="false" class="mySwiper"
       style="width: 375px; height: 325px;" space-between="10">
-      <swiper-slide>
-        <menu-card imagenComida="https://picsum.photos/278/200" nombreComida="Sushi Variado"
-          precioComida="65 Bs"></menu-card>
-      </swiper-slide>
-      <swiper-slide>
-        <menu-card imagenComida="https://picsum.photos/278/200" nombreComida="Ramen Clásico"
-          precioComida="50 Bs"></menu-card>
-      </swiper-slide>
-      <swiper-slide>
-        <menu-card imagenComida="https://picsum.photos/278/200" nombreComida="Tempura Mixta"
-          precioComida="45 Bs"></menu-card>
-      </swiper-slide>
-      <swiper-slide>
-        <menu-card imagenComida="https://picsum.photos/278/200" nombreComida="Yakitori Pollo"
-          precioComida="35 Bs"></menu-card>
-      </swiper-slide>
-      <swiper-slide>
-        <menu-card imagenComida="https://picsum.photos/278/200" nombreComida="Gyoza Cerdo"
-          precioComida="40 Bs"></menu-card>
+      <swiper-slide *ngFor="let producto of menu">
+        <menu-card
+          [imagenComida]="producto.imagenes?.[0] || 'https://via.placeholder.com/150'"
+          [nombreComida]="producto.producto"
+          [precioComida]="producto.precio">
+        </menu-card>
       </swiper-slide>
     </swiper-container>
 
     <ion-button [routerLink]="'/lugares-menu'" expand="block" fill="clear">
-      Ver menú
+      Ver menú completo
       <ion-icon slot="end" name="arrow-forward-outline"></ion-icon>
     </ion-button>
   </div>
 
-  <div class="seccion-como-llegar">
+  <div class="seccion-como-llegar" *ngIf="lugar">
     <h2>¿Cómo llegar?</h2>
-    <img src="../../../assets/images/mapa.png" alt="Mapa" class="mapa-img" style="padding: 20px;"/>
-    <ion-button expand="block" fill="clear">
+    <img src="../../../assets/images/mapa.png" alt="Mapa" class="mapa-img" style="padding: 20px;" />
+    <ion-button expand="block" fill="clear"
+      [href]="'https://www.google.com/maps/search/?api=1&query=' + lugar.lat + ',' + lugar.lng" target="_blank">
       Abrir en Google Maps
       <ion-icon slot="end" name="arrow-forward-outline"></ion-icon>
     </ion-button>
   </div>
 
-  <div class="seccion-comentarios">
-    <h2>Comentarios destacados</h2>
+  <div class="seccion-comentarios" *ngIf="comentarios.length > 0">
+    <h2>Comentarios</h2>
     <swiper-container slides-per-view="1.25" navigation="false" pagination="false" class="mySwiper"
       style="width: 375px; height: 115px;" space-between="10">
-      <swiper-slide>
+      <swiper-slide *ngFor="let comentario of comentarios">
         <div class="contenedor-opinion">
           <div class="seccion-superior">
-            <span class="nombre-usuario">Jacinto</span>
+            <span class="nombre-usuario">{{ comentario.usuario }}</span>
             <div class="calificacion">
-              <ion-icon name="star" size="large"></ion-icon>
-              <ion-icon name="star" size="large"></ion-icon>
-              <ion-icon name="star" size="large"></ion-icon>
-              <ion-icon name="star" size="large"></ion-icon>
-              <ion-icon name="star-outline" size="large"></ion-icon>
+              <ion-icon *ngFor="let estrella of [1,2,3,4,5]" name="{{ estrella <= comentario.resenia ? 'star' : 'star-outline' }}" size="large"></ion-icon>
             </div>
           </div>
           <div class="seccion-inferior">
-            <p class="comentario">Me encanto la atención del lugar y la comida ;D</p>
-          </div>
-        </div>
-      </swiper-slide>
-      <swiper-slide>
-        <div class="contenedor-opinion">
-          <div class="seccion-superior">
-            <span class="nombre-usuario">Greni</span>
-            <div class="calificacion">
-              <ion-icon name="star" size="large"></ion-icon>
-              <ion-icon name="star" size="large"></ion-icon>
-              <ion-icon name="star" size="large"></ion-icon>
-              <ion-icon name="star" size="large"></ion-icon>
-              <ion-icon name="star-outline" size="large"></ion-icon>
-            </div>
-          </div>
-          <div class="seccion-inferior">
-            <p class="comentario">Sabor increíble, definitivamente voy a volver ^^</p>
-          </div>
-        </div>
-      </swiper-slide>
-      <swiper-slide>
-        <div class="contenedor-opinion">
-          <div class="seccion-superior">
-            <span class="nombre-usuario">Cecci</span>
-            <div class="calificacion">
-              <ion-icon name="star" size="large"></ion-icon>
-              <ion-icon name="star" size="large"></ion-icon>
-              <ion-icon name="star" size="large"></ion-icon>
-              <ion-icon name="star" size="large"></ion-icon>
-              <ion-icon name="star-outline" size="large"></ion-icon>
-            </div>
-          </div>
-          <div class="seccion-inferior">
-            <p class="comentario">Me gusto aunque tardo la comida en llegar </p>
+            <p class="comentario">{{ comentario.comentario }}</p>
           </div>
         </div>
       </swiper-slide>
     </swiper-container>
+
     <ion-button expand="block" fill="clear" (click)="presentModal()">
       Deja tu reseña
       <ion-icon slot="end" name="arrow-forward-outline"></ion-icon>
     </ion-button>
   </div>
-
 </ion-content>

@@ -72,19 +72,15 @@ export class HomePage implements OnInit{
 
   // Evento cuando se abre el popup
   markerInstance.on('popupopen', () => {
-    const btn = popupContent.querySelector('.go-to-card');
-    if (btn) {
-      btn.addEventListener('click', () => {
-        // 🔁 Redirección a la página de detalles (sin parámetros por ahora)
-        this.router.navigate(['/lugares-card']);
-
-        // 📌 Si luego quieres pasar datos, puedes hacer algo como:
-        // this.router.navigate(['/lugares-card'], {
-        //   queryParams: { id: element.id }
-        // });
+  const btn = popupContent.querySelector('.go-to-card');
+  if (btn) {
+    btn.addEventListener('click', () => {
+      this.router.navigate(['/lugares-card'], {
+        queryParams: { id: element.id }
       });
-    }
-  });
+    });
+  }
+});
 });
   }
 }
