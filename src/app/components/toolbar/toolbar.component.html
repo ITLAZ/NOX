@@ -1,19 +1,24 @@
 <ion-header>
   <ion-toolbar>
     <ion-title size="large">{{ pageTitle }}</ion-title>
+
     <ion-button slot="start" *ngIf="showBack">
       <ion-icon name="arrow-back" (click)="navigateBack()" style="margin-top: 10px;"></ion-icon>
     </ion-button>
+
     <ion-buttons slot="end">
       <ion-button *ngIf="showNotifications">
         <ion-icon name="notifications-outline"></ion-icon>
       </ion-button>
-      <ion-button id="open-modal" *ngIf="showSearch">
+
+      <ion-button *ngIf="showSearch" (click)="openSearchModal()">
         <ion-icon name="search-outline"></ion-icon>
       </ion-button>
+
       <ion-button *ngIf="showCart">
         <ion-icon name="cart-outline"></ion-icon>
       </ion-button>
+
       <ion-button *ngIf="showClear">
         <ion-icon name="trash-outline">Limpiar</ion-icon>
       </ion-button>
