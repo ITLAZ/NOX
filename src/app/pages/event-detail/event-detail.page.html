@@ -1,56 +1,48 @@
-
-<toolbar [pageTitle]="'Detalles del Evento'" [showBack]="true"[showSearch]="false" ></toolbar>
+<toolbar [pageTitle]="'Detalles del Evento'" [showBack]="true" [showSearch]="false"></toolbar>
 <ion-content [fullscreen]="true" class="contenido-local">
 
-  <!-- 🟠 Sección 1: Imagen + info -->
-  <div class="seccion-imagen">
-    <img src="https://picsum.photos/375/200" alt="Local" />
+  <!-- 🟠 Sección 1: Información del evento -->
+  <div class="seccion-imagen" *ngIf="evento">
+    <img [src]="evento.imagen || 'https://picsum.photos/375/200'" alt="Imagen del evento" />
     <div class="info-local">
-      <p>Teatro Nuna ~ Calle 21, Calocoto Zona Sur</p>
-      <p>27 de junio ~ 14:00-16:00<br>28 de junio ~ 10:00-12:00</p>
-      <ion-button [routerLink]="'/lugares-menu'" expand="block" fill="clear">
-      Comprar entradas
-      <ion-icon slot="end" name="arrow-forward-outline"></ion-icon>
-    </ion-button>
+      <p>{{ evento.nombre }} ~ {{ evento.direccion }}</p>
+      <p>
+        {{ evento.fechas?.inicio.toDate() | date: 'medium' }}<br>
+        {{ evento.fechas?.final.toDate() | date: 'medium' }}
+      </p>
+      <p><strong>Horario:</strong> {{ evento.horario?.inicio }} - {{ evento.horario?.cierre }}</p>
+      <ion-button expand="block" fill="clear">
+        Comprar entradas
+        <ion-icon slot="end" name="arrow-forward-outline"></ion-icon>
+      </ion-button>
     </div>
   </div>
 
-  <!-- 🟡 Sección 2: Más vendidos -->
-  <div class="entradas-disponibles">
-    <ion-item lines="none">
-      <ion-label><b>Entradas disponibles</b></ion-label>
+  <!-- 🟡 Sección 2: Entradas disponibles -->
+  <div class="entradas-disponibles" *ngIf="entradas.length > 0">
+    <ion-item lines="none" >
+      <ion-label color="success"><b>Entradas disponibles</b></ion-label>
       <ion-icon name="chevron-down-outline" slot="end"></ion-icon>
     </ion-item>
     <ion-list>
-      <ion-item>
-        <ion-label>General</ion-label>
-        <ion-badge slot="end">1</ion-badge>
-      </ion-item>
-      <ion-item>
-        <ion-label>Platea</ion-label>
-        <ion-badge slot="end">2</ion-badge>
-      </ion-item>
-      <ion-item>
-        <ion-label>Curva Sur</ion-label>
-        <ion-badge slot="end">3</ion-badge>
-      </ion-item>
-      <ion-item>
-        <ion-label>Curva Norte</ion-label>
-        <ion-badge slot="end">4</ion-badge>
+      <ion-item *ngFor="let entrada of entradas">
+        <ion-label>
+          <p><strong>{{ entrada.producto }}</strong></p>
+          <p>{{ entrada.descripcion }}</p>
+        </ion-label>
+        <ion-badge slot="end" class="dynamic-badge">{{ entrada.cantidad}}</ion-badge>
       </ion-item>
     </ion-list>
   </div>
-  
+
   <!-- 🟢 Sección 3: ¿Cómo llegar? -->
-  <div class="seccion-como-llegar">
+  <div class="seccion-como-llegar" *ngIf="evento">
     <h2>¿Cómo llegar?</h2>
-    <img src="https://picsum.photos/id/237/200/300" alt="Mapa"  />
-    <ion-button expand="block" >
+    <img [src]="evento.imagenMapa || 'https://picsum.photos/200/300'" alt="Mapa del evento" />
+    <ion-button expand="block" [href]="'https://www.google.com/maps/search/?api=1&query=' + evento.lat + ',' + evento.lng" target="_blank">
       Abrir en Google Maps
       <ion-icon slot="end" name="arrow-forward-outline"></ion-icon>
     </ion-button>
   </div>
-
- 
 
 </ion-content>

@@ -67,3 +67,10 @@ ion-button {
     display: block;
 }
 }
+.dynamic-badge {
+  font-size: 14px;
+  padding: 0 0px; /* Ajusta el espacio horizontal */
+  line-height: 20px; /* Asegura un buen alineado */
+  height: auto; /* Permite altura dinámica según el texto */
+  min-width: auto; /* Elimina la restricción de tamaño mínimo */
+}
