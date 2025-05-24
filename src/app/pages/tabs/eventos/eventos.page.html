@@ -1,55 +1,47 @@
 <toolbar [pageTitle]="'Eventos'"></toolbar>
 
-<ion-content [fullscreen]="true">
+<ion-content>
 
-  <h2>Eventos Destacados</h2>
-  <swiper-container slides-per-view="1.3" navigation="false" pagination="false" class="mySwiper"
-    style="width: 375px; height: fit-content; margin-left: 0px; " space-between="10">
-    <swiper-slide>
-      <mid-card-evento></mid-card-evento>
-    </swiper-slide>
-    <swiper-slide>
-      <mid-card-evento></mid-card-evento>
-    </swiper-slide>
-    <swiper-slide>
-      <mid-card-evento></mid-card-evento>
-    </swiper-slide>
-    <swiper-slide>
-      <mid-card-evento></mid-card-evento>
-    </swiper-slide>
-    <swiper-slide>
-      <mid-card-evento></mid-card-evento>
+  <h2>Eventos destacados</h2>
+  <swiper-container slides-per-view="1.3" space-between="10" style="width: 375px; margin-left: -10px;">
+    <swiper-slide *ngFor="let evento of events">
+      <mid-card-evento
+        (click)="irAEvento(evento)"
+        [imagen]="evento.imagen"
+        [nombreLocal]="evento.nombre"
+        [distancia]="evento.direccion || 'Ubicación desconocida'"
+        [tipo]="evento.tipo">
+        
+      </mid-card-evento>
     </swiper-slide>
   </swiper-container>
 
-  <h2>Eventos Cercanos a Terminar</h2>
-  <swiper-container slides-per-view="1.3" navigation="false" pagination="false" class="mySwiper"
-    style="width: 375px; height: fit-content;margin-left: 0px;" space-between="10">
-    <swiper-slide>
-      <action-card [routerLink]="'/lugares-card'" nombreOferta="Mega Concierto"
-        textoOferta="El mejor Rock en vivo" imagenOferta="https://picsum.photos/105/135"></action-card>
-    </swiper-slide>
-    <swiper-slide>
-      <action-card [routerLink]="'/lugares-card'" nombreOferta="Oferta del Día"
-        textoOferta="Disfruta de un 30% de descuento" imagenOferta="https://picsum.photos/105/135"></action-card>
-    </swiper-slide>
-    <swiper-slide>
-      <action-card [routerLink]="'/lugares-card'" nombreOferta="Oferta del Día"
-        textoOferta="Disfruta de un 30% de descuento" imagenOferta="https://picsum.photos/105/135"></action-card>
-    </swiper-slide>
-    <swiper-slide>
-      <action-card [routerLink]="'/lugares-card'" nombreOferta="Oferta del Día"
-        textoOferta="Disfruta de un 30% de descuento" imagenOferta="https://picsum.photos/105/135"></action-card>
-    </swiper-slide>
-    <swiper-slide>
-      <action-card [routerLink]="'/lugares-card'" nombreOferta="Oferta del Día"
-        textoOferta="Disfruta de un 30% de descuento" imagenOferta="https://picsum.photos/105/135"></action-card>
+  <h2>Cercanos a terminar</h2>
+  <swiper-container slides-per-view="1.3" space-between="10" style="width: 375px;">
+    <swiper-slide *ngFor="let evento of events">
+      <action-card
+        (click)="irAEvento(evento)"
+        [nombreOferta]="evento.nombre"
+        [textoOferta]="evento.tipo || 'Evento especial'"
+        [imagenOferta]="evento.imagen || 'https://picsum.photos/105/135'">
+      </action-card>
     </swiper-slide>
   </swiper-container>
-  <h2>Proximos eventos</h2>
-  <media-card-evento></media-card-evento>
-  <media-card-evento></media-card-evento>
-  <media-card-evento></media-card-evento>
-  <media-card-evento></media-card-evento>
-  <media-card-evento></media-card-evento>
+
+  <h2>Todos los eventos</h2>
+  <ion-grid *ngIf="!isLoading && events.length > 0">
+    <ion-row>
+      <ion-col size="12" size-md="6" size-lg="4" *ngFor="let evento of events">
+        <media-card-evento
+          (click)="irAEvento(evento)"
+          [imagen]="evento.imagen"
+          [nombreLocal]="evento.nombre"
+          [tipo]="evento.tipo"
+          [fecha]="formatFecha(evento.fechas.inicio)"
+          [horario]="evento.horario.inicio"
+          [distancia]="evento.direccion || 'Ubicación no disponible'">
+        </media-card-evento>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

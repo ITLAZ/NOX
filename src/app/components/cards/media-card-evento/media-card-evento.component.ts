@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input } from '@angular/core';
 
 @Component({
   selector: 'media-card-evento',
@@ -7,7 +7,11 @@ import { Component, OnInit } from '@angular/core';
   standalone: false
 })
 export class MediaCardEventoComponent  implements OnInit {
-
+@Input() imagen: string = ''; // Variable para recibir la imagen
+  @Input() nombreLocal: string = ''; // Variable para el nombre del local
+  @Input() fecha: string = ''; // Variable para la distancia
+  @Input() horario: string = ''; // Variable para la distancia
+  @Input() tipo: string = ''; // Variable para la distancia
   constructor() { }
 
   ngOnInit() {}

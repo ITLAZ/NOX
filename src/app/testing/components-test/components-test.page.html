@@ -4,13 +4,54 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" class="ion-padding">
   <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">components-test</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <mid-card></mid-card>
-  
+  <ion-card *ngIf="restaurante">
+    <ion-card-header>
+      <ion-card-title>{{ restaurante.nombre }}</ion-card-title>
+      <ion-card-subtitle>{{ restaurante.tipo }}</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <p><strong>Dirección:</strong> {{ restaurante.direccion }}</p>
+      <p><strong>Horario:</strong> {{ restaurante.horas_atencion?.apertura }} - {{ restaurante.horas_atencion?.cierre }}</p>
+      <p><strong>Días:</strong> {{ restaurante.dias_atencion?.join(', ') }}</p>
+      <p><strong>Etiquetas:</strong> {{ restaurante.etiquetas?.join(', ') }}</p>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-button expand="block" (click)="agregarComentario()">Agregar Comentario</ion-button>
+  <ion-button expand="block" (click)="agregarProductoMenu()">Agregar Producto</ion-button>
+
+  <ion-card *ngIf="menu.length > 0">
+    <ion-card-header>
+      <ion-card-title>Menú</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item *ngFor="let item of menu">
+        <ion-label>
+          <h2>{{ item.producto }}</h2>
+          <p>{{ item.descripcion }} - Bs. {{ item.precio }}</p>
+        </ion-label>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card *ngIf="comentarios.length > 0">
+    <ion-card-header>
+      <ion-card-title>Comentarios</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item *ngFor="let c of comentarios">
+        <ion-label>
+          <h2>{{ c.usuario }}</h2>
+          <p>{{ c.comentario }} ({{ c.resenia }}/5)</p>
+        </ion-label>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
