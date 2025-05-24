@@ -1,0 +1,95 @@
+ion-button.gradient-button {
+  --background: linear-gradient(to right, var(--ion-color-amarillo), var(--ion-color-fucsia));
+  --border-radius: 100px;
+  height: 36px;
+  width: 335px;
+  font-size: 14px;
+  font-family: 'Montserrat Medium', sans-serif;
+  font-weight: 500;
+  text-transform: none;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+ion-card.no-background {
+  --background: transparent;
+  box-shadow: none;
+}
+
+.no-background ion-item {
+  --background: transparent;
+}
+
+ion-toolbar ion-title {
+  font-size: 20px;
+  font-family: "Futura MD BT", sans-serif;
+}
+
+ion-card.no-background ion-card-content {
+  font-size: 14px;
+  font-family: 'Montserrat Regular', sans-serif;
+  color: var(--ion-color-fucsia);
+}
+
+ion-card.no-background ion-card-content ion-item {
+  --color: var(--ion-color-fucsia);
+  font-size: 14px;
+  font-family: 'Montserrat Regular', sans-serif;
+}
+
+ion-card.no-background ion-card-content ion-grid ion-col {
+  color: var(--ion-color-fucsia);
+  font-size: 14px;
+  font-family: 'Montserrat Regular', sans-serif;
+}
+
+ion-card.no-background ion-card-content ion-grid ion-col strong {
+  font-weight: bold;
+}
+
+ion-grid ion-row:nth-child(3) ion-col {
+  color: var(--ion-color-fucsia);
+  font-size: 14px;
+  font-family: 'Montserrat Regular', sans-serif;
+}
+
+ion-grid ion-row:nth-child(3) ion-col:last-child {
+  color: var(--ion-color-warning);
+  font-size: 14px;
+  font-family: 'Montserrat Regular', sans-serif;
+}
+
+ion-item ion-label {
+  font-size: 16px;
+  font-family: 'Montserrat Medium', sans-serif;
+  color: var(--ion-color-fucsia);
+}
+
+ion-item ion-select {
+  font-size: 16px;
+  font-family: 'Montserrat Medium', sans-serif;
+  color: var(--ion-color-warning);
+}
+
+ion-item ion-select::part(icon) {
+  color: var(--ion-color-warning);
+  opacity: 1;
+}
+
+.select-popover .item-inner {
+  color: var(--ion-color-warning) !important;
+}
+
+.select-popover .item-label {
+  font-size: 16px !important;
+  font-family: 'Montserrat Medium', sans-serif !important;
+  color: var(--ion-color-warning) !important;
+}
+
+ion-content {
+  --padding-start: 20px !important;
+  --padding-end: 20px !important;
+  --padding-top: 20px !important;
+  --padding-bottom: 20px !important;
+}

@@ -1,0 +1,63 @@
+
+  ion-toolbar {
+    --background: #FF5E9D;
+    --color: #FFF;
+  }
+
+  ion-back-button, ion-icon[name="notifications-outline"] {
+    --color: #FFF;
+  }
+
+  .pay-button {
+    --background: linear-gradient(to right, #FF5E9D, #FFA500); /* Gradient for the Pagar button */
+    --color: #FFF;
+    --border-radius: 10px;
+    height: 50px;
+    font-weight: bold;
+    font-size: 1.1em;
+  }
+
+  ion-content {
+    --background: #1A1A1A; /* Dark background */
+  }
+
+  ion-item {
+    --background: #1A1A1A;
+    --color: #FFF;
+    margin-bottom: 10px; /* Space between items */
+    --padding-start: 0;
+    --inner-padding-end: 0;
+  }
+
+  ion-item h2 {
+    color: #FFF;
+    font-weight: bold;
+  }
+
+  ion-item p {
+    color: #AAA;
+    font-size: 0.9em;
+  }
+
+  ion-thumbnail {
+    --size: 80px;
+    margin-right: 15px;
+  }
+
+  ion-button[fill="outline"] {
+    --border-color: #FF5E9D;
+    --color: #FF5E9D;
+    --border-radius: 5px;
+  }
+
+  ion-icon[name="trash-outline"] {
+    color: #FF5E9D;
+    font-size: 1.3em;
+  }
+
+  ion-textarea {
+    --background: #333; /* Darker background for the textarea */
+    --color: #FFF;
+    border-radius: 8px;
+    padding: 10px;
+  }

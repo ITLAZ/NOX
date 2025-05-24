@@ -1,0 +1,45 @@
+
+<ion-item>
+  <!-- Sección izquierda: Imagen -->
+  <ion-avatar slot="start">
+    <img alt="Delicious food" [src]="image" />
+  </ion-avatar>
+
+  <!-- Sección central: Título + Subtítulo -->
+  <ion-label class="ion-text-wrap">
+    <h2>{{ nombreComida }}</h2>
+    <p>{{ descripcion }}</p>
+  </ion-label>
+
+  <!-- Sección derecha: Precio + Contador -->
+  <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 4px;">
+    <ion-text color="warning">{{ precio }}</ion-text>
+
+    <!-- Estado: solo "+" -->
+    <ng-container *ngIf="quantity === 0">
+      <div class="mas">
+        <ion-button fill="outline" shape="round" size="small" color="warning" (click)="increase()">
+          <ion-icon slot="icon-only" name="add-outline"></ion-icon>
+        </ion-button>
+      </div>
+    </ng-container>
+
+    <!-- Estado: cantidad > 0 -->
+    <ng-container *ngIf="quantity > 0">
+      <div class="mas custom-counter">
+        <ion-button fill="clear" shape="round" size="small" color="warning"
+          (click)="quantity === 1 ? delete() : decrease()">
+          <ion-icon slot="icon-only" [name]="quantity === 1 ? 'trash-outline' : 'remove-outline'"></ion-icon>
+        </ion-button>
+
+        <div class="quantity-display">
+          {{ quantity }}
+        </div>
+
+        <ion-button fill="clear" shape="round" size="small" color="warning" (click)="increase()">
+          <ion-icon slot="icon-only" name="add-outline"></ion-icon>
+        </ion-button>
+      </div>
+    </ng-container>
+  </div>
+</ion-item>
