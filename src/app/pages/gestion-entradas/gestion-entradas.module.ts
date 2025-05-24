@@ -10,7 +10,7 @@ import { GestionEntradasPage } from './gestion-entradas.page';
 
 import { ToolbarModule } from 'src/app/shared/toolbar/toolbar.module';
 
-import { ItemEntradasModule } from 'src/app/shared/item-entradas/item-entradas.module';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -18,7 +18,6 @@ import { ItemEntradasModule } from 'src/app/shared/item-entradas/item-entradas.m
     IonicModule,
     GestionEntradasPageRoutingModule,
     ToolbarModule,
-    ItemEntradasModule
   ],
   declarations: [GestionEntradasPage]
 })

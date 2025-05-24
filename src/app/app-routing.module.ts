@@ -131,12 +131,16 @@ const routes: Routes = [
     path: 'membresia-compra-confirmacion',
     loadChildren: () => import('./pages/membresia-compra-confirmacion/membresia-compra-confirmacion.module').then( m => m.MembresiaCompraConfirmacionPageModule)
   },
-
+  {
+    path: 'comprar-entradas',
+    loadChildren: () => import('./pages/comprar-entradas/comprar-entradas.module').then( m => m.ComprarEntradasPageModule)
+  },
 
   {
     path: '**',
     redirectTo: '/home',
   },   
+  
   
   
   
