@@ -1,0 +1,26 @@
+<ion-content class="ion-padding custom-content">
+  <div class="header-content-review">
+    <div class="user-info">
+      <ion-avatar>
+        <img src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+      </ion-avatar>
+      <h2>Jacinto</h2>
+    </div>
+
+    <div class="stars">
+      <ion-icon
+        *ngFor="let star of [1, 2, 3, 4, 5]"
+        [name]="star <= rating ? 'star' : 'star-outline'"
+        (click)="setRating(star)">
+      </ion-icon>
+    </div>
+  </div>
+
+  <ion-textarea
+    placeholder="Comparte tu opinión"
+    rows="5"
+    class="opinion-area custom-border-radius-20" style="border-radius: 20px;"> </ion-textarea>
+
+  <div class="buttons" >
+    <ion-button class="custom-border-radius-100" (click)="cancel()">Cancelar</ion-button> <ion-button class="custom-border-radius-100" (click)="submit()">Enviar</ion-button> </div>
+</ion-content>

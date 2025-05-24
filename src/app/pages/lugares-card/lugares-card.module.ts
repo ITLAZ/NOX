@@ -9,6 +9,7 @@ import { LugaresCardPageRoutingModule } from './lugares-card-routing.module';
 import { LugaresCardPage } from './lugares-card.page';
 
 import { MenuCardModule } from 'src/app/shared/menu-card/menu-card.module';
+import { ComentarioComponent } from 'src/app/components/comentario/comentario.component';
 
 @NgModule({
   imports: [
@@ -19,7 +20,7 @@ import { MenuCardModule } from 'src/app/shared/menu-card/menu-card.module';
     MenuCardModule,
     MenuCardModule,
   ],
-  declarations: [LugaresCardPage],
+  declarations: [LugaresCardPage, ComentarioComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA] // Agregado para permitir elementos personalizados
 })
 export class LugaresCardPageModule {}

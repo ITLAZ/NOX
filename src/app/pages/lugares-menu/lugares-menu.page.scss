@@ -24,6 +24,64 @@ ion-title {
     font-family: "Futura MD BT";
   }
 
+  //////////////////////////////////////////////////////////////////////////////////
+.category-toolbar {
+  --background: var(--ion-color-medium); /* Fondo de color --ion-color-medium */
+  height: 40px; /* Altura de 40px */
+  padding: 0; /* Padding de 0 */
+  display: flex; /* Para centrar el segmento verticalmente */
+  align-items: center; /* Centra el segmento verticalmente */
+}
+
+ion-segment {
+  --background: var(--ion-background-color); /* Fondo del segmento con el color --ion-color-medium */
+  --background-checked: var(--ion-color-medium); /* Fondo cuando está seleccionado con el color --ion-color-medium */
+  --border-radius: 0; /* Sin bordes redondeados para el segmento en general */
+  --color: var(--ion-color-primary); /* Color por defecto para las no seleccionadas (Onigiris, Bebidas) */
+  --color-checked: var(--ion-color-tertiary); /* Color para la seleccionada (Sushi) */
+  --indicator-color: var(--ion-color-medium); /* Color de la línea inferior del elemento seleccionado (Ahora --ion-color-medium) */
+  --indicator-height: 2px; /* Altura de la línea */
+  --ripple-color: transparent; /* Opcional: para quitar el efecto de onda al tocar */
+  width: 100%; /* Asegura que el segmento ocupe todo el ancho disponible */
+}
+
+ion-segment-button {
+  --background: var(--ion-background-color); /* Fondo del botón con el color --ion-color-medium */
+  --background-hover: var(--ion-color-medium);
+  --background-activated: var(--ion-color-medium);
+  --border-radius: 0; /* Asegura que los botones no tengan bordes redondeados */
+  font-family: 'Montserrat SemiBold', sans-serif; /* Fuente para las categorías */
+  font-size: 14px; /* Tamaño de fuente para las categorías */
+  text-transform: none; /* Evita mayúsculas automáticas */
+  /* Ajuste de color para los botones no seleccionados */
+  --color: var(--ion-color-primary);
+  /* Ajuste de color para el botón seleccionado (será sobrescrito por ion-segment --color-checked) */
+  --color-checked: var(--ion-color-tertiary);
+  height: 40px; /* Altura del botón */
+  padding-top: 5px; /* Padding superior del botón */
+}
+
+/* Ajuste específico para el botón de Sushi para asegurar que su color de texto e indicador sea terciario */
+ion-segment-button[value="sushi"] {
+  --color: var(--ion-color-tertiary); /* Color de texto para Sushi cuando no está seleccionado */
+  --color-checked: var(--ion-color-tertiary); /* Color de texto para Sushi cuando está seleccionado */
+}
+
+/* ESTILO PARA LA LÍNEA INFERIOR DEL SEGMENTO SELECCIONADO (INDICADOR) */
+ion-segment-button::part(indicator) {
+  background: var(--ion-color-medium); /* Color explícito para la línea (Ahora --ion-color-medium) */
+  height: 2px; /* Asegura la altura de la línea */
+}
+
+/* Ajuste para el texto dentro del segmento para asegurar que se vea bien */
+ion-segment-button ion-label {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-top: 5px; /* Reducido para dar más espacio a la línea */
+  padding-bottom: 5px; /* Reducido para dar más espacio a la línea */
+}
+
+////////////////////////////////////////////////////////////////////////////////////
 
 /* Estilos para la sección fija del carrito */
 ion-footer {
@@ -77,3 +135,9 @@ ion-row {
 .footer-button ion-icon {
   color: black;
 }
+
+.footer-button {
+  /* La clave para el border-radius en ion-button */
+  --border-radius: 100px; 
+}
+

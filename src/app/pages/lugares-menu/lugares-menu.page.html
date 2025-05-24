@@ -14,6 +14,19 @@
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
+
+  <ion-toolbar class="category-toolbar" >
+    <ion-segment value="sushi" mode="md" > <ion-segment-button value="sushi">
+        <ion-label>Sushi</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="onigiris">
+        <ion-label>Onigiris</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="bebidas">
+        <ion-label>Bebidas</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
@@ -64,16 +77,16 @@
 
 <!-- Sección fija al fondo -->
 <ion-footer>
-  <ion-toolbar>
+  <ion-toolbar style="height: 70px; padding: 8px 20px 8px 20px;">
     <ion-row class="ion-align-items-center">
-      <ion-col size="auto">
+      <ion-col size="auto" >
         <div class="footer-info">
           <span class="productos"><strong>3 productos</strong></span>
           <span class="precio">56 Bs</span>
         </div>
       </ion-col>
 
-      <ion-col class="ion-text-right">
+      <ion-col class="ion-text-right" >
         <ion-button class="footer-button" >
           Agregar a tu carrito
           <ion-icon name="arrow-forward-outline" slot="end"></ion-icon>

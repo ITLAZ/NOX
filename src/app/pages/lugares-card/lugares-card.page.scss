@@ -4,9 +4,6 @@ body {
   color: var(--ion-color-dark); /* Color de texto por defecto */
 }
 
-/* Estilos para el título del header */
-
-
 /* Sección 1: Imagen + info */
 .seccion-imagen img {
   height: 200px;
@@ -108,6 +105,8 @@ swiper-container {
   font-size: 24px;
   color: var(--ion-color-primary);
   margin-left: 2px;
+  width: px;
+  height: 24px;
 }
 
 /* Sección inferior de la opinión (comentario) */
@@ -117,3 +116,26 @@ swiper-container {
   margin: 0;
   color: var(--ion-color-primary-contrast);
 }
+ion-toolbar {
+  --background: var(--ion-color-primary);
+}
+
+ion-back-button {
+  color: var(--ion-color-primary-contrast);
+}
+
+ion-title{
+  font-family: "Futura MD BT", sans-serif;
+  color: var(--ion-color-primary-contrast);
+}
+.calificacion[_ngcontent-ng-c4103533356] ion-icon[_ngcontent-ng-c4103533356]{
+  padding: 0px;
+
+  
+}
+
+
+
+
+
+

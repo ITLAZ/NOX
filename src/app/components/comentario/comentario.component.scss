@@ -1,0 +1,125 @@
+ion-content.custom-content {
+    --background: var(--ion-background-color);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    overflow: auto;
+}
+
+.header-content-review {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 20px;
+    padding-top: 48px;
+    
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+}
+
+.user-info ion-avatar {
+    width: 24px;
+    height: 24px;
+    margin-right: 15px;
+}
+
+.user-info h2 {
+    font-family: "Monstserrat SemiBold", sans-serif;
+    font-size: 16px;
+    color: var(--ion-color-light);
+    margin: 0;
+}
+
+.stars {
+    display: flex;
+}
+
+.stars ion-icon {
+    font-size: 24px;
+    color: var(--ion-color-primary);
+    margin: 0 5px;
+}
+
+.opinion-area {
+    --background: var(--ion-color-light);
+    --padding-start: 15px;
+    --padding-end: 15px;
+    --padding-top: 15px;
+    --padding-bottom: 15px;
+    width: 100%;
+    min-height: 120px;
+    max-height: 200px;
+    font-size: 16px;
+    color: var(--ion-color-dark);
+    font-family: "Monstserrat Regular", sans-serif;
+    resize: vertical;
+    margin-bottom: 20px;
+    border-radius: 20px;
+}
+
+.opinion-area::part(placeholder) {
+    font-size: 16px;
+    font-family: 'Montserrat SemiBold', sans-serif;
+    color: var(--ion-color-medium-tint);
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    gap: 10px;
+}
+
+.buttons ion-button {
+    height: 36px;
+    /* Ajustado a 36px según tu último HTML con inline style */
+    font-size: 16px;
+    font-family: "Monstserrat Regular", sans-serif;
+    text-transform: none;
+    --box-shadow: none;
+    width: 165px;
+    /* Ajustado a 165px según tu último HTML con inline style */
+}
+
+.buttons ion-button[color="medium"] {
+    --background: transparent;
+    --border-color: var(--ion-color-medium);
+    --border-width: 1px;
+    color: var(--ion-color-dark);
+    --color: var(--ion-color-dark);
+}
+
+.buttons ion-button[color="primary"] {
+    background: linear-gradient(90deg, var(--ion-color-secondary), var(--ion-color-primary));
+    color: var(--ion-color-primary-contrast);
+    --color: var(--ion-color-primary-contrast);
+}
+
+.custom-border-radius-20 {
+    border-radius: 20px !important;
+}
+
+.custom-border-radius-100 {
+    --border-radius: 100px !important;
+}
+
+ion-textarea {
+    border-radius: 20px;
+    /* Asegura el border-radius para ion-textarea */
+}
+
+.textarea-label-placement-start.sc-ion-textarea-md-h .textarea-wrapper.sc-ion-textarea-md {
+    border-radius: 20px;
+    
+}
+
+ion-textarea::part(native) {
+  border-radius: 12px; /* o el valor que desees */
+}
+
