@@ -1,0 +1,93 @@
+ion-item{
+  width: 375px;
+  height: 120px;
+  --background: transparent;
+}
+  
+ion-avatar {
+  width: 56px;
+  height: 56px;
+
+}
+
+
+ion-label h2 {
+  font-weight: bold;
+  margin: 0;
+  color: var(--ion-color-primary);
+  font-family: "Monstserrat semiBold";
+  font-size: 14px;
+  width: 190px;
+}
+
+ion-label p {
+  margin: 0;
+  font-size: 0.9em;
+  color: var(--ion-color-light);
+  font-family: "Monstserrat Regular";
+  font-size: 14px;
+  width: 190px;
+}
+
+ion-label h6 {
+  margin: 0;
+  font-size: 0.9em;
+  color: var(--ion-color-primary);
+  font-family: "Monstserrat Regular";
+  font-size: 14px;
+  width: 190px;
+}
+ion-text{
+  font-family: "Monstserrat semiBold";
+  font-size: 14px;
+    color: var(--ion-color-tertiary);
+}
+
+    
+.mas{
+  display: flex;
+  justify-content: flex-end !important; 
+  width: 60px;
+  color: var(--ion-color-tertiary);
+  
+}
+.custom-counter {
+  display: flex;
+  flex-direction: row;  
+  align-items: center;
+  justify-content: center; 
+  gap: 4px;
+  padding: 0px 5px 0px -50px;
+  border: 1px solid var(--ion-color-tertiary);
+  border-radius: 50px;
+  background-color: transparent;
+  width: fit-content;
+  min-height: 35px;
+
+ion-button {
+    --border-radius: 20px;
+    --padding-start: 2px;
+    --padding-end: 2px;
+    width: 10px;
+    height: 10px;
+    margin: 0 !important;
+    color: var(--ion-color-tertiary);
+}
+
+.quantity-display {
+    font-weight: bold;
+    min-width: 16px;
+    text-align: center;
+    color: var(--ion-color-tertiary);
+    font-family: "Monstserrat semiBold";
+    font-size: 14px;
+}
+ion-icon {
+  font-size: 12px;
+  width: 12px;
+  height: 12px;
+    color: var(--ion-color-tertiary);
+}
+
+
+}
