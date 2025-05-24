@@ -28,7 +28,7 @@ export class ToolbarComponent implements OnInit {
     const modal = await this.modalController.create({
       component: FilterModalComponent,
       breakpoints: [0, 0.25, 0.5, 0.85],
-      initialBreakpoint: 0.25,
+      initialBreakpoint: 0.8,
       cssClass: 'filter-modal',
       handle: true,
     });
