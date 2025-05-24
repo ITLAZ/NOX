@@ -1,14 +1,21 @@
-<toolbar [pageTitle]="'Comprar Entradas'" [showBack]="true"[showSearch]="false" [showNotifications]="false"></toolbar>
+<toolbar [pageTitle]="'Comprar Entradas'" [showBack]="true" [showSearch]="false" [showNotifications]="false"></toolbar>
 
 <ion-content [fullscreen]="true">
- <h4>Entradas Disponibles</h4>
- <item-entradas></item-entradas>
- <item-entradas></item-entradas>
- <item-entradas></item-entradas>
- <item-entradas></item-entradas>
- <div class="seccion-mapa-asientos">
+  <h4>Entradas Disponibles</h4>
+
+  <ion-list style="background: transparent;">
+    <item-entradas
+      *ngFor="let entrada of entradas"
+      [image]="entrada.image || 'https://via.placeholder.com/150'"
+      [producto]="entrada.producto"
+      [descripcion]="entrada.descripcion"
+      [precio]="entrada.precio"
+      [cantidad]="entrada.cantidad">
+    </item-entradas>
+  </ion-list>
+
+  <div class="seccion-mapa-asientos">
     <h4>Mapa de Asientos</h4>
-    <img src="https://picsum.photos/id/237/200/300" alt="Mapa"  />
-    
+    <img src="https://picsum.photos/id/237/200/300" alt="Mapa" />
   </div>
 </ion-content>

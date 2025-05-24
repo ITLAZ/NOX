@@ -10,6 +10,7 @@ import { ComprarEntradasPageRoutingModule } from './comprar-entradas-routing.mod
 import { ComprarEntradasPage } from './comprar-entradas.page';
 import { ToolbarModule } from 'src/app/shared/toolbar/toolbar.module';
 import { ItemEntradasModule } from 'src/app/shared/item-entradas/item-entradas.module';
+import { ItemComprasModule } from "../../shared/item-compras/item-compras.module";
 
 @NgModule({
   imports: [
@@ -18,8 +19,9 @@ import { ItemEntradasModule } from 'src/app/shared/item-entradas/item-entradas.m
     IonicModule,
     ComprarEntradasPageRoutingModule,
     ToolbarModule,
-    ItemEntradasModule
-  ],
+    ItemEntradasModule,
+    ItemComprasModule
+],
   declarations: [ComprarEntradasPage]
 })
 export class ComprarEntradasPageModule {}

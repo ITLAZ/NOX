@@ -15,8 +15,9 @@
     </ion-buttons>
   </ion-toolbar>
 
-  <ion-toolbar class="category-toolbar" >
-    <ion-segment value="sushi" mode="md" > <ion-segment-button value="sushi">
+  <ion-toolbar class="category-toolbar">
+    <ion-segment value="sushi" mode="md">
+      <ion-segment-button value="sushi">
         <ion-label>Sushi</ion-label>
       </ion-segment-button>
       <ion-segment-button value="onigiris">
@@ -32,62 +33,36 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Notificaciones</ion-title>
+      <ion-title size="large">Menú</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <!-- Contenido repetido -->
-  <app-item-compras image="https://picsum.photos/id/237/200/300"
-  nombreComida="Sushi Maki"
-  descripcion="8 piezas de salmón"
-  precio="75 Bs"></app-item-compras>
-  <app-item-compras image="https://picsum.photos/id/237/200/300"
-  nombreComida="Sushi Maki"
-  descripcion="8 piezas de salmón"
-  precio="60 Bs"></app-item-compras>
-  <app-item-compras image="https://picsum.photos/id/237/200/300"
-  nombreComida="Sushi Maki"
-  descripcion="8 piezas de salmón"
-  precio="50 Bs"></app-item-compras>
-  <app-item-compras image="https://picsum.photos/id/237/200/300"
-  nombreComida="Sushi Maki"
-  descripcion="8 piezas de salmón"
-  precio="40 Bs"></app-item-compras>
-  <app-item-compras image="https://picsum.photos/id/237/200/300"
-  nombreComida="Sushi Maki"
-  descripcion="8 piezas de salmón"
-  precio="20 Bs"></app-item-compras>
-  <app-item-compras image="https://picsum.photos/id/237/200/300"
-  nombreComida="Sushi Maki"
-  descripcion="8 piezas de salmón"
-  precio="80 Bs"></app-item-compras>
-  <app-item-compras image="https://picsum.photos/id/237/200/300"
-  nombreComida="Sushi Maki"
-  descripcion="8 piezas de salmón"
-  precio="95 Bs"></app-item-compras>
-  <app-item-compras image="https://picsum.photos/id/237/200/300"
-  nombreComida="Sushi Maki"
-  descripcion="8 piezas de salmón"
-  precio="40 Bs"></app-item-compras>
-  <app-item-compras image="https://picsum.photos/id/237/200/300"
-  nombreComida="Sushi Maki"
-  descripcion="8 piezas de salmón"
-  precio="45 Bs"></app-item-compras>
+  <div *ngIf="menu.length > 0;">
+    <!-- Iteración sobre los elementos del menú -->
+    <app-item-compras 
+      *ngFor="let item of menu"
+      [image]="item.imagenes?.[0] || 'https://via.placeholder.com/150'"
+      [nombreComida]="item.producto"
+      [descripcion]="item.descripcion"
+      [precio]="item.precio + ' Bs.'">
+    </app-item-compras>
+  </div>
+
 </ion-content>
 
 <!-- Sección fija al fondo -->
 <ion-footer>
   <ion-toolbar style="height: 70px; padding: 8px 20px 8px 20px;">
     <ion-row class="ion-align-items-center">
-      <ion-col size="auto" >
+      <ion-col size="auto">
         <div class="footer-info">
-          <span class="productos"><strong>3 productos</strong></span>
-          <span class="precio">56 Bs</span>
+          <span class="productos"><strong>{{ menu.length }} productos</strong></span>
+          <span class="precio">{{ calcularTotal(menu) | currency:'Bs ' }}</span>
         </div>
       </ion-col>
 
-      <ion-col class="ion-text-right" >
-        <ion-button class="footer-button" >
+      <ion-col class="ion-text-right">
+        <ion-button class="footer-button">
           Agregar a tu carrito
           <ion-icon name="arrow-forward-outline" slot="end"></ion-icon>
         </ion-button>

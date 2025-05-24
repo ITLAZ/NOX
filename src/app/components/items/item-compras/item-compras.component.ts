@@ -9,11 +9,10 @@ import { Component, Input, OnInit } from '@angular/core';
 export class ItemComprasComponent implements OnInit {
   quantity = 0;
 
-  // Variables solicitadas con @Input()
-  @Input() image: string = '';
-  @Input() nombreComida: string = '';
-  @Input() descripcion: string = '';
-  @Input() precio: string = '';
+  @Input() image: string = ''; // URL de la imagen
+  @Input() nombreComida: string = ''; // Nombre de la entrada
+  @Input() descripcion: string = ''; // Descripción de la entrada
+  @Input() precio: string = ''; // Precio de la entrada
 
   constructor() {}
 

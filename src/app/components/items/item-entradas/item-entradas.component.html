@@ -1,28 +1,26 @@
-
 <ion-item>
+  <ion-avatar slot="start">
+    <img alt="Imagen de entrada" [src]="image" />
+  </ion-avatar>
 
-  <!-- Sección central: Título + Subtítulo -->
   <ion-label class="ion-text-wrap">
-    <h2>Entrada Mega VIP</h2>
-    <h6> 500 disponibles</h6>
-    <p>Incluye combo de Candy Bar y asientos en primera fila</p>
-    <p>600Bs</p>
+    <h2>{{ producto }}</h2>
+    <p>{{ descripcion }}</p>
+    <p>{{ cantidad }} disponibles</p>
+    <p>{{ precio | currency }}</p>
   </ion-label>
 
-  <!-- Sección derecha: Precio + Contador -->
   <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 4px;">
-    <ion-text >{{ precio }}</ion-text>
+    <ion-text color="primary">{{ precio | currency }}</ion-text>
 
-    <!-- Estado: solo "+" -->
     <ng-container *ngIf="quantity === 0">
       <div class="mas">
-        <ion-button fill="outline" shape="round" size="small" color="tertiary" (click)="increase()">
+        <ion-button fill="outline" shape="round" size="small" color="success" (click)="increase()">
           <ion-icon slot="icon-only" name="add-outline"></ion-icon>
         </ion-button>
       </div>
     </ng-container>
 
-    <!-- Estado: cantidad > 0 -->
     <ng-container *ngIf="quantity > 0">
       <div class="mas custom-counter">
         <ion-button fill="clear" shape="round" size="small" color="success"

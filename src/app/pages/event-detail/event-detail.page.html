@@ -11,7 +11,7 @@
         {{ evento.fechas?.final.toDate() | date: 'medium' }}
       </p>
       <p><strong>Horario:</strong> {{ evento.horario?.inicio }} - {{ evento.horario?.cierre }}</p>
-      <ion-button expand="block" fill="clear">
+      <ion-button expand="block" fill="clear" [routerLink]="['/comprar-entradas', evento.id]">
         Comprar entradas
         <ion-icon slot="end" name="arrow-forward-outline"></ion-icon>
       </ion-button>
@@ -28,7 +28,6 @@
       <ion-item *ngFor="let entrada of entradas">
         <ion-label>
           <p><strong>{{ entrada.producto }}</strong></p>
-          <p>{{ entrada.descripcion }}</p>
         </ion-label>
         <ion-badge slot="end" class="dynamic-badge">{{ entrada.cantidad}}</ion-badge>
       </ion-item>

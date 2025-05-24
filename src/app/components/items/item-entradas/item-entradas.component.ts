@@ -7,13 +7,13 @@ import { Component,Input,  OnInit } from '@angular/core';
   standalone: false
 })
 export class ItemEntradasComponent  implements OnInit {
-quantity = 0;
+  quantity = 0;
 
-  // Variables solicitadas con @Input()
-  @Input() image: string = '';
-  @Input() nombreComida: string = '';
-  @Input() descripcion: string = '';
-  @Input() precio: string = '';
+  @Input() image: string = ''; // URL de la imagen
+  @Input() producto: string = ''; // Nombre de la entrada
+  @Input() descripcion: string = ''; // Descripción de la entrada
+  @Input() precio: number = 0; // Precio de la entrada
+  @Input() cantidad: number = 0; // Cantidad disponible
 
   constructor() {}
 

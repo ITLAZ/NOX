@@ -99,7 +99,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/lugares-card/lugares-card.module').then( m => m.LugaresCardPageModule)
   },
   {
-    path: 'lugares-menu',
+    path: 'lugares-menu/:id',
     loadChildren: () => import('./pages/lugares-menu/lugares-menu.module').then( m => m.LugaresMenuPageModule)
   },
 
@@ -132,7 +132,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/membresia-compra-confirmacion/membresia-compra-confirmacion.module').then( m => m.MembresiaCompraConfirmacionPageModule)
   },
   {
-    path: 'comprar-entradas',
+    path: 'comprar-entradas/:eventoId',
     loadChildren: () => import('./pages/comprar-entradas/comprar-entradas.module').then( m => m.ComprarEntradasPageModule)
   },
   {

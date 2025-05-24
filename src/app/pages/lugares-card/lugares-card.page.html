@@ -15,7 +15,6 @@
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
-
 <ion-content [fullscreen]="true" class="contenido-local">
   <div class="seccion-imagen">
     <img src="https://picsum.photos/375/200" alt="Local" />
@@ -42,10 +41,11 @@
       </swiper-slide>
     </swiper-container>
 
-    <ion-button [routerLink]="'/lugares-menu'" expand="block" fill="clear">
-      Ver menú completo
-      <ion-icon slot="end" name="arrow-forward-outline"></ion-icon>
-    </ion-button>
+    <ion-button [routerLink]="['/lugares-menu', lugar.id]" expand="block" fill="clear">
+    Ver menú completo
+    <ion-icon slot="end" name="arrow-forward-outline"></ion-icon>
+  </ion-button>
+
   </div>
 
   <div class="seccion-como-llegar" *ngIf="lugar">
