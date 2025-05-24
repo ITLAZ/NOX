@@ -139,11 +139,15 @@ const routes: Routes = [
     path: 'editar-menu',
     loadChildren: () => import('./pages/editar-menu/editar-menu.module').then( m => m.EditarMenuPageModule)
   },
-  
+  {
+    path: 'define-ubi',
+    loadChildren: () => import('./pages/define-ubi/define-ubi.module').then( m => m.DefineUbiPageModule)
+  },
   {
     path: '**',
     redirectTo: '/home',
   },   
+  
   
   
   
