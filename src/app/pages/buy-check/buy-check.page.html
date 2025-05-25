@@ -1,5 +1,6 @@
 <ion-header [translucent]="true">
-  <ion-toolbar> <ion-buttons slot="start">
+  <ion-toolbar>
+    <ion-buttons slot="start">
       <ion-back-button defaultHref="/cart"></ion-back-button>
     </ion-buttons>
     <ion-title>Confirmar compra</ion-title>
@@ -8,20 +9,10 @@
 
 <ion-content [fullscreen]="true" class="ion-padding">
 
-  <app-item-carrito-confirmado image="https://picsum.photos/id/237/200/300" nombreComida="Sushi Maki"
-    descripcion="8 piezas de salmón" precio="75 Bs"></app-item-carrito-confirmado>
-
-  <app-item-carrito-confirmado image="https://picsum.photos/id/237/200/300" nombreComida="Sushi Maki"
-    descripcion="8 piezas de salmón" precio="75 Bs"></app-item-carrito-confirmado>
-
-  <app-item-carrito-confirmado image="https://picsum.photos/id/237/200/300" nombreComida="Sushi Maki"
-    descripcion="8 piezas de salmón" precio="75 Bs"></app-item-carrito-confirmado>
-
-
   <ion-list>
-    <ion-item *ngFor="let item of items">
+    <ion-item *ngFor="let item of items" class="no-background">
       <ion-thumbnail slot="start">
-
+        <img [src]="item.image || 'assets/placeholder.png'" alt="Imagen del producto">
       </ion-thumbnail>
       <ion-label>
         <h2>{{ item.name || item.tipo }}</h2>
@@ -71,18 +62,17 @@
         </ion-row>
       </ion-grid>
 
-      <ion-button  expand="block" class="gradient-button" [routerLink]="['/pay-card']">
+      <ion-button expand="block" class="gradient-button" [routerLink]="['/pay-card']">
         Pagar con tarjeta
       </ion-button>
 
-      <!-- <ion-range min="0" max="100" value="0" color="medium"></ion-range> -->
       <div class="separator-line-with-o">
         <div class="line"></div>
         <div class="o-text">O</div>
         <div class="line"></div>
       </div>
 
-      <ion-button expand="block" class="gradient-button">
+      <ion-button expand="block" class="gradient-button" [routerLink]="['/pay-qr']">
         Pagar con QR
       </ion-button>
 
