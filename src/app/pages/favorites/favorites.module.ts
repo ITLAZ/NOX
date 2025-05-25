@@ -8,6 +8,7 @@ import { FavoritesPageRoutingModule } from './favorites-routing.module';
 
 import { FavoritesPage } from './favorites.page';
 import { MidCardModule } from 'src/app/shared/mid-card/mid-card.module';
+import { ToolbarModule } from 'src/app/shared/toolbar/toolbar.module'; // Uncomment if you need a toolbar
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { MidCardModule } from 'src/app/shared/mid-card/mid-card.module';
     FormsModule,
     IonicModule,
     FavoritesPageRoutingModule,
-    MidCardModule
+    MidCardModule,
+    ToolbarModule // Uncomment if you need a toolbar
   ],
   schemas:[CUSTOM_ELEMENTS_SCHEMA],
   declarations: [FavoritesPage]
