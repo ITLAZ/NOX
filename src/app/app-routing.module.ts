@@ -151,9 +151,15 @@ const routes: Routes = [
     loadChildren: () => import('./pages/edit-product/edit-product.module').then( m => m.EditProductPageModule)
   },
   {
+    path: 'gestionar-publicidad',
+    loadChildren: () => import('./pages/gestionar-publicidad/gestionar-publicidad.module').then( m => m.GestionarPublicidadPageModule)
+  },
+  {
     path: '**',
     redirectTo: '/home',
   },
+  
+
 ];
 
 @NgModule({
