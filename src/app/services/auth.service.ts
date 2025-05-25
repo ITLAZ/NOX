@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { DatabaseService } from './database.service';
 import { ToastController } from '@ionic/angular';
 import { firstValueFrom } from 'rxjs';
+import { GoogleAuthProvider } from 'firebase/auth';
 
 @Injectable({
   providedIn: 'root'
@@ -163,6 +164,46 @@ export class AuthService {
     } catch (error) {
       console.error('Error al cerrar sesión:', error);
     }
+  }
+
+  async loginGoogle() {
+    try {
+      const provider = new GoogleAuthProvider();
+      // @ts-ignore
+      const userCredential = await this.afAuth.signInWithPopup(provider);
+      if (userCredential.user) {
+        const user = userCredential.user;
+        await this.handleGoogleUser(user);
+        this.router.navigate(['/profile']);
+      }
+    } catch (error) {
+      this.handleAuthError(error);
+    }
+  }
+
+  private async handleGoogleUser(user: any) {
+    const userData = {
+      uid: user.uid,
+      email: user.email,
+      displayName: user.displayName,
+      photoURL: user.photoURL
+    };
+    await runInInjectionContext(this.injector, async () => {
+      await this.firestore.collection('usersPrueba').doc(user.uid)
+        .set(userData, { merge: true });
+    });
+    localStorage.setItem('profile', JSON.stringify(userData));
+    this.profile = userData;
+  }
+
+  private async handleAuthError(error: any) {
+    console.error('Error de autenticación:', error);
+    const toast = await this.toastCtrl.create({
+      message: error?.message || 'Error en autenticación con Google',
+      duration: 2000,
+      color: 'danger'
+    });
+    await toast.present();
   }
 
   // Método opcional para comprobar si hay sesión activa

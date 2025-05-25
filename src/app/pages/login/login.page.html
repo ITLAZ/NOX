@@ -48,6 +48,12 @@
           <ion-button expand="block" color="gradient" type="submit">
             Iniciar sesión
           </ion-button>
+
+          <!-- Botón Google -->
+          <ion-button expand="block" color="light" (click)="loginWithGoogle()" type="button">
+            <ion-icon name="logo-google" slot="start"></ion-icon>
+            Iniciar sesión con Google
+          </ion-button>
         </form>
       </ion-col>
     </ion-row>
