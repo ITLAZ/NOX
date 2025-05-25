@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
   selector: 'app-cart',
   templateUrl: './cart.page.html',
   styleUrls: ['./cart.page.scss'],
-  standalone: false
+  standalone: false,
 })
 export class CartPage implements OnInit {
   cartItems: any[] = [];
@@ -22,42 +22,28 @@ export class CartPage implements OnInit {
   }
 
   loadCart() {
-  this.cartItems = this.cartService.getCart();
-  console.log('Cart Items:', this.cartItems); // Log para depurar
+    this.cartItems = this.cartService.getCart();
+    this.total = this.cartItems.reduce(
+      (sum, item) => (item.price || item.precio || 0) * (item.quantity || 1) + sum,
+      0
+    );
 
-  this.total = this.cartItems.reduce(
-    (sum, item) =>
-      (item.price || item.precio || 0) * (item.quantity || 1) + sum,
-    0
-  );
-
-  if (this.cartItems.length > 0) {
-    const firstItem = this.cartItems[0];
-    console.log('First Item:', firstItem);
-
-    // Verifica si el elemento tiene un lugarId para decidir si es un local
-    this.isLocal = !!firstItem?.lugarId;
-    console.log('isLocal:', this.isLocal);
-
-    // Construye el path de retorno basado en la existencia de lugarId
-    this.returnPath = this.isLocal
-      ? `/lugares` // Ruta para locales
-      : `/eventos`; // Ruta para eventos
-  } else {
-    // Fallback si el carrito está vacío
-    this.returnPath = '/home';
+    if (this.cartItems.length > 0) {
+      const firstItem = this.cartItems[0];
+      this.isLocal = !!firstItem.lugarId;
+      this.returnPath = this.isLocal ? '/lugares' : '/eventos';
+    } else {
+      this.returnPath = '/home';
+    }
   }
-}
-
-
 
   goToReturnPath() {
-  if (this.returnPath) {
-    this.router.navigate([this.returnPath]);
-  } else {
-    this.router.navigate(['/home']); // Fallback
+    if (this.returnPath) {
+      this.router.navigate([this.returnPath]);
+    } else {
+      this.router.navigate(['/home']);
+    }
   }
-}
 
   removeItem(index: number) {
     this.cartService.removeItem(index);
@@ -94,16 +80,5 @@ export class CartPage implements OnInit {
         note: this.isLocal ? this.note : null,
       },
     });
-  }
-
-  goToMenu() {
-    this.router.navigate(['/lugares']);
-  }
-
-  goToEvents() {
-    this.router.navigate(['/eventos']);
-  }
-  goToPay() {
-    this.router.navigate(['/buy-check']);
   }
 }
