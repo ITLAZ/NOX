@@ -1,7 +1,16 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>membresias</ion-title>
+  <ion-toolbar class="header">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/perfil" color = "secondary"></ion-back-button>
+    </ion-buttons>
+    <ion-title color = "secondary">Membresia Premium</ion-title>
   </ion-toolbar>
+  <div class="banner">
+    <h2>Membresias</h2>
+    <ion-chip >
+      <ion-label>Inactivo</ion-label>
+    </ion-chip>
+  </div>
 </ion-header>
 
 <ion-content [fullscreen]="true">
@@ -10,4 +19,44 @@
       <ion-title size="large">membresias</ion-title>
     </ion-toolbar>
   </ion-header>
+
+   <ion-list class="benefits-list">
+    <ion-item lines="none" color = "translucent">
+      <ion-icon name="pricetag-outline" slot="start"></ion-icon>
+      <ion-label color = "secondary">Descuentos en establecimientos y eventos</ion-label>
+    </ion-item>
+    <ion-item lines="none" color = "translucent">
+      <ion-icon name="calendar-outline" slot="start"></ion-icon>
+      <ion-label color = "secondary">Acceso a compras anticipadas a eventos</ion-label>
+    </ion-item>
+    <ion-item lines="none" color = "translucent">
+      <ion-icon name="gift-outline" slot="start"></ion-icon>
+      <ion-label color = "secondary">Ganar más puntos de recompensa</ion-label>
+    </ion-item>
+    <ion-item lines="none" color = "translucent">
+      <ion-icon name="star-outline" slot="start"></ion-icon>
+      <ion-label color = "secondary">Promociones especiales</ion-label>
+    </ion-item>
+  </ion-list>
+  <div class="subscription-options">
+  <div class="option">
+    <p>1 mes</p>
+    <span>70 bs.</span>
+  </div>
+  <div class="divider">/</div>
+  <div class="option">
+    <p>3 meses</p>
+    <span>180 bs.</span>
+  </div>
+  <div class="divider">/</div>
+  <div class="option">
+    <p>12 meses</p>
+    <span>700 bs.</span>
+  </div>
+</div>
+  <div class = "fixed-button-container">
+    <ion-button expand="block" shape="round" class="gradient-button" [routerLink]="'/membresia-plan'">
+      Realizar Subscripción
+    </ion-button>
+  </div>
 </ion-content>

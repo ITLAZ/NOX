@@ -8,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MembresiaPlanPage implements OnInit {
 
+  selectedPlan: string = '';
+
   constructor() { }
 
   ngOnInit() {

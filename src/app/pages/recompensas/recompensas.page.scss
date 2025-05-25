@@ -1,5 +1,6 @@
 .header {
   --background: #171826;
+    font-family: "Futura Md BT", sans-serif;
 }
 
 .banner {
@@ -24,6 +25,7 @@
 
     ion-label {
       font-size: 1rem;
+      font-family: "Montserrat", sans-serif;
       margin-left: 5px;
     }
   }
@@ -34,6 +36,7 @@
   h3 {
     color : #DE2B46;
     font-size: 20px;
+    font-family: "Montserrat", sans-serif;
     padding: 0px 12px 20px 12px;
   }
 }
@@ -51,12 +54,14 @@
       h4 {
         color: #FD935E;
         font-size: 16px;
+        font-family: "Montserrat", sans-serif;
         margin: 0;
       }
 
       p {
         color: #de6a30;
         font-size: 14px;
+        font-family: "Montserrat", sans-serif;
         font-weight: 300;
         margin: 2px 0 0;
       }
@@ -69,6 +74,7 @@
       .puntos {
         color: var(--ion-color-fucsia);
         font-weight: 300;
+        font-family: "Montserrat", sans-serif;
         margin-right: 4px;
       }
 

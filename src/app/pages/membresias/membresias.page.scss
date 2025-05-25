@@ -1,0 +1,99 @@
+.header {
+  --background: #171826;
+  font-family: "Futura Md BT", sans-serif;
+}
+
+p {
+  font-family: "Montserrat", sans-serif;
+}
+
+.banner {
+  width: 100%;
+  height: 101px;
+  background: #636791 ;
+  padding: 20px 16px;
+
+  h2 {
+    font-family: "Forta", sans-serif;
+    font-size: 26px;
+    color: #fff;
+    text-transform: uppercase;
+    margin: 0;
+  }
+
+  ion-chip {
+    margin-top: 7px;
+    --background: #1E0949;
+    --color: #fff;
+    font-family: "Montserrat", sans-serif;
+
+    ion-label {
+      font-size: 1rem;
+      margin-left: 5px;
+    }
+  }
+}
+
+.list-md {
+  background-color: transparent;
+}
+
+.benefits-list ion-item {
+  color: white;
+  ion-icon {
+    color: #a68eff;
+  }
+}
+
+.subscription-options {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  border: 1px solid #a68eff;
+  border-radius: 12px;
+  padding: 0.8rem 1rem;
+  color: #cbbaff;
+  font-size: 0.9rem;
+  gap: 1rem;
+  margin: 12px;
+
+  .option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    p {
+      margin: 0;
+      font-weight: 400;
+    }
+    span {
+      font-size: 0.85rem;
+      opacity: 0.8;
+    }
+  }
+
+  .divider {
+    font-size: 1.2rem;
+    color: #a68eff;
+  }
+}
+.fixed-button-container {
+  position: fixed;
+  bottom: 20px;
+  left: 16px;
+  right: 16px;
+  z-index: 100; // Para que quede por encima del contenido
+  padding-bottom: 20px;
+}
+  .gradient-button {
+    
+    height: 36px;
+    --background: linear-gradient(90deg, var(--purple-2, #7E48EA) 0%, var(--purple-3, #A57FF0) 67.5%, #E17FFA 100%);
+    color: #000;
+    margin: auto;
+    padding: 1rem;
+  }
+
+ion-button {
+  text-transform: none;
+}
