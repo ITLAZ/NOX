@@ -1,6 +1,19 @@
-<toolbar [pageTitle]="'Comprar Entradas'" [showBack]="true" [showSearch]="false" [showNotifications]="false"></toolbar>
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/home"></ion-back-button>
+      <ion-title>Comprar Entradas</ion-title>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
 
 <ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Comprar Entradas</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
   <h4>Entradas Disponibles</h4>
 
   <ion-list style="background: transparent;">
@@ -10,7 +23,9 @@
       [producto]="entrada.producto"
       [descripcion]="entrada.descripcion"
       [precio]="entrada.precio"
-      [cantidad]="entrada.cantidad">
+      [cantidad]="entrada.cantidad"
+      [quantity]="entrada.quantity"
+      (quantityChange)="actualizarCantidad(entrada, $event)">
     </item-entradas>
   </ion-list>
 
@@ -19,3 +34,22 @@
     <img src="https://picsum.photos/id/237/200/300" alt="Mapa" />
   </div>
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar style="height: 70px; padding: 8px 20px;">
+    <ion-row class="ion-align-items-center">
+      <ion-col size="auto">
+        <div class="footer-info">
+          <span class="productos"><strong>{{ totalCantidad }} entradas</strong></span>
+          <span class="precio">{{ totalPrecio | currency:'Bs ' }}</span>
+        </div>
+      </ion-col>
+      <ion-col class="ion-text-right">
+        <ion-button class="footer-button" (click)="confirmarCompra()">
+          Agregar a carrito
+          <ion-icon name="arrow-forward-outline" slot="end"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-footer>

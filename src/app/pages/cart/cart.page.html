@@ -25,43 +25,29 @@
 
   <ion-card *ngIf="cartItems.length > 0">
     <ion-card-content>
-
-      <!-- ✅ Mostrar nota SOLO si es comida (NO tiene tipo) -->
-      <ion-item *ngIf="!cartItems[0]?.tipo">
-        <ion-label position="stacked">Nota para el restaurante</ion-label>
-        <ion-textarea [(ngModel)]="note" placeholder="Sin cebolla, sin picante..."></ion-textarea>
+      <!-- Comentario para locales -->
+      <ion-item *ngIf="isLocal">
+        <ion-label position="stacked">Nota para el local</ion-label>
+        <ion-textarea [(ngModel)]="note" placeholder="Ejemplo: Sin cebolla, por favor"></ion-textarea>
       </ion-item>
 
       <h3 class="ion-padding-top">Total: <strong>Bs {{ total }}</strong></h3>
 
-      <ion-button expand="block" color="danger" (click)="clearCart()">
-        Vaciar Carrito
-      </ion-button>
-
-      <!-- ✅ Botón según tipo -->
-      <ion-button expand="block" color="secondary"
-        *ngIf="!cartItems[0]?.tipo"
-        (click)="goToMenu()">
-        Volver al Menú
-      </ion-button>
-
-      <ion-button expand="block" color="primary"
-        *ngIf="cartItems[0]?.tipo"
-        (click)="goToTickets()">
-        Volver a Entradas
+      <ion-button expand="block" color="danger" (click)="clearCart()">Vaciar Carrito</ion-button>
+      <ion-button expand="block" color="secondary" (click)="goToReturnPath()">
+        Volver a {{ isLocal ? 'Lugares' : 'Eventos' }}
       </ion-button>
     </ion-card-content>
   </ion-card>
 
   <ng-template #emptyCart>
     <ion-text color="medium">
-      <p class="ion-padding" style="color: white;">Tu carrito está vacío.</p>
+      <p class="ion-padding">Tu carrito está vacío.</p>
     </ion-text>
-    <ion-button expand="block" color="secondary" (click)="goToMenu()">Ir al Menú</ion-button>
-   
-    <ion-button expand="block" color="primary" (click)="goToTickets()">Ir a Entradas</ion-button>
+    <ion-button expand="block" color="secondary" (click)="goToMenu()">Ir a Lugares</ion-button>
+    <ion-button expand="block" color="primary" (click)="goToEvents()">Ir a Eventos</ion-button>
   </ng-template>
-  <ion-button expand="block" color="success" (click)="goToBuyCheck()">
-  Ir a Pagar
-</ion-button>
+
+  <!-- Botón de "Ir a Pagar" solo si hay elementos en el carrito -->
+  <ion-button *ngIf="cartItems.length > 0" expand="block" color="success" (click)="goToBuyCheck()">Ir a Pagar</ion-button>
 </ion-content>

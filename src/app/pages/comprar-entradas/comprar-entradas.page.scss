@@ -1,11 +1,66 @@
-h4{
-    margin-left: 15px;
-    font-family: "Monstserrat Regular", sans-serif;
+h4 {
+  margin-left: 15px;
+  font-family: "Monstserrat Regular", sans-serif;
 }
-img{
-      width: 375px;
-     height: 200px;
-    object-fit: cover;
-    margin-left: 15px;
-    border-radius: 24px;
+
+img {
+  width: 375px;
+  height: 200px;
+  object-fit: cover;
+  margin-left: 15px;
+  border-radius: 24px;
+}
+
+ion-footer {
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  --background: var(--ion-color-medium); /* Fondo del footer */
+}
+
+ion-footer ion-toolbar {
+  height: 70px;
+  padding: 8px 20px;
+  display: flex; /* Asegura un diseño flexible */
+  justify-content: space-between; /* Coloca elementos a los extremos */
+  align-items: center; /* Centra verticalmente los elementos */
+}
+
+.footer-info {
+  display: flex;
+  flex-direction: column; /* Alinear textos verticalmente */
+  justify-content: center;
+}
+
+.footer-info .productos {
+  color: var(--ion-color-secondary);
+  font-size: 12px;
+  font-family: 'Montserrat Regular', sans-serif;
+  margin: 0;
+}
+
+.footer-info .precio {
+  color: var(--ion-color-tertiary);
+  font-size: 14px;
+  font-family: 'Montserrat SemiBold', sans-serif;
+  margin: 0;
+}
+
+.footer-button {
+  --background: linear-gradient(90deg, var(--ion-color-secondary), var(--ion-color-primary));
+  font-size: 14px;
+  font-family: 'Montserrat SemiBold', sans-serif;
+  text-transform: none;
+  width: 220px;
+  height: 36px;
+  border-radius: 1000px; /* Botón completamente redondeado */
+  display: inline-flex; /* Asegura que sea un botón flexible */
+  justify-content: center; /* Centra el texto y el icono */
+  align-items: center; /* Centra verticalmente */
+  margin-left: auto; /* Empuja el botón hacia la derecha */
+}
+
+.footer-button ion-icon {
+  color: black;
 }

@@ -9,21 +9,55 @@ import { Router } from '@angular/router';
   standalone: false
 })
 export class CartPage implements OnInit {
-
   cartItems: any[] = [];
   total: number = 0;
-  note: string = '';  // Para el menú
+  note: string = '';
+  isLocal: boolean = false;
+  returnPath: string = '';
 
-  constructor(private cartService: CartService, private router: Router) {}
+  constructor(private cartService: CartService, public router: Router) {}
 
   ngOnInit() {
     this.loadCart();
   }
 
   loadCart() {
-    this.cartItems = this.cartService.getCart();
-    this.total = this.cartItems.reduce((sum, i) => (i.price || i.precio || 0) * (i.quantity || 1) + sum, 0);
+  this.cartItems = this.cartService.getCart();
+  console.log('Cart Items:', this.cartItems); // Log para depurar
+
+  this.total = this.cartItems.reduce(
+    (sum, item) =>
+      (item.price || item.precio || 0) * (item.quantity || 1) + sum,
+    0
+  );
+
+  if (this.cartItems.length > 0) {
+    const firstItem = this.cartItems[0];
+    console.log('First Item:', firstItem);
+
+    // Verifica si el elemento tiene un lugarId para decidir si es un local
+    this.isLocal = !!firstItem?.lugarId;
+    console.log('isLocal:', this.isLocal);
+
+    // Construye el path de retorno basado en la existencia de lugarId
+    this.returnPath = this.isLocal
+      ? `/lugares` // Ruta para locales
+      : `/eventos`; // Ruta para eventos
+  } else {
+    // Fallback si el carrito está vacío
+    this.returnPath = '/home';
   }
+}
+
+
+
+  goToReturnPath() {
+  if (this.returnPath) {
+    this.router.navigate([this.returnPath]);
+  } else {
+    this.router.navigate(['/home']); // Fallback
+  }
+}
 
   removeItem(index: number) {
     this.cartService.removeItem(index);
@@ -48,26 +82,26 @@ export class CartPage implements OnInit {
       this.cartService.updateCart(this.cartItems);
       this.loadCart();
     } else {
-      // Si ya es 1 y se quiere decrementar, mejor eliminarlo
-      const index = this.cartItems.findIndex(i => i.id === item.id);
-      if (index > -1) this.removeItem(index);
+      this.removeItem(this.cartItems.indexOf(item));
     }
+  }
+
+  goToBuyCheck() {
+    this.router.navigate(['/buy-check'], {
+      state: {
+        total: this.total,
+        items: this.cartItems,
+        note: this.isLocal ? this.note : null,
+      },
+    });
   }
 
   goToMenu() {
-    this.router.navigate(['/lugares-test']); // Ajusta a tu ruta real
+    this.router.navigate(['/lugares']);
   }
 
-  goToTickets() {
-    this.router.navigate(['/ticket-test']); // Ajusta a tu ruta real
+  goToEvents() {
+    this.router.navigate(['/eventos']);
   }
-  goToBuyCheck() {
-  this.router.navigate(['/buy-check'], {
-    state: {
-      total: this.total,
-      items: this.cartItems
-    }
-  });
-}
-
+  
 }

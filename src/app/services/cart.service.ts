@@ -4,7 +4,6 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class CartService {
-
   private cart: any[] = [];
 
   constructor() {
@@ -21,19 +20,25 @@ export class CartService {
   }
 
   getCart(): any[] {
-    return [...this.cart]; // copia para evitar modificaciones directas
+    return [...this.cart]; // Copia para evitar modificaciones directas
   }
 
-  addToCart(item: any) {
+  addToCart(item: any, eventInfo: any = null) {
     const itemId = item.id || item.name || item.tipo; // Ajustable según estructura
-    const existingIndex = this.cart.findIndex(i => (i.id || i.name || i.tipo) === itemId);
+    const existingIndex = this.cart.findIndex(
+      i => (i.id || i.name || i.tipo) === itemId
+    );
 
     if (existingIndex >= 0) {
       // Si ya existe, aumenta la cantidad
       this.cart[existingIndex].quantity += item.quantity || 1;
     } else {
-      // Si no existe, agregar con cantidad
-      this.cart.push({ ...item, quantity: item.quantity || 1 });
+      // Si no existe, agregar con cantidad y datos del evento si los hay
+      this.cart.push({
+        ...item,
+        event: eventInfo,
+        quantity: item.quantity || 1
+      });
     }
 
     this.saveCart();
@@ -54,10 +59,17 @@ export class CartService {
   getTotal(): number {
     return this.cart.reduce((sum, item) => {
       const price = item.price || item.precio || 0;
-      return sum + (price * (item.quantity || 1));
+      return sum + price * (item.quantity || 1);
     }, 0);
   }
+
+  getCartDetails(): any[] {
+    return this.getCart();
+  }
+
+  // Método para actualizar el carrito manualmente
   updateCart(cart: any[]) {
-  localStorage.setItem('cart', JSON.stringify(cart));
-}
+    this.cart = [...cart];
+    this.saveCart();
+  }
 }
