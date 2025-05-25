@@ -1,0 +1,55 @@
+<toolbar [pageTitle]="'Gestionar Reseñas'" [showBack]="true"[showSearch]="false" [showNotifications]="false" [showCart]="false"></toolbar>
+
+<ion-content [fullscreen]="true">
+  <h2> Comentarios sin responder</h2>
+  <div class="contenedor-opiniones">
+    
+  <div class="contenedor-opinion">
+          <div class="seccion-superior">
+            <span class="nombre-usuario">Usuario</span>
+            
+            <div class="calificacion">
+              <ion-icon *ngFor="let estrella of [1,2,3,4,5]" size="large" color="primary" name="star-outline"></ion-icon>
+              <ion-icon name="trash-outline" class="icono-basurero" size="large"></ion-icon>
+            <ion-icon
+              name="heart-outline"
+              class="icono-corazon"
+              size="large"
+              >
+            </ion-icon>
+            <ion-icon name="send-outline" class="icono-enviar" size="large"></ion-icon>
+            
+            </div>
+          </div>
+          <div class="seccion-inferior">
+            <p class="comentario">very very good soup</p>
+          </div>
+  </div>
+  <div class="contenedor-opinion">
+          <div class="seccion-superior">
+            <span class="nombre-usuario">Usuario</span>
+            
+            <div class="calificacion">
+              <ion-icon *ngFor="let estrella of [1,2,3,4,5]" size="large" color="primary" name="star-outline"></ion-icon>
+              <ion-icon name="trash-outline" class="icono-basurero" size="large"></ion-icon>
+            <ion-icon
+              name="heart-outline"
+              class="icono-corazon"
+              size="large"
+              >
+            </ion-icon>
+            <ion-icon name="send-outline" class="icono-enviar" size="large"></ion-icon>
+            
+            </div>
+          </div>
+          <div class="seccion-inferior">
+            <p class="comentario">very very good soup</p>
+          </div>
+  </div>
+  </div>
+    <div class = "cover-container">
+    <ion-button expand="block" shape="round" class="gradient-button">
+     Publicar Reseñas
+    </ion-button>
+  </div>
+</ion-content>

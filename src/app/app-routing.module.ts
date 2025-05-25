@@ -170,9 +170,15 @@ const routes: Routes = [
     loadChildren: () => import('./pages/upload-photos/upload-photos.module').then( m => m.UploadPhotosPageModule)
   },
   {
+    path: 'gestionar-resenias',
+    loadChildren: () => import('./pages/gestionar-resenias/gestionar-resenias.module').then( m => m.GestionarReseniasPageModule)
+  },
+  {
     path: '**',
     redirectTo: '/home',
   },
+  
+
   
 
   
