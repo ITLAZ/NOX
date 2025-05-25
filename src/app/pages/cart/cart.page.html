@@ -10,13 +10,13 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true" class="ion-padding">
+<ion-content [fullscreen]="true">
   <ng-container *ngIf="cartItems.length > 0; else emptyCart">
     <ion-item lines="none">
       <ion-label class="ion-text-wrap">
         <h2>{{ isLocal ? 'Lugar seleccionado' : 'Evento seleccionado' }}</h2>
       </ion-label>
-      <ion-button fill="clear" color="warning" (click)="goToReturnPath()">
+      <ion-button fill="clear" color="warning" class="view-products-button" (click)="goToReturnPath()">
         Ver / añadir productos
         <ion-icon name="arrow-forward-outline" slot="end"></ion-icon>
       </ion-button>
@@ -42,24 +42,10 @@
       </ion-item>
     </ion-list>
 
-    <!-- Mostrar solo si es un lugar (isLocal = true) -->
     <div class="ion-padding-horizontal" *ngIf="isLocal">
-      <ion-label class="ion-text-wrap">Añadir una nota:</ion-label>
-      <ion-textarea
-        placeholder="Notas"
-        [(ngModel)]="note"
-      ></ion-textarea>
+      <ion-label class="note-label" color="fucsia">Añadir una nota:</ion-label>
+      <ion-textarea placeholder="Notas" [(ngModel)]="note"></ion-textarea>
     </div>
-
-    <ion-footer class="ion-no-border">
-      <ion-item lines="none" class="total-item">
-        <ion-label>Total</ion-label>
-        <ion-label class="ion-text-right">Bs {{ total }}</ion-label>
-      </ion-item>
-      <ion-button expand="block" class="pay-button" (click)="goToBuyCheck()">
-        Pagar
-      </ion-button>
-    </ion-footer>
   </ng-container>
 
   <ng-template #emptyCart>
@@ -68,3 +54,13 @@
     </ion-text>
   </ng-template>
 </ion-content>
+
+<ion-footer class="ion-no-border">
+  <ion-item lines="none" class="total-item">
+    <ion-label>Total</ion-label>
+    <ion-label class="ion-text-right">Bs {{ total }}</ion-label>
+  </ion-item>
+  <ion-button expand="block" class="pay-button" (click)="goToBuyCheck()">
+    Pagar
+  </ion-button>
+</ion-footer>
