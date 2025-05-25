@@ -1,4 +1,4 @@
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" id="filter-modal">
   <ion-content [scrollEvents]="true">
     <ion-searchbar #searchbar placeholder="Buscar..." (ionInput)="onBuscar(safeString($event.target.value))" (click)="expandModal()"></ion-searchbar>
 
@@ -51,3 +51,7 @@
     </div>
   </ion-content>
 </ion-content>
+<!--
+Solución de accesibilidad: se agrega id="filter-modal" al ion-content raíz para que el botón de búsqueda pueda referenciarlo con aria-controls.
+No se usa aria-hidden en el modal.
+-->

@@ -11,7 +11,7 @@
         <ion-icon name="notifications-outline"></ion-icon>
       </ion-button>
 
-      <ion-button *ngIf="showSearch" (click)="openSearchModal()">
+      <ion-button *ngIf="showSearch" (click)="openSearchModal()" [attr.aria-haspopup]="true" [attr.aria-controls]="'filter-modal'">
         <ion-icon name="search-outline"></ion-icon>
       </ion-button>
 
@@ -25,3 +25,7 @@
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
+<!--
+Solución de accesibilidad: se agregan atributos aria-haspopup y aria-controls al botón de búsqueda para mejorar la accesibilidad y evitar conflictos de foco.
+No se usa aria-hidden en el toolbar ni en el modal.
+-->

@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { FilterModalComponent } from '../filter-modal/filter-modal.component'; // Asegúrate de que esta ruta sea correcta
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'toolbar',
@@ -17,12 +17,17 @@ export class ToolbarComponent implements OnInit {
   @Input() showBack: boolean = false;
   @Input() showClear: boolean = false;
 
-  constructor(private modalController: ModalController, private router: Router) {}
+  constructor(
+    private modalController: ModalController,
+    private router: Router,
+    private activatedRoute: ActivatedRoute
+  ) {}
 
   ngOnInit() {}
 
   navigateBack() {
-    window.history.back();
+    // Navega a la página anterior usando el router de Angular
+    this.router.navigate(['../'], { relativeTo: this.activatedRoute });
   }
 
   async openSearchModal() {

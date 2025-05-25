@@ -44,52 +44,56 @@ export class HomePage implements OnInit{
       const userLat = position.coords.latitude;
       const userLng = position.coords.longitude;
 
-      if (!this.map) {
-        // Inicializar el mapa centrado en la ubicación inicial del usuario
-        this.map = L.map('map', {
-          center: [userLat, userLng],
-          zoom: 18,
-        });
+      // Solución: destruir el mapa si ya existe para evitar el error de inicialización múltiple
+      if (this.map) {
+        this.map.remove();
+        this.map = null;
+      }
 
-        // Agregar capa de fondo al mapa
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-          attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+      // Inicializar el mapa centrado en la ubicación inicial del usuario
+      this.map = L.map('map', {
+        center: [userLat, userLng],
+        zoom: 18,
+      });
+
+      // Agregar capa de fondo al mapa
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+      }).addTo(this.map);
+
+      // Agregar marcadores adicionales desde los datos
+      this.items.forEach((element: any) => {
+        const markerInstance = L.marker([element.lat, element.lng], {
+          icon: icon({
+            iconUrl: '../assets/icon/favicon.png',
+            iconSize: [38, 38],
+            iconAnchor: [22, 94],
+            popupAnchor: [-15, -88]
+          })
         }).addTo(this.map);
 
-        // Agregar marcadores adicionales desde los datos
-        this.items.forEach((element: any) => {
-          const markerInstance = L.marker([element.lat, element.lng], {
-            icon: icon({
-              iconUrl: '../assets/icon/favicon.png',
-              iconSize: [38, 38],
-              iconAnchor: [22, 94],
-              popupAnchor: [-15, -88]
-            })
-          }).addTo(this.map);
+        const popupContent = document.createElement('div');
+        popupContent.innerHTML = `
+          <strong>${element.nombre}</strong><br>
+          ${element.direccion}<br>
+          ${element.tipo}<br>
+          ${element.open ? 'Abierto' : 'Cerrado'}<br>
+          <ion-button class="go-to-card" size="small">Ir</ion-button>
+        `;
 
-          const popupContent = document.createElement('div');
-          popupContent.innerHTML = `
-            <strong>${element.nombre}</strong><br>
-            ${element.direccion}<br>
-            ${element.tipo}<br>
-            ${element.open ? 'Abierto' : 'Cerrado'}<br>
-            <ion-button class="go-to-card" size="small">Ir</ion-button>
-          `;
+        markerInstance.bindPopup(popupContent);
 
-          markerInstance.bindPopup(popupContent);
-
-          markerInstance.on('popupopen', () => {
-            const btn = popupContent.querySelector('.go-to-card');
-            if (btn) {
-              btn.addEventListener('click', () => {
-                this.router.navigate(['/lugares-card'], {
-                  queryParams: { id: element.id }
-                });
+        markerInstance.on('popupopen', () => {
+          const btn = popupContent.querySelector('.go-to-card');
+          if (btn) {
+            btn.addEventListener('click', () => {
+              this.router.navigate(['/lugares-card'], {
+                queryParams: { id: element.id }
               });
-            }
-          });
+            });
+          }
         });
-      }
+      });
 
       // Actualizar o agregar el marcador de la ubicación actual
       if (this.userMarker) {
