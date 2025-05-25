@@ -21,7 +21,8 @@
   <ion-list>
     <ion-item *ngFor="let item of items">
       <ion-thumbnail slot="start">
-        </ion-thumbnail>
+
+      </ion-thumbnail>
       <ion-label>
         <h2>{{ item.name || item.tipo }}</h2>
         <p>{{ item.description || item.descripcion }}</p>
@@ -32,6 +33,10 @@
       </ion-note>
     </ion-item>
   </ion-list>
+
+</ion-content>
+
+<ion-footer>
 
   <ion-card class="ion-margin-top no-background">
     <ion-card-content>
@@ -57,20 +62,25 @@
             Bs)</ion-col>
         </ion-row>
         <ion-row>
-          <ion-col>Comisión por uso de app:</ion-col>
+          <ion-col size="8">Comisión por uso de app:</ion-col>
           <ion-col class="ion-text-right">+ {{ commission }} bs.</ion-col>
         </ion-row>
         <ion-row>
           <ion-col><strong>Total final:</strong></ion-col>
-          <ion-col class="ion-text-right"><strong>{{ total.toFixed(2) }} bs.</strong></ion-col>
+          <ion-col class="ion-text-right"><strong>{{ total.toFixed(2) }} Bs.</strong></ion-col>
         </ion-row>
       </ion-grid>
 
-      <ion-button expand="block" class="gradient-button" [routerLink]="['/pay-card']">
+      <ion-button  expand="block" class="gradient-button" [routerLink]="['/pay-card']">
         Pagar con tarjeta
       </ion-button>
 
-      <ion-range min="0" max="100" value="0" color="medium"></ion-range>
+      <!-- <ion-range min="0" max="100" value="0" color="medium"></ion-range> -->
+      <div class="separator-line-with-o">
+        <div class="line"></div>
+        <div class="o-text">O</div>
+        <div class="line"></div>
+      </div>
 
       <ion-button expand="block" class="gradient-button">
         Pagar con QR
@@ -78,4 +88,5 @@
 
     </ion-card-content>
   </ion-card>
-</ion-content>
+
+</ion-footer>

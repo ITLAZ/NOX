@@ -1,9 +1,9 @@
 <ion-header [translucent]="true">
-  <ion-toolbar color="fucsia">
+  <ion-toolbar>
       <ion-buttons slot="start">
         <ion-back-button defaultHref="/home"></ion-back-button>
       </ion-buttons>
-    <ion-title>Menú del Lugar</ion-title>
+    <ion-title>Carrito Locales</ion-title>
     <ion-buttons slot="end">
         <ion-icon name="notifications-outline"></ion-icon>
       </ion-buttons>
@@ -36,12 +36,12 @@
     </ion-card-content>
   </ion-card>
 
-  <ion-list>
-    <ion-item lines="none">
+  
+    <ion-item lines="none" >
       <ion-label class="ion-text-wrap">
-        <h2 style="color: #FF5E9D; font-weight: bold;">Steak House</h2>
+        <h2 >Steak House</h2>
       </ion-label>
-      <ion-button fill="clear" color="medium" routerLink="/add-products">
+      <ion-button fill="clear" color="warning" routerLink="/add-products">
         Ver / añadir productos
         <ion-icon name="arrow-forward-outline" slot="end"></ion-icon>
       </ion-button>
@@ -53,23 +53,19 @@
     descripcion="8 piezas de salmón" precio="75 Bs"></app-item-carrito>
     <app-item-carrito image="https://picsum.photos/id/237/200/300" nombreComida="Sushi Maki"
     descripcion="8 piezas de salmón" precio="75 Bs"></app-item-carrito>
-  </ion-list>
+  
 
   <div class="ion-padding-horizontal">
-    <ion-label class="ion-text-wrap" style="color: #FF5E9D; font-weight: bold;">Añadir una nota:</ion-label>
-    <ion-textarea
-      placeholder="Notas"
-      rows="6"
-      style="background-color: #333; border-radius: 8px; padding: 10px; color: #FFF; margin-top: 5px;"
+    <ion-label class="ion-text-wrap" >Añadir una nota:</ion-label>
+    <ion-textarea 
+      placeholder="Notas" 
     ></ion-textarea>
   </div>
+</ion-content>
 
-  <ion-footer class="ion-no-border">
-    <ion-toolbar>
+<ion-footer class="ion-no-border"> 
       <ion-button expand="block" class="pay-button">
         Pagar
       </ion-button>
-    </ion-toolbar>
   </ion-footer>
-</ion-content>
 

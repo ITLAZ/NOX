@@ -1,63 +1,86 @@
+ion-back-button {
+    color: var(--ion-color-primary-contrast);
+    width: 24px;
+    height: 24px;
+}
 
-  ion-toolbar {
-    --background: #FF5E9D;
-    --color: #FFF;
-  }
+ion-icon[name="notifications-outline"] {
+    color: var(--ion-color-primary-contrast);
+    padding-right: 20px;
+    width: 24px;
+    height: 24px;
+}
 
-  ion-back-button, ion-icon[name="notifications-outline"] {
-    --color: #FFF;
-  }
+.pay-button {
+    --background: linear-gradient(to right, var(--ion-color-amarillo), var(--ion-color-fucsia));
+    --border-radius: 100px;
+    height: 36px;
+    width: 335px;
+    font-size: 14px;
+    font-family: 'Montserrat Medium', sans-serif;
+    text-transform: none;
+}
 
-  .pay-button {
-    --background: linear-gradient(to right, #FF5E9D, #FFA500); /* Gradient for the Pagar button */
-    --color: #FFF;
-    --border-radius: 10px;
-    height: 50px;
-    font-weight: bold;
-    font-size: 1.1em;
-  }
+ion-button {
+    text-transform: none;
+    font-family: 'Montserrat Regular', sans-serif;
+    font-size: 14px;
+}
 
-  ion-content {
-    --background: #1A1A1A; /* Dark background */
-  }
-
-  ion-item {
-    --background: #1A1A1A;
-    --color: #FFF;
-    margin-bottom: 10px; /* Space between items */
-    --padding-start: 0;
-    --inner-padding-end: 0;
-  }
-
-  ion-item h2 {
-    color: #FFF;
-    font-weight: bold;
-  }
-
-  ion-item p {
-    color: #AAA;
-    font-size: 0.9em;
-  }
-
-  ion-thumbnail {
+ion-thumbnail {
     --size: 80px;
     margin-right: 15px;
-  }
+}
 
-  ion-button[fill="outline"] {
-    --border-color: #FF5E9D;
-    --color: #FF5E9D;
-    --border-radius: 5px;
-  }
-
-  ion-icon[name="trash-outline"] {
-    color: #FF5E9D;
-    font-size: 1.3em;
-  }
-
-  ion-textarea {
-    --background: #333; /* Darker background for the textarea */
-    --color: #FFF;
-    border-radius: 8px;
+ion-textarea {
+    border-radius: 20px;
     padding: 10px;
-  }
+    background-color: var(--ion-color-light);
+    height: 90px;
+    font-size: 16px;
+    /* Notas tendrá 16px */
+    color: var(--ion-color-fucsia);
+    font-family: 'Montserrat SemiBold', sans-serif;
+    /* Notas será de color --ion-color-fucsia */
+}
+
+.ion-padding {
+    --padding-start: 0px !important;
+    --padding-end: 0px !important;
+    --padding-top: 10px !important;
+    --padding-bottom: 0px !important;
+}
+
+ion-toolbar {
+    --background: var(--ion-color-fucsia);
+}
+
+ion-title {
+    color: var(--ion-color-primary-contrast);
+}
+
+.ion-text-wrap {
+    color: var(--ion-color-fucsia) !important;
+    /* Steak House y Añadir una nota: serán de color --ion-color-fucsia */
+    font-size: 14px;
+    font-family: 'Montserrat Regular', sans-serif;
+}
+
+ion-footer {
+    padding: 20px;
+}
+
+.ion-padding-horizontal ion-label.ion-text-wrap {
+    padding-bottom: 10px;
+    display: block;
+    /* Asegúrate de que la etiqueta se comporte como un bloque para que el padding funcione correctamente */
+}
+
+ion-item {
+    --background: transparent;
+}
+
+ion-toolbar ion-title {
+    font-size: 20px;
+    font-family: "Futura MD BT", sans-serif;
+}

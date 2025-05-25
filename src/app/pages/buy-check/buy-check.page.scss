@@ -1,95 +1,152 @@
 ion-button.gradient-button {
-  --background: linear-gradient(to right, var(--ion-color-amarillo), var(--ion-color-fucsia));
-  --border-radius: 100px;
-  height: 36px;
-  width: 335px;
-  font-size: 14px;
-  font-family: 'Montserrat Medium', sans-serif;
-  font-weight: 500;
-  text-transform: none;
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
+    --background: linear-gradient(to right, var(--ion-color-amarillo), var(--ion-color-fucsia));
+    --border-radius: 100px;
+    height: 36px;
+    width: 335px;
+    font-size: 14px;
+    font-family: 'Montserrat Medium', sans-serif;
+    font-weight: 500;
+    text-transform: none;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
 }
 
 ion-card.no-background {
-  --background: transparent;
-  box-shadow: none;
+    --background: transparent;
+    box-shadow: none;
 }
 
 .no-background ion-item {
-  --background: transparent;
+    --background: transparent;
 }
 
 ion-toolbar ion-title {
-  font-size: 20px;
-  font-family: "Futura MD BT", sans-serif;
+    font-size: 20px;
+    font-family: "Futura MD BT", sans-serif;
 }
 
 ion-card.no-background ion-card-content {
-  font-size: 14px;
-  font-family: 'Montserrat Regular', sans-serif;
-  color: var(--ion-color-fucsia);
+    font-size: 14px;
+    font-family: 'Montserrat Regular', sans-serif;
+    color: var(--ion-color-fucsia);
 }
 
 ion-card.no-background ion-card-content ion-item {
-  --color: var(--ion-color-fucsia);
-  font-size: 14px;
-  font-family: 'Montserrat Regular', sans-serif;
+    --color: var(--ion-color-fucsia);
+    font-size: 14px;
+    font-family: 'Montserrat Regular', sans-serif;
 }
 
 ion-card.no-background ion-card-content ion-grid ion-col {
-  color: var(--ion-color-fucsia);
-  font-size: 14px;
-  font-family: 'Montserrat Regular', sans-serif;
+    color: var(--ion-color-fucsia);
+    font-size: 14px;
+    font-family: 'Montserrat Regular', sans-serif;
 }
 
 ion-card.no-background ion-card-content ion-grid ion-col strong {
-  font-weight: bold;
+    font-weight: bold;
 }
 
 ion-grid ion-row:nth-child(3) ion-col {
-  color: var(--ion-color-fucsia);
-  font-size: 14px;
-  font-family: 'Montserrat Regular', sans-serif;
+    color: var(--ion-color-fucsia);
+    font-size: 14px;
+    font-family: 'Montserrat Regular', sans-serif;
 }
 
 ion-grid ion-row:nth-child(3) ion-col:last-child {
-  color: var(--ion-color-warning);
-  font-size: 14px;
-  font-family: 'Montserrat Regular', sans-serif;
+    color: var(--ion-color-warning);
+    font-size: 14px;
+    font-family: 'Montserrat Regular', sans-serif;
 }
 
 ion-item ion-label {
-  font-size: 16px;
-  font-family: 'Montserrat Medium', sans-serif;
-  color: var(--ion-color-fucsia);
+    font-size: 16px;
+    font-family: 'Montserrat Medium', sans-serif;
+    color: var(--ion-color-fucsia);
 }
 
 ion-item ion-select {
-  font-size: 16px;
-  font-family: 'Montserrat Medium', sans-serif;
-  color: var(--ion-color-warning);
+    font-size: 16px;
+    font-family: 'Montserrat Medium', sans-serif;
+    color: var(--ion-color-warning);
 }
 
 ion-item ion-select::part(icon) {
-  color: var(--ion-color-warning);
-  opacity: 1;
+    color: var(--ion-color-warning);
+    opacity: 1;
 }
 
 .select-popover .item-inner {
-  color: var(--ion-color-warning) !important;
+    color: var(--ion-color-warning) !important;
 }
 
 .select-popover .item-label {
-  font-size: 16px !important;
-  font-family: 'Montserrat Medium', sans-serif !important;
-  color: var(--ion-color-warning) !important;
+    font-size: 16px !important;
+    font-family: 'Montserrat Medium', sans-serif !important;
+    color: var(--ion-color-warning) !important;
 }
 
-ion-content {
-  --padding-start: 20px !important;
-  --padding-end: 20px !important;
-  --padding-top: 20px !important;
-  --padding-bottom: 20px !important;
+.ion-padding {
+    --padding-start: 0px !important;
+    --padding-end: 0px !important;
+    --padding-top: 10px !important;
+    --padding-bottom: 0px !important;
+}
+
+ion-toolbar {
+  --background: var(--ion-color-fucsia);
+}
+
+ion-back-button {
+  color: var(--ion-color-primary-contrast);
+}
+
+ion-title{
+    color: var(--ion-color-primary-contrast);
+}
+
+ion-card.no-background ion-card-content ion-grid ion-col {
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+ion-grid ion-row:nth-child(4) ion-col {
+    font-size: 16px;
+    font-family: 'Montserrat Medium', sans-serif;
+}
+
+ion-grid ion-row:nth-child(4) ion-col strong {
+    font-size: 16px;
+}
+
+ion-grid ion-row:nth-child(4) ion-col:last-child {
+
+    font-size: 16px;
+    color: var(--ion-color-fucsia);
+}
+
+.separator-line-with-o {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Centra el contenido horizontalmente */
+  margin: 20px 0; /* Espacio arriba y abajo de la sección */
+  padding: 0 16px; /* Para que no se pegue a los bordes de la pantalla */
+}
+
+.separator-line-with-o .line {
+  background-color: var(--ion-color-fucsia); /* Color fucsia */
+  height: 2px; /* 2px de alto */
+  border-radius: 2px; /* 2px de redondeado */
+  width: 157px; /* 157px de ancho */
+  flex-grow: 1; /* Permite que las líneas crezcan para llenar el espacio, si es necesario */
+}
+
+.separator-line-with-o .o-text {
+  color: var(--ion-color-fucsia); /* Color fucsia para la 'O' */
+  font-size: 16px; /* 16px de tamaño de fuente */
+  font-family: 'Montserrat Medium', sans-serif; /* Montserrat Medium */
+  font-weight: 500; /* Asegura que sea medium */
+  margin: 0 10px; /* Espacio a los lados de la 'O' */
+  flex-shrink: 0; /* Evita que la 'O' se encoja */
 }

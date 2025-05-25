@@ -1,7 +1,13 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>Entradas</ion-title>
-  </ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="/home"></ion-back-button>
+      </ion-buttons>
+      <ion-title>Carrito Entradas</ion-title>
+      <ion-buttons slot="end">
+        <ion-icon name="notifications-outline"></ion-icon>
+      </ion-buttons>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true" class="ion-padding">
@@ -29,4 +35,51 @@
       </ion-button>
     </ion-card-content>
   </ion-card>
+
+  <ion-list>
+    <ion-item *ngFor="let item of menu">
+      <ion-label>
+        <h2>{{ item.name }}</h2>
+        <p>{{ item.description }}</p>
+        <strong>${{ item.price }}</strong>
+      </ion-label>
+
+      <ion-buttons slot="end">
+        <ion-button (click)="decrement(item)" [disabled]="item.quantity === 0">-</ion-button>
+        <ion-label>{{ item.quantity }}</ion-label>
+        <ion-button (click)="increment(item)">+</ion-button>
+      </ion-buttons>
+    </ion-item>
+  </ion-list>
+
+  <ion-card *ngIf="total > 0">
+    <ion-card-content>
+      <p><strong>Total:</strong> ${{ total }}</p>
+      <ion-button expand="block" color="success" (click)="addToCart()">
+        Añadir al carrito
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-item lines="none">
+    <ion-label class="ion-text-wrap">
+      <h2>Concierto: Adios Morat</h2>
+    </ion-label>
+    <ion-button fill="clear" color="warning" routerLink="/add-products">
+      Ver / añadir productos
+      <ion-icon name="arrow-forward-outline" slot="end"></ion-icon>
+    </ion-button>
+  </ion-item>
+
+  <app-item-carrito image="https://picsum.photos/id/237/200/300" nombreComida="Sushi Maki"
+    descripcion="8 piezas de salmón" precio="75 Bs"></app-item-carrito>
+  <app-item-carrito image="https://picsum.photos/id/237/200/300" nombreComida="Sushi Maki"
+    descripcion="8 piezas de salmón" precio="75 Bs"></app-item-carrito>
+
 </ion-content>
+
+<ion-footer class="ion-no-border">
+  <ion-button expand="block" class="pay-button">
+    Pagar
+  </ion-button>
+</ion-footer>
