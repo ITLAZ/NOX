@@ -166,9 +166,17 @@ const routes: Routes = [
     loadChildren: () => import('./pages/gestionar-publicidad/gestionar-publicidad.module').then( m => m.GestionarPublicidadPageModule)
   },
   {
+    path: 'upload-photos',
+    loadChildren: () => import('./pages/upload-photos/upload-photos.module').then( m => m.UploadPhotosPageModule)
+  },
+  {
     path: '**',
     redirectTo: '/home',
   },
+  
+
+  
+
 ];
 
 @NgModule({

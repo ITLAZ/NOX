@@ -1,0 +1,31 @@
+<toolbar [pageTitle]="'Cargar fotos'" [showBack]="true"[showSearch]="false" [showNotifications]="false" [showCart]="false"></toolbar>
+
+<ion-content [fullscreen]="true">
+<ion-item class="cargaFotos" lines="none" >
+        <ion-label>Cargar fotos del producto</ion-label>
+        <ion-button fill="clear" color = "secondary">
+          <ion-icon slot="icon-only" name="cloud-upload-outline" color = "secondary"></ion-icon>
+        </ion-button>
+      </ion-item>
+    
+
+    <ion-grid class="image-preview-grid">
+      <ion-row>
+        <ion-col size="4" >
+          <ion-card class="image-preview">
+            <ng-container >
+                <img src="https://picsum.photos/200" alt="Preview" />
+            </ng-container>
+            <ng-template #empty>
+              <ion-icon name="image-outline" class="placeholder-icon"></ion-icon>
+            </ng-template>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+  </ion-grid>
+   <div class = "cover-container">
+    <ion-button expand="block" shape="round" class="gradient-button">
+      Añadir foto
+    </ion-button>
+  </div>
+</ion-content>
