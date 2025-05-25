@@ -103,5 +103,7 @@ export class CartPage implements OnInit {
   goToEvents() {
     this.router.navigate(['/eventos']);
   }
-  
+  goToPay() {
+    this.router.navigate(['/buy-check']);
+  }
 }
