@@ -4,6 +4,17 @@
 
 **NOX** es una aplicación móvil diseñada para promover el turismo nocturno, proporcionando a los usuarios información sobre locales y eventos cercanos a su ubicación. Además, permite la compra de entradas y comida, así como la reserva anticipada de boletos para eventos próximos.
 
+## Consideraciones
+- **El responsive a ratos se raya, hay que quitar la vista responsiva y volverla a poner para corregir el error**
+- **Los errores de aria no afectan al funcionamiento del sistema**
+- **Algunos estilos estan incompletos, se priorizo que funcione**
+- **Algunas paginas no estan conectadas pero sus rutas si estan funcionando**
+- **Es necesario hacer el login para usar el sistema, una vez se inicia sesion no es necesario hacerlo de nuevo, se recomienda usar inicio con google**
+- **Hacer el npm install antes de ionic serve para evitar errores**
+  ```bash
+     npm install
+  ```
+
 ## Objetivo General
 
 Desarrollar un **MVP** (Producto Mínimo Viable) de una aplicación móvil que facilite la planificación y el descubrimiento de establecimientos y eventos nocturnos cercanos. **NOX** busca fomentar la exploración a través de un sistema de recompensas por puntos, incentivando la participación del usuario.
