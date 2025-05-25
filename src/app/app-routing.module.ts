@@ -144,9 +144,14 @@ const routes: Routes = [
     loadChildren: () => import('./pages/define-ubi/define-ubi.module').then( m => m.DefineUbiPageModule)
   },
   {
+    path: 'edit-product',
+    loadChildren: () => import('./pages/edit-product/edit-product.module').then( m => m.EditProductPageModule)
+  },
+  {
     path: '**',
     redirectTo: '/home',
   },   
+  
   
   
   
