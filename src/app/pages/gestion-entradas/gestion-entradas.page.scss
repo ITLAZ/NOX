@@ -1,10 +1,93 @@
-h4{
-    margin-left: 15px;
+.header {
+  --background: #171826;
+    font-family: "Futura Md BT", sans-serif;
 }
-img{
-      width: 375px;
-     height: 200px;
-    object-fit: cover;
-    margin-left: 15px;
-    border-radius: 24px;
+
+.menu-upload-card {
+
+  .section-title {
+    font-size: 20px;
+    font-family: "Montserrat", sans-serif;
+    color: #85eecb;
+  }
+
+  .subtitle-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #cda8f5;
+    font-size: 0.95rem;
+    font-family: "Montserrat", sans-serif;
+    padding-top: 15px;
+    padding-left: 15px;
+    margin-right: 20px;
+  }
+
+  .subtitle-icon {
+    font-size: 1.2rem;
+  }
+
+  .menu-option {
+    margin-top: 2px;
+    border-top: 1px solid #606d67;
+
+    ion-label {
+      font-size: 14px;
+      font-family: "Montserrat", sans-serif;
+      color: #8fffd1;
+    }
+
+    .option-icon {
+      font-size: 1.3rem;
+      color: #cda8f5;
+    }
+  }
 }
+.custom-input {
+
+  border-radius: 20px;
+  margin-top: 10px;
+  --background: #171826;
+  --color: #fff;
+  font-weight: 300;
+
+  ion-label {
+    color: #BFA4F4;
+    font-family: "Montserrat", sans-serif;
+  }
+
+  .clear-icon {
+    color: #BFA4F4;
+    margin-top: 25px;
+    margin-right: 10px;
+    cursor: pointer;
+  }
+}
+
+  .gradient-button {
+    --background: linear-gradient(90deg, #b266ff, #6ef9c5);
+    font-family: "Montserrat", sans-serif;
+    color: #000;
+    margin: auto;
+    margin-top: -15px;
+    padding: 20px 20px 20px 20px;
+  }
+
+ion-button {
+  text-transform: none;
+}
+h2{
+        font-size: 16px;
+        color: var(--ion-color-primary);
+        font-family: "Monstserrat Regular", sans-serif;
+    }
+    p{
+        font-size: 14px;
+        color: #BFA4F4;
+        margin: 0;
+        font-family: "Monstserrat Regular", sans-serif;
+    }
+
+    ion-icon {
+        margin: 12px;
+    }

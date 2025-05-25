@@ -18,6 +18,7 @@ import { ToolbarModule } from 'src/app/shared/toolbar/toolbar.module';
     IonicModule,
     GestionEntradasPageRoutingModule,
     ToolbarModule,
+
   ],
   declarations: [GestionEntradasPage]
 })

@@ -9,6 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GestionEntradasPage implements OnInit {
 
+  productName: string = '';
+  productDescription: string = '';
+  productPrice: string =  '';
+  productQuantity: string = '';
+
   constructor() { }
 
   ngOnInit() {

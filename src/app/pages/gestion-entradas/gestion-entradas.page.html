@@ -1,5 +1,127 @@
-<toolbar [pageTitle]="'Gestion de Entradas'" [showBack]="true" [showSearch]="false" [showNotifications]="false" [showCart]="false"></toolbar>
-
+<ion-header [translucent]="true">
+  <ion-toolbar class="header">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/panel-admin-2" color = "primary"></ion-back-button>
+    </ion-buttons>
+    <ion-title color = "primary">Gestionar Entradas</ion-title>
+  </ion-toolbar>
+</ion-header>
 <ion-content [fullscreen]="true">
+    <div class="menu-upload-card" color = "translucent">
+      <ion-card-header>
+        <ion-card-title class="section-title">Gestionar cantidad de Entradas</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <ion-item lines="none" class="menu-option" button color = "translucent" >
+          <ion-label>Cargar menú (archivo csv)</ion-label>
+          <ion-icon name="cloud-upload-outline" slot="end" class="option-icon"></ion-icon>
+        </ion-item>
+
+        <ion-item lines="none" class="menu-option" button color = "translucent" >
+          <ion-label>Añadir elemento manualmente</ion-label>
+          <ion-icon name="chevron-up-outline" slot="end" class="option-icon"></ion-icon>
+        </ion-item>
+      </ion-card-content>
+    </div>
+
+    <div>
+    <ion-card-content>
+      <ion-item fill="solid" class="custom-input"  lines="none">
+        <ion-label position="floating">Nombre de la Categoria</ion-label>
+        <ion-input [(ngModel)]="productName" type="text"></ion-input>
+        <ion-icon
+          *ngIf="productName"
+          name="close-outline"
+          slot="end"
+          class="clear-icon"
+          (click)="productName = ''"
+        ></ion-icon>
+      </ion-item> 
+
+      <ion-item fill="solid" class="custom-input" lines="none">
+        <ion-label position="floating">Descripción</ion-label>
+        <ion-input [(ngModel)]="productDescription" type="text"></ion-input>
+        <ion-icon
+          *ngIf="productDescription"
+          name="close-outline"
+          slot="end"
+          class="clear-icon"
+          (click)="productDescription = ''"
+        ></ion-icon>
+      </ion-item>
+
+      <ion-item fill="solid" class="custom-input" lines="none">
+        <ion-label position="floating">Precio</ion-label>
+        <ion-input [(ngModel)]="productPrice" type="text"></ion-input>
+        <ion-icon
+          *ngIf="productPrice"
+          name="close-outline"
+          slot="end"
+          class="clear-icon"
+          (click)="productPrice = ''"
+        ></ion-icon>
+      </ion-item>
+
+      <ion-item fill="solid" class="custom-input" lines="none">
+        <ion-label position="floating">Cantidad Disponible</ion-label>
+        <ion-input [(ngModel)]="productQuantity" type="text"></ion-input>
+        <ion-icon
+          *ngIf="productQuantity"
+          name="close-outline"
+          slot="end"
+          class="clear-icon"
+          (click)="productQuantity = ''"
+        ></ion-icon>
+      </ion-item>
+
+
+    </ion-card-content>
+  </div>
+    <div class = "cover-container">
+    <ion-button expand="block" shape="round" class="gradient-button">
+      Añadir a la lista
+    </ion-button>
+  </div>
+
+  <ion-list class="ticket-list" >
+    <ion-item class="ticket-card ultra-vip" color = "translucent">
+        <ion-icon name="ticket" color = "secondary"></ion-icon>
+      <ion-label>
+        <h2>Nombre item</h2>
+        <p>Descripcion</p>
+        <p>Precio</p>
+      </ion-label>
+      <ion-icon name="trash" color = "primary"></ion-icon>
+    </ion-item>
+    <ion-item class="ticket-card ultra-vip" color = "translucent">
+        <ion-icon name="ticket" color = "secondary"></ion-icon>
+      <ion-label>
+        <h2>Nombre item</h2>
+        <p>Descripcion</p>
+        <p>Precio</p>
+      </ion-label>
+      <ion-icon name="trash" color = "primary"></ion-icon>
+    </ion-item>
+    <ion-item class="ticket-card ultra-vip" color = "translucent">
+        <ion-icon name="ticket" color = "secondary"></ion-icon>
+      <ion-label>
+        <h2>Nombre item</h2>
+        <p>Descripcion</p>
+        <p>Precio</p>
+      </ion-label>
+      <ion-icon name="trash" color = "primary" ></ion-icon>
+    </ion-item>
+    <ion-item class="ticket-card ultra-vip" color = "translucent">
+        <ion-icon name="ticket" color = "secondary"></ion-icon>
+      <ion-label>
+        <h2>Nombre item</h2>
+        <p>Descripcion</p>
+        <p>Precio</p>
+      </ion-label>
+      <ion-icon name="trash" color = "primary"></ion-icon>
+    </ion-item>
+</ion-list>
+
 
 </ion-content>
