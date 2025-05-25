@@ -1,26 +1,19 @@
-<ion-content class="ion-padding custom-content">
-  <div class="header-content-review">
-    <div class="user-info">
-      <ion-avatar>
-        <img src="https://ionicframework.com/docs/img/demos/avatar.svg" />
-      </ion-avatar>
-      <h2>Jacinto</h2>
-    </div>
+<ion-content class="ion-padding">
+  <h2>Agregar un Comentario</h2>
+  <ion-textarea
+    [(ngModel)]="comentario"
+    placeholder="Escribe tu comentario"
+    rows="5">
+  </ion-textarea>
 
-    <div class="stars">
-      <ion-icon
-        *ngFor="let star of [1, 2, 3, 4, 5]"
-        [name]="star <= rating ? 'star' : 'star-outline'"
-        (click)="setRating(star)">
-      </ion-icon>
-    </div>
+  <div class="stars">
+    <ion-icon
+      *ngFor="let star of [1, 2, 3, 4, 5]"
+      [name]="star <= resenia ? 'star' : 'star-outline'"
+      (click)="resenia = star">
+    </ion-icon>
   </div>
 
-  <ion-textarea
-    placeholder="Comparte tu opinión"
-    rows="5"
-    class="opinion-area custom-border-radius-20" style="border-radius: 20px;"> </ion-textarea>
-
-  <div class="buttons" >
-    <ion-button class="custom-border-radius-100" (click)="cancel()">Cancelar</ion-button> <ion-button class="custom-border-radius-100" (click)="submit()">Enviar</ion-button> </div>
+  <ion-button expand="block" (click)="agregarComentario()">Enviar</ion-button>
+  <ion-button expand="block" color="medium" (click)="cerrarModal()">Cancelar</ion-button>
 </ion-content>

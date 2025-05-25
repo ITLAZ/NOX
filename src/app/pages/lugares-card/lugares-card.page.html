@@ -15,7 +15,9 @@
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
+
 <ion-content [fullscreen]="true" class="contenido-local">
+  <!-- Imagen del lugar -->
   <div class="seccion-imagen">
     <img src="https://picsum.photos/375/200" alt="Local" />
     <div class="info-local" *ngIf="lugar">
@@ -27,6 +29,7 @@
     </div>
   </div>
 
+  <!-- Menú del lugar -->
   <div class="seccion-mas-vendidos" *ngIf="menu.length > 0">
     <h2>Menú del Local</h2>
 
@@ -42,12 +45,12 @@
     </swiper-container>
 
     <ion-button [routerLink]="['/lugares-menu', lugar.id]" expand="block" fill="clear">
-    Ver menú completo
-    <ion-icon slot="end" name="arrow-forward-outline"></ion-icon>
-  </ion-button>
-
+      Ver menú completo
+      <ion-icon slot="end" name="arrow-forward-outline"></ion-icon>
+    </ion-button>
   </div>
 
+  <!-- Cómo llegar -->
   <div class="seccion-como-llegar" *ngIf="lugar">
     <h2>¿Cómo llegar?</h2>
     <img src="../../../assets/images/mapa.png" alt="Mapa" class="mapa-img" style="padding: 20px;" />
@@ -58,6 +61,7 @@
     </ion-button>
   </div>
 
+  <!-- Comentarios -->
   <div class="seccion-comentarios" *ngIf="comentarios.length > 0">
     <h2>Comentarios</h2>
     <swiper-container slides-per-view="1.25" navigation="false" pagination="false" class="mySwiper"
@@ -67,7 +71,10 @@
           <div class="seccion-superior">
             <span class="nombre-usuario">{{ comentario.usuario }}</span>
             <div class="calificacion">
-              <ion-icon *ngFor="let estrella of [1,2,3,4,5]" name="{{ estrella <= comentario.resenia ? 'star' : 'star-outline' }}" size="large"></ion-icon>
+              <ion-icon *ngFor="let estrella of [1,2,3,4,5]" 
+                        [name]="estrella <= comentario.resenia ? 'star' : 'star-outline'" 
+                        size="large">
+              </ion-icon>
             </div>
           </div>
           <div class="seccion-inferior">
@@ -77,8 +84,19 @@
       </swiper-slide>
     </swiper-container>
 
+    <!-- Botón para abrir el modal -->
     <ion-button expand="block" fill="clear" (click)="presentModal()">
       Deja tu reseña
+      <ion-icon slot="end" name="arrow-forward-outline"></ion-icon>
+    </ion-button>
+  </div>
+
+  <!-- Si no hay comentarios -->
+  <div class="seccion-comentarios" *ngIf="comentarios.length === 0">
+    <h2>Comentarios</h2>
+    <p class="mensaje-no-comentarios">Aún no hay comentarios para este lugar.</p>
+    <ion-button expand="block" fill="clear" (click)="presentModal()">
+      Sé el primero en comentar
       <ion-icon slot="end" name="arrow-forward-outline"></ion-icon>
     </ion-button>
   </div>

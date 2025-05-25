@@ -86,9 +86,9 @@ export class PayCardPage implements OnInit {
     this.content.scrollToPoint(0, center - 200, 300);
   }
 
-  volverInicio() {
-  // Limpia el localStorage
-  localStorage.clear();
+volverInicio() {
+  // Elimina el item 'cart' del localStorage
+  localStorage.removeItem('cart');
   
   // Navega de vuelta al menú
   this.router.navigate(['/menu']); // Cambia '/menu' por la ruta deseada
