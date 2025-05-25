@@ -204,8 +204,8 @@ export class AuthService {
     await runInInjectionContext(this.injector, async () => {
       const uid = user.uid;
       const email = user.email;
-      const displayName = user.displayName;
-      const photoURL = user.photoURL;
+      const name = user.displayName; // Usar 'name' para el perfil
+      const photoUrl = user.photoURL; // Usar 'photoUrl' para el perfil
 
       // Comprobar si el usuario ya existe en Firestore
       const docRef = this.firestore.collection('usersPrueba').doc(uid);
@@ -214,15 +214,19 @@ export class AuthService {
         try {
           await docRef.set({
             email,
-            displayName,
-            photoURL,
+            name,
+            photoUrl,
             // Otros campos que quieras agregar
           });
-          console.log('Usuario guardado en Firestore:', { email, displayName, photoURL });
+          console.log('Usuario guardado en Firestore:', { email, name, photoUrl });
         } catch (error) {
           console.error('Error al guardar usuario en Firestore:', error);
         }
       }
+      // Actualizar el perfil local y en localStorage
+      const profile = { uid, email, name, photoUrl };
+      localStorage.setItem('profile', JSON.stringify(profile));
+      this.profile = profile;
     });
   }
 
