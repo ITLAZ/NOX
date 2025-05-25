@@ -8,6 +8,7 @@ import { CartPageRoutingModule } from './cart-routing.module';
 
 import { CartPage } from './cart.page';
 import { ItemCarritoModule } from 'src/app/shared/item-carrito/item-carrito.module';
+import { ToolbarModule } from 'src/app/shared/toolbar/toolbar.module'; // Uncomment if you need a toolbar
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { ItemCarritoModule } from 'src/app/shared/item-carrito/item-carrito.modu
     FormsModule,
     IonicModule,
     CartPageRoutingModule,
-    ItemCarritoModule
+    ItemCarritoModule,
+    ToolbarModule
   ],
   declarations: [CartPage]
 })

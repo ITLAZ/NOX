@@ -10,6 +10,7 @@ import { BuyCheckPage } from './buy-check.page';
 
 import { ItemCarritoModule } from 'src/app/shared/item-carrito/item-carrito.module';
 import { ItemCarritoConfirmadoModule } from 'src/app/shared/item-carrito-confirmado/item-carrito-confirmado.module';
+import { ToolbarModule } from 'src/app/shared/toolbar/toolbar.module';
 
 @NgModule({
   imports: [
@@ -18,7 +19,8 @@ import { ItemCarritoConfirmadoModule } from 'src/app/shared/item-carrito-confirm
     IonicModule,
     BuyCheckPageRoutingModule,
     ItemCarritoModule,
-    ItemCarritoConfirmadoModule
+    ItemCarritoConfirmadoModule,
+    ToolbarModule
   ],
   declarations: [BuyCheckPage]
 })

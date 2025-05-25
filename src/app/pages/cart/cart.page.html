@@ -1,14 +1,4 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button defaultHref="/home"></ion-back-button>
-    </ion-buttons>
-    <ion-title>Mi Carrito</ion-title>
-    <ion-buttons slot="end">
-      <ion-icon name="notifications-outline"></ion-icon>
-    </ion-buttons>
-  </ion-toolbar>
-</ion-header>
+<toolbar [pageTitle]="'Carrito'" [showSearch]="false" [showCart]="false" [showBack]="true" [showNotifications]="true"></toolbar>
 
 <ion-content [fullscreen]="true">
   <ng-container *ngIf="cartItems.length > 0; else emptyCart">
