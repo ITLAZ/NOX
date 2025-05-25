@@ -100,7 +100,7 @@
     </ion-icon>
     <h2>{{ paymentSuccess ? 'Pago realizado correctamente' : 'El pago ha fallado' }}</h2>
     <ion-button expand="block" color="success" *ngIf="paymentSuccess" (click)="volverInicio()">
-      Volver al menú
+      Volver al inicio
     </ion-button>
     <ion-button expand="block" color="danger" *ngIf="!paymentSuccess" (click)="reintentarPago()">
       Reintentar pago

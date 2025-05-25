@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { NavController, IonContent } from '@ionic/angular';
 
 @Component({
@@ -22,7 +23,8 @@ export class PayCardPage implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private navCtrl: NavController
+    private navCtrl: NavController,
+    private router: Router,
   ) {}
 
   ngOnInit() {
@@ -85,8 +87,12 @@ export class PayCardPage implements OnInit {
   }
 
   volverInicio() {
-    this.navCtrl.navigateRoot('/home');
-  }
+  // Limpia el localStorage
+  localStorage.clear();
+  
+  // Navega de vuelta al menú
+  this.router.navigate(['/menu']); // Cambia '/menu' por la ruta deseada
+}
 
   reintentarPago() {
     this.cardForm.reset();
