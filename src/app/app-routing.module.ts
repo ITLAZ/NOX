@@ -174,15 +174,17 @@ const routes: Routes = [
     loadChildren: () => import('./pages/gestionar-resenias/gestionar-resenias.module').then( m => m.GestionarReseniasPageModule)
   },
   {
+    path: 'my-tickets',
+    loadChildren: () => import('./pages/my-tickets/my-tickets.module').then( m => m.MyTicketsPageModule)
+  },
+  {
+    path: 'qr-ticket',
+    loadChildren: () => import('./pages/qr-ticket/qr-ticket.module').then( m => m.QrTicketPageModule)
+  },
+  {
     path: '**',
     redirectTo: '/home',
   },
-  
-
-  
-
-  
-
 ];
 
 @NgModule({

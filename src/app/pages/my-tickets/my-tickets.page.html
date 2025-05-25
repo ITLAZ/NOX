@@ -1,0 +1,24 @@
+<toolbar [pageTitle]="'Mis Entradas'" [showCart]="false" [showSearch]="false" [showNotifications]="false" [showBack]="true"></toolbar>
+
+<ion-content [fullscreen]="true">
+  <div class="tickets-container">
+    <div class="ticket-card" *ngFor="let ticket of tickets" (click)="verTicket(ticket)">
+      <div class="ticket-header">
+        <h2>{{ ticket.eventoNombre }}</h2>
+        <p *ngIf="ticket.fecha">{{ ticket.fecha | date: 'mediumDate' }}</p>
+      </div>
+      <div class="ticket-details">
+        <p>Producto: {{ ticket.producto || '-' }}</p>
+        <p *ngIf="ticket.descripcion">{{ ticket.descripcion }}</p>
+        <p>Precio: {{ ticket.precio || ticket.price }} Bs</p>
+        <p>Cantidad: {{ ticket.cantidad || '-' }}</p>
+        <p>Asiento: {{ ticket.asiento || 'A1' }}</p>
+        <p>Código: {{ ticket.codigo || '123456789' }}</p>
+      </div>
+    </div>
+    <div *ngIf="tickets.length === 0" class="no-tickets">
+      <ion-icon name="ticket-outline"></ion-icon>
+      <p>No tienes entradas compradas aún.</p>
+    </div>
+  </div>
+</ion-content>

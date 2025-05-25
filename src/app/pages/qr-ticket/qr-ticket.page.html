@@ -1,0 +1,20 @@
+<toolbar [pageTitle]="'Entrada QR'" [showCart]="false" [showSearch]="false" [showNotifications]="false" [showBack]="true"></toolbar>
+
+<ion-content [fullscreen]="true">
+  <div class="qr-ticket-container" *ngIf="ticket">
+    <div class="qr-ticket-card">
+      <h2>{{ ticket.eventoNombre || ticket.eventName || ticket.evento }}</h2>
+      <p><b>Fecha:</b> {{ ticket.fecha ? (ticket.fecha | date: 'mediumDate') : 'Sin fecha' }}</p>
+      <p><b>Producto:</b> {{ ticket.producto || '-' }}</p>
+      <p><b>Descripción:</b> {{ ticket.descripcion || '-' }}</p>
+      <p><b>Precio:</b> {{ ticket.precio || ticket.price || '-' }} Bs</p>
+      <p><b>Cantidad:</b> {{ ticket.cantidad || '-' }}</p>
+      <p><b>Asiento:</b> {{ ticket.asiento || 'A1' }}</p>
+      <p><b>Código:</b> {{ ticket.codigo || '123456789' }}</p>
+      <p><b>ID Evento:</b> {{ ticket.evento || '-' }}</p>
+      <div class="qr-code">
+        <canvas #qrCanvas width="200" height="200"></canvas>
+      </div>
+    </div>
+  </div>
+</ion-content>
