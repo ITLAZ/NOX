@@ -144,23 +144,13 @@ const routes: Routes = [
     loadChildren: () => import('./pages/define-ubi/define-ubi.module').then( m => m.DefineUbiPageModule)
   },
   {
+    path: 'filters',
+    loadChildren: () => import('./pages/filters/filters.module').then( m => m.FiltersPageModule)
+  },
+  {
     path: '**',
     redirectTo: '/home',
-  },   
-  
-  
-  
-  
-  
-
-  
-  
-
-  
-
-  
-
-
+  },
 ];
 
 @NgModule({

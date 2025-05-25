@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { FilterModalComponent } from '../filter-modal/filter-modal.component'; // Asegúrate de que esta ruta sea correcta
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'toolbar',
@@ -16,7 +17,7 @@ export class ToolbarComponent implements OnInit {
   @Input() showBack: boolean = false;
   @Input() showClear: boolean = false;
 
-  constructor(private modalController: ModalController) {}
+  constructor(private modalController: ModalController, private router: Router) {}
 
   ngOnInit() {}
 
@@ -25,10 +26,18 @@ export class ToolbarComponent implements OnInit {
   }
 
   async openSearchModal() {
+    // Detectar la ruta actual
+    let initialTab = 'tab1';
+    if (this.router.url.includes('/eventos')) {
+      initialTab = 'tab2';
+    } else if (this.router.url.includes('/lugares')) {
+      initialTab = 'tab1';
+    }
     const modal = await this.modalController.create({
       component: FilterModalComponent,
-      breakpoints: [0, 0.25, 0.5, 0.85],
-      initialBreakpoint: 0.8,
+      componentProps: { initialTab },
+      breakpoints: [0, 0.25, 0.5, 0.95],
+      initialBreakpoint: 0.95,
       cssClass: 'filter-modal',
       handle: true,
     });

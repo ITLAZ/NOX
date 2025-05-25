@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 
 @Component({
@@ -8,8 +8,9 @@ import { ModalController } from '@ionic/angular';
   standalone: false,
 })
 export class FilterModalComponent {
+  @Input() initialTab: string = 'tab1';
   selectedTab: string = 'tab1';
-  currentBreakpoint: number = 0.25;
+  currentBreakpoint: number = 0.95;
 
   lugares = Array(10).fill({});
   eventos = [
@@ -30,6 +31,10 @@ export class FilterModalComponent {
   ];
 
   constructor(private modalController: ModalController) {}
+
+  ngOnInit() {
+    this.selectedTab = this.initialTab || 'tab1';
+  }
 
   updateCurrentBreakpoint(breakpoint: number) {
     this.currentBreakpoint = breakpoint;

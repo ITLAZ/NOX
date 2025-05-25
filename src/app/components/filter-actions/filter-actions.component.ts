@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'filter-actions',
@@ -7,6 +7,10 @@ import { Component, OnInit } from '@angular/core';
   standalone: false,
 })
 export class FilterActionsComponent  implements OnInit {
+
+  @Input() showCards: boolean = false;
+  @Input() eventos: boolean = false;
+  @Input() lugares: boolean = false;
 
   constructor() { }
 

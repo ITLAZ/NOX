@@ -1,5 +1,5 @@
-<ion-content class="ion-padding" [fullscreen]="true">
-      <ion-content [scrollEvents]="true" class="ion-padding">
+<ion-content [fullscreen]="true">
+      <ion-content [scrollEvents]="true">
         <ion-searchbar placeholder="Buscar..." (click)="expandModal()"></ion-searchbar>
 
         <ion-segment [value]="selectedTab" (ionChange)="onSegmentChange($event)">
@@ -12,16 +12,17 @@
         </ion-segment>
 
         <!-- Filtros fijos -->
-        <filter-actions></filter-actions>
+        <filter-actions [showCards]="true"></filter-actions>
+
 
         <!-- Lista con scroll -->
         <div style="height: 50vh; overflow-y: auto;" (ionScroll)="loadMore($event)">
           <ng-container *ngIf="selectedTab === 'tab1'">
-            <media-card *ngFor="let lugar of lugares"></media-card>
+            <media-card class="fil-media" *ngFor="let lugar of lugares"></media-card>
           </ng-container>
 
           <ng-container *ngIf="selectedTab === 'tab2'">
-            <media-card-evento
+            <media-card-evento class="fil-media" style="height: 150px; width: 100%;"
               *ngFor="let evento of eventos"
               [nombreLocal]="evento.nombreLocal"
               [fecha]="evento.fecha"

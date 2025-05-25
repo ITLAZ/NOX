@@ -8,7 +8,7 @@ import { EventosPage } from './eventos.page';
 
 import { MidCardEventoModule } from 'src/app/shared/mid-card-evento/mid-card-evento.module';
 import { SearchModule } from 'src/app/shared/search/search.module';
-import { FilterModalModule } from 'src/app/shared/filter-modal/filter-modal.module';
+import { FilterActionsModule } from 'src/app/shared/filter-actions/filter-actions.module';
 import { ActionCardModule } from 'src/app/shared/action-card/action-card.module';
 import { ToolbarModule } from 'src/app/shared/toolbar/toolbar.module';
 import { MediaCardEventoModule } from 'src/app/shared/media-card-evento/media-card-evento.module';
@@ -22,7 +22,7 @@ import { MediaCardEventoModule } from 'src/app/shared/media-card-evento/media-ca
     EventosPageRoutingModule,
     MidCardEventoModule,
     SearchModule,
-    FilterModalModule,
+    FilterActionsModule,
     ActionCardModule,
     MediaCardEventoModule,
     ToolbarModule
