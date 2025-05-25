@@ -1,7 +1,7 @@
 <toolbar [pageTitle]="'Eventos'"></toolbar>
 
 <ion-content>
-  <filter-actions [eventos]="true"></filter-actions>
+  <filter-actions [eventos]="true" (etiquetaSeleccionada)="onEtiquetaSeleccionada($event)"></filter-actions>
   <h2>Eventos destacados</h2>
   <swiper-container slides-per-view="1.3" space-between="10" style="width: 375px; margin-left: -10px;">
     <swiper-slide *ngFor="let evento of events">
@@ -39,7 +39,8 @@
           [tipo]="evento.tipo"
           [fecha]="formatFecha(evento.fechas.inicio)"
           [horario]="evento.horario.inicio"
-          [distancia]="evento.direccion || 'Ubicación no disponible'">
+          [distancia]="evento.direccion || 'Ubicación no disponible'"
+          [direccion]="evento.direccion || 'Ubicación no disponible'">
         </media-card-evento>
       </ion-col>
     </ion-row>

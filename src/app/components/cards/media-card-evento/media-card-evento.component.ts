@@ -12,6 +12,8 @@ export class MediaCardEventoComponent  implements OnInit {
   @Input() fecha: string = ''; // Variable para la distancia
   @Input() horario: string = ''; // Variable para la distancia
   @Input() tipo: string = ''; // Variable para la distancia
+  @Input() etiquetas: string[] = []; // Variable para las etiquetas
+  @Input() direccion: string = ''; // Variable para la dirección
   constructor() { }
 
   ngOnInit() {}

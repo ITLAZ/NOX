@@ -10,7 +10,12 @@
       <ion-icon name="calendar-outline"></ion-icon> {{ tipo }}
     </ion-card-subtitle>
     <p>
-      <ion-icon name="location-outline"></ion-icon> {{ fecha }} {{ horario }}
+      <ion-icon name="location-outline"></ion-icon> {{ direccion }}
     </p>
+    <div *ngIf="etiquetas?.length">
+      <ion-chip *ngFor="let et of etiquetas" color="secondary" style="margin:2px;">
+        <ion-label>{{ et }}</ion-label>
+      </ion-chip>
+    </div>
   </ion-card-content>
 </ion-card>

@@ -12,6 +12,7 @@ register();
 export class EventosPage implements OnInit {
 
   events: any[] = [];
+  allEvents: any[] = [];
   isLoading = true;
 
   constructor(private db: DatabaseService, private router: Router) {}
@@ -20,9 +21,18 @@ export class EventosPage implements OnInit {
 ngOnInit() {
   this.db.getEvents().subscribe(data => {
     console.log('Eventos cargados directamente:', data);
+    this.allEvents = data;
     this.events = data;
     this.isLoading = false;
   });
+}
+
+onEtiquetaSeleccionada(etiqueta: string) {
+  if (!etiqueta) {
+    this.events = this.allEvents;
+    return;
+  }
+  this.events = this.allEvents.filter(evento => (evento.etiquetas || []).includes(etiqueta));
 }
 
 irAEvento(evento: any) {

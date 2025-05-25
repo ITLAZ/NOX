@@ -42,6 +42,9 @@
           [horario]="evento.horario?.inicio"
           [tipo]="evento.tipo"
           [imagen]="evento.imagen"
+          [fecha]="getFechaEvento(evento.fechas.inicio)"
+          [direccion]="evento.direccion || 'Ubicación no disponible'"
+          [etiquetas]="evento.etiquetas"
           (click)="onTipoSeleccionado(evento.tipo)">
         </media-card-evento>
       </ng-container>

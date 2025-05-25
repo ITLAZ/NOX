@@ -3,7 +3,7 @@
   <img [src]="imagen" alt="Imagen dinámica" />
 
   <ion-card-header>
-    <ion-card-title>Make sushi</ion-card-title>
+    <ion-card-title>{{ nombreLocal }}</ion-card-title>
     <ion-badge color="primary">
       <ion-icon name="star"></ion-icon>
       8.6
@@ -12,10 +12,10 @@
 
   <ion-card-content>
     <ion-card-subtitle>
-      <ion-icon name="restaurant-outline"></ion-icon> {{ nombreLocal }}
+      <ion-icon name="restaurant-outline"></ion-icon> {{ tipo }}
     </ion-card-subtitle>
     <p>
-      <ion-icon name="location-outline"></ion-icon> {{ distancia }}
+      <ion-icon name="location-outline"></ion-icon> {{ direccion }}
     </p>
   </ion-card-content>
 </ion-card>

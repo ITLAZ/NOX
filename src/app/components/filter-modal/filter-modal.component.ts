@@ -125,7 +125,7 @@ export class FilterModalComponent implements OnInit {
     event.target.complete?.();
   }
 
-  // Asegura que la fecha sea string o Date, nunca null
+  // Asegura que la fecha sea string, nunca null
   getFechaEvento(fecha: any): string {
     if (!fecha) return '';
     if (typeof fecha === 'object' && typeof fecha.toDate === 'function') {

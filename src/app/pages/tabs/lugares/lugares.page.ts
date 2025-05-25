@@ -12,6 +12,7 @@ register();
 })
 export class LugaresPage implements OnInit {
   locales: any[] = [];
+  allLocales: any[] = [];
   isLoading = true;
 
   constructor(private db: DatabaseService, private router: Router) {}
@@ -19,9 +20,18 @@ export class LugaresPage implements OnInit {
 
 ngOnInit() {
   this.db.getLocales().subscribe(data => {
+    this.allLocales = data;
     this.locales = data;
     this.isLoading = false;
   });
+}
+
+onEtiquetaSeleccionada(etiqueta: string) {
+  if (!etiqueta) {
+    this.locales = this.allLocales;
+    return;
+  }
+  this.locales = this.allLocales.filter(local => (local.etiquetas || []).includes(etiqueta));
 }
 
   irALocal(local: any) {

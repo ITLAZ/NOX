@@ -13,8 +13,8 @@
     <ion-card-subtitle *ngIf="tipo">
       <ion-icon name="restaurant-outline"></ion-icon> {{ tipo }}
     </ion-card-subtitle>
-    <p *ngIf="direccion || distancia">
-      <ion-icon name="location-outline"></ion-icon> {{ distancia || direccion }}
+    <p *ngIf="direccion">
+      <ion-icon name="location-outline"></ion-icon> {{ direccion }}
     </p>
     <div *ngIf="etiquetas?.length">
       <ion-chip *ngFor="let et of etiquetas" color="secondary" style="margin:2px;">

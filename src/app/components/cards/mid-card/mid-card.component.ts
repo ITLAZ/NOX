@@ -10,6 +10,8 @@ export class MidCardComponent implements OnInit {
   @Input() imagen: string = ''; // Variable para recibir la imagen
   @Input() nombreLocal: string = ''; // Variable para el nombre del local
   @Input() distancia: string = ''; // Variable para la distancia
+  @Input() direccion: string = ''; // Variable para la dirección
+  @Input() tipo: string = ''; // Variable para el tipo
 
   constructor() {}
 
