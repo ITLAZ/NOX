@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 import { DatabaseService } from 'src/app/services/database.service';
+import { Router } from '@angular/router';
 
 interface Book {
   name: string;
@@ -19,7 +20,8 @@ interface Book {
   constructor(
     public db: DatabaseService,
     public auth: AuthService,
-    public formBuilder: FormBuilder
+    public formBuilder: FormBuilder,
+    private router: Router
   ) {
     this.form = this.formBuilder.group({
       username: ['', [Validators.required]],
@@ -27,17 +29,27 @@ interface Book {
     })
   }
 
-  login() {
+  async login() {
     if (this.form.valid) {
       const { username, password } = this.form.value;
-      this.auth.loginByUsername(username, password);
+      try {
+        await this.auth.loginByUsername(username, password);
+        this.router.navigate(['/home']);
+      } catch (e) {
+        // El AuthService ya muestra el error
+      }
     } else {
       this.form.markAllAsTouched();
     }
   }
 
-  loginWithGoogle() {
-    this.auth.loginGoogle();
+  async loginWithGoogle() {
+    try {
+      await this.auth.loginGoogle();
+      this.router.navigate(['/home']);
+    } catch (e) {
+      // El AuthService ya muestra el error
+    }
   }
 
 }

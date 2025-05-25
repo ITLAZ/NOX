@@ -1,11 +1,22 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MenuComponent } from './components/menu/menu.component';
+import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
   {
     path: '',
+    redirectTo: 'start',
+    pathMatch: 'full',
+  },
+  {
+    path: 'start',
+    loadChildren: () => import('./pages/start/start.module').then( m => m.StartPageModule)
+  },
+  {
+    path: '',
     component: MenuComponent, // Componente que contiene <ion-tabs>
+    canActivate: [AuthGuard],
     children: [
       {
         path: 'home',

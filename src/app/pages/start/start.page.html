@@ -1,9 +1,9 @@
 <ion-content [fullscreen]="true">
-  <div id="logo" *ngIf="showLogo">
+  <div id="logo" *ngIf="showLogo" [@logoAnimation]>
     <img src="../../../assets/images/NOX.png" alt="NOX logo"/>
   </div>
 
-  <div id="welcome" *ngIf="showWelcome">
+  <div id="welcome" *ngIf="showWelcome" [@slideUp]>
     <h1>La noche te espera llena de planes increíbles.</h1>
     <div id="actions">
       <ion-button id="logIn" [routerLink]="'/login'" expand="full">Iniciar Sesión</ion-button>

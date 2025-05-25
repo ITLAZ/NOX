@@ -104,7 +104,7 @@ export class AuthService {
           console.log('Usuario autenticado:', user);
 
           this.getProfile(user.uid);
-          this.router.navigateByUrl('/profile');
+          this.router.navigateByUrl('/home'); // Redirigir a home después de login
         } else {
           throw new Error('No se pudo obtener el usuario');
         }
@@ -174,7 +174,7 @@ export class AuthService {
       if (userCredential.user) {
         const user = userCredential.user;
         await this.handleGoogleUser(user);
-        this.router.navigate(['/profile']);
+        // Quitar navegación aquí, se hará en el componente
       }
     } catch (error) {
       this.handleAuthError(error);
@@ -204,6 +204,18 @@ export class AuthService {
       color: 'danger'
     });
     await toast.present();
+  }
+
+  // Devuelve true si hay usuario autenticado
+  isLoggedIn(): boolean {
+    const user = localStorage.getItem('user');
+    return !!user;
+  }
+
+  // Devuelve una promesa que resuelve a true si hay usuario autenticado en Firebase
+  async isLoggedInAsync(): Promise<boolean> {
+    const user = await this.afAuth.currentUser;
+    return !!user;
   }
 
   // Método opcional para comprobar si hay sesión activa
