@@ -43,7 +43,7 @@
   <!-- Pantalla normal de QR -->
   <div *ngIf="!processing && !paymentFailed" class="ion-text-center">
     <ion-card>
-      <img src="assets/qr-placeholder.png" alt="Código QR" style="width: 200px; height: 200px; margin: auto;" />
+      <canvas #qrCanvas width="200" height="200"></canvas>
       <div>
         <ion-text color="warning">
           <p><strong>Monto: {{ total | currency:'Bs. ' }}</strong></p>

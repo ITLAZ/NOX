@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { CartService } from 'src/app/services/cart.service';
-
+import { Router } from '@angular/router';
+// @ts-ignore
+import * as QRCode from 'qrcode';
 
 @Component({
   selector: 'app-pay-qr',
@@ -9,7 +11,6 @@ import { CartService } from 'src/app/services/cart.service';
   standalone: false
 })
 export class PayQRPage implements OnInit {
-
   total: number = 0;
   expirationDate: string = '2025-12-31';
   expirationTime: string = '23:59';
@@ -17,11 +18,36 @@ export class PayQRPage implements OnInit {
   
   processing: boolean = false;
   paymentFailed: boolean = false;
+  qrData: string = '';
 
-  constructor(private cartService: CartService) {}
+  @ViewChild('qrCanvas', { static: false }) qrCanvas!: ElementRef;
+
+  constructor(private cartService: CartService, private router: Router) {}
+
+  async ngAfterViewInit() {
+    await this.generateQR();
+  }
+
+  async generateQR() {
+    if (this.qrCanvas) {
+      await QRCode.toCanvas(this.qrCanvas.nativeElement, this.qrData, { width: 200 });
+    }
+  }
 
   ngOnInit() {
     this.total = this.cartService.getCheckoutTotal();
+    const today = new Date();
+    const yyyy = today.getFullYear();
+    const mm = String(today.getMonth() + 1).padStart(2, '0');
+    const dd = String(today.getDate()).padStart(2, '0');
+    this.expirationDate = `${yyyy}-${mm}-${dd}`;
+    this.expirationTime = '23:59:00';
+    this.qrData = JSON.stringify({
+      total: this.total,
+      expirationDate: this.expirationDate,
+      expirationTime: this.expirationTime,
+      reference: this.reference
+    });
     console.log('Total recibido:', this.total);
   }
 
@@ -40,12 +66,18 @@ export class PayQRPage implements OnInit {
   }
 
   tryAnotherMethod() {
-    console.log('Intentando otro método de pago...');
-    // Aquí puedes redirigir a otra página o lógica
+    this.router.navigate(['/pay-card']);
   }
-  downloadQR() {
-    console.log('Descargar QR');
-    // Implementa la lógica para descargar la imagen QR
+
+  async downloadQR() {
+    if (this.qrCanvas) {
+      const canvas: HTMLCanvasElement = this.qrCanvas.nativeElement;
+      const url = canvas.toDataURL('image/png');
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `qr_pago_${this.expirationDate}.png`;
+      a.click();
+    }
   }
 
   shareQR() {

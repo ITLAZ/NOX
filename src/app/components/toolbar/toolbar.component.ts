@@ -26,8 +26,12 @@ export class ToolbarComponent implements OnInit {
   ngOnInit() {}
 
   navigateBack() {
-    // Navega a la página anterior usando el router de Angular
-    this.router.navigate(['../'], { relativeTo: this.activatedRoute });
+    // Si hay historial, vuelve atrás. Si no, navega a home.
+    if (window.history.length > 1) {
+      window.history.back();
+    } else {
+      this.router.navigate(['/home']);
+    }
   }
 
   async openSearchModal() {
@@ -48,5 +52,9 @@ export class ToolbarComponent implements OnInit {
     });
 
     await modal.present();
+  }
+
+  goToCart() {
+    this.router.navigate(['/cart']);
   }
 }
