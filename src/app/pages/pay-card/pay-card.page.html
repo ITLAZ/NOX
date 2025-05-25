@@ -12,7 +12,7 @@
   <!-- FORMULARIO -->
   <form *ngIf="!isProcessing && paymentSuccess === null" [formGroup]="cardForm" (ngSubmit)="submitPayment()">
 
-    <ion-item>
+    <ion-item style="--min-height: 60px;" >
       <ion-label position="stacked">Número de tarjeta:</ion-label>
       <ion-input formControlName="cardNumber" type="text" maxlength="16"></ion-input>
     </ion-item>
