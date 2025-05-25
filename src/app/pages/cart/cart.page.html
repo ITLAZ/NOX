@@ -42,12 +42,12 @@
       </ion-item>
     </ion-list>
 
-    <div class="ion-padding-horizontal">
+    <!-- Mostrar solo si es un lugar (isLocal = true) -->
+    <div class="ion-padding-horizontal" *ngIf="isLocal">
       <ion-label class="ion-text-wrap">Añadir una nota:</ion-label>
       <ion-textarea
         placeholder="Notas"
         [(ngModel)]="note"
-        *ngIf="isLocal"
       ></ion-textarea>
     </div>
 
