@@ -1,36 +1,50 @@
 <ion-content [fullscreen]="true">
-      <ion-content [scrollEvents]="true">
-        <ion-searchbar placeholder="Buscar..." (click)="expandModal()"></ion-searchbar>
+  <ion-content [scrollEvents]="true">
+    <ion-searchbar #searchbar placeholder="Buscar..." (ionInput)="onBuscar(safeString($event.target.value))" (click)="expandModal()"></ion-searchbar>
 
-        <ion-segment [value]="selectedTab" (ionChange)="onSegmentChange($event)">
-          <ion-segment-button value="tab1">
-            <ion-label>Lugares</ion-label>
-          </ion-segment-button>
-          <ion-segment-button value="tab2">
-            <ion-label>Eventos</ion-label>
-          </ion-segment-button>
-        </ion-segment>
+    <ion-segment [value]="selectedTab" (ionChange)="onSegmentChange($event)">
+      <ion-segment-button value="tab1">
+        <ion-label>Lugares</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="tab2">
+        <ion-label>Eventos</ion-label>
+      </ion-segment-button>
+    </ion-segment>
 
-        <!-- Filtros fijos -->
-        <filter-actions [showCards]="true"></filter-actions>
+    <!-- Filtros fijos -->
+    <filter-actions 
+      [showCards]="true" 
+      [lugares]="selectedTab === 'tab1'" 
+      [eventos]="selectedTab === 'tab2'"
+      (etiquetaSeleccionada)="onEtiquetaSeleccionada($event)"
+      (tipoSeleccionado)="onTipoSeleccionado($event)">
+    </filter-actions>
 
+    <!-- Lista con scroll -->
+    <div style="height: 50vh; overflow-y: auto;" (ionScroll)="loadMore($event)">
+      <ng-container *ngIf="selectedTab === 'tab1'">
+        <media-card class="fil-media" *ngFor="let lugar of lugares"
+          [nombre]="lugar.nombre"
+          [imagen]="lugar.imagen"
+          [tipo]="lugar.tipo"
+          [etiquetas]="lugar.etiquetas"
+          [direccion]="lugar.direccion"
+          [distancia]="lugar.distancia"
+          [calificacion]="lugar.calificacion"
+          (click)="onTipoSeleccionado(lugar.tipo)">
+        </media-card>
+      </ng-container>
 
-        <!-- Lista con scroll -->
-        <div style="height: 50vh; overflow-y: auto;" (ionScroll)="loadMore($event)">
-          <ng-container *ngIf="selectedTab === 'tab1'">
-            <media-card class="fil-media" *ngFor="let lugar of lugares"></media-card>
-          </ng-container>
-
-          <ng-container *ngIf="selectedTab === 'tab2'">
-            <media-card-evento class="fil-media" style="height: 150px; width: 100%;"
-              *ngFor="let evento of eventos"
-              [nombreLocal]="evento.nombreLocal"
-              [fecha]="evento.fecha"
-              [horario]="evento.horario"
-              [tipo]="evento.tipo"
-              [imagen]="evento.imagen"
-            ></media-card-evento>
-          </ng-container>
-        </div>
-      </ion-content>
+      <ng-container *ngIf="selectedTab === 'tab2'">
+        <media-card-evento class="fil-media" style="height: 150px; width: 100%;"
+          *ngFor="let evento of eventos"
+          [nombreLocal]="evento.nombre"
+          [horario]="evento.horario?.inicio"
+          [tipo]="evento.tipo"
+          [imagen]="evento.imagen"
+          (click)="onTipoSeleccionado(evento.tipo)">
+        </media-card-evento>
+      </ng-container>
+    </div>
+  </ion-content>
 </ion-content>

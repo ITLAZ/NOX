@@ -1,20 +1,25 @@
 <ion-card>
   <ion-icon name="heart-outline"></ion-icon>
-  <img alt="Delicious food" src="https://ionicframework.com/docs/img/demos/card-media.png" />
+  <img alt="Imagen del local" [src]="imagen || 'https://ionicframework.com/docs/img/demos/card-media.png'" />
   <ion-card-header>
-    <ion-card-title>Make sushi</ion-card-title>
-    <ion-badge>
+    <ion-card-title>{{ nombre }}</ion-card-title>
+    <ion-badge *ngIf="calificacion">
       <ion-icon name="star"></ion-icon>
-      8.6
+      {{ calificacion }}
     </ion-badge>
   </ion-card-header>
 
   <ion-card-content>
-    <ion-card-subtitle>
-      <ion-icon name="restaurant-outline"></ion-icon> Japonesa
+    <ion-card-subtitle *ngIf="tipo">
+      <ion-icon name="restaurant-outline"></ion-icon> {{ tipo }}
     </ion-card-subtitle>
-    <p>
-      <ion-icon name="location-outline"></ion-icon> 720 m ~ Obrajes
+    <p *ngIf="direccion || distancia">
+      <ion-icon name="location-outline"></ion-icon> {{ distancia || direccion }}
     </p>
+    <div *ngIf="etiquetas?.length">
+      <ion-chip *ngFor="let et of etiquetas" color="secondary" style="margin:2px;">
+        <ion-label>{{ et }}</ion-label>
+      </ion-chip>
+    </div>
   </ion-card-content>
 </ion-card>

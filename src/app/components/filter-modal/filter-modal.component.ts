@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { ModalController, IonSearchbar } from '@ionic/angular';
+import { DatabaseService } from 'src/app/services/database.service';
 
 @Component({
   selector: 'filter-modal',
@@ -7,33 +8,76 @@ import { ModalController } from '@ionic/angular';
   styleUrls: ['./filter-modal.component.scss'],
   standalone: false,
 })
-export class FilterModalComponent {
+export class FilterModalComponent implements OnInit {
   @Input() initialTab: string = 'tab1';
   selectedTab: string = 'tab1';
   currentBreakpoint: number = 0.95;
 
-  lugares = Array(10).fill({});
-  eventos = [
-    {
-      nombreLocal: 'Local 1',
-      fecha: '2025-06-01',
-      horario: '20:00',
-      tipo: 'Concierto',
-      imagen: 'https://ionicframework.com/docs/img/demos/card-media.png',
-    },
-    {
-      nombreLocal: 'Local 2',
-      fecha: '2025-06-02',
-      horario: '19:00',
-      tipo: 'Teatro',
-      imagen: 'https://ionicframework.com/docs/img/demos/card-media.png',
-    },
-  ];
+  // Datos originales
+  allLugares: any[] = [];
+  allEventos: any[] = [];
+  // Datos filtrados
+  lugares: any[] = [];
+  eventos: any[] = [];
 
-  constructor(private modalController: ModalController) {}
+  filtroEtiqueta: string = '';
+  filtroTipo: string = '';
+  searchTerm: string = '';
+
+  @ViewChild('searchbar', { static: false }) searchbar!: IonSearchbar;
+
+  constructor(private modalController: ModalController, private db: DatabaseService) {}
 
   ngOnInit() {
     this.selectedTab = this.initialTab || 'tab1';
+    this.cargarDatos();
+  }
+
+  cargarDatos() {
+    this.db.getLocales().subscribe(lugares => {
+      this.allLugares = lugares;
+      this.aplicarFiltros();
+    });
+    this.db.getEvents().subscribe(eventos => {
+      this.allEventos = eventos;
+      this.aplicarFiltros();
+    });
+  }
+
+  aplicarFiltros() {
+    // Filtro para lugares
+    let lugaresFiltrados = this.allLugares;
+    if (this.filtroEtiqueta) {
+      lugaresFiltrados = lugaresFiltrados.filter(l => (l.etiquetas || []).includes(this.filtroEtiqueta));
+    }
+    if (this.filtroTipo) {
+      lugaresFiltrados = lugaresFiltrados.filter(l => l.tipo === this.filtroTipo);
+    }
+    if (this.searchTerm) {
+      const term = this.searchTerm.toLowerCase();
+      lugaresFiltrados = lugaresFiltrados.filter(l =>
+        (l.nombre || '').toLowerCase().includes(term) ||
+        (l.descripcion || '').toLowerCase().includes(term)
+      );
+    }
+    this.lugares = lugaresFiltrados;
+
+    // Filtro para eventos
+    let eventosFiltrados = this.allEventos;
+    if (this.filtroEtiqueta) {
+      eventosFiltrados = eventosFiltrados.filter(e => (e.etiquetas || []).includes(this.filtroEtiqueta));
+    }
+    if (this.filtroTipo) {
+      eventosFiltrados = eventosFiltrados.filter(e => e.tipo === this.filtroTipo);
+    }
+    if (this.searchTerm) {
+      const term = this.searchTerm.toLowerCase();
+      eventosFiltrados = eventosFiltrados.filter(e =>
+        (e.nombre || '').toLowerCase().includes(term) ||
+        (e.descripcion || '').toLowerCase().includes(term)
+      );
+    }
+    this.eventos = eventosFiltrados;
   }
 
   updateCurrentBreakpoint(breakpoint: number) {
@@ -42,6 +86,30 @@ export class FilterModalComponent {
 
   onSegmentChange(event: any) {
     this.selectedTab = event.detail.value;
+    this.filtroEtiqueta = '';
+    this.filtroTipo = '';
+    this.aplicarFiltros();
+  }
+
+  onEtiquetaSeleccionada(etiqueta: string) {
+    this.filtroEtiqueta = etiqueta;
+    this.filtroTipo = '';
+    this.aplicarFiltros();
+  }
+
+  onTipoSeleccionado(tipo: string) {
+    this.filtroTipo = tipo;
+    this.filtroEtiqueta = '';
+    this.aplicarFiltros();
+  }
+
+  onBuscar(term: string) {
+    this.searchTerm = term;
+    this.aplicarFiltros();
+  }
+
+  safeString(val: any): string {
+    return val == null ? '' : String(val);
   }
 
   async expandModal() {
@@ -49,15 +117,28 @@ export class FilterModalComponent {
     if (modal) {
       modal.setCurrentBreakpoint(0.8);
     }
+    setTimeout(() => this.searchbar && this.searchbar.setFocus(), 300);
   }
 
   loadMore(event: any) {
-    // lógica para scroll infinito
-    if (this.selectedTab === 'tab1') {
-      this.lugares.push(...Array(5).fill({}));
-    } else {
-      this.eventos.push(...this.eventos);
+    // Aquí podrías implementar scroll infinito real si tuvieras paginación
+    event.target.complete?.();
+  }
+
+  // Asegura que la fecha sea string o Date, nunca null
+  getFechaEvento(fecha: any): string {
+    if (!fecha) return '';
+    if (typeof fecha === 'object' && typeof fecha.toDate === 'function') {
+      const d = fecha.toDate();
+      if (!d) return '';
+      return d instanceof Date ? d.toISOString() : '';
     }
-    event.target.complete?.(); // si se usa ion-infinite-scroll
+    if (fecha instanceof Date) {
+      return fecha.toISOString();
+    }
+    if (typeof fecha === 'string') {
+      return fecha;
+    }
+    return '';
   }
 }
