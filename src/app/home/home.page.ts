@@ -3,6 +3,7 @@ import { DatabaseService } from '../services/database.service';
 import { Map, tileLayer, marker, icon, circle } from 'leaflet';
 import * as L from 'leaflet';
 import { Router } from '@angular/router';
+import { Geolocation } from '@capacitor/geolocation';
 
 @Component({
   selector: 'app-home',
@@ -13,6 +14,7 @@ import { Router } from '@angular/router';
 export class HomePage implements OnInit{
   map: any;
   items: any;
+  userMarker: any; // Agregado para el marcador de usuario
   constructor(
     public db: DatabaseService,
     public router: Router
@@ -36,51 +38,78 @@ export class HomePage implements OnInit{
     }, 3000);
   }
 
-  loadMap() {
-    this.map = L.map('map', {
-      center: [-16.5, -68.15], // Coordenadas de La Paz, Bolivia
-      zoom: 18,
-    });
-  
-    // ✅ Esta es la capa de fondo del mapa (calles, terreno, etc.)
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(this.map);
-  
-    this.items.forEach((element: any) => {
-  const markerInstance = L.marker([element.lat, element.lng], {
-    icon: icon({
-      iconUrl: '../assets/icon/favicon.png',
-      iconSize: [38, 38],
-      iconAnchor: [22, 94],
-      popupAnchor: [-15, -88]
-    })
-  }).addTo(this.map);
+  async loadMap() {
+    try {
+      const position = await Geolocation.getCurrentPosition();
+      const userLat = position.coords.latitude;
+      const userLng = position.coords.longitude;
 
-  // Creamos contenido del popup con un botón
-  const popupContent = document.createElement('div');
-  popupContent.innerHTML = `
-  <strong>${element.nombre}</strong><br>
-  ${element.direccion}<br>
-  ${element.tipo}<br>
-  ${element.open ? 'Abierto' : 'Cerrado'}<br>
-  <ion-button class="go-to-card" size="small">Ir</ion-button>
-`;
+      if (!this.map) {
+        // Inicializar el mapa centrado en la ubicación inicial del usuario
+        this.map = L.map('map', {
+          center: [userLat, userLng],
+          zoom: 18,
+        });
 
-  // Asociamos el popup al marcador
-  markerInstance.bindPopup(popupContent);
+        // Agregar capa de fondo al mapa
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(this.map);
 
-  // Evento cuando se abre el popup
-  markerInstance.on('popupopen', () => {
-  const btn = popupContent.querySelector('.go-to-card');
-  if (btn) {
-    btn.addEventListener('click', () => {
-      this.router.navigate(['/lugares-card'], {
-        queryParams: { id: element.id }
-      });
-    });
-  }
-});
-});
+        // Agregar marcadores adicionales desde los datos
+        this.items.forEach((element: any) => {
+          const markerInstance = L.marker([element.lat, element.lng], {
+            icon: icon({
+              iconUrl: '../assets/icon/favicon.png',
+              iconSize: [38, 38],
+              iconAnchor: [22, 94],
+              popupAnchor: [-15, -88]
+            })
+          }).addTo(this.map);
+
+          const popupContent = document.createElement('div');
+          popupContent.innerHTML = `
+            <strong>${element.nombre}</strong><br>
+            ${element.direccion}<br>
+            ${element.tipo}<br>
+            ${element.open ? 'Abierto' : 'Cerrado'}<br>
+            <ion-button class="go-to-card" size="small">Ir</ion-button>
+          `;
+
+          markerInstance.bindPopup(popupContent);
+
+          markerInstance.on('popupopen', () => {
+            const btn = popupContent.querySelector('.go-to-card');
+            if (btn) {
+              btn.addEventListener('click', () => {
+                this.router.navigate(['/lugares-card'], {
+                  queryParams: { id: element.id }
+                });
+              });
+            }
+          });
+        });
+      }
+
+      // Actualizar o agregar el marcador de la ubicación actual
+      if (this.userMarker) {
+        this.userMarker.setLatLng([userLat, userLng]);
+      } else {
+        this.userMarker = L.marker([userLat, userLng], {
+          icon: icon({
+            iconUrl: '../assets/icon/location-red.png',
+            iconSize: [38, 38],
+            iconAnchor: [22, 94],
+            popupAnchor: [-15, -88]
+          })
+        }).addTo(this.map).bindPopup('Estás aquí').openPopup();
+      }
+
+      // Centrar el mapa en la nueva ubicación
+      this.map.setView([userLat, userLng], 18);
+    } catch (error) {
+      console.error('Error al obtener la ubicación:', error);
+      alert('No se pudo obtener tu ubicación. Asegúrate de habilitar la geolocalización.');
+    }
   }
 }

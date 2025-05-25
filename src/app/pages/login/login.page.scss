@@ -1,5 +1,24 @@
-.edit-profile-content {
+.login-content {
+  --padding: 30px;
+  top: 30px;
   --background: var(--ion-color-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+
+  .login-logo {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+
+    img {
+      width: 120px;
+      height: auto;
+      border-radius: 16px;
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.15);
+    }
+  }
 
   .custom-item {
     --background: rgba(255, 255, 255, 0.05);
@@ -28,6 +47,14 @@
     display: block;
   }
 
+  .login-links {
+    margin-bottom: 1rem;
+
+    .mini {
+      font-size: small;
+      text-align: left;
+    }
+  }
 }
 
 ion-title {
@@ -35,14 +62,7 @@ ion-title {
 }
 
 ion-button {
-        margin-top: 1rem;
-        background: linear-gradient(90deg, #6030ff,#3FBA9A) border-box;
-        border-radius: 30px;
-    }
-ion-title {
-        color: white;
-    }
-.mini{
-  font-size: small;
-  text-align: left;
+  margin-top: 1rem;
+  background: linear-gradient(90deg, #6030ff, #3fba9a) border-box;
+  border-radius: 30px;
 }

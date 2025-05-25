@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { RegistroPageRoutingModule } from './registro-routing.module';
 
 import { RegistroPage } from './registro.page';
+import { ToolbarModule } from 'src/app/shared/toolbar/toolbar.module';
 
 @NgModule({
   imports: [
@@ -15,6 +16,7 @@ import { RegistroPage } from './registro.page';
     IonicModule,
     RegistroPageRoutingModule,
     ReactiveFormsModule,
+    ToolbarModule
   ],
   declarations: [RegistroPage]
 })

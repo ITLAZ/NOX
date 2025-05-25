@@ -1,17 +1,13 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button defaultHref="/start" text="" color="light"></ion-back-button>
-    </ion-buttons>
-    <ion-title>Iniciar sesión</ion-title>
-  </ion-toolbar>
-</ion-header>
+<toolbar [pageTitle]="'Iniciar sesión'" [showCart]="false" [showSearch]="false" [showNotifications]="false" [showBack]="true"></toolbar>
 
-<ion-content [fullscreen]="true" class="edit-profile-content">
+<ion-content [fullscreen]="true" class="login-content">
   <ion-grid>
-    <ion-row>
-      <ion-col>
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="12" size-md="8" size-lg="6">
         <form [formGroup]="form" (ngSubmit)="login()">
+          <div class="login-logo">
+            <img src="assets/images/NOX.png" alt="NOX logo" />
+          </div>
           <!-- Usuario -->
           <ion-item class="custom-item">
             <ion-label position="floating">
@@ -34,15 +30,26 @@
             <p *ngIf="form.get('password')?.errors?.['required']">La contraseña es requerida</p>
           </ion-text>
 
+          <!-- Helper text solo si hay error general -->
+          <ion-text color="danger" *ngIf="form.invalid && (form.get('username')?.touched || form.get('password')?.touched)">
+            <p>Por favor completa los campos requeridos.</p>
+          </ion-text>
+
           <!-- Enlaces adicionales -->
-          <ion-text color="secondary" class="mini" style="color: var(--ion-color-secondary); text-decoration: underline;"> 
-            <p>Me olvidé mi usuario o contraseña</p>
-          </ion-text>
-          <ion-text color="secondary" class="mini"> 
-            <a routerLink="/registro" style="color: var(--ion-color-secondary); text-decoration: underline;">
-              ¿No tienes una cuenta? Regístrate
-            </a>
-          </ion-text>
+          <ion-row class="login-links">
+            <ion-col size="12" class="text-left">
+              <ion-text color="secondary" class="mini" style="color: var(--ion-color-secondary); text-decoration: underline;">
+                <p>Me olvidé mi usuario o contraseña</p>
+              </ion-text>
+            </ion-col>
+            <ion-col size="12" class="text-left">
+              <ion-text color="secondary" class="mini">
+                <a routerLink="/registro" style="color: var(--ion-color-secondary); text-decoration: underline;">
+                  ¿No tienes una cuenta? Regístrate
+                </a>
+              </ion-text>
+            </ion-col>
+          </ion-row>
 
           <!-- Botón -->
           <ion-button expand="block" color="gradient" type="submit">
@@ -50,7 +57,7 @@
           </ion-button>
 
           <!-- Botón Google -->
-          <ion-button expand="block" color="light" (click)="loginWithGoogle()" type="button">
+          <ion-button expand="block" color="gradient" (click)="loginWithGoogle()" type="button">
             <ion-icon name="logo-google" slot="start"></ion-icon>
             Iniciar sesión con Google
           </ion-button>

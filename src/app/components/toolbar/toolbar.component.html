@@ -2,8 +2,8 @@
   <ion-toolbar>
     <ion-title size="large">{{ pageTitle }}</ion-title>
 
-    <ion-button slot="start" *ngIf="showBack">
-      <ion-icon name="arrow-back" (click)="navigateBack()" style="margin-top: 10px;"></ion-icon>
+    <ion-button slot="start" *ngIf="showBack" (click)="navigateBack()" fill="clear" style="box-shadow: none;">
+      <ion-icon name="arrow-back"></ion-icon>
     </ion-button>
 
     <ion-buttons slot="end">

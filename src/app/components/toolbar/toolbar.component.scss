@@ -31,5 +31,12 @@ ion-icon {
   align-items: center;
   justify-content: center;
 }
+ion-button[slot="start"] {
+  box-shadow: none !important;
+  background: transparent !important;
+  --box-shadow: none !important;
+  --background: transparent !important;
+  padding: 0 8px;
+}
 
 
