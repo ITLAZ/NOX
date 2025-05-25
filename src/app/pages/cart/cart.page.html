@@ -1,96 +1,70 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-      <ion-buttons slot="start">
-        <ion-back-button defaultHref="/home"></ion-back-button>
-      </ion-buttons>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
     <ion-title>Mi Carrito</ion-title>
     <ion-buttons slot="end">
-        <ion-icon name="notifications-outline"></ion-icon>
-      </ion-buttons>
+      <ion-icon name="notifications-outline"></ion-icon>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-    <ion-content [fullscreen]="true" class="ion-padding">
-  
-    <ion-item lines="none" >
+<ion-content [fullscreen]="true" class="ion-padding">
+  <ng-container *ngIf="cartItems.length > 0; else emptyCart">
+    <ion-item lines="none">
       <ion-label class="ion-text-wrap">
-        <h2 >Steak House</h2>
+        <h2>{{ isLocal ? 'Lugar seleccionado' : 'Evento seleccionado' }}</h2>
       </ion-label>
-      <ion-button fill="clear" color="warning" routerLink="/add-products">
+      <ion-button fill="clear" color="warning" (click)="goToReturnPath()">
         Ver / añadir productos
         <ion-icon name="arrow-forward-outline" slot="end"></ion-icon>
       </ion-button>
     </ion-item>
 
-    <app-item-carrito image="https://picsum.photos/id/237/200/300" nombreComida="Sushi Maki"
-    descripcion="8 piezas de salmón" precio="75 Bs"></app-item-carrito>
-    <app-item-carrito image="https://picsum.photos/id/237/200/300" nombreComida="Sushi Maki"
-    descripcion="8 piezas de salmón" precio="75 Bs"></app-item-carrito>
-    <app-item-carrito image="https://picsum.photos/id/237/200/300" nombreComida="Sushi Maki"
-    descripcion="8 piezas de salmón" precio="75 Bs"></app-item-carrito>
-  
+    <ion-list>
+      <ion-item *ngFor="let item of cartItems; let i = index" class="cart-item">
+        <ion-thumbnail slot="start">
+          <img [src]="item.image || 'assets/placeholder.png'" />
+        </ion-thumbnail>
+        <ion-label class="ion-text-wrap">
+          <h2>{{ item.name || item.producto }}</h2>
+          <p>{{ item.description || item.descripcion }}</p>
+          <h3>Bs {{ item.price || item.precio }}</h3>
+        </ion-label>
+        <ion-button fill="clear" (click)="decrement(item)">
+          <ion-icon name="remove-circle-outline"></ion-icon>
+        </ion-button>
+        <ion-badge>{{ item.quantity || 1 }}</ion-badge>
+        <ion-button fill="clear" (click)="increment(item)">
+          <ion-icon name="add-circle-outline"></ion-icon>
+        </ion-button>
+      </ion-item>
+    </ion-list>
 
-  <div class="ion-padding-horizontal">
-    <ion-label class="ion-text-wrap" >Añadir una nota:</ion-label>
-    <ion-textarea 
-      placeholder="Notas" 
-    ></ion-textarea>
-  </div>
-</ion-content>
+    <div class="ion-padding-horizontal">
+      <ion-label class="ion-text-wrap">Añadir una nota:</ion-label>
+      <ion-textarea
+        placeholder="Notas"
+        [(ngModel)]="note"
+        *ngIf="isLocal"
+      ></ion-textarea>
+    </div>
 
-<ion-footer class="ion-no-border"> 
-      <ion-button expand="block" class="pay-button" (click)="goToPay()">
+    <ion-footer class="ion-no-border">
+      <ion-item lines="none" class="total-item">
+        <ion-label>Total</ion-label>
+        <ion-label class="ion-text-right">Bs {{ total }}</ion-label>
+      </ion-item>
+      <ion-button expand="block" class="pay-button" (click)="goToBuyCheck()">
         Pagar
       </ion-button>
-  </ion-footer>
+    </ion-footer>
+  </ng-container>
 
-    <ion-list *ngIf="cartItems.length > 0; else emptyCart">
-        <ion-item *ngFor="let item of cartItems; let i = index">
-            <ion-label>
-
-                <h2>{{ item.name || item.tipo }}</h2>
-                <p>{{ item.description || item.descripcion }}</p>
-                <p><strong>Bs {{ item.price || item.precio }}</strong></p>
-                <p>Cantidad: {{ item.quantity || 1 }}</p>
-              </ion-label>
-
-            <ion-buttons slot="end">
-                <ion-button (click)="decrement(item)">-</ion-button>
-                <ion-button (click)="increment(item)">+</ion-button>
-                <ion-button fill="clear" color="danger" (click)="removeItem(i)">
-                    <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
-                  </ion-button>
-              </ion-buttons>
-          </ion-item>
-      </ion-list>
-
-    <ion-card *ngIf="cartItems.length > 0">
-        <ion-card-content>
-            <!-- Comentario para locales -->
-            <ion-item *ngIf="isLocal">
-                <ion-label position="stacked">Nota para el local</ion-label>
-                <ion-textarea [(ngModel)]="note" placeholder="Ejemplo: Sin cebolla, por favor"></ion-textarea>
-              </ion-item>
-
-
-
-            <h3 class="ion-padding-top">Total: <strong>Bs {{ total }}</strong></h3>
-            <ion-button expand="block" color="danger" (click)="clearCart()">Vaciar Carrito</ion-button>
-            <ion-button expand="block" color="secondary" (click)="goToReturnPath()">
-                Volver a {{ isLocal ? 'Lugares' : 'Eventos' }}
-              </ion-button>
-          </ion-card-content>
-      </ion-card>
-
-    <ng-template #emptyCart>
-        <ion-text color="medium">
-            <p class="ion-padding">Tu carrito está vacío.</p>
-          </ion-text>
-    <!--
-        <ion-button expand="block" color="secondary" (click)="goToMenu()">Ir a Lugares</ion-button>
-        <ion-button expand="block" color="primary" (click)="goToEvents()">Ir a Eventos</ion-button>
-    -->
-      </ng-template>
-      <!-- Botón de "Ir a Pagar" solo si hay elementos en el carrito 
-      <ion-button *ngIf="cartItems.length > 0" expand="block" color="success" (click)="goToBuyCheck()">Ir a
-    Pagar</ion-button>-->
+  <ng-template #emptyCart>
+    <ion-text color="medium">
+      <p class="ion-padding">Tu carrito está vacío.</p>
+    </ion-text>
+  </ng-template>
+</ion-content>

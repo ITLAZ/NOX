@@ -1,17 +1,74 @@
-ion-back-button {
+ion-header {
+  ion-toolbar {
+    --background: var(--ion-color-fucsia);
+  }
+
+  ion-title {
+    color: var(--ion-color-primary-contrast);
+    font-size: 20px;
+    font-family: 'Futura MD BT', sans-serif;
+  }
+
+  ion-back-button {
     color: var(--ion-color-primary-contrast);
     width: 24px;
     height: 24px;
-}
+  }
 
-ion-icon[name="notifications-outline"] {
+  ion-icon[name="notifications-outline"] {
     color: var(--ion-color-primary-contrast);
     padding-right: 20px;
     width: 24px;
     height: 24px;
+  }
 }
 
-.pay-button {
+ion-content {
+  .cart-item {
+    ion-thumbnail {
+      --size: 80px;
+      margin-right: 15px;
+    }
+
+    ion-label {
+      color: var(--ion-color-fucsia);
+      font-family: 'Montserrat Regular', sans-serif;
+      h2 {
+        font-size: 16px;
+        margin: 0;
+      }
+      p {
+        font-size: 14px;
+        margin: 0;
+        color: var(--ion-color-medium);
+      }
+      h3 {
+        font-size: 14px;
+        font-weight: bold;
+        color: var(--ion-color-warning);
+      }
+    }
+
+    ion-button {
+      ion-icon {
+        font-size: 20px;
+      }
+    }
+  }
+
+  ion-textarea {
+    border-radius: 20px;
+    padding: 10px;
+    background-color: var(--ion-color-light);
+    height: 90px;
+    font-size: 16px;
+    color: var(--ion-color-fucsia);
+    font-family: 'Montserrat SemiBold', sans-serif;
+  }
+}
+
+ion-footer {
+  .pay-button {
     --background: linear-gradient(to right, var(--ion-color-amarillo), var(--ion-color-fucsia));
     --border-radius: 100px;
     height: 36px;
@@ -19,68 +76,5 @@ ion-icon[name="notifications-outline"] {
     font-size: 14px;
     font-family: 'Montserrat Medium', sans-serif;
     text-transform: none;
-}
-
-ion-button {
-    text-transform: none;
-    font-family: 'Montserrat Regular', sans-serif;
-    font-size: 14px;
-}
-
-ion-thumbnail {
-    --size: 80px;
-    margin-right: 15px;
-}
-
-ion-textarea {
-    border-radius: 20px;
-    padding: 10px;
-    background-color: var(--ion-color-light);
-    height: 90px;
-    font-size: 16px;
-    /* Notas tendrá 16px */
-    color: var(--ion-color-fucsia);
-    font-family: 'Montserrat SemiBold', sans-serif;
-    /* Notas será de color --ion-color-fucsia */
-}
-
-.ion-padding {
-    --padding-start: 0px !important;
-    --padding-end: 0px !important;
-    --padding-top: 0px !important;
-    --padding-bottom: 0px !important;
-}
-
-ion-toolbar {
-    --background: var(--ion-color-fucsia);
-}
-
-ion-title {
-    color: var(--ion-color-primary-contrast);
-}
-
-.ion-text-wrap {
-    color: var(--ion-color-fucsia) !important;
-    /* Steak House y Añadir una nota: serán de color --ion-color-fucsia */
-    font-size: 14px;
-    font-family: 'Montserrat Regular', sans-serif;
-}
-
-ion-footer {
-    padding: 20px;
-}
-
-.ion-padding-horizontal ion-label.ion-text-wrap {
-    padding-bottom: 10px;
-    display: block;
-    /* Asegúrate de que la etiqueta se comporte como un bloque para que el padding funcione correctamente */
-}
-
-ion-item {
-    --background: transparent;
-}
-
-ion-toolbar ion-title {
-    font-size: 20px;
-    font-family: "Futura MD BT", sans-serif;
+  }
 }
