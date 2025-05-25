@@ -70,10 +70,13 @@ export class LugaresCardPage implements OnInit {
   async presentModal() {
     const modal = await this.modalController.create({
       component: ComentarioComponent,
+      componentProps: {
+        lugarId: this.lugarId, // Pasar el ID del lugar al componente
+      },
       breakpoints: [0, 0.4],
       initialBreakpoint: 0.4,
       handle: true,
-      cssClass: 'custom-modal'
+      cssClass: 'custom-modal',
     });
 
     await modal.present();

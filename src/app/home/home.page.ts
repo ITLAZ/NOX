@@ -65,10 +65,11 @@ export class HomePage implements OnInit{
       this.items.forEach((element: any) => {
         const markerInstance = L.marker([element.lat, element.lng], {
           icon: icon({
-            iconUrl: '../assets/icon/favicon.png',
-            iconSize: [38, 38],
+            iconUrl: '../assets/icon/location-inv.png',
+            iconSize: [20, 20],
             iconAnchor: [22, 94],
-            popupAnchor: [-15, -88]
+            popupAnchor: [-15, -88],
+            className: 'invert-color-marker'
           })
         }).addTo(this.map);
 
@@ -102,9 +103,9 @@ export class HomePage implements OnInit{
         this.userMarker = L.marker([userLat, userLng], {
           icon: icon({
             iconUrl: '../assets/icon/location-red.png',
-            iconSize: [38, 38],
+            iconSize: [20, 20],
             iconAnchor: [22, 94],
-            popupAnchor: [-15, -88]
+            popupAnchor: [-15, -88],
           })
         }).addTo(this.map).bindPopup('Estás aquí').openPopup();
       }

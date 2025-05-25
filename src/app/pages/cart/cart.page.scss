@@ -1,3 +1,5 @@
+/* cart.page.scss */
+
 ion-header {
   ion-toolbar {
     --background: var(--ion-color-fucsia);
@@ -15,44 +17,111 @@ ion-header {
     height: 24px;
   }
 
-  ion-icon[name="notifications-outline"] {
-    color: var(--ion-color-primary-contrast);
-    padding-right: 20px;
-    width: 24px;
-    height: 24px;
+  ion-buttons[slot="end"] { // Target the buttons slot directly for the icon padding
+    ion-icon[name="notifications-outline"] {
+      color: var(--ion-color-primary-contrast);
+      padding-right: 20px;
+      width: 24px;
+      height: 24px;
+    }
   }
 }
 
 ion-content {
+  // Styles for the "Ver / añadir productos" button
+  ion-item[lines="none"] { // Target the specific ion-item for the "selected" label
+    ion-button.view-products-button { // Use the new class for specificity
+      font-family: 'Montserrat Regular', sans-serif;
+      text-transform: none;
+      font-size: 14px;
+    }
+  }
+
+  /* --- Cart Item Styles (the styles for items once they are in the cart) --- */
   .cart-item {
+    width: 100%; // Ensure it takes full width
+    --background: transparent;
+    min-height: 80px;
+
     ion-thumbnail {
-      --size: 80px;
+      --size: 56px; // Adjust from 80px as per your second set of item styles
       margin-right: 15px;
     }
 
+    img {
+      width: 100%;
+      height: 100%;
+      border-radius: 3px;
+    }
+
     ion-label {
-      color: var(--ion-color-fucsia);
-      font-family: 'Montserrat Regular', sans-serif;
+      // General styles for ion-label within .cart-item
+      color: var(--ion-color-fucsia); // Default label color
+
       h2 {
-        font-size: 16px;
+        font-weight: bold;
         margin: 0;
-      }
-      p {
+        color: var(--ion-color-fucsia); // As per your second set of styles
+        font-family: "Montserrat SemiBold", sans-serif;
         font-size: 14px;
-        margin: 0;
-        color: var(--ion-color-medium);
+        // width: 190px; // Consider if a fixed width is ideal for responsiveness
       }
-      h3 {
+
+      p {
+        margin: 0;
+        font-size: 0.9em;
+        color: var(--ion-color-fucsia-shade); // As per your second set of styles
+        font-family: "Montserrat Regular", sans-serif;
+        font-size: 14px;
+        // width: 190px; // Consider if a fixed width is ideal for responsiveness
+      }
+
+      h3 { // For the price display (Bs {{ item.price }})
         font-size: 14px;
         font-weight: bold;
-        color: var(--ion-color-warning);
+        color: var(--ion-color-warning); // Changed from success to warning as per your second example
       }
     }
 
-    ion-button {
+    // Styles for the increment/decrement buttons and badge
+    ion-button[fill="clear"] { // Target specifically the clear buttons for quantity
+      --padding-start: 8px; // Adjust padding if icons appear too large/small
+      --padding-end: 8px;
+      margin: 0; // Remove default button margins if they conflict
+      height: auto; // Allow button to size to icon/content
       ion-icon {
-        font-size: 20px;
+        font-size: 20px; // Keep this consistent
+        color: var(--ion-color-warning); // Apply warning color to icons as per your second example
       }
+    }
+
+    ion-badge {
+      --background: transparent; // No background for badge
+      color: var(--ion-color-warning); // Text color of badge
+      font-weight: bold;
+      font-family: "Montserrat SemiBold", sans-serif;
+      font-size: 14px;
+      min-width: 20px;
+      text-align: center;
+      padding: 4px;
+    }
+  }
+
+
+  /* --- Styles for "Añadir una nota" label and textarea --- */
+  .ion-padding-horizontal { // The div wrapper
+    // The class 'ion-padding-horizontal' usually adds 16px. If you need more/less, define it here.
+    // padding-left: 20px;
+    // padding-right: 20px;
+    padding-top: 10px; // Example, adjust as needed
+
+    ion-label.note-label { // Use the new class for specificity
+      color: var(--ion-color-fucsia);
+      font-family: 'Montserrat Regular', sans-serif;
+      text-transform: none;
+      font-size: 14px;
+      display: block; // Ensures it takes full width for text-wrap
+      margin-bottom: 8px; // Space between label and textarea
     }
   }
 
@@ -62,19 +131,47 @@ ion-content {
     background-color: var(--ion-color-light);
     height: 90px;
     font-size: 16px;
-    color: var(--ion-color-fucsia);
+    color: var(--ion-color-fucsia); // Color of the text typed inside the textarea
     font-family: 'Montserrat SemiBold', sans-serif;
+  }
+
+  // Styles for the empty cart message
+  ion-text[color="medium"] p.ion-padding {
+    padding: 20px;
   }
 }
 
 ion-footer {
+  padding: 20px; // Apply padding to the footer itself
+
+  .total-item {
+    --background: transparent;
+    // Default label styles for 'Total'
+    ion-label {
+      font-family: "Montserrat SemiBold", sans-serif;
+      font-size: 16px;
+      color: var(--ion-color-fucsia); // Example color
+    }
+    // Specific style for the 'Total' value
+    ion-label.ion-text-right {
+      color: var(--ion-color-warning); // Example color
+      font-size: 18px;
+    }
+  }
+
   .pay-button {
     --background: linear-gradient(to right, var(--ion-color-amarillo), var(--ion-color-fucsia));
     --border-radius: 100px;
     height: 36px;
-    width: 335px;
+    width: 100%; // Changed to 100% for responsiveness
     font-size: 14px;
     font-family: 'Montserrat Medium', sans-serif;
     text-transform: none;
+    margin-top: 10px; // Add some space above the button
   }
 }
+
+// Removed the following as they were problematic or redundant:
+// .sc-ion-label-md-s h2 { ... } // This is a specific internal Ionic class name, not recommended for direct use
+// .button-inner { ... } // This targets an internal Shadow DOM part, better handled via Ionic variables or ::part() if needed
+// ion-label.ion-text-wrap { color: var(--ion-color-fucsia) !important; } // Removed !important and handled via specific class .note-label
