@@ -14,6 +14,21 @@ export class AuthService {
 
   profile: any;
 
+  // --- Métodos para manejar cookies ---
+  private setAuthCookie(value: string) {
+    // Cookie válida por 30 días
+    document.cookie = `nox_auth=${value}; path=/; max-age=${60 * 60 * 24 * 30}`;
+  }
+
+  private getAuthCookie(): string | null {
+    const match = document.cookie.match(new RegExp('(^| )nox_auth=([^;]+)'));
+    return match ? match[2] : null;
+  }
+
+  private deleteAuthCookie() {
+    document.cookie = 'nox_auth=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC;';
+  }
+
   constructor(
     private afAuth: AngularFireAuth,
     private firestore: AngularFirestore,
@@ -27,6 +42,7 @@ export class AuthService {
       this.profile = JSON.parse(user);
       this.getProfile(this.profile.id);
     }
+    // Eliminada la lógica de restaurar sesión desde la cookie
   }
 
   registerUser(email: string, password: string, extraData: any) {
@@ -101,6 +117,7 @@ export class AuthService {
 
         if (user) {
           localStorage.setItem('user', JSON.stringify(user));
+          this.setAuthCookie(user.uid); // Guardar cookie persistente
           console.log('Usuario autenticado:', user);
 
           this.getProfile(user.uid);
@@ -152,6 +169,7 @@ export class AuthService {
       await this.afAuth.signOut();
       localStorage.clear();
       this.profile = null;
+      this.deleteAuthCookie(); // Eliminar cookie al cerrar sesión
 
       const toast = await this.toastCtrl.create({
         message: 'Sesión cerrada correctamente.',
@@ -174,6 +192,7 @@ export class AuthService {
       if (userCredential.user) {
         const user = userCredential.user;
         await this.handleGoogleUser(user);
+        this.setAuthCookie(user.uid); // Guardar cookie persistente
         // Quitar navegación aquí, se hará en el componente
       }
     } catch (error) {
@@ -182,47 +201,53 @@ export class AuthService {
   }
 
   private async handleGoogleUser(user: any) {
-    const userData = {
-      uid: user.uid,
-      email: user.email,
-      displayName: user.displayName,
-      photoURL: user.photoURL
-    };
     await runInInjectionContext(this.injector, async () => {
-      await this.firestore.collection('usersPrueba').doc(user.uid)
-        .set(userData, { merge: true });
+      const uid = user.uid;
+      const email = user.email;
+      const displayName = user.displayName;
+      const photoURL = user.photoURL;
+
+      // Comprobar si el usuario ya existe en Firestore
+      const docRef = this.firestore.collection('usersPrueba').doc(uid);
+      const docSnap = await docRef.get().toPromise();
+      if (!docSnap || !docSnap.exists) {
+        try {
+          await docRef.set({
+            email,
+            displayName,
+            photoURL,
+            // Otros campos que quieras agregar
+          });
+          console.log('Usuario guardado en Firestore:', { email, displayName, photoURL });
+        } catch (error) {
+          console.error('Error al guardar usuario en Firestore:', error);
+        }
+      }
     });
-    localStorage.setItem('profile', JSON.stringify(userData));
-    this.profile = userData;
   }
 
   private async handleAuthError(error: any) {
-    console.error('Error de autenticación:', error);
-    const toast = await this.toastCtrl.create({
-      message: error?.message || 'Error en autenticación con Google',
-      duration: 2000,
-      color: 'danger'
+    await runInInjectionContext(this.injector, async () => {
+      console.error('Error de autenticación:', error);
+      const toast = await this.toastCtrl.create({
+        message: error?.message || 'Error de autenticación.',
+        duration: 2000,
+        color: 'danger'
+      });
+      await toast.present();
     });
-    await toast.present();
   }
 
-  // Devuelve true si hay usuario autenticado
-  isLoggedIn(): boolean {
-    const user = localStorage.getItem('user');
-    return !!user;
+  /**
+   * Devuelve una promesa que resuelve a true si hay usuario autenticado en Firebase
+   * Usa authState para esperar correctamente la restauración de sesión tras recargar.
+   */
+  public async isLoggedInAsync(): Promise<boolean> {
+    return new Promise(resolve => {
+      const sub = this.afAuth.authState.subscribe(user => {
+        sub.unsubscribe();
+        resolve(!!user);
+      });
+    });
   }
-
-  // Devuelve una promesa que resuelve a true si hay usuario autenticado en Firebase
-  async isLoggedInAsync(): Promise<boolean> {
-    const user = await this.afAuth.currentUser;
-    return !!user;
-  }
-
-  // Método opcional para comprobar si hay sesión activa
-  /*
-  verifyIsLogued(): boolean {
-    const user = localStorage.getItem('user');
-    return !!user;
-  }
-  */
 }
