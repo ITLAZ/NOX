@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router } from '@angular/router'; // Asegúrate de ajustar la ruta
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-buy-check',
@@ -23,7 +24,7 @@ export class BuyCheckPage implements OnInit {
     { label: 'Cupón 20%', value: 20 },
   ];
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private cartService: CartService) {
     const nav = this.router.getCurrentNavigation();
     const state = nav?.extras?.state;
     this.subtotal = state?.['total'] || 0;
@@ -41,5 +42,10 @@ export class BuyCheckPage implements OnInit {
   calculateTotal() {
     this.discountAmount = (this.discountPercentage / 100) * this.subtotal;
     this.total = this.subtotal - this.discountAmount + this.commission;
+  }
+
+  goToQRPage() {
+    this.cartService.setCheckoutTotal(this.total); // Guarda el total en el servicio
+    this.router.navigate(['/pay-qr']); // Navega a la página de QR
   }
 }

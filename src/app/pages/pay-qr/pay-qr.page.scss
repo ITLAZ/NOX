@@ -1,0 +1,116 @@
+ion-toolbar ion-title {
+  font-size: 20px;
+  font-family: "Futura MD BT", sans-serif;
+}
+
+ion-button {
+  --background: var(--ion-color-warning);
+  --border-radius: 100px;
+  font-size: 14px;
+  font-family: 'Montserrat Medium', sans-serif;
+  text-transform: none;
+}
+
+form ion-item {
+  --background: var(--ion-color-light) !important;
+  --border-radius: 20px;
+  --padding-start: 15px;
+  --padding-end: 15px;
+  --padding-top: 10px;
+  --padding-bottom: 10px;
+  --color: var(--ion-color-primary-contrast);
+  font-size: 14px;
+  font-family: 'Montserrat Regular', sans-serif;
+}
+
+ion-item {
+  padding-top: 12px;
+}
+
+ion-card {
+  --background: transparent;
+  box-shadow: none;
+}
+
+ion-card-title {
+  font-size: 16px;
+  font-family: 'Montserrat Medium', sans-serif;
+  color: var(--ion-color-primary-contrast);
+}
+
+ion-card-content {
+  font-size: 14px;
+  font-family: 'Montserrat Regular', sans-serif;
+  color: var(--ion-color-primary-contrast);
+}
+
+ion-button ion-icon {
+  margin-right: 8px;
+}
+
+ion-content {
+  --background: var(--ion-color-dark);
+}
+
+/* Nuevos estilos */
+.center-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 56px); /* Resta el alto del toolbar */
+}
+
+.center-content h2 {
+  font-size: 22px;
+  font-weight: bold;
+  margin-top: 10px;
+  font-family: 'Montserrat Medium', sans-serif;
+  text-align: center;
+}
+
+.center-content p {
+  font-size: 16px;
+  text-align: center;
+}
+
+.center-content ion-spinner {
+  margin: 20px 0;
+  --spinner-color: var(--ion-color-warning);
+}
+
+.center-content ion-icon {
+  font-size: 100px;
+  color: var(--ion-color-danger);
+  margin-bottom: 20px;
+}
+
+.center-content ion-button {
+  width: 80%; /* Asegura que los botones sean más largos */
+  margin: 10px 0; /* Espaciado entre los botones */
+}
+
+.separator-line-with-o {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Centra el contenido horizontalmente */
+  margin: 20px 0; /* Espacio arriba y abajo de la sección */
+  padding: 0 16px; /* Para que no se pegue a los bordes de la pantalla */
+}
+
+.separator-line-with-o .line {
+  background-color: var(--ion-color-fucsia); /* Color fucsia */
+  height: 2px; /* 2px de alto */
+  border-radius: 2px; /* 2px de redondeado */
+  width: 157px; /* 157px de ancho */
+  flex-grow: 1; /* Permite que las líneas crezcan para llenar el espacio, si es necesario */
+}
+
+.separator-line-with-o .o-text {
+  color: var(--ion-color-fucsia); /* Color fucsia para la 'O' */
+  font-size: 16px; /* 16px de tamaño de fuente */
+  font-family: 'Montserrat Medium', sans-serif; /* Montserrat Medium */
+  font-weight: 500; /* Asegura que sea medium */
+  margin: 0 10px; /* Espacio a los lados de la 'O' */
+  flex-shrink: 0; /* Evita que la 'O' se encoja */
+}

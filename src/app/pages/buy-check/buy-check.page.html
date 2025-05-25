@@ -72,9 +72,10 @@
         <div class="line"></div>
       </div>
 
-      <ion-button expand="block" class="gradient-button" [routerLink]="['/pay-qr']">
+      <ion-button expand="block" class="gradient-button" (click)="goToQRPage()">
         Pagar con QR
       </ion-button>
+
 
     </ion-card-content>
   </ion-card>

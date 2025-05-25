@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class CartService {
   private cart: any[] = [];
-
+  private checkoutTotal: number = 0; // Nuevo campo para almacenar el total
   constructor() {
     this.loadCart();
   }
@@ -71,5 +71,12 @@ export class CartService {
   updateCart(cart: any[]) {
     this.cart = [...cart];
     this.saveCart();
+  }
+  setCheckoutTotal(total: number) {
+    this.checkoutTotal = total;
+  }
+
+  getCheckoutTotal(): number {
+    return this.checkoutTotal;
   }
 }

@@ -12,34 +12,33 @@
   <!-- FORMULARIO -->
   <form *ngIf="!isProcessing && paymentSuccess === null" [formGroup]="cardForm" (ngSubmit)="submitPayment()">
 
-    <ion-item style="--min-height: 60px;" >
+    <ion-item style="--min-height: 60px;">
       <ion-label position="stacked">Número de tarjeta:</ion-label>
       <ion-input formControlName="cardNumber" type="text" maxlength="16"></ion-input>
     </ion-item>
 
     <ion-item>
-  <ion-label position="stacked">Fecha de vencimiento:</ion-label>
-  <ion-button expand="block" (click)="toggleFecha()">
-    {{ fechaSeleccionada ? fechaSeleccionada : 'Seleccionar mes/año' }}
-  </ion-button>
-</ion-item>
+      <ion-label position="stacked">Fecha de vencimiento:</ion-label>
+      <ion-button expand="block" (click)="toggleFecha()">
+        {{ fechaSeleccionada ? fechaSeleccionada : 'Seleccionar mes/año' }}
+      </ion-button>
+    </ion-item>
 
-<!-- Selector de fecha desplegable -->
-<ng-container *ngIf="mostrarFecha">
-  <ion-item>
-    <ion-datetime
-      [value]="fechaTemp"
-      presentation="month-year"
-      [min]="'2025-01-01'"
-      [max]="'2040-12-31'"
-      display-format="MM/YYYY"
-      placeholder="Selecciona mes/año"
-      (ionChange)="onFechaChange($event)">
-    </ion-datetime>
-  </ion-item>
-  <ion-button expand="block" color="success" (click)="confirmarFecha()">OK</ion-button>
-</ng-container>
-
+    <!-- Selector de fecha desplegable -->
+    <ng-container *ngIf="mostrarFecha">
+      <ion-item>
+        <ion-datetime
+          [value]="fechaTemp"
+          presentation="month-year"
+          [min]="'2025-01-01'"
+          [max]="'2040-12-31'"
+          display-format="MM/YYYY"
+          placeholder="Selecciona mes/año"
+          (ionChange)="onFechaChange($event)">
+        </ion-datetime>
+      </ion-item>
+      <ion-button expand="block" color="success" (click)="confirmarFecha()">OK</ion-button>
+    </ng-container>
 
     <ion-item>
       <ion-label position="stacked">CVV:</ion-label>
@@ -63,7 +62,7 @@
 
     <ion-grid style="padding: 0px;">
       <ion-row>
-        <ion-col size="7" >
+        <ion-col size="7">
           <ion-item>
             <ion-label position="stacked">Celular:</ion-label>
             <ion-input formControlName="phone" placeholder="+591 77776666"></ion-input>
@@ -82,13 +81,18 @@
   </form>
 
   <!-- PANTALLA DE PROCESANDO -->
-  <div *ngIf="isProcessing" class="full-screen center-content">
+  <div *ngIf="isProcessing" class="center-content">
     <ion-spinner name="circles" color="warning" style="transform: scale(2);"></ion-spinner>
-    <p class="mensaje">Procesando pago...<br><small>Este proceso puede demorar algunos minutos.</small></p>
+    <ion-text color="warning" >
+      <h4>Procesando pago...</h4>
+    </ion-text>
+    <ion-text color="warning" class="mensaje">
+      <p>Este proceso puede demorar algunos minutos.</p>
+    </ion-text>
   </div>
 
   <!-- PANTALLA DE RESULTADO -->
-  <div *ngIf="!isProcessing && paymentSuccess !== null" class="full-screen center-content">
+  <div *ngIf="!isProcessing && paymentSuccess !== null" class="center-content">
     <ion-icon
       [name]="paymentSuccess ? 'checkmark-circle-outline' : 'close-circle-outline'"
       [color]="paymentSuccess ? 'success' : 'danger'"
@@ -96,7 +100,7 @@
     </ion-icon>
     <h2>{{ paymentSuccess ? 'Pago realizado correctamente' : 'El pago ha fallado' }}</h2>
     <ion-button expand="block" color="success" *ngIf="paymentSuccess" (click)="volverInicio()">
-      Volver a la página principal
+      Volver al menú
     </ion-button>
     <ion-button expand="block" color="danger" *ngIf="!paymentSuccess" (click)="reintentarPago()">
       Reintentar pago

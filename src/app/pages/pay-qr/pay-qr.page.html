@@ -1,13 +1,82 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>payQR</ion-title>
+<ion-header *ngIf="!processing && !paymentFailed" [translucent]="true">
+  <ion-toolbar color="warning">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/buy-check"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Pago con QR</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">payQR</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true" class="ion-padding">
+
+  <!-- Procesando pago -->
+  <div *ngIf="processing" class="ion-text-center center-content">
+    <ion-spinner name="crescent" color="warning" style="width: 100px; height: 100px;"></ion-spinner>
+    <ion-text color="warning">
+      <h2>Procesando pago...</h2>
+    </ion-text>
+    <ion-text color="warning">
+      <p>Este proceso puede demorar algunos minutos.</p>
+    </ion-text>
+  </div>
+
+  <!-- Pago fallido -->
+  <div *ngIf="paymentFailed" class="ion-text-center center-content">
+    <ion-icon name="close-circle-outline" size="large" color="danger" style="font-size: 100px;"></ion-icon>
+    <ion-text color="danger">
+      <h2>¡Algo salió mal!</h2>
+    </ion-text>
+    <ion-text color="danger">
+      <p>No se pudo procesar el pago.</p>
+    </ion-text>
+    <div style="margin-top: 20px;">
+      <ion-button expand="block" (click)="retryPayment()" color="danger">
+        Volver a intentar
+      </ion-button>
+      
+      <ion-button expand="block" (click)="tryAnotherMethod()" color="danger" routerLink="/pay-card">
+        Probar otro método
+      </ion-button>
+    </div>
+  </div>
+
+  <!-- Pantalla normal de QR -->
+  <div *ngIf="!processing && !paymentFailed" class="ion-text-center">
+    <ion-card>
+      <img src="assets/qr-placeholder.png" alt="Código QR" style="width: 200px; height: 200px; margin: auto;" />
+      <div>
+        <ion-text color="warning">
+          <p><strong>Monto: {{ total | currency:'Bs. ' }}</strong></p>
+        </ion-text>
+        <ion-text color="warning" style="opacity: 60%;">
+          <p>Válido hasta: {{ expirationDate }} {{ expirationTime }}</p>
+        </ion-text>
+        <ion-text color="warning" style="opacity: 60%;">
+          <p>Referencia: {{ reference }}</p>
+        </ion-text>
+      </div>
+      <div style="margin-top: 20px;">
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-button expand="block" (click)="downloadQR()">
+                <ion-icon slot="start" name="download-outline"></ion-icon> Descargar
+              </ion-button>
+            </ion-col>
+            <ion-col>
+              <ion-button expand="block" (click)="shareQR()">
+                <ion-icon slot="start" name="share-outline"></ion-icon> Compartir
+              </ion-button>
+            </ion-col>
+            <ion-col>
+              <ion-button expand="block" (click)="verifyPayment()">
+                Verificar pago
+              </ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+    </ion-card>
+  </div>
+
 </ion-content>

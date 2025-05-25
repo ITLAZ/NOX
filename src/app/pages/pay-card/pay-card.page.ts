@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { NavController } from '@ionic/angular';
+import { NavController, IonContent } from '@ionic/angular';
 
 @Component({
   selector: 'app-pay-card',
@@ -9,14 +9,15 @@ import { NavController } from '@ionic/angular';
   standalone: false
 })
 export class PayCardPage implements OnInit {
+  @ViewChild(IonContent) content!: IonContent; // Referencia al contenido para el scroll
 
   cardForm!: FormGroup;
   isProcessing = false;
   paymentSuccess: boolean | null = null;
 
   // Variables para el selector de fecha
-  fechaTemp: string = ''; // valor temporal YYYY-MM
-  fechaSeleccionada: string = ''; // mostrado en botón como MM/YYYY
+  fechaTemp: string = '';
+  fechaSeleccionada: string = '';
   mostrarFecha: boolean = false;
 
   constructor(
@@ -42,12 +43,12 @@ export class PayCardPage implements OnInit {
   }
 
   onFechaChange(event: any) {
-    this.fechaTemp = event.detail.value; // Formato: YYYY-MM
+    this.fechaTemp = event.detail.value;
   }
 
   confirmarFecha() {
     if (this.fechaTemp) {
-      this.fechaSeleccionada = this.formatDate(this.fechaTemp); // MM/YYYY
+      this.fechaSeleccionada = this.formatDate(this.fechaTemp);
       this.cardForm.get('expiry')?.setValue(this.fechaSeleccionada);
     }
     this.mostrarFecha = false;
@@ -59,20 +60,28 @@ export class PayCardPage implements OnInit {
   }
 
   submitPayment() {
-    if (this.cardForm.invalid) {
-      this.cardForm.markAllAsTouched();
-      return;
-    }
+  console.log('Formulario enviado:', this.cardForm.value);
+  if (this.cardForm.invalid) {
+    console.warn('Formulario inválido');
+    this.cardForm.markAllAsTouched();
+    return;
+  }
 
-    this.isProcessing = true;
-    this.paymentSuccess = null;
+  this.isProcessing = true;
+  this.paymentSuccess = null;
 
-    // Simular el procesamiento del pago
-    setTimeout(() => {
-      const success = true;
-      this.paymentSuccess = success;
-      this.isProcessing = false;
-    }, 5000);
+  // Simular el procesamiento del pago
+  setTimeout(() => {
+    const success = true; // Simula el éxito o falla
+    this.paymentSuccess = success;
+    this.isProcessing = false;
+  }, 5000);
+}
+
+  async scrollToCenter() {
+    const scrollHeight = this.content.getScrollElement();
+    const center = (await scrollHeight).scrollHeight / 2;
+    this.content.scrollToPoint(0, center - 200, 300);
   }
 
   volverInicio() {
