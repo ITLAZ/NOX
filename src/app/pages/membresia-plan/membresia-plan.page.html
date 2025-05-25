@@ -1,13 +1,60 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>membresia-plan</ion-title>
+  <ion-toolbar class="header">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/membresias" color = "secondary"></ion-back-button>
+    </ion-buttons>
+    <ion-title color = "secondary">Escoger Plan</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">membresia-plan</ion-title>
+      <ion-title size="large">Escoger Plan</ion-title>
     </ion-toolbar>
   </ion-header>
+
+  <ion-list class="plan-selector">
+  <ion-list-header color = "translucent">
+    <ion-label>
+      <h2>Planes disponibles</h2>
+    </ion-label>
+  </ion-list-header>
+
+  <ion-radio-group [(ngModel)]="selectedPlan">
+    <ion-item lines="full">
+      <ion-label>
+        <h3>Plan mensual</h3>
+        <p>1 mes de premium</p>
+      </ion-label>
+      <div class="price-tag">70 bs.</div>
+      <ion-radio slot="end" value="mensual" color = "light"></ion-radio>
+    </ion-item>
+
+    <ion-item lines="full">
+      <ion-label>
+        <h3>Plan trimestral</h3>
+        <p>3 meses de premium</p>
+      </ion-label>
+      <div class="price-tag">180 bs.</div>
+      <ion-radio slot="end" value="trimestral" color = "light"></ion-radio>
+    </ion-item>
+
+    <ion-item lines="full">
+      <ion-label>
+        <h3>Plan anual</h3>
+        <p>12 meses de premium</p>
+      </ion-label>
+      <div class="price-tag">700 bs.</div>
+      <ion-radio slot="end" value="anual" color = "light"></ion-radio>
+    </ion-item>
+  </ion-radio-group>
+</ion-list>
+
+
+   <div class = "fixed-button-container">
+    <ion-button expand="block" shape="round" class="gradient-button" [routerLink]="'/membresia-compra-confirmacion'">
+      Realizar pago
+    </ion-button>
+  </div>
 </ion-content>

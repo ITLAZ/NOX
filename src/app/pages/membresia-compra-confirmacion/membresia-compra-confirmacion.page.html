@@ -1,13 +1,61 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>membresia-compra-confirmacion</ion-title>
+  <ion-toolbar class="header">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/membresia-plan" color = "secondary"></ion-back-button>
+    </ion-buttons>
+    <ion-title color = "secondary">Detalles de Compra</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">membresia-compra-confirmacion</ion-title>
+      <ion-title size="large">Detalles de Compra</ion-title>
     </ion-toolbar>
   </ion-header>
+    <ion-card class="subscription-card" color = "translucent">
+    <ion-card-header>
+      <ion-card-title>Plan ser nocturno</ion-card-title>
+    </ion-card-header>
+    
+    <ion-card-content>
+      <div class="price-container">
+        <p class="subscription-duration">12 meses de subscripción</p>
+        <span class="price">700 bs.</span>
+      </div>
+      <p class="subscription-date">Vigente hasta el 17/03/2026</p>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
+
+<div class="panel-inferior">
+  <div class="terminos-texto">
+    Al realizar la suscripción al plan premium de Nox, usted reconoce haber leído los términos y condiciones acerca de la suscripción.
+  </div>
+
+  <!-- Total y precio -->
+  <div class="total-section">
+    <span class="total-label">Total:</span>
+    <span class="total-precio">700 Bs.</span>
+  </div>
+
+  <hr class="linea" />
+
+  <!-- Botón: Pagar con tarjeta -->
+  <ion-button expand="block" class="boton-pago">
+    Pagar con tarjeta
+  </ion-button>
+
+  <!-- Separador con número 0 -->
+  <div class="separador">
+    <hr class="linea" />
+    <span class="numero-centro">0</span>
+    <hr class="linea" />
+  </div>
+
+  <!-- Botón: Pagar con QR -->
+  <ion-button expand="block" class="boton-pago">
+    Pagar con QR
+  </ion-button>
+
+</div>

@@ -1,9 +1,11 @@
 .header {
   --background: #171826;
+    font-family: "Futura Md BT", sans-serif;
 }
 
 .cover-container {
   text-align: center;
+  font-family: "Montserrat", sans-serif;
   margin-bottom: 1.5rem;
   margin-top: 1.5rem;
 
@@ -32,13 +34,13 @@ ion-button {
 
 .Etiquetas h4 {
     color: var(--ion-color-secondary);
-    font-family: "Monstserrat SemiBold";
+    font-family: "Montserrat", sans-serif;
     font-size: 14px;
     margin-left: 20px;
 }
 .Etiquetas p {
     color: var(--ion-color-secondary);
-    font-family: "Monstserrat Regular";
+    font-family: "Montserrat", sans-serif;
     font-size: 12px;
     margin-left: 20px;
 }
@@ -50,7 +52,7 @@ ion-button {
 .ion-text-wrap {
     display: flex;
     color: var(--ion-color-secondary);
-    font-family: "Monstserrat SemiBold";
+    font-family: "Montserrat", sans-serif;
     font-size: 16px;
     
 }

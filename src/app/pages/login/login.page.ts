@@ -28,12 +28,16 @@ interface Book {
   }
 
   login() {
-  if (this.form.valid) {
-    const { username, password } = this.form.value;
-    this.auth.loginByUsername(username, password);
-  } else {
-    this.form.markAllAsTouched();
+    if (this.form.valid) {
+      const { username, password } = this.form.value;
+      this.auth.loginByUsername(username, password);
+    } else {
+      this.form.markAllAsTouched();
+    }
   }
-}
+
+  loginWithGoogle() {
+    this.auth.loginGoogle();
+  }
 
 }

@@ -1,0 +1,12 @@
+ion-button {
+    height: 36px;
+    width: 335px;
+    font-size: 14px;
+    font-family: 'Montserrat Medium', sans-serif;
+    text-transform: none;
+    /* Adjust margin if needed to center the button */
+    margin: 10px auto;
+    /* This will center the button horizontally */
+    display: block;
+    /* Ensure it behaves as a block element for margin: auto to work */
+}

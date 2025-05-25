@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { TicketTestPageRoutingModule } from './ticket-test-routing.module';
 
 import { TicketTestPage } from './ticket-test.page';
+import { ItemCarritoModule } from 'src/app/shared/item-carrito/item-carrito.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    TicketTestPageRoutingModule
+    TicketTestPageRoutingModule,
+    ItemCarritoModule
   ],
   declarations: [TicketTestPage]
 })

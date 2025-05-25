@@ -1,0 +1,120 @@
+.header {
+  --background: #171826;
+  font-family: "Futura Md BT", sans-serif;
+}
+.subscription-card {
+  margin: 12px;
+  border-radius: 12px;
+  
+  ion-card-header {
+    padding-bottom: 0;
+    
+    ion-card-title {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #A57FF0;
+      font-family: "Montserrat", sans-serif;
+    }
+  }
+  
+  ion-card-content {
+    padding-top: 8px;
+    
+    .subscription-duration {
+      color: #A57FF0;
+      margin-bottom: 4px;   
+      font-size: 14px;
+      font-weight: 300;
+      font-family: "Montserrat", sans-serif;
+    }
+    
+    .subscription-date {
+      color: #BFA4F4;
+      font-size: 14px;
+      font-weight: 300;
+      margin-bottom: 16px;
+      font-family: "Montserrat", sans-serif;
+    }
+    
+    .price-container {
+      display: flex;
+      justify-content: space-between;
+      
+      .price {
+        font-size: 14px;
+        font-weight: 400;
+        font-family: "Montserrat", sans-serif;
+        color: #A57FF0;
+      }
+    }
+  }
+}
+
+.contenido-principal {
+  --padding-bottom: 300px; // espacio para no tapar nada con el footer
+}
+
+.panel-inferior {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  padding: 1rem 0;
+  z-index: 10;
+
+  .terminos-texto {
+    color: #cda9ff;
+    font-size: 14px;
+    font-family: "Montserrat", sans-serif;
+    padding: 0 1.5rem 1rem 1.5rem;
+  }
+
+  .total-section {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 1.5rem;
+    font-size: 16px;
+    font-family: "Montserrat", sans-serif;
+    color: #cda9ff;
+
+    .total-precio {
+      color: #cda9ff;
+      font-weight: 400;
+      font-size: 16px;
+    }
+  }
+
+  .linea {
+    border: none;
+    border-top: 1px solid #cda9ff;
+    margin: 1rem 1.5rem;
+  }
+
+  .boton-pago {
+    --background: linear-gradient(90deg, var(--purple-2, #7E48EA) 0%, var(--purple-3, #A57FF0) 67.5%, #E17FFA 100%);
+    --border-radius: 30px;
+    font-family: "Montserrat", sans-serif;
+    margin: 1rem 1.5rem;
+
+  }
+
+  .separador {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem 0;
+
+    .linea {
+      width: 40%;
+      border-top: 1px solid #cda9ff;
+      margin: 0 10px;
+    }
+
+    .numero-centro {
+      color: #cda9ff;
+      font-weight: bold;
+    }
+  }
+}
+ion-button {
+  text-transform: none;
+}

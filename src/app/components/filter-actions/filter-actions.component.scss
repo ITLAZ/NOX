@@ -1,10 +1,31 @@
 ion-content {
-    height: 250px;
+    height: auto;
+    min-height: 8%;
     --background: transparent;
+    --overflow: hidden;
+    --width: 100%;
+    transition: height 0.3s;
+}
+
+.height-8 {
+    height: 8% !important;
+    min-height: 8% !important;
+}
+
+.height-30 {
+    height: 30% !important;
+    min-height: 30% !important;
 }
 
 filter-chips {
     display: flex;
     flex-direction: row;
+}
+
+mini-card {
+    --width: 150px;
+    --height: 80%;
+    margin: 0;
+    padding: 0;
 }
 

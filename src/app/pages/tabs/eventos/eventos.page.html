@@ -1,7 +1,7 @@
 <toolbar [pageTitle]="'Eventos'"></toolbar>
 
 <ion-content>
-
+  <filter-actions [eventos]="true"></filter-actions>
   <h2>Eventos destacados</h2>
   <swiper-container slides-per-view="1.3" space-between="10" style="width: 375px; margin-left: -10px;">
     <swiper-slide *ngFor="let evento of events">

@@ -1,11 +1,13 @@
 .header {
   --background: #171826;
+    font-family: "Futura Md BT", sans-serif;
 }
 .menu-upload-card {
 
   .section-title {
     font-size: 1.4rem;
     font-weight: bold;
+    font-family: "Montserrat", sans-serif;
     color: #85eecb;
   }
 
@@ -15,6 +17,7 @@
     align-items: center;
     color: #cda8f5;
     font-size: 0.95rem;
+    font-family: "Montserrat", sans-serif;
     padding-top: 15px;
     padding-left: 15px;
     margin-right: 20px;
@@ -30,6 +33,7 @@
 
     ion-label {
       font-size: 1.05rem;
+      font-family: "Montserrat", sans-serif;
       color: #8fffd1;
     }
 
@@ -50,6 +54,7 @@
 
   ion-label {
     color: #BFA4F4;
+    font-family: "Montserrat", sans-serif;
   }
 
   .clear-icon {
@@ -67,6 +72,9 @@
   font-weight: 300;
   --background: #171826;
   --color: #BFA4F4;
+  ion-label {
+    font-family: "Montserrat", sans-serif;
+  }
 }
 
 .image-preview-grid {
@@ -96,13 +104,12 @@
 }
 
   .gradient-button {
-
-    height: 36px;
     --background: linear-gradient(90deg, #b266ff, #6ef9c5);
+    font-family: "Montserrat", sans-serif;
     color: #000;
     margin: auto;
     margin-top: -15px;
-    padding: 20px;
+    padding: 20px 20px 20px 20px;
   }
 
 ion-button {

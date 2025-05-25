@@ -1,0 +1,77 @@
+.header {
+  --background: #171826;
+  font-family: "Futura Md BT", sans-serif;
+}
+
+.plan-selector {
+  ion-list-header {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    margin-bottom: 10px;
+    
+    h2 {
+      font-weight: bold;
+      font-size: 16px;
+      color: #b68ff9
+    }
+  }
+
+  ion-item {
+    --background: transparent;
+    --inner-padding-end: 0;
+    align-items: center;
+
+    h3 {
+      margin: 0;
+      font-size: 1rem;
+      font-weight: bold;
+      color: #b68ff9;
+    }
+
+    p {
+      margin: 0;
+      font-size: 0.85rem;
+      color: #765da7;
+    }
+
+    .price-tag {
+      background: #b68ff9;
+      color: #000;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-weight: bold;
+      margin-right: 12px;
+      white-space: nowrap;
+    }
+
+    ion-radio {
+      --color: white;
+    }
+  }
+}
+
+.list-md {
+  background: transparent;
+  margin: 0px 12px;
+}
+
+
+.fixed-button-container {
+  position: fixed;
+  bottom: 20px;
+  left: 16px;
+  right: 16px;
+  z-index: 100; // Para que quede por encima del contenido
+  padding-bottom: 20px;
+}
+  .gradient-button {
+    
+    height: 36px;
+    --background: linear-gradient(90deg, var(--purple-2, #7E48EA) 0%, var(--purple-3, #A57FF0) 67.5%, #E17FFA 100%);
+    color: #000;
+    margin: auto;
+    padding: 1rem;
+  }
+
+ion-button {
+  text-transform: none;
+}
