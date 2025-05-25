@@ -1,19 +1,44 @@
-<ion-content class="ion-padding">
-  <h2>Agregar un Comentario</h2>
+<ion-content class="ion-padding custom-content" id="modal-comentario">
+  <div class="header-content-review">
+    <div class="user-info">
+      <ion-avatar>
+        <img src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+      </ion-avatar>
+      <h2>{{ nick }}</h2>
+    </div>
+
+    <div class="stars">
+      <ion-icon
+        *ngFor="let star of [1, 2, 3, 4, 5]"
+        [name]="star <= resenia ? 'star' : 'star-outline'"
+        (click)="resenia = star">
+      </ion-icon>
+    </div>
+  </div>
+
   <ion-textarea
     [(ngModel)]="comentario"
     placeholder="Escribe tu comentario"
-    rows="5">
+    rows="5"
+    id="textarea-comentario"
+    class="opinion-area custom-border-radius-20">
   </ion-textarea>
 
-  <div class="stars">
-    <ion-icon
-      *ngFor="let star of [1, 2, 3, 4, 5]"
-      [name]="star <= resenia ? 'star' : 'star-outline'"
-      (click)="resenia = star">
-    </ion-icon>
+  <div class="buttons">
+    <ion-button 
+      expand="block" 
+      color="primary" 
+      class="custom-border-radius-100" 
+      (click)="cerrarModal()">
+      Cancelar
+    </ion-button>
+    <ion-button 
+      expand="block" 
+      fill="clear"
+      id="btn-enviar"
+      class="custom-border-radius-100" 
+      (click)="agregarComentario()">
+      Enviar
+    </ion-button>
   </div>
-
-  <ion-button expand="block" (click)="agregarComentario()">Enviar</ion-button>
-  <ion-button expand="block" color="medium" (click)="cerrarModal()">Cancelar</ion-button>
 </ion-content>
