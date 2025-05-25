@@ -146,6 +146,9 @@ const routes: Routes = [
   {
     path: 'filters',
     loadChildren: () => import('./pages/filters/filters.module').then( m => m.FiltersPageModule)
+  },{
+   path: 'edit-product',
+    loadChildren: () => import('./pages/edit-product/edit-product.module').then( m => m.EditProductPageModule)
   },
   {
     path: '**',
