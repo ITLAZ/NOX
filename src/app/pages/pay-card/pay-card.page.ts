@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NavController, IonContent } from '@ionic/angular';
+import { DatabaseService } from 'src/app/services/database.service';
 
 @Component({
   selector: 'app-pay-card',
@@ -25,6 +26,7 @@ export class PayCardPage implements OnInit {
     private fb: FormBuilder,
     private navCtrl: NavController,
     private router: Router,
+    private databaseService: DatabaseService // Asegúrate de importar tu servicio de base de datos
   ) {}
 
   ngOnInit() {
@@ -87,11 +89,68 @@ export class PayCardPage implements OnInit {
   }
 
 volverInicio() {
-  // Elimina el item 'cart' del localStorage
-  localStorage.removeItem('cart');
+  // Recuperar el perfil del usuario logueado desde localStorage
+  const perfil = localStorage.getItem('profile');
+  const ultimaCompra = localStorage.getItem('ultimaCompra');
+
+  if (!perfil) {
+    console.error('No se encontró el perfil del usuario en localStorage.');
+    return;
+  }
+
+  const usuario = JSON.parse(perfil);
+  const usuarioId = usuario.id; // Extraer el ID del usuario logueado
+
+  if (ultimaCompra) {
+    const compraData = JSON.parse(ultimaCompra);
+
+    if (compraData.local) {
+      // Preparar datos para la subcolección 'historialCompraLocal'
+      const historialLocal = {
+        fecha: compraData.fecha,
+        total: compraData.total,
+        local: compraData.local, // Asegurarse de que sea el ID correcto del local
+        codigo: compraData.local,
+      };
+
+      // Registrar en Firestore
+      this.databaseService.addSubcollectionDocument(
+        'usersPrueba',
+        usuarioId,
+        'historialCompraLocal',
+        historialLocal
+      ).then(() => {
+        console.log('Compra local registrada exitosamente.');
+      }).catch(error => {
+        console.error('Error al registrar la compra local:', error);
+      });
+    } else if (compraData.evento) {
+      // Preparar datos para la subcolección 'historialCompraEvento'
+      const historialEvento = {
+        fecha: compraData.fecha,
+        total: compraData.total,
+        evento: compraData.evento,
+      };
+
+      // Registrar en Firestore
+      this.databaseService.addSubcollectionDocument(
+        'usersPrueba',
+        usuarioId,
+        'historialCompraEvento',
+        historialEvento
+      ).then(() => {
+        console.log('Compra de evento registrada exitosamente.');
+      }).catch(error => {
+        console.error('Error al registrar la compra de evento:', error);
+      });
+    }
+  }
+
+  // Eliminar los datos de última compra del localStorage
+  localStorage.removeItem('ultimaCompra');
   
-  // Navega de vuelta al menú
-  this.router.navigate(['/menu']); // Cambia '/menu' por la ruta deseada
+  // Navegar de vuelta al menú
+  this.router.navigate(['/home']); // Cambia '/menu' por la ruta deseada
 }
 
   reintentarPago() {
