@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DatabaseService } from 'src/app/services/database.service';
 import { CartService } from 'src/app/services/cart.service';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-comprar-entradas',
@@ -19,7 +20,8 @@ export class ComprarEntradasPage implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private db: DatabaseService,
-    private cartService: CartService
+    private cartService: CartService,
+    private alertCtrl: AlertController
   ) {}
 
   ngOnInit() {
@@ -52,25 +54,35 @@ export class ComprarEntradasPage implements OnInit {
     this.totalPrecio = this.entradas.reduce((suma, entrada) => suma + (entrada.quantity || 0) * entrada.precio, 0);
   }
 
-  confirmarCompra() {
-    const entradasSeleccionadas = this.entradas.filter(entrada => entrada.quantity > 0);
+  async confirmarCompra() {
+  const entradasSeleccionadas = this.entradas.filter(entrada => entrada.quantity > 0);
 
-    if (entradasSeleccionadas.length === 0) {
-      console.log('No se han seleccionado entradas.');
-      return;
-    }
-
-    console.log('Entradas seleccionadas:', entradasSeleccionadas);
-
-    // Agregar las entradas seleccionadas al carrito con ID y nombre del evento
-    entradasSeleccionadas.forEach(entrada =>
-      this.cartService.addToCart({
-        ...entrada,
-        eventoId: this.eventoId,
-        eventoNombre: this.eventoNombre
-      })
-    );
-
-    console.log('Compra confirmada. Productos agregados al carrito.');
+  if (entradasSeleccionadas.length === 0) {
+    const alert = await this.alertCtrl.create({
+      header: 'Sin entradas',
+      message: 'Selecciona al menos una entrada antes de continuar.',
+      buttons: ['OK']
+    });
+    return alert.present();
   }
+
+  // Limpiar carrito y agregar nuevas entradas
+  this.cartService.clearCart();
+
+  entradasSeleccionadas.forEach(entrada =>
+    this.cartService.addToCart({
+      ...entrada,
+      eventoId: this.eventoId,
+      eventoNombre: this.eventoNombre
+    })
+  );
+
+  const alert = await this.alertCtrl.create({
+    header: 'Entradas añadidas',
+    message: 'Las entradas seleccionadas fueron añadidas al carrito.',
+    buttons: ['OK']
+  });
+
+  await alert.present();
+}
 }

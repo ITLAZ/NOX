@@ -44,8 +44,34 @@ export class BuyCheckPage implements OnInit {
     this.total = this.subtotal - this.discountAmount + this.commission;
   }
 
-  goToQRPage() {
-    this.cartService.setCheckoutTotal(this.total); // Guarda el total en el servicio
-    this.router.navigate(['/pay-qr']); // Navega a la página de QR
+ goToQRPage() {
+  this.guardarCompra();
+  this.cartService.setCheckoutTotal(this.total);
+  this.router.navigate(['/pay-qr']);
+}
+
+goToCardPage() {
+  this.guardarCompra();
+  this.cartService.setCheckoutTotal(this.total);
+  this.router.navigate(['/pay-card']);
+}
+
+guardarCompra() {
+  const now = new Date().toISOString().split('T')[0];
+  const compra: any = {
+    fecha: now,
+    total: this.total
+  };
+
+  const primerItem = this.items[0];
+
+  if (primerItem.local) {
+    compra.local = primerItem.local;
+  } else if (primerItem.evento) { // Cambiar de "event" a "evento"
+    compra.evento = primerItem.evento; // Usar "evento" para identificar el evento
   }
+
+  localStorage.setItem('ultimaCompra', JSON.stringify(compra));
+}
+
 }
