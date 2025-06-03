@@ -13,19 +13,26 @@
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
+  <ion-toolbar class="category-toolbar" >
+    <ion-segment value="sushi" mode="md" > <ion-segment-button value="sushi">
+        <ion-label>Sushi</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="onigiris">
+        <ion-label>Onigiris</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="bebidas">
+        <ion-label>Bebidas</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
 
   <div *ngIf="menu.length > 0;">
-    <app-item-compras 
-      *ngFor="let item of menu"
-      [image]="item.imagenes?.[0] || 'https://via.placeholder.com/150'"
-      [nombreComida]="item.producto"
-      [descripcion]="item.descripcion"
-      [precio]="item.precio + ' Bs.'"
-      [quantity]="item.quantity"
-      (quantityChange)="aumentarCantidad(item, $event)">
+    <app-item-compras *ngFor="let item of menu" [image]="item.imagenes?.[0] || 'https://via.placeholder.com/150'"
+      [nombreComida]="item.producto" [descripcion]="item.descripcion" [precio]="item.precio + ' Bs.'"
+      [quantity]="item.quantity" (quantityChange)="aumentarCantidad(item, $event)">
     </app-item-compras>
   </div>
 </ion-content>

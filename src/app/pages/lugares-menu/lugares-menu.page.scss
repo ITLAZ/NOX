@@ -63,7 +63,7 @@ ion-segment-button {
 
 /* Ajuste específico para el botón de Sushi para asegurar que su color de texto e indicador sea terciario */
 ion-segment-button[value="sushi"] {
-  --color: var(--ion-color-tertiary); /* Color de texto para Sushi cuando no está seleccionado */
+  --color: var(--ion-color-primary); /* Color de texto para Sushi cuando no está seleccionado */
   --color-checked: var(--ion-color-tertiary); /* Color de texto para Sushi cuando está seleccionado */
 }
 

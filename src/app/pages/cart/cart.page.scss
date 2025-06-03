@@ -171,7 +171,20 @@ ion-footer {
   }
 }
 
-// Removed the following as they were problematic or redundant:
-// .sc-ion-label-md-s h2 { ... } // This is a specific internal Ionic class name, not recommended for direct use
-// .button-inner { ... } // This targets an internal Shadow DOM part, better handled via Ionic variables or ::part() if needed
-// ion-label.ion-text-wrap { color: var(--ion-color-fucsia) !important; } // Removed !important and handled via specific class .note-label
+.ion-text-wrap{
+  font-size: 14px;
+  font-family: 'Montserrat Medium', sans-serif;
+  color: var(--ion-color-fucsia);
+}
+
+ion-item {
+  --background: transparent;
+}
+
+ion-list ion-item{
+  --background: transparent;
+}
+
+ion-list {
+  background-color: transparent;
+}
