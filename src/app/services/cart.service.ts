@@ -79,4 +79,11 @@ export class CartService {
   getCheckoutTotal(): number {
     return this.checkoutTotal;
   }
+removeItemById(id: string) {
+  const index = this.cart.findIndex(i => i.id === id);
+  if (index >= 0) {
+    this.cart.splice(index, 1);
+    this.saveCart();
+  }
+}
 }
