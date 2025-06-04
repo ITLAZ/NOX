@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { NavController, IonContent } from '@ionic/angular';
+import { NavController, IonContent, AlertController } from '@ionic/angular';
 import { DatabaseService } from 'src/app/services/database.service';
 
 @Component({
@@ -26,7 +26,8 @@ export class PayCardPage implements OnInit {
     private fb: FormBuilder,
     private navCtrl: NavController,
     private router: Router,
-    private databaseService: DatabaseService // Asegúrate de importar tu servicio de base de datos
+    private databaseService: DatabaseService, // Asegúrate de importar tu servicio de base de datos
+    private alertController: AlertController
   ) {}
 
   ngOnInit() {
@@ -65,20 +66,26 @@ export class PayCardPage implements OnInit {
 
   submitPayment() {
   console.log('Formulario enviado:', this.cardForm.value);
+
   if (this.cardForm.invalid) {
     console.warn('Formulario inválido');
     this.cardForm.markAllAsTouched();
+    this.mostrarAlerta('Datos incompletos o erroneos', 'Por favor, verifica todos los campos correctamente.');
     return;
   }
 
   this.isProcessing = true;
   this.paymentSuccess = null;
 
-  // Simular el procesamiento del pago
+  // Simula el procesamiento del pago
   setTimeout(() => {
-    const success = true; // Simula el éxito o falla
+    const success = true; // Puedes cambiar a false para simular fallo
     this.paymentSuccess = success;
     this.isProcessing = false;
+
+    if (!success) {
+      this.mostrarAlerta('Error en el pago', 'Hubo un problema al procesar tu pago. Intenta nuevamente.');
+    }
   }, 5000);
 }
 
@@ -159,4 +166,14 @@ volverInicio() {
     this.fechaSeleccionada = '';
     this.fechaTemp = '';
   }
+  async mostrarAlerta(titulo: string, mensaje: string) {
+  const alert = await this.alertController.create({
+    header: titulo,
+    message: mensaje,
+    buttons: ['OK'],
+  });
+
+  await alert.present();
+}
+
 }
