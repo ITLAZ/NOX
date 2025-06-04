@@ -45,38 +45,53 @@ export class AuthService {
     // Eliminada la lógica de restaurar sesión desde la cookie
   }
 
+  /**
+   * Normaliza el perfil del usuario para que tenga la misma estructura
+   */
+  private normalizeProfile(user: any, extraData: any = {}): any {
+    return {
+      id: user.uid || user.id || extraData.id || '',
+      email: user.email || extraData.email || '',
+      name: user.displayName || user.name || extraData.name || '',
+      username: extraData.username || '',
+      photoUrl: user.photoURL || user.photoUrl || extraData.photoUrl || '',
+      // Agrega aquí otros campos personalizados si los necesitas
+      ...extraData
+    };
+  }
+
   registerUser(email: string, password: string, extraData: any) {
     return runInInjectionContext(this.injector, () => {
       return this.afAuth.createUserWithEmailAndPassword(email, password)
         .then(userCredential => {
           const uid = userCredential.user?.uid;
           if (uid) {
+            const profile = this.normalizeProfile(userCredential.user, extraData);
             return runInInjectionContext(this.injector, () => {
-
-            return this.firestore.collection('usersPrueba').doc(uid).set(extraData)
-              .then(async () => {
-                console.log('Usuario creado en Firestore', extraData);
-                const toast = await this.toastCtrl.create({
-                  message: 'Usuario creado exitosamente.',
-                  duration: 2000,
-                  color: 'success'
+              return this.firestore.collection('usersPrueba').doc(uid).set(profile)
+                .then(async () => {
+                  console.log('Usuario creado en Firestore', profile);
+                  const toast = await this.toastCtrl.create({
+                    message: 'Usuario creado exitosamente.',
+                    duration: 2000,
+                    color: 'success'
+                  });
+                  await toast.present();
+                  this.router.navigate(['/login']);
+                  setTimeout(() => {
+                    location.reload();
+                  }, 200);
+                })
+                .catch(async error => {
+                  console.error('Error al guardar datos en Firestore:', error);
+                  const toast = await this.toastCtrl.create({
+                    message: 'Error al guardar datos en Firestore.',
+                    duration: 2000,
+                    color: 'danger'
+                  });
+                  await toast.present();
+                  throw error;
                 });
-                await toast.present();
-                this.router.navigate(['/login']);
-                setTimeout(() => {
-                  location.reload();
-                }, 200);
-              })
-              .catch(async error => {
-                console.error('Error al guardar datos en Firestore:', error);
-                const toast = await this.toastCtrl.create({
-                  message: 'Error al guardar datos en Firestore.',
-                  duration: 2000,
-                  color: 'danger'
-                });
-                await toast.present();
-                throw error;
-              });
             });
           }
           throw new Error('Usuario no creado');
@@ -202,29 +217,19 @@ export class AuthService {
 
   private async handleGoogleUser(user: any) {
     await runInInjectionContext(this.injector, async () => {
-      const uid = user.uid;
-      const email = user.email;
-      const name = user.displayName; // Usar 'name' para el perfil
-      const photoUrl = user.photoURL; // Usar 'photoUrl' para el perfil
-
+      const profile = this.normalizeProfile(user);
       // Comprobar si el usuario ya existe en Firestore
-      const docRef = this.firestore.collection('usersPrueba').doc(uid);
+      const docRef = this.firestore.collection('usersPrueba').doc(profile.id);
       const docSnap = await docRef.get().toPromise();
       if (!docSnap || !docSnap.exists) {
         try {
-          await docRef.set({
-            email,
-            name,
-            photoUrl,
-            // Otros campos que quieras agregar
-          });
-          console.log('Usuario guardado en Firestore:', { email, name, photoUrl });
+          await docRef.set(profile);
+          console.log('Usuario guardado en Firestore:', profile);
         } catch (error) {
           console.error('Error al guardar usuario en Firestore:', error);
         }
       }
       // Actualizar el perfil local y en localStorage
-      const profile = { uid, email, name, photoUrl };
       localStorage.setItem('profile', JSON.stringify(profile));
       this.profile = profile;
     });
