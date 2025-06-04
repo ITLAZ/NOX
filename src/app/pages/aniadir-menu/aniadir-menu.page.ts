@@ -12,6 +12,7 @@ export class AniadirMenuPage implements OnInit {
   productName: string = '';
   productDescription: string = '';
   productPrice: string =  '';
+  productType: string = '';
   images: (string | null)[] = [null, null, null]; 
 
   constructor() { }

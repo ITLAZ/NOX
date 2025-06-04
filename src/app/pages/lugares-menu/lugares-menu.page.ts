@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { DatabaseService } from 'src/app/services/database.service';
 import { CartService } from 'src/app/services/cart.service';
 import { AlertController } from '@ionic/angular';
+import { TipoFiltroPipe } from 'src/app/pipes/tipo-filtro.pipe';
 
 @Component({
   selector: 'app-lugares-menu',
@@ -13,6 +14,8 @@ import { AlertController } from '@ionic/angular';
 export class LugaresMenuPage implements OnInit {
   lugarId!: string;
   menu: any[] = [];
+  tiposMenu: string[] = [];
+  tipoSeleccionado: string = '';
   totalProductos: number = 0;
   totalPrecio: number = 0;
 
@@ -33,6 +36,8 @@ export class LugaresMenuPage implements OnInit {
     this.db.getSubcollection('locales', this.lugarId, 'menu').subscribe({
       next: (data) => {
         this.menu = data.map(item => ({ ...item, quantity: 0 }));
+        this.tiposMenu = [...new Set(this.menu.map(item => item.tipo))];
+        this.tipoSeleccionado = this.tiposMenu[0] || '';
       },
       error: (err) => {
         console.error('Error al cargar el menú:', err);
@@ -50,31 +55,31 @@ export class LugaresMenuPage implements OnInit {
     this.totalPrecio = this.menu.reduce((sum, item) => sum + (item.quantity || 0) * item.precio, 0);
   }
 
-async agregarAlCarrito() {
-  const productosSeleccionados = this.menu.filter(item => item.quantity > 0);
+  async agregarAlCarrito() {
+    const productosSeleccionados = this.menu.filter(item => item.quantity > 0);
 
-  if (productosSeleccionados.length === 0) {
+    if (productosSeleccionados.length === 0) {
+      const alert = await this.alertCtrl.create({
+        header: 'Sin productos',
+        message: 'Selecciona al menos un producto antes de continuar.',
+        buttons: ['OK']
+      });
+      return alert.present();
+    }
+
+    // Reemplaza el contenido completo del carrito
+    this.cartService.clearCart();
+
+    productosSeleccionados.forEach(item => {
+      this.cartService.addToCart({ ...item, lugarId: this.lugarId });
+    });
+
     const alert = await this.alertCtrl.create({
-      header: 'Sin productos',
-      message: 'Selecciona al menos un producto antes de continuar.',
+      header: 'Carrito actualizado',
+      message: 'Los productos seleccionados fueron añadidos al carrito.',
       buttons: ['OK']
     });
-    return alert.present();
+
+    await alert.present();
   }
-
-  // Reemplaza el contenido completo del carrito
-  this.cartService.clearCart();
-
-  productosSeleccionados.forEach(item => {
-    this.cartService.addToCart({ ...item, lugarId: this.lugarId });
-  });
-
-  const alert = await this.alertCtrl.create({
-    header: 'Carrito actualizado',
-    message: 'Los productos seleccionados fueron añadidos al carrito.',
-    buttons: ['OK']
-  });
-
-  await alert.present();
-}
 }
