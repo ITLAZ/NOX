@@ -76,3 +76,17 @@ ion-inner {
     padding-bottom: 8px;
     --ion-item-background: transparent;
 }
+.historial-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+}
+
+.precio {
+  white-space: nowrap;
+}

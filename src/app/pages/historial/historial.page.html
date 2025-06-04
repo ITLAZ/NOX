@@ -17,32 +17,47 @@
     <ion-text color="success" class="subtitle">
       <h2 class="section-title">Lugares visitados recientemente</h2>
     </ion-text>
-    <swiper-container slides-per-view="1.2" space-between="10" navigation="false" pagination="false" class="historial-swiper" style="width: 375px; height: 350px;">
-      <swiper-slide *ngFor="let lugar of historialLocales">
-        <mid-card 
-          [nombre]="lugar.nombreLocal"
-          [imagen]="lugar.imagen || 'assets/img/default-local.jpg'"
-          [tipo]="lugar.tipo || 'Local'"
-          [etiquetas]="lugar.etiquetas || []"
-          [direccion]="lugar.direccion || 'Dirección no disponible'"
-          [distancia]="lugar.distancia || 'Desconocida'"
-          [calificacion]="lugar.calificacion || 0">
-        </mid-card>
-      </swiper-slide>
-    </swiper-container>
+   <swiper-container slides-per-view="1.2" space-between="10" navigation="false" pagination="false" class="historial-swiper" style="width: 375px; height: 350px;">
+  <swiper-slide *ngFor="let lugar of lugares">
+    <mid-card 
+      [nombre]="lugar.nombre"
+      [imagen]="lugar.imagen"
+      [tipo]="lugar.tipo"
+      [etiquetas]="lugar.etiquetas"
+      [direccion]="lugar.direccion"
+      [distancia]="lugar.distancia"
+      [calificacion]="lugar.calificacion">
+    </mid-card>
+  </swiper-slide>
+</swiper-container>
+
 
     <ion-text color="success" class="subtitle">
-      <h2 class="section-title">Historial de compra</h2>
+      <h2 class="section-title">Historial de compra - locales</h2>
     </ion-text>
     <ion-list>
-      <ion-list-header>Historial de Compras - Locales</ion-list-header>
       <ion-item *ngFor="let item of historialLocales">
-        <ion-label>
-          <h2>{{ item.nombreLocal }}</h2>
-          <p>{{ item.fechaCompra?.toDate() | date }}</p>
-          <p>{{ item.total }} ARS</p>
-        </ion-label>
-      </ion-item>
+  <ion-label>
+    <div class="historial-item">
+      <div class="info">
+        <ion-text color="secondary">
+          <h2 style="font-weight: bold;">{{ item.nombre || item.codigo }}</h2>
+        </ion-text>
+        <small>
+          <ng-container *ngIf="item.fecha?.toDate">
+            {{ item.fecha.toDate() | date:'dd/MM/yyyy' }}
+          </ng-container>
+          <ng-container *ngIf="!item.fecha?.toDate">
+            {{ item.fecha | date:'dd/MM/yyyy' }}
+          </ng-container>
+        </small>
+      </div>
+      <div class="precio">
+        {{ item.total }} Bs.
+      </div>
+    </div>
+  </ion-label>
+</ion-item>
     </ion-list>
   </ng-container>
 
@@ -51,33 +66,46 @@
     <ion-text color="success" class="subtitle">
       <h2 class="section-title">Eventos visitados recientemente</h2>
     </ion-text>
-    <swiper-container slides-per-view="1.2" space-between="10" navigation="false" pagination="false" class="historial-swiper" style="width: 375px; height: 350px;">
-      <swiper-slide *ngFor="let evento of historialEventos">
-        <mid-card
-          [nombre]="evento.nombreEvento"
-          [imagen]="evento.imagen || 'assets/img/default-evento.jpg'"
-          [tipo]="evento.tipo || 'Evento'"
-          [etiquetas]="evento.etiquetas || []"
-          [direccion]="evento.direccion || 'Lugar no especificado'"
-          [fecha]="evento.fecha || 'Sin fecha'"
-          [calificacion]="evento.calificacion || 0">
-        </mid-card>
-      </swiper-slide>
-    </swiper-container>
+   <swiper-container slides-per-view="1.2" space-between="10" navigation="false" pagination="false" class="historial-swiper" style="width: 375px; height: 350px;">
+  <swiper-slide *ngFor="let evento of eventos">
+    <mid-card
+      [nombre]="evento.nombre"
+      [imagen]="evento.imagen"
+      [tipo]="evento.tipo"
+      [etiquetas]="evento.etiquetas"
+      [direccion]="evento.direccion"
+      [fecha]="evento.fecha"
+      [calificacion]="evento.calificacion">
+    </mid-card>
+  </swiper-slide>
+</swiper-container>
 
     <ion-text color="success" class="subtitle">
-      <h2 class="section-title">Historial de eventos</h2>
+      <h2 class="section-title">Historial de compra - eventos</h2>
     </ion-text>
     <ion-list>
-      <ion-list-header>Historial de Compras - Eventos</ion-list-header>
       <ion-item *ngFor="let item of historialEventos">
-        <ion-label>
-          <h2>{{ item.nombreEvento }}</h2>
-          <p>{{ item.fechaCompra?.toDate() | date }}</p>
-          <p>{{ item.total }} ARS</p>
-        </ion-label>
-      </ion-item>
+  <ion-label>
+    <div class="historial-item">
+      <div class="info">
+        <ion-text color="secondary">
+          <h2 style="font-weight: bold;">{{ item.nombre || item.evento }}</h2>
+        </ion-text>
+        <small>
+          <ng-container *ngIf="item.fecha?.toDate">
+            {{ item.fecha.toDate() | date:'dd/MM/yyyy' }}
+          </ng-container>
+          <ng-container *ngIf="!item.fecha?.toDate">
+            {{ item.fecha | date:'dd/MM/yyyy' }}
+          </ng-container>
+        </small>
+      </div>
+      <div class="precio">
+        {{ item.total }} Bs.
+      </div>
+    </div>
+  </ion-label>
+</ion-item>
     </ion-list>
   </ng-container>
-
 </ion-content>
