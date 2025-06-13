@@ -1,25 +1,25 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar [ngStyle]="{'--background': toolColor, '--color': setColor}">
     <ion-title size="large">{{ pageTitle }}</ion-title>
 
-    <ion-button slot="start" *ngIf="showBack" (click)="navigateBack()" fill="clear" style="box-shadow: none;">
+    <ion-button slot="start" *ngIf="showBack" (click)="navigateBack()" fill="clear" [ngStyle]="{'--color': setColor, boxShadow: 'none'}">
       <ion-icon name="arrow-back"></ion-icon>
     </ion-button>
 
     <ion-buttons slot="end">
-      <ion-button *ngIf="showNotifications">
+      <ion-button *ngIf="showNotifications" [ngStyle]="{'--background': toolColor, '--color': setColor}">
         <ion-icon name="notifications-outline"></ion-icon>
       </ion-button>
 
-      <ion-button *ngIf="showSearch" (click)="openSearchModal()" [attr.aria-haspopup]="true" [attr.aria-controls]="'filter-modal'">
+      <ion-button *ngIf="showSearch" (click)="openSearchModal()" [attr.aria-haspopup]="true" [attr.aria-controls]="'filter-modal'" [ngStyle]="{'--background': toolColor, '--color': setColor}">
         <ion-icon name="search-outline"></ion-icon>
       </ion-button>
 
-      <ion-button *ngIf="showCart" (click)="goToCart()">
+      <ion-button *ngIf="showCart" (click)="goToCart()" [ngStyle]="{'--background': toolColor, '--color': setColor}">
         <ion-icon name="cart-outline"></ion-icon>
       </ion-button>
 
-      <ion-button *ngIf="showClear">
+      <ion-button *ngIf="showClear" [ngStyle]="{'--background': toolColor, '--color': setColor}">
         <ion-icon name="trash-outline">Limpiar</ion-icon>
       </ion-button>
     </ion-buttons>

@@ -53,7 +53,7 @@ export class AuthService {
       id: user.uid || user.id || extraData.id || '',
       email: user.email || extraData.email || '',
       name: user.displayName || user.name || extraData.name || '',
-      username: extraData.username || '',
+      username: extraData.username || user.displayName || user.name || '',
       photoUrl: user.photoURL || user.photoUrl || extraData.photoUrl || '',
       // Agrega aquí otros campos personalizados si los necesitas
       ...extraData

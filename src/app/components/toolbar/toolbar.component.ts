@@ -16,21 +16,22 @@ export class ToolbarComponent implements OnInit {
   @Input() showCart: boolean = true;
   @Input() showBack: boolean = false;
   @Input() showClear: boolean = false;
+  @Input() setRoute: string = '';
+  @Input() toolColor: string = 'var(--ion-color-primary)';
+  @Input() setColor: string = 'var(--ion-color-primary-contrast)';
 
   constructor(
     private modalController: ModalController,
     private router: Router,
-    private activatedRoute: ActivatedRoute
   ) {}
 
   ngOnInit() {}
 
   navigateBack() {
-    // Si hay historial, vuelve atrás. Si no, navega a home.
-    if (window.history.length > 1) {
-      window.history.back();
+    if (this.setRoute) {
+      this.router.navigate([this.setRoute]);
     } else {
-      this.router.navigate(['/home']);
+      this.router.navigate(['../'], { relativeTo: this.router.routerState.root });
     }
   }
 
@@ -56,5 +57,9 @@ export class ToolbarComponent implements OnInit {
 
   goToCart() {
     this.router.navigate(['/cart']);
+  }
+
+  goToNotifications() {
+    this.router.navigate(['/notifications']);
   }
 }

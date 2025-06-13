@@ -21,13 +21,7 @@ export class ComentarioComponent {
     private modalController: ModalController
   ) {
     // Obtener el nick del usuario autenticado, considerando usuarios de Google
-    if (this.authService.profile?.nick) {
-      this.nick = this.authService.profile.nick;
-    } else if (this.authService.profile?.displayName) {
-      this.nick = this.authService.profile.displayName;
-    } else {
-      this.nick = 'Anónimo';
-    }
+    this.nick = this.authService.profile?.name || this.authService.profile?.displayName || 'Anónimo';
   }
 
   async agregarComentario() {
