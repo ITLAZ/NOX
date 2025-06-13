@@ -7,7 +7,7 @@
     </ion-button>
 
     <ion-buttons slot="end">
-      <ion-button *ngIf="showNotifications" [ngStyle]="{'--background': toolColor, '--color': setColor}">
+      <ion-button *ngIf="showNotifications" (click)="goToNotifications()" [ngStyle]="{'--background': toolColor, '--color': setColor}">
         <ion-icon name="notifications-outline"></ion-icon>
       </ion-button>
 

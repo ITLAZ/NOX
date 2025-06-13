@@ -60,6 +60,6 @@ export class ToolbarComponent implements OnInit {
   }
 
   goToNotifications() {
-    this.router.navigate(['/notifications']);
+    this.router.navigate(['/notificaciones']);
   }
 }

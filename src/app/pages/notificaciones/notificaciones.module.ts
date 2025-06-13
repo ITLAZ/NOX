@@ -9,6 +9,7 @@ import { NotificacionesPageRoutingModule } from './notificaciones-routing.module
 import { NotificacionesPage } from './notificaciones.page';
 
 import { ItemNotificacionesModule } from 'src/app/shared/item-notificaciones/item-notificaciones.module';
+import { ToolbarModule } from 'src/app/shared/toolbar/toolbar.module';
 
 @NgModule({
   imports: [
@@ -16,7 +17,8 @@ import { ItemNotificacionesModule } from 'src/app/shared/item-notificaciones/ite
     FormsModule,
     IonicModule,
     NotificacionesPageRoutingModule,
-    ItemNotificacionesModule
+    ItemNotificacionesModule,
+    ToolbarModule
   ],
   declarations: [NotificacionesPage]
 })

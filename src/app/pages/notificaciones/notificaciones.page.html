@@ -1,23 +1,10 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-
-    <ion-buttons slot="start">
-      <ion-back-button color="slides-per-view" defaultHref="/tabs/home"></ion-back-button>
-      <ion-title>Notificaciones</ion-title>
-    </ion-buttons>
-
-    <ion-buttons slot="end">
-      <ion-button>
-        <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-
-  </ion-toolbar>
+  <toolbar [pageTitle]="'Notificaciones'" [showBack]="true" [setRoute]="'/home'" [toolColor]="'var(--ion-color-danger)'" [showClear]="true" [showCart]="false" [showSearch]="false" [showNotifications]="false"></toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <app-item-notificaciones [imagen]="'https://picsum.photos/57/57'" [titulo]="'Evento por acabar'" [subtitulo]="'Morat concierto'">></app-item-notificaciones>
+  <app-item-notificaciones [imagen]="'https://picsum.photos/57/57'" [titulo]="'Evento por acabar'" [subtitulo]="'Morat concierto'"></app-item-notificaciones>
   <app-item-notificaciones [imagen]="'https://picsum.photos/59/59'" [titulo]="'Compra realizada'" [subtitulo]="'Fiesta macurca'"></app-item-notificaciones>
-  <app-item-notificaciones [imagen]="'https://picsum.photos/56/56'" [titulo]="'Un nuevo evento aparecio'" [subtitulo]="'Morat concierto'" ></app-item-notificaciones>
+  <app-item-notificaciones [imagen]="'https://picsum.photos/56/56'" [titulo]="'Un nuevo evento aparecio'" [subtitulo]="'Morat concierto'"></app-item-notificaciones>
   <app-item-notificaciones [imagen]="'https://picsum.photos/58/58'" [titulo]="'Un nuevo evento aparecio'" [subtitulo]="'Fiesta macurca'"></app-item-notificaciones>
 </ion-content>
