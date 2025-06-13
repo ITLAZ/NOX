@@ -64,13 +64,14 @@ export class PayCardPage implements OnInit {
     return `${month}/${year}`;
   }
 
-  submitPayment() {
+submitPayment() {
   console.log('Formulario enviado:', this.cardForm.value);
 
   if (this.cardForm.invalid) {
     console.warn('Formulario inválido');
     this.cardForm.markAllAsTouched();
-    this.mostrarAlerta('Datos incompletos o erroneos', 'Por favor, verifica todos los campos correctamente.');
+    const errores = this.obtenerErroresFormulario();
+    this.mostrarAlerta('Datos incompletos o erróneos', errores);
     return;
   }
 
@@ -166,7 +167,52 @@ volverInicio() {
     this.fechaSeleccionada = '';
     this.fechaTemp = '';
   }
-  async mostrarAlerta(titulo: string, mensaje: string) {
+obtenerErroresFormulario(): string {
+  const errores: string[] = [];
+  
+  Object.keys(this.cardForm.controls).forEach(campo => {
+    const control = this.cardForm.get(campo);
+    if (control?.invalid) {
+      const erroresCampo: string[] = [];
+
+      if (control.errors?.['required']) {
+        erroresCampo.push('Este campo es obligatorio.');
+      }
+      if (control.errors?.['pattern']) {
+        if (campo === 'cardNumber') {
+          erroresCampo.push('El número de tarjeta debe tener exactamente 16 dígitos.');
+        } else {
+          erroresCampo.push('El formato del valor no es válido.');
+        }
+      }
+      if (control.errors?.['maxlength']) {
+        erroresCampo.push(`El valor excede la longitud máxima permitida (${control.errors['maxlength'].requiredLength}).`);
+      }
+
+      errores.push(`${this.getNombreCampo(campo)}: ${erroresCampo.join(' ')}`);
+    }
+  });
+
+  return errores.join('');
+}
+
+
+getNombreCampo(campo: string): string {
+  const nombres: { [key: string]: string } = {
+    cardNumber: 'Número de tarjeta',
+    expiry: 'Fecha de vencimiento',
+    cvv: 'CVV',
+    firstName: 'Nombre(s)',
+    lastName: 'Apellido(s)',
+    address: 'Dirección de facturación',
+    phone: 'Celular',
+    postalCode: 'Código postal',
+  };
+
+  return nombres[campo] || campo;
+}
+
+async mostrarAlerta(titulo: string, mensaje: string) {
   const alert = await this.alertController.create({
     header: titulo,
     message: mensaje,
@@ -175,5 +221,4 @@ volverInicio() {
 
   await alert.present();
 }
-
 }

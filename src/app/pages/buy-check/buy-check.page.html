@@ -5,7 +5,7 @@
   <ion-list>
     <ion-item *ngFor="let item of items" class="no-background">
       <ion-thumbnail slot="start">
-        <img [src]="item.image || 'assets/placeholder.png'" alt="Imagen del producto">
+        <img [src]="item.imagenes || 'assets/placeholder.png'" alt="Imagen del producto">
       </ion-thumbnail>
       <ion-label>
         <h2>{{ item.name || item.tipo }}</h2>
