@@ -2,40 +2,61 @@
   display: flex;
   flex-direction: column;
   gap: 18px;
-  padding: 24px 16px 32px 16px;
+  padding: 20px;
 }
 
 .ticket-card {
-  background: linear-gradient(90deg, #b266ff 0%, #6ef9c5 100%);
   border-radius: 20px;
   box-shadow: 0 2px 12px rgba(80, 40, 120, 0.10);
-  padding: 20px 18px 16px 18px;
+  padding: 10px 0px 16px 0px;
   cursor: pointer;
   transition: transform 0.1s;
   color: #222;
   font-family: 'Montserrat', sans-serif;
   position: relative;
+  display: flex; /* Added for layout of content and arrow */
+  justify-content: space-between; /* To push arrow to the right */
+  align-items: center; /* Vertically align content and arrow */
 }
 .ticket-card:hover {
   transform: translateY(-2px) scale(1.01);
   box-shadow: 0 4px 18px rgba(80, 40, 120, 0.18);
 }
+
+/* Container for all text within the card */
+.ticket-content-wrapper {
+  flex-grow: 1; /* Allows content to take available space */
+}
+
 .ticket-header h2 {
-  font-size: 1.1rem;
-  font-weight: bold;
-  color: #4c4cff;
+  font-size: 16px;
+  font-family: 'Montserrat semibold', sans-serif;
+  color: var(--ion-color-secondary);
   margin: 0 0 2px 0;
 }
+
 .ticket-header p {
   color: #a68eff;
   font-size: 0.95rem;
   margin: 0 0 8px 0;
 }
+
 .ticket-details p {
   margin: 0 0 4px 0;
-  color: #222;
-  font-size: 0.98rem;
+  font-size: 14px;
+  font-family: 'Montserrat Regular', sans-serif;
 }
+
+.ticket-details p:first-of-type {
+  font-size: 14px;
+  font-family: 'Montserrat Regular', sans-serif;
+  color: var(--ion-color-secondary);
+}
+
+.ticket-details p:not(:first-of-type) {
+  color: var(--ion-color-light);
+}
+
 .no-tickets {
   text-align: center;
   color: #a68eff;
@@ -46,4 +67,26 @@
   font-size: 48px;
   color: #b266ff;
   margin-bottom: 8px;
+}
+
+.ticket-card::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 1px;
+  background-color: var(--ion-color-light);
+  margin-top: 16px;
+  position: absolute; /* Position relative to the card */
+  bottom: 0; /* Align at the bottom */
+  left: 0; /* Span full width */
+}
+
+/* Updated style for the right-pointing arrow */
+.ticket-card ion-icon.right-arrow {
+  font-size: 24px; /* Fixed size as requested */
+  min-width: 24px; /* Ensure it doesn't shrink */
+  min-height: 24px; /* Ensure it doesn't shrink */
+  color: var(--ion-color-primary);
+  margin-left: 10px; /* Reduced margin, as inner padding is added */
+  margin-right: 18px; /* Added right margin to keep it from the card edge */
 }

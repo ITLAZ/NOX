@@ -31,7 +31,7 @@ export class QrTicketPage implements OnInit {
         precio: this.ticket.precio || this.ticket.price,
         codigo: this.ticket.codigo || ''
       });
-      await QRCode.toCanvas(this.qrCanvas.nativeElement, qrData, { width: 200 });
+      await QRCode.toCanvas(this.qrCanvas.nativeElement, qrData, { width: 300 });
     }
   }
 }

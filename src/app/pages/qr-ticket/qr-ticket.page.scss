@@ -1,33 +1,134 @@
+.banner {
+  background-image: url('../../../assets/images/banner_entradas.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  padding: 20px;
+  color: var(--ion-color-light);
+}
+
+.banner h2 {
+  font-family: "Forta", sans-serif;
+  font-size: 26px;
+  color: var(--ion-color-light);
+  text-transform: uppercase;
+  margin: 0;
+  padding: 0px;
+}
+
+.banner ion-chip {
+  --background: #1E0949;
+  color: var(--ion-color-light);
+  margin: 7px 0 0 0;
+  font-family: 'Montserrat Regular', sans-serif;
+  font-size: 16px;
+  padding: 0px;
+}
+
+.banner ion-label {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
 .qr-ticket-container {
+  display: block;
+  padding: 0;
+  min-height: auto;
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 0px;
+}
+
+.qr-ticket-card {
+  background: none;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 20px 20px 20px 20px;
+  font-family: 'Montserrat Regular', sans-serif;
+  width: 100%;
+  max-width: none;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  /* Espaciado de 30px entre las secciones principales */
+  gap: 0px;
+}
+
+
+
+.section-one p,
+.section-two p {
+  font-size: 16px;
+  font-family: 'Montserrat Regular', sans-serif;
+  color: var(--ion-color-secondary);
+  margin: 0;
+  padding-bottom: 10px;
+}
+.section-three p{
+  font-size: 16px;
+  font-family: 'Montserrat Regular', sans-serif;
+  color: var(--ion-color-secondary);
+  margin: 0;
+}
+
+
+.section-one {
+  display: flex;
+  /* Usamos space-between para empujar a los extremos */
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 0px 0;
+  /* Eliminamos text-align: left; de aquí para que los hijos lo controlen */
+}
+
+.section-one .left-col {
+  /* Alinea el contenido de la columna izquierda a la izquierda */
+  text-align: left;
+  /* Para que tome el espacio necesario, no todo el flex:1 */
+  flex: none;
+  padding-right: 10px; /* Añade un poco de espacio si es necesario */
+}
+
+.section-one .right-col {
+  /* Alinea el contenido de la columna derecha a la derecha */
+  text-align: right;
+  /* Para que tome el espacio necesario, no todo el flex:1 */
+  flex: none;
+  padding-left: 10px; /* Añade un poco de espacio si es necesario */
+}
+
+
+.section-two {
+  padding: 10px 0;
+  text-align: center;
+}
+
+.section-three {
+  border: 2px solid var(--ion-color-secondary);
+  border-radius: 12px;
+  padding: 10px 10px;
+  text-align: center;
+  background-color: transparent;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 80vh;
 }
-.qr-ticket-card {
-  background: linear-gradient(90deg, #b266ff 0%, #6ef9c5 100%);
-  border-radius: 24px;
-  box-shadow: 0 2px 16px rgba(80, 40, 120, 0.13);
-  padding: 32px 28px 28px 28px;
-  color: #222;
-  font-family: 'Montserrat', sans-serif;
-  min-width: 280px;
-  max-width: 350px;
-  text-align: center;
-}
-.qr-ticket-card h2 {
-  color: #4c4cff;
-  font-size: 1.2rem;
-  font-weight: bold;
-  margin-bottom: 8px;
-}
-.qr-ticket-card p {
-  margin: 6px 0;
-  color: #222;
-  font-size: 1rem;
-}
-.qr-code {
-  margin-top: 18px;
+
+.section-four {
+  border-radius: 20px;
   display: flex;
   justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+  box-shadow: 0 0px 0px rgba(0,0,0,0.1);
+  margin-top: 20px;
 }
+ion-footer {
+  padding: 20px; 
+}
+
