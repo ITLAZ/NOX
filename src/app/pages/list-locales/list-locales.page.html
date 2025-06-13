@@ -1,0 +1,21 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Locales</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <ion-list>
+    <ion-item *ngFor="let local of locales">
+      <ion-label>
+        <h2>{{ local.nombre }}</h2>
+      </ion-label>
+      <ion-buttons slot="end">
+        <ion-button color="primary" (click)="goToEditPanel(local.id)">Editar</ion-button>
+        <ion-button color="danger" (click)="confirmDelete(local.id)">Eliminar</ion-button>
+      </ion-buttons>
+    </ion-item>
+  </ion-list>
+
+  <ion-button expand="block" color="success" (click)="goToNewLocal()">Agregar Nuevo Local</ion-button>
+</ion-content>

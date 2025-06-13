@@ -1,0 +1,58 @@
+.header {
+  --background: #171826;
+    font-family: "Futura Md BT", sans-serif;
+}
+
+.cover-container {
+  text-align: center;
+  font-family: "Montserrat", sans-serif;
+  margin-bottom: 1.5rem;
+  margin-top: 1.5rem;
+
+  .cover-img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin: auto;
+    object-fit: cover;
+  }
+
+  .gradient-button {
+    
+    height: 36px;
+    --background: linear-gradient(90deg, #b266ff, #6ef9c5);
+    color: #000;
+    margin: auto;
+    padding: 1rem;
+  }
+}
+ion-button {
+  text-transform: none;
+}
+
+
+
+.Etiquetas h4 {
+    color: var(--ion-color-secondary);
+    font-family: "Montserrat", sans-serif;
+    font-size: 14px;
+    margin-left: 20px;
+}
+.Etiquetas p {
+    color: var(--ion-color-secondary);
+    font-family: "Montserrat", sans-serif;
+    font-size: 12px;
+    margin-left: 20px;
+}
+
+.chips-row {
+    margin-left: 20px;
+}
+
+.ion-text-wrap {
+    display: flex;
+    color: var(--ion-color-secondary);
+    font-family: "Montserrat", sans-serif;
+    font-size: 16px;
+    
+}

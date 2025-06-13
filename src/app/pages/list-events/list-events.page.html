@@ -1,0 +1,30 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Lista de Eventos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Lista de Eventos</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-list>
+    <ion-item *ngFor="let evento of eventos">
+      <ion-label>
+        <h2>{{ evento.nombre }}</h2>
+      </ion-label>
+      <ion-buttons slot="end">
+        <ion-button color="success" (click)="goToEditPanel(evento.id)">
+          Editar
+        </ion-button>
+        <ion-button color="danger" (click)="confirmarEliminarEvento(evento.id)">
+          Eliminar
+        </ion-button>
+      </ion-buttons>
+    </ion-item>
+  </ion-list>
+  <ion-button expand="block" color="primary" (click)="irANuevoEvento()">Nuevo Evento</ion-button>
+</ion-content>

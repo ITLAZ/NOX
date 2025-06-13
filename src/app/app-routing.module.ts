@@ -182,9 +182,28 @@ const routes: Routes = [
     loadChildren: () => import('./pages/qr-ticket/qr-ticket.module').then( m => m.QrTicketPageModule)
   },
   {
+    path: 'list-events',
+    loadChildren: () => import('./pages/list-events/list-events.module').then( m => m.ListEventsPageModule)
+  },
+  {
+    path: 'list-locales',
+    loadChildren: () => import('./pages/list-locales/list-locales.module').then( m => m.ListLocalesPageModule)
+  },
+    {
+    path: 'new-local',
+    loadChildren: () => import('./pages/new-local/new-local.module').then( m => m.NewLocalPageModule)
+  },
+  {
+    path: 'new-event',
+    loadChildren: () => import('./pages/new-event/new-event.module').then( m => m.NewEventPageModule)
+  },
+
+
+  {
     path: '**',
     redirectTo: '/home',
   },
+
 ];
 
 @NgModule({

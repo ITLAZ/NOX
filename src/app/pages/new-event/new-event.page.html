@@ -1,0 +1,103 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class = "header">
+    <ion-buttons slot="start">
+      <ion-icon name="arrow-back" size="large" [routerLink]="'/perfil'" color = "primary"></ion-icon>
+    </ion-buttons>
+    <ion-title color = "primary">Gestionar mi Evento</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <div class = "cover-container">
+    <img src="https://picsum.photos/200" alt="Portada" class="cover-img" />
+    <ion-button expand="block" shape="round" class="gradient-button">
+      Cambiar portada
+    </ion-button>
+  </div>
+
+  <info-row
+    icon = "ticket-outline"
+    label = "Nombre del Evento"
+    [value] = "'Kasane Teto LIVE'"
+    [editable] = "false"
+    type = "text">
+  </info-row>
+  <info-row
+    icon="location-outline"
+    label="Dirección"
+    [value]="'Avenida Juan de Vargas #2370, Miraflores'">
+  </info-row>
+
+  <info-row
+    icon="time-outline"
+    label="Horario del Evento"
+    [value]="'11:00 - 20:00'"
+    [editable]="true">
+  </info-row>
+
+  <info-row
+    icon="calendar-outline"
+    label="Fechas del Evento"
+    [value]="'29/10/2025'"
+    [editable]="true">
+  </info-row>
+
+  <info-row
+    icon="business-outline"
+    label="Tipo de Evento"
+    type="select">
+  </info-row>
+
+  <div class="Etiquetas">
+    <h4>Etiquetas del Evento</h4>
+    <p>Usa etiquetas para que tu evento sea más fácil de encontrar</p>
+    <div class="chips-row">
+      <ion-chip color = "secondary">
+        <ion-icon name="ticket" color="secondary" ></ion-icon>
+        <ion-label>Precio de Entrada</ion-label>
+        <ion-icon name="caret-down-outline" color="secondary"></ion-icon>
+      </ion-chip>
+      
+      <ion-chip color = "secondary">
+        <ion-icon name="card" color="secondary"></ion-icon>
+        <ion-label>Tipos de Pago</ion-label>
+        <ion-icon name="caret-down-outline" color="secondary"></ion-icon>
+      </ion-chip>
+
+    </div>
+  </div>
+
+  <ion-item lines="strong" color = "translucent" button [routerLink]="'/gestion-entradas'" >
+    <ion-label color = primary>
+      Gestionar Entradas
+    </ion-label>
+    <ion-icon name="chevron-forward-outline" slot="end" class="option-icon" color = "primary"></ion-icon>
+  </ion-item>
+    <ion-item lines="strong" color = "translucent" button >
+    <ion-label color = primary>
+      Ubicación en el Mapa
+    </ion-label>
+    <ion-icon name="chevron-forward-outline" slot="end" class="option-icon" color = "primary"></ion-icon>
+  </ion-item>
+    <ion-item lines="strong" color = "translucent" button >
+    <ion-label color = primary>
+      Gestionar Publicidad
+    </ion-label>
+    <ion-icon name="chevron-forward-outline" slot="end" class="option-icon" color = "primary"></ion-icon>
+  </ion-item>
+  <ion-item lines="strong" color = "translucent" button >
+    <ion-label color = primary>
+      Cargar fotos de Evento
+    </ion-label>
+    <ion-icon name="chevron-forward-outline" slot="end" class="option-icon" color = "primary"></ion-icon>
+  </ion-item>
+
+    <div class = "cover-container">
+    <ion-button expand="block" shape="round" class="gradient-button">
+      Guardar Cambios
+    </ion-button>
+  </div>
+  
+</ion-content>
+
