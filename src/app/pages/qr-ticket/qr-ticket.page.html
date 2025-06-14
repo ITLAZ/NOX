@@ -1,10 +1,11 @@
-
 <ion-header [translucent]="true">
-  <toolbar [toolColor]="'var(--ion-color-medium)'"  [setColor]="'var(--ion-color-secondary)'" [pageTitle]="'Entrada QR'" [showCart]="false" [showSearch]="false" [showNotifications]="false" [showBack]="true"></toolbar>
-  
+  <toolbar [toolColor]="'var(--ion-color-medium)'" [setColor]="'var(--ion-color-secondary)'" 
+           [pageTitle]="'Entrada QR'" [showCart]="false" [showSearch]="false" [showNotifications]="false" 
+           [showBack]="true"></toolbar>
+
   <div class="banner">
     <h2>{{ ticket.eventoNombre || ticket.eventName || ticket.evento }}</h2>
-    <ion-chip >
+    <ion-chip>
       <ion-label>{{ ticket.producto || '-' }}</ion-label>
     </ion-chip>
   </div>
@@ -13,16 +14,25 @@
 <ion-content [fullscreen]="true">
   <div class="qr-ticket-container" *ngIf="ticket">
     <div class="qr-ticket-card">
-
       <div class="section-one">
         <div class="left-col">
           <p>Fecha: {{ ticket.fecha ? (ticket.fecha | date: 'mediumDate') : 'Sin fecha' }}</p>
-          <p>Precio: {{ ticket.precio || ticket.price || '-' }} Bs</p>
+          <p>Precio: {{ ticket.total || ticket.precio || ticket.price || '-' }} Bs</p>
         </div>
         <div class="right-col">
-          <p>Cantidad: {{ ticket.cantidad || '-' }}</p>
-          <p>Asiento: {{ ticket.asiento || 'A1' }}</p>
-        </div>
+  <p>Cantidad: {{ ticket.cantidad || '-' }}</p>
+  <div class="asiento-flotante-container">
+    <ion-button fill="clear" (click)="toggleAsientos()" class="toggle-btn">
+      Asientos: {{ mostrarAsientos ? '▲' : '▼' }}
+    </ion-button>
+    
+    <div class="asientos-flotante" *ngIf="mostrarAsientos" [class.multiples]="asientosArray.length > 4">
+      <div class="asiento-item" *ngFor="let asiento of asientosArray">
+        {{ asiento }}
+      </div>
+    </div>
+  </div>
+</div>
       </div>
 
       <div class="section-two">
@@ -30,18 +40,16 @@
       </div>
 
       <div class="section-three">
-        <p>Código: {{ ticket.codigo || '123456789' }} / ID Evento: {{ ticket.evento || '-' }}</p>
+        <p>Código: {{ ticket.codigo || '12345678' }}</p>
       </div>
-
-      
     </div>
   </div>
 </ion-content>
-<ion-footer >
-  <div class="section-four">
-        <div class="qr-code">
-          <canvas #qrCanvas ></canvas>
-        </div>
-      </div>
 
+<ion-footer>
+  <div class="section-four">
+    <div class="qr-code">
+      <canvas #qrCanvas width="300" height="300"></canvas>
+    </div>
+  </div>
 </ion-footer>

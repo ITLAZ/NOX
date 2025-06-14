@@ -60,18 +60,20 @@ guardarCompra() {
   const now = new Date().toISOString().split('T')[0];
   const compra: any = {
     fecha: now,
-    total: this.total
+    total: this.total,
+    items: this.items.map(item => ({
+      producto: item.producto || item.tipo || 'Producto desconocido', // Nombre del producto
+      cantidad: item.quantity, // Cantidad de entradas o productos
+    })),
   };
 
   const primerItem = this.items[0];
-
   if (primerItem.local) {
     compra.local = primerItem.local;
-  } else if (primerItem.evento) { // Cambiar de "event" a "evento"
-    compra.evento = primerItem.evento; // Usar "evento" para identificar el evento
+  } else if (primerItem.evento) {
+    compra.evento = primerItem.evento;
   }
 
   localStorage.setItem('ultimaCompra', JSON.stringify(compra));
 }
-
 }

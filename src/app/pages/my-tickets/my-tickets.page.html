@@ -5,7 +5,6 @@
     <div class="ticket-card" *ngFor="let ticket of tickets" (click)="verTicket(ticket)">
       <div class="ticket-content-wrapper"> <div class="ticket-header">
           <h2>{{ ticket.eventoNombre }}</h2>
-          <p *ngIf="ticket.fecha">{{ ticket.fecha | date: 'mediumDate' }}</p>
         </div>
         <div class="ticket-details">
           <p>{{ ticket.producto || '-' }}</p>

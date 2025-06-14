@@ -10,8 +10,31 @@
   align-items: flex-start;
   padding: 20px;
   color: var(--ion-color-light);
-}
+  position: relative; // Añade esto
+  z-index: 1; // Añade esto
 
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.3); // Oscurece ligeramente el fondo para mejor contraste
+    z-index: -1;
+  }
+
+  h2 {
+    font-family: "Forta", sans-serif;
+    font-size: 26px;
+    color: var(--ion-color-light);
+    text-transform: uppercase;
+    margin: 0;
+    padding: 0px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8); // Añade sombra para mejor legibilidad
+    position: relative; // Asegura que esté sobre el pseudo-elemento
+  }
+}
 .banner h2 {
   font-family: "Forta", sans-serif;
   font-size: 26px;
@@ -132,3 +155,63 @@ ion-footer {
   padding: 20px; 
 }
 
+/* ... (otros estilos se mantienen igual) ... */
+.asiento-flotante-container {
+  position: relative;
+  display: inline-block;
+  
+  .toggle-btn {
+    --padding-start: 0;
+    --padding-end: 0;
+    --color: var(--ion-color-secondary);
+    margin: 0;
+    font-size: 16px;
+  }
+
+  .asientos-flotante {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    z-index: 1000;
+    width: 200px;
+    background: black;
+    border: 2px solid var(--ion-color-secondary);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    margin-top: 5px;
+    
+    /* Estilo base (hasta 4 elementos) */
+    max-height: 176px; /* 4 elementos x 44px cada uno */
+    overflow: hidden;
+    
+    /* Estilo cuando hay más de 4 elementos */
+    &.multiples {
+      max-height: 176px; /* Mantiene 4 elementos visibles */
+      overflow-y: auto; /* Habilita scroll vertical */
+      
+      /* Estilo personalizado para la barra de scroll */
+      &::-webkit-scrollbar {
+        width: 6px;
+      }
+      
+      &::-webkit-scrollbar-thumb {
+        background-color: var(--ion-color-secondary);
+        border-radius: 3px;
+      }
+    }
+    
+    .asiento-item {
+      padding: 10px 15px;
+      color: var(--ion-color-secondary);
+      border-bottom: 1px solid rgba(var(--ion-color-secondary-rgb), 0.1);
+      height: 44px; /* Altura fija por elemento */
+      box-sizing: border-box;
+      display: flex;
+      align-items: center;
+      
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+  }
+}

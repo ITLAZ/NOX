@@ -119,6 +119,7 @@ volverInicio() {
         total: compraData.total,
         local: compraData.local, // Asegurarse de que sea el ID correcto del local
         codigo: compraData.local,
+        items: compraData.items || [], // Incluir los items
       };
 
       // Registrar en Firestore
@@ -138,6 +139,7 @@ volverInicio() {
         fecha: compraData.fecha,
         total: compraData.total,
         evento: compraData.evento,
+        items: compraData.items || [], // Incluir los items
       };
 
       // Registrar en Firestore
@@ -160,7 +162,6 @@ volverInicio() {
   // Navegar de vuelta al menú
   this.router.navigate(['/home']); // Cambia '/menu' por la ruta deseada
 }
-
   reintentarPago() {
     this.cardForm.reset();
     this.paymentSuccess = null;
