@@ -1,9 +1,9 @@
 <ion-header [translucent]="true">
-  <ion-toolbar class = "header">
+  <ion-toolbar class="header">
     <ion-buttons slot="start">
-      <ion-icon name="arrow-back-outline" size="large" routerLink="/perfil" color = "primary"></ion-icon>
+      <ion-icon name="arrow-back-outline" size="large" routerLink="/perfil" color="primary"></ion-icon>
     </ion-buttons>
-    <ion-title color = "primary">Nuevo local</ion-title>
+    <ion-title color="primary">Nuevo local</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -65,37 +65,25 @@
       <ion-label position="floating">Longitud</ion-label>
       <ion-input formControlName="longitud" type="number"></ion-input>
     </ion-item>
-
-    <div class="cover-container">
-      <ion-button
-        expand="block"
-        shape="round"
-        type="submit"
-        [disabled]="isSubmitting || localForm.invalid"
-        class="gradient-button"
-      >
-        Guardar Cambios
-      </ion-button>
-    </div>
   </form>
 
   <div class="Etiquetas">
     <h4>Etiquetas del Local</h4>
     <p>Usa etiquetas para que tu negocio sea más fácil de encontrar</p>
     <div class="chips-row">
-      <ion-chip color = "secondary">
-        <ion-icon name="restaurant" color="secondary" ></ion-icon>
+      <ion-chip color="secondary">
+        <ion-icon name="restaurant" color="secondary"></ion-icon>
         <ion-label>Tipo de Comida</ion-label>
         <ion-icon name="caret-down-outline" color="secondary"></ion-icon>
       </ion-chip>
-      
-      <ion-chip color = "secondary">
+
+      <ion-chip color="secondary">
         <ion-icon name="card" color="secondary"></ion-icon>
         <ion-label>Tipos de Pago</ion-label>
         <ion-icon name="caret-down-outline" color="secondary"></ion-icon>
       </ion-chip>
 
-      <ion-chip color = "secondary">
+      <ion-chip color="secondary">
         <ion-icon name="cash" color="secondary"></ion-icon>
         <ion-label>Rango de Precios</ion-label>
         <ion-icon name="caret-down-outline" color="secondary"></ion-icon>
@@ -103,55 +91,48 @@
     </div>
   </div>
 
-  <ion-item lines="strong" color = "translucent">
-    <ion-label  class="ion-text-wrap">
+  <ion-item lines="strong" color="translucent">
+    <ion-label class="ion-text-wrap">
       <h3>Gestionar Menú</h3>
     </ion-label>
-    <ion-icon slot="end" name="chevron-up-outline" color = "secondary"></ion-icon>
+    <ion-icon slot="end" name="chevron-up-outline" color="secondary"></ion-icon>
   </ion-item>
 
-  <ion-item lines="strong" color = "translucent" button [routerLink]="'/aniadir-menu'">
-    <ion-label color = primary>
-      Añadir elementos al Menú
-    </ion-label>
-    <ion-icon name="chevron-forward-outline" slot="end" class="option-icon" color = "primary"></ion-icon>
+  <ion-item lines="strong" color="translucent" button [routerLink]="'/aniadir-menu'">
+    <ion-label color="primary">Añadir elementos al Menú</ion-label>
+    <ion-icon name="chevron-forward-outline" slot="end" class="option-icon" color="primary"></ion-icon>
   </ion-item>
-    <ion-item lines="strong" color = "translucent" button>
-    <ion-label color = primary>
-      Editar el Menú
-    </ion-label>
-    <ion-icon name="chevron-forward-outline" slot="end" class="option-icon" color = "primary"></ion-icon>
+  <ion-item lines="strong" color="translucent" button>
+    <ion-label color="primary">Editar el Menú</ion-label>
+    <ion-icon name="chevron-forward-outline" slot="end" class="option-icon" color="primary"></ion-icon>
   </ion-item>
-    <ion-item lines="strong" color = "translucent" button>
-    <ion-label color = primary>
-      Ubicación en el Mapa
-    </ion-label>
-    <ion-icon name="chevron-forward-outline" slot="end" class="option-icon" color = "primary"></ion-icon>
+  <ion-item lines="strong" color="translucent" button>
+    <ion-label color="primary">Ubicación en el Mapa</ion-label>
+    <ion-icon name="chevron-forward-outline" slot="end" class="option-icon" color="primary"></ion-icon>
   </ion-item>
-  <ion-item lines="strong" color = "translucent" button>
-    <ion-label color = primary>
-      Gestionar Resenas
-    </ion-label>
-    <ion-icon name="chevron-forward-outline" slot="end" class="option-icon" color = "primary"></ion-icon>
+  <ion-item lines="strong" color="translucent" button>
+    <ion-label color="primary">Gestionar Reseñas</ion-label>
+    <ion-icon name="chevron-forward-outline" slot="end" class="option-icon" color="primary"></ion-icon>
   </ion-item>
-  <ion-item lines="strong" color = "translucent" button>
-    <ion-label color = primary>
-      Gestionar Publicidad
-    </ion-label>
-    <ion-icon name="chevron-forward-outline" slot="end" class="option-icon" color = "primary"></ion-icon>
+  <ion-item lines="strong" color="translucent" button>
+    <ion-label color="primary">Gestionar Publicidad</ion-label>
+    <ion-icon name="chevron-forward-outline" slot="end" class="option-icon" color="primary"></ion-icon>
   </ion-item>
-    <ion-item lines="strong" color = "translucent" button>
-    <ion-label color = primary>
-      Cargar fotos  del local
-    </ion-label>
-    <ion-icon name="chevron-forward-outline" slot="end" class="option-icon" color = "primary"></ion-icon>
+  <ion-item lines="strong" color="translucent" button>
+    <ion-label color="primary">Cargar fotos del local</ion-label>
+    <ion-icon name="chevron-forward-outline" slot="end" class="option-icon" color="primary"></ion-icon>
   </ion-item>
 
-  <div class = "cover-container">
-    <ion-button expand="block" shape="round" class="gradient-button">
+  <div class="cover-container">
+    <ion-button
+      expand="block"
+      shape="round"
+      type="submit"
+      [disabled]="isSubmitting || localForm.invalid"
+      class="gradient-button"
+      (click)="onSubmit()"
+    >
       Guardar Cambios
     </ion-button>
   </div>
-  
 </ion-content>
-
