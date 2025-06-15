@@ -1,48 +1,52 @@
 <toolbar [pageTitle]="'Eventos'"></toolbar>
 
 <ion-content>
-  <filter-actions [eventos]="true" (etiquetaSeleccionada)="onEtiquetaSeleccionada($event)"></filter-actions>
-  <h2>Eventos destacados</h2>
-  <swiper-container slides-per-view="1.3" space-between="10" style="width: 375px; margin-left: -10px;">
-    <swiper-slide *ngFor="let evento of events">
-      <mid-card-evento
-        (click)="irAEvento(evento)"
-        [imagen]="evento.imagen"
-        [nombreLocal]="evento.nombre"
-        [distancia]="evento.direccion || 'Ubicación desconocida'"
-        [tipo]="evento.tipo">
-        
-      </mid-card-evento>
-    </swiper-slide>
-  </swiper-container>
-
-  <h2>Cercanos a terminar</h2>
-  <swiper-container slides-per-view="1.3" space-between="10" style="width: 375px;">
-    <swiper-slide *ngFor="let evento of events">
-      <action-card
-        (click)="irAEvento(evento)"
-        [nombreOferta]="evento.nombre"
-        [textoOferta]="evento.tipo || 'Evento especial'"
-        [imagenOferta]="evento.imagen || 'https://picsum.photos/105/135'">
-      </action-card>
-    </swiper-slide>
-  </swiper-container>
-
-  <h2>Todos los eventos</h2>
-  <ion-grid *ngIf="!isLoading && events.length > 0">
-    <ion-row>
-      <ion-col size="12" size-md="6" size-lg="4" *ngFor="let evento of events">
-        <media-card-evento
+  <div class="app-wrapper">
+    <filter-actions [eventos]="true" (etiquetaSeleccionada)="onEtiquetaSeleccionada($event)"></filter-actions>
+    <h2 style="margin-bottom:10px ;">Eventos destacados</h2>
+    <swiper-container slides-per-view="1.3" space-between="10">
+      <swiper-slide *ngFor="let evento of events">
+        <mid-card-evento
           (click)="irAEvento(evento)"
           [imagen]="evento.imagen"
           [nombreLocal]="evento.nombre"
-          [tipo]="evento.tipo"
-          [fecha]="formatFecha(evento.fechas.inicio)"
-          [horario]="evento.horario.inicio"
-          [distancia]="evento.direccion || 'Ubicación no disponible'"
-          [direccion]="evento.direccion || 'Ubicación no disponible'">
-        </media-card-evento>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+          [distancia]="evento.direccion || 'Ubicación desconocida'"
+          [tipo]="evento.tipo">
+
+        </mid-card-evento>
+      </swiper-slide>
+    </swiper-container>
+
+    <h2>Cercanos a terminar</h2>
+    <swiper-container slides-per-view="1.3" space-between="10" class ="container-eventos">
+      <swiper-slide *ngFor="let evento of events">
+        <action-card
+          (click)="irAEvento(evento)"
+          [nombreOferta]="evento.nombre"
+          [textoOferta]="evento.tipo || 'Evento especial'"
+          [imagenOferta]="evento.imagen || 'https://picsum.photos/105/135'">
+        </action-card>
+      </swiper-slide>
+    </swiper-container>
+
+    <h2>Todos los eventos</h2>
+    <ion-grid *ngIf="!isLoading && events.length > 0">
+      <ion-row>
+        <ion-col size="12" *ngFor="let evento of events">
+          <media-card-evento
+            (click)="irAEvento(evento)"
+            [imagen]="evento.imagen"
+            [nombreLocal]="evento.nombre"
+            [tipo]="evento.tipo"
+            [fecha]="formatFecha(evento.fechas.inicio)"
+            [horario]="evento.horario.inicio"
+            [distancia]="evento.direccion || 'Ubicación no disponible'"
+            [direccion]="evento.direccion || 'Ubicación no disponible'">
+          </media-card-evento>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+  </div>
+  
 </ion-content>

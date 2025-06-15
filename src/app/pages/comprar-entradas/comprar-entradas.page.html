@@ -1,32 +1,35 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar color="primary">
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/tabs/home"></ion-back-button>
       <ion-title>Comprar Entradas</ion-title>
     </ion-buttons>
+    <ion-icon slot="end" name="cart-outline" [routerLink]="'/cart'">
+    </ion-icon>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" style="margin-right:20px ;">
+  <div class="app-wrapper">
+    <h4>Entradas Disponibles</h4>
 
-  <h4>Entradas Disponibles</h4>
+    <ion-list style="background: transparent;">
+      <item-entradas
+        *ngFor="let entrada of entradas"
+        [image]="entrada.image || 'https://via.placeholder.com/150'"
+        [producto]="entrada.producto"
+        [descripcion]="entrada.descripcion"
+        [precio]="entrada.precio"
+        [cantidad]="entrada.cantidad"
+        [quantity]="entrada.quantity"
+        (quantityChange)="actualizarCantidad(entrada, $event)">
+      </item-entradas>
+    </ion-list>
 
-  <ion-list style="background: transparent;">
-    <item-entradas
-      *ngFor="let entrada of entradas"
-      [image]="entrada.image || 'https://via.placeholder.com/150'"
-      [producto]="entrada.producto"
-      [descripcion]="entrada.descripcion"
-      [precio]="entrada.precio"
-      [cantidad]="entrada.cantidad"
-      [quantity]="entrada.quantity"
-      (quantityChange)="actualizarCantidad(entrada, $event)">
-    </item-entradas>
-  </ion-list>
-
-  <div class="seccion-mapa-asientos">
-    <h4>Mapa de Asientos</h4>
-    <img src="https://picsum.photos/id/237/200/300" alt="Mapa" />
+    <div class="seccion-mapa-asientos">
+      <h4>Mapa de Asientos</h4>
+      <img src="../../../assets/images/mapa.png" alt="Mapa" />
+    </div>
   </div>
 </ion-content>
 
@@ -40,7 +43,7 @@
         </div>
       </ion-col>
       <ion-col class="ion-text-right">
-        <ion-button class="footer-button" (click)="confirmarCompra()">
+        <ion-button class="footer-button" shape ="round" (click)="confirmarCompra()">
           Agregar a carrito
           <ion-icon name="arrow-forward-outline" slot="end"></ion-icon>
         </ion-button>

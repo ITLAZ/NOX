@@ -1,12 +1,11 @@
 .mySwiper {
   height: 80%;
 }
-ion-icon ion-header{
-    
-}
+
 swiper-container {
   padding: 0; /* Remove padding from the swiper container itself */
-  margin-left: 8px; /* Adjust margin to align with the left edge */
+  margin-left: 10px; /* Adjust margin to align with the left edge */
+  margin-right: -25px;
   margin-bottom: 0px;
 }
 
@@ -69,4 +68,20 @@ media-card-evento {
 }
 media-card-evento:first-of-type {
   margin-top: 10px;
+}
+.container-eventos {
+  margin-left: 20px;
+  margin-top: 18px;
+}
+
+.app-wrapper {
+  width: 100%;
+  box-sizing: border-box;
+  
+  @media (min-width: 600px) {
+    max-width: 380px;
+    margin: 0 auto;
+    padding: 0 12px;
+
+  }
 }

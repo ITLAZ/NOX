@@ -23,16 +23,18 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <div *ngIf="menu.length > 0;">
-    <app-item-compras
-      *ngFor="let item of menu | tipoFiltro:tipoSeleccionado"
-      [image]="item.imagenes?.[0] || 'https://via.placeholder.com/150'"
-      [nombreComida]="item.producto"
-      [descripcion]="item.descripcion"
-      [precio]="item.precio + ' Bs.'"
-      [quantity]="item.quantity"
-      (quantityChange)="aumentarCantidad(item, $event)">
-    </app-item-compras>
+  <div class="app-wrapper">
+    <div *ngIf="menu.length > 0;">
+      <app-item-compras
+        *ngFor="let item of menu | tipoFiltro:tipoSeleccionado"
+        [image]="item.imagenes?.[0] || 'https://via.placeholder.com/150'"
+        [nombreComida]="item.producto"
+        [descripcion]="item.descripcion"
+        [precio]="item.precio + ' Bs.'"
+        [quantity]="item.quantity"
+        (quantityChange)="aumentarCantidad(item, $event)">
+      </app-item-compras>
+    </div>
   </div>
 </ion-content>
 

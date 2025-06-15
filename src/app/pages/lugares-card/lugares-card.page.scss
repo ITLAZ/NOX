@@ -42,9 +42,9 @@ body {
 .seccion-mas-vendidos ion-button,
 .seccion-como-llegar ion-button,
 .seccion-comentarios ion-button {
-  width: 335px;
+
   height: 36px;
-  margin: 10px auto;
+  margin: 10px 20px;
   margin-bottom: 20px;
   border-radius: 100px;
   background: linear-gradient(90deg, var(--ion-color-secondary), var(--ion-color-primary));
@@ -72,9 +72,11 @@ swiper-container {
   height: 90px;
   background-color: white;
   border: 1px solid #ccc;
-  padding: 10px;
   padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 10px;
   border-radius: 20px;
+  margin-left: 15px;
   box-sizing: border-box;
   margin-left: 10px;
 }
@@ -134,7 +136,17 @@ ion-title{
   
 }
 
+.app-wrapper {
+  width: 100%;
+  box-sizing: border-box;
+  
+  @media (min-width: 600px) {
+    max-width: 380px;
+    margin: 0 auto;
+    padding: 0 12px;
 
+  }
+}
 
 
 
