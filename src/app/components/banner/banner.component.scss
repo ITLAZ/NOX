@@ -1,0 +1,91 @@
+.banner-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    height: 20%;
+    background: var(--ion-color-dark);
+    border-radius: 24px;
+    overflow: hidden;
+    padding: 0;
+    font-family: "Monstserrat Regular";
+   
+ 
+
+.banner-left {
+    background: var(--ion-color-tertiary);
+    color: var(--ion-color-light);
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: 30%;
+    height: 100%;
+    box-sizing: border-box;
+
+    h6 {
+        font-size: 16px;
+        margin-bottom: 8px;
+    }
+    h5 {
+        font-size: 18px;
+        margin-bottom: 8px;
+    }
+    
+    .market-logo {
+        display: flex;
+        align-items: center;
+        background: var(--ion-color-dark);
+        border-radius: 32px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        .nox-icon {
+            background: var(--ion-color-tertiary);
+            color: #fff;
+            border-radius: 50%;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 5px;
+            margin-left: 5px;
+            padding: 5px;
+        }
+        .publicidad-text {
+            color: var(--ion-color-tertiary);
+            font-weight: 700;
+            font-size: 1.1rem;
+            letter-spacing: 0.5px;
+            padding: 10px 10px 10px 0px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        width: 60%;
+        padding: 10px;
+        h6, h5 {
+            font-size: 15px;
+        }
+        .market-logo {
+            .nox-icon {
+                width: 28px;
+                height: 28px;
+                padding: 4px;
+            }
+            .publicidad-text {
+                font-size: 1rem;
+            }
+        }
+    }
+}
+.banner-image {
+   width: 737px;
+   height: 229px;
+   @media (max-width: 768px) {
+       width: 130px;
+        height: 143px;
+   }
+}
+}
+

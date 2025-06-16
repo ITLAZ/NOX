@@ -11,6 +11,7 @@ import { MidCardModule } from 'src/app/shared/mid-card/mid-card.module';
 import { ActionCardModule } from 'src/app/shared/action-card/action-card.module';
 import { MiniCardModule } from 'src/app/shared/mini-card/mini-card.module';
 import { ToolbarModule } from 'src/app/shared/toolbar/toolbar.module';
+import { BannerModule } from 'src/app/shared/banner/banner.module';
 
 @NgModule({
   imports: [
@@ -22,7 +23,8 @@ import { ToolbarModule } from 'src/app/shared/toolbar/toolbar.module';
     ActionCardModule,
     MiniCardModule,
     ToolbarModule,
-    FilterActionsModule
+    FilterActionsModule,
+    BannerModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   declarations: [LugaresPage]

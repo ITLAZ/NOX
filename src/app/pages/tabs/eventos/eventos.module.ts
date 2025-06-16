@@ -12,6 +12,7 @@ import { FilterActionsModule } from 'src/app/shared/filter-actions/filter-action
 import { ActionCardModule } from 'src/app/shared/action-card/action-card.module';
 import { ToolbarModule } from 'src/app/shared/toolbar/toolbar.module';
 import { MediaCardEventoModule } from 'src/app/shared/media-card-evento/media-card-evento.module';
+import { BannerModule } from 'src/app/shared/banner/banner.module';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { MediaCardEventoModule } from 'src/app/shared/media-card-evento/media-ca
     FilterActionsModule,
     ActionCardModule,
     MediaCardEventoModule,
-    ToolbarModule
+    ToolbarModule,
+    BannerModule
   ],
   schemas:[CUSTOM_ELEMENTS_SCHEMA],
   declarations: [EventosPage]

@@ -1,6 +1,18 @@
 <toolbar [pageTitle]="'Locales'"></toolbar>
 
 <ion-content>
+  <div class="banner-container">
+    <swiper-container class="banner-swiper" slides-per-view="1" space-between="10" style="height: auto;">
+      <swiper-slide >
+        <banner
+          [localbanner]="'Pollos Copacabana'"
+          [frasebanner]="'Como te gusta a ti'"
+         [imagenbanner]="'https://picsum.photos/500/200'">
+        </banner>
+      </swiper-slide>
+    </swiper-container>
+  </div>
+
   <div class="app-wrapper">
     <filter-actions [lugares]="true" (etiquetaSeleccionada)="onEtiquetaSeleccionada($event)"></filter-actions>
     <h2>Locales recomendados</h2>
