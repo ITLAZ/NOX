@@ -9,45 +9,70 @@
 
 <ion-content [fullscreen]="true">
 
-  <div class = "cover-container">
-    <img src="https://picsum.photos/200" alt="Portada" class="cover-img" />
-    <ion-button expand="block" shape="round" class="gradient-button">
-      Cambiar portada
-    </ion-button>
-  </div>
+  <form [formGroup]="eventForm" (ngSubmit)="onSubmit()">
+    <div class="cover-container">
+      <img *ngIf="eventForm.value.imagen" [src]="eventForm.value.imagen" alt="Portada" class="cover-img" />
+      <ion-button expand="block" shape="round" (click)="toggleCoverInput()" class="gradient-button">
+        {{eventForm.value.imagen ? 'Cambiar Portada' : 'Agregar Portada'}}
+      </ion-button>
+      <ion-input
+        *ngIf="showCoverInput"
+        formControlName="imagen"
+        placeholder="URL de la imagen"
+      ></ion-input>
+    </div>
 
-  <info-row
-    icon = "ticket-outline"
-    label = "Nombre del Evento"
-    [value] = "'Kasane Teto LIVE'"
-    [editable] = "false"
-    type = "text">
-  </info-row>
-  <info-row
-    icon="location-outline"
-    label="Dirección"
-    [value]="'Avenida Juan de Vargas #2370, Miraflores'">
-  </info-row>
+    <ion-item>
+      <ion-label position="floating">Nombre del Evento</ion-label>
+      <ion-input formControlName="nombre"></ion-input>
+    </ion-item>
 
-  <info-row
-    icon="time-outline"
-    label="Horario del Evento"
-    [value]="'11:00 - 20:00'"
-    [editable]="true">
-  </info-row>
+    <ion-item>
+      <ion-label position="floating">Dirección</ion-label>
+      <ion-input formControlName="direccion"></ion-input>
+    </ion-item>
 
-  <info-row
-    icon="calendar-outline"
-    label="Fechas del Evento"
-    [value]="'29/10/2025'"
-    [editable]="true">
-  </info-row>
+    <ion-item>
+      <ion-label position="floating">Tipo de Evento</ion-label>
+      <ion-input formControlName="tipo"></ion-input>
+    </ion-item>
 
-  <info-row
-    icon="business-outline"
-    label="Tipo de Evento"
-    type="select">
-  </info-row>
+    <ion-item>
+  <ion-label>Fecha Inicio</ion-label>
+  <ion-button fill="clear" (click)="toggleCalendar('fechasInicio')">
+    <ion-icon
+      [name]="calendarVisibility.fechasInicio ? 'chevron-up-outline' : 'chevron-down-outline'"
+    ></ion-icon>
+  </ion-button>
+</ion-item>
+<ion-datetime
+  *ngIf="calendarVisibility.fechasInicio"
+  formControlName="fechasInicio"
+></ion-datetime>
+
+<ion-item>
+  <ion-label>Fecha Final</ion-label>
+  <ion-button fill="clear" (click)="toggleCalendar('fechasFinal')">
+    <ion-icon
+      [name]="calendarVisibility.fechasFinal ? 'chevron-up-outline' : 'chevron-down-outline'"
+    ></ion-icon>
+  </ion-button>
+</ion-item>
+<ion-datetime
+  *ngIf="calendarVisibility.fechasFinal"
+  formControlName="fechasFinal"
+></ion-datetime>
+
+    <ion-item>
+      <ion-label position="floating">Horario Inicio (HH:MM)</ion-label>
+      <ion-input formControlName="horarioInicio" placeholder="Ej: 08:00"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Horario Cierre (HH:MM)</ion-label>
+      <ion-input formControlName="horarioCierre" placeholder="Ej: 22:00"></ion-input>
+    </ion-item>
+
 
   <div class="Etiquetas">
     <h4>Etiquetas del Evento</h4>
@@ -93,11 +118,17 @@
     <ion-icon name="chevron-forward-outline" slot="end" class="option-icon" color = "primary"></ion-icon>
   </ion-item>
 
-    <div class = "cover-container">
-    <ion-button expand="block" shape="round" class="gradient-button">
-      Guardar Cambios
-    </ion-button>
-  </div>
-  
+     <div class="cover-container">
+      <ion-button
+        expand="block"
+        shape="round"
+        type="submit"
+        [disabled]="isSubmitting || eventForm.invalid"
+        class="gradient-button"
+      >
+        Guardar Cambios
+      </ion-button>
+    </div>
+   </form>
 </ion-content>
 
