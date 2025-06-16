@@ -1,9 +1,22 @@
 ion-content {
   margin: 0;
   padding: 0;
-  --background: url('../../../assets/images/Degrade.png') no-repeat center center / cover;
   overflow: hidden;
   height: 100vh;
+  position: relative;
+  // Se elimina el fondo anterior de imagen:
+  // --background: url('../../../assets/images/Degrade.png') no-repeat center center / cover;
+}
+
+#bg-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  pointer-events: none;
 }
 
 #logo {
@@ -30,7 +43,8 @@ ion-content {
   box-sizing: border-box;
   text-align: left;
   z-index: 3;
-  background: rgba(0, 0, 0, 0.25); /* fondo oscuro para mejorar la legibilidad */
+  position: relative;
+  background: rgba(0, 0, 0, 0.25); // Mejora contraste
 }
 
 h1 {
@@ -69,4 +83,14 @@ ion-button {
 
 ion-button::part(native) {
   border-radius: 20px;
+}
+
+.video-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  z-index: 0;
 }

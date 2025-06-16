@@ -8,8 +8,8 @@
 </ion-header>
 
 <ion-content class="ion-padding">
-
-  <!-- FORMULARIO -->
+  <div class="app-wrapper">
+      <!-- FORMULARIO -->
   <form *ngIf="!isProcessing && paymentSuccess === null" [formGroup]="cardForm" (ngSubmit)="submitPayment()">
 
     <ion-item style="--min-height: 60px;">
@@ -107,4 +107,6 @@
     </ion-button>
   </div>
 
+
+  </div>
 </ion-content>

@@ -1,8 +1,18 @@
 <ion-content [fullscreen]="true">
+  <div class="video-wrapper">
+    <!-- Video de fondo -->
+    <video autoplay muted loop playsinline id="bg-video">
+      <source src="../../../assets/videos/fondo.mp4" type="video/mp4" />
+      Tu navegador no soporta la reproducción de video.
+    </video>
+  </div>
+  
+  <!-- Logo animado -->
   <div id="logo" *ngIf="showLogo" [@logoAnimation]>
-    <img src="../../../assets/images/NOX.png" alt="NOX logo"/>
+    <img src="../../../assets/images/NOX.png" alt="NOX logo" />
   </div>
 
+  <!-- Texto y botones -->
   <div id="welcome" *ngIf="showWelcome" [@slideUp]>
     <h1>La noche te espera llena de planes increíbles.</h1>
     <div id="actions">

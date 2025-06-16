@@ -12,13 +12,13 @@ ion-button {
 }
 
 form ion-item {
-  --background: var(--ion-color-light) !important;
+  --background: #1F2033 !important;
   --border-radius: 20px;
   --padding-start: 15px;
   --padding-end: 15px;
   --padding-top: 10px;
   --padding-bottom: 10px;
-  --color: var(--ion-color-primary-contrast);
+  --color: #FAF7EC;
   font-size: 14px;
   font-family: 'Montserrat Regular', sans-serif;
 }
@@ -114,4 +114,15 @@ ion-content {
   font-weight: 500;
   margin: 0 10px;
   flex-shrink: 0;
+}
+
+.app-wrapper {
+  width: 100%;
+  box-sizing: border-box;
+  
+  @media (min-width: 600px) {
+    max-width: 380px;
+    margin: 0 auto;
+
+  }
 }

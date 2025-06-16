@@ -114,3 +114,14 @@ ion-content {
   margin: 0 10px; /* Espacio a los lados de la 'O' */
   flex-shrink: 0; /* Evita que la 'O' se encoja */
 }
+
+.app-wrapper {
+  width: 100%;
+  box-sizing: border-box;
+  
+  @media (min-width: 600px) {
+    max-width: 380px;
+    margin: 0 auto;
+
+  }
+}
