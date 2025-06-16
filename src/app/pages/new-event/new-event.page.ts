@@ -84,4 +84,26 @@ export class NewEventPage implements OnInit {
     });
     await toast.present();
   }
+  
+calendarVisibility = {
+  fechasInicio: false,
+  fechasFinal: false,
+};
+
+toggleCalendar(field: 'fechasInicio' | 'fechasFinal') {
+  // Guarda el estado actual antes de cambiarlo
+  const currentState = this.calendarVisibility[field];
+  
+  // Cierra todos los calendarios primero
+  this.calendarVisibility = {
+    fechasInicio: false,
+    fechasFinal: false
+  };
+  
+  // Si el calendario clickeado estaba cerrado, ábrelo
+  if (!currentState) {
+    this.calendarVisibility[field] = true;
+  }
+  // Si estaba abierto, el código anterior ya lo cerró (no hacemos nada más)
+}
 }

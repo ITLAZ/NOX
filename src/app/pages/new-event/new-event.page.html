@@ -37,15 +37,30 @@
     </ion-item>
 
     <ion-item>
-      <ion-label position="floating">Fecha Inicio</ion-label>
-      <ion-datetime formControlName="fechasInicio"></ion-datetime>
-    </ion-item>
+  <ion-label>Fecha Inicio</ion-label>
+  <ion-button fill="clear" (click)="toggleCalendar('fechasInicio')">
+    <ion-icon
+      [name]="calendarVisibility.fechasInicio ? 'chevron-up-outline' : 'chevron-down-outline'"
+    ></ion-icon>
+  </ion-button>
+</ion-item>
+<ion-datetime
+  *ngIf="calendarVisibility.fechasInicio"
+  formControlName="fechasInicio"
+></ion-datetime>
 
-    <ion-item>
-      <ion-label position="floating">Fecha Final</ion-label>
-      <ion-datetime formControlName="fechasFinal"></ion-datetime>
-    </ion-item>
-
+<ion-item>
+  <ion-label>Fecha Final</ion-label>
+  <ion-button fill="clear" (click)="toggleCalendar('fechasFinal')">
+    <ion-icon
+      [name]="calendarVisibility.fechasFinal ? 'chevron-up-outline' : 'chevron-down-outline'"
+    ></ion-icon>
+  </ion-button>
+</ion-item>
+<ion-datetime
+  *ngIf="calendarVisibility.fechasFinal"
+  formControlName="fechasFinal"
+></ion-datetime>
     <ion-item>
       <ion-label position="floating">Horario Inicio</ion-label>
       <ion-input formControlName="horarioInicio"></ion-input>
@@ -55,20 +70,6 @@
       <ion-label position="floating">Horario Cierre</ion-label>
       <ion-input formControlName="horarioCierre"></ion-input>
     </ion-item>
-
-
-    <div class="cover-container">
-      <ion-button
-        expand="block"
-        shape="round"
-        type="submit"
-        [disabled]="isSubmitting || eventForm.invalid"
-        class="gradient-button"
-      >
-        Guardar Cambios
-      </ion-button>
-    </div>
-  </form>
 
   <div class="Etiquetas">
     <h4>Etiquetas del Evento</h4>
@@ -114,11 +115,17 @@
     <ion-icon name="chevron-forward-outline" slot="end" class="option-icon" color = "primary"></ion-icon>
   </ion-item>
 
-    <div class = "cover-container">
-    <ion-button expand="block" shape="round" class="gradient-button">
-      Guardar Cambios
-    </ion-button>
-  </div>
-  
+ <div class="cover-container">
+      <ion-button
+        expand="block"
+        shape="round"
+        type="submit"
+        [disabled]="isSubmitting || eventForm.invalid"
+        class="gradient-button"
+      >
+        Guardar Cambios
+      </ion-button>
+    </div>
+  </form>
 </ion-content>
 
