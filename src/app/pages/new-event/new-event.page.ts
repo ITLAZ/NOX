@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DatabaseService } from '../../services/database.service';
 import { AlertController, ToastController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-new-event',
@@ -17,7 +18,8 @@ export class NewEventPage implements OnInit {
   constructor(
     private fb: FormBuilder,
     private databaseService: DatabaseService,
-    private toastController: ToastController
+    private toastController: ToastController,
+    private router: Router,
   ) {}
 
   ngOnInit() {
@@ -67,6 +69,7 @@ export class NewEventPage implements OnInit {
     try {
       await this.databaseService.addFirestoreDocument('eventos', eventData);
       await this.presentToast('Evento agregado exitosamente.', 'success');
+      this.router.navigate(['/list-events']);
       this.eventForm.reset();
     } catch (error) {
       console.error('Error al agregar el evento:', error);
@@ -84,4 +87,26 @@ export class NewEventPage implements OnInit {
     });
     await toast.present();
   }
+  
+calendarVisibility = {
+  fechasInicio: false,
+  fechasFinal: false,
+};
+
+toggleCalendar(field: 'fechasInicio' | 'fechasFinal') {
+  // Guarda el estado actual antes de cambiarlo
+  const currentState = this.calendarVisibility[field];
+  
+  // Cierra todos los calendarios primero
+  this.calendarVisibility = {
+    fechasInicio: false,
+    fechasFinal: false
+  };
+  
+  // Si el calendario clickeado estaba cerrado, ábrelo
+  if (!currentState) {
+    this.calendarVisibility[field] = true;
+  }
+  // Si estaba abierto, el código anterior ya lo cerró (no hacemos nada más)
+}
 }

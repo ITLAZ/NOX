@@ -1,6 +1,9 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>Locales</ion-title>
+  <ion-toolbar class="header" style="background-color: #30324b;">
+    <ion-buttons slot="start">
+      <ion-icon name="arrow-back-outline" size="large" routerLink="/perfil" color="primary"></ion-icon>
+    </ion-buttons>
+    <ion-title color="primary">Listado de locales</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -17,5 +20,5 @@
     </ion-item>
   </ion-list>
 
-  <ion-button expand="block" color="success" (click)="goToNewLocal()">Agregar Nuevo Local</ion-button>
+  <ion-button expand="block" class="gradient-button" (click)="goToNewLocal()">Agregar Nuevo Local</ion-button>
 </ion-content>

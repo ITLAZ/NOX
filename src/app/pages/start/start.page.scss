@@ -1,7 +1,13 @@
+html, body {
+  height: 100vh;
+  overflow-y: hidden !important;
+}
+
 ion-content {
+  --overflow: hidden;
   margin: 0;
   padding: 0;
-  overflow: hidden;
+  overflow: hidden !important;
   height: 100vh;
   position: relative;
   // Se elimina el fondo anterior de imagen:
@@ -26,11 +32,13 @@ ion-content {
   height: 100vh;
   width: 100%;
   z-index: 2;
+  overflow: hidden;
 }
 
 #logo img {
   width: 200px;
   height: auto;
+  will-change: transform;
 }
 
 #welcome {
@@ -45,6 +53,7 @@ ion-content {
   z-index: 3;
   position: relative;
   background: rgba(0, 0, 0, 0.25); // Mejora contraste
+  overflow: hidden;
 }
 
 h1 {
@@ -93,4 +102,9 @@ ion-button::part(native) {
   height: 100vh;
   overflow: hidden;
   z-index: 0;
+}
+
+/* Oculta scroll en navegadores Webkit */
+ion-content::-webkit-scrollbar {
+  display: none;
 }

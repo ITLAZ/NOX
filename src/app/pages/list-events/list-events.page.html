@@ -1,16 +1,13 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>Lista de Eventos</ion-title>
+  <ion-toolbar class="header" style="background-color: #30324b;">
+    <ion-buttons slot="start">
+      <ion-icon name="arrow-back-outline" size="large" routerLink="/perfil" color="primary"></ion-icon>
+    </ion-buttons>
+    <ion-title color="primary">Lista de eventos </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Lista de Eventos</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
   <ion-list>
     <ion-item *ngFor="let evento of eventos">
       <ion-label>
@@ -26,5 +23,5 @@
       </ion-buttons>
     </ion-item>
   </ion-list>
-  <ion-button expand="block" color="primary" (click)="irANuevoEvento()">Nuevo Evento</ion-button>
+  <ion-button expand="block" (click)="irANuevoEvento()" class="gradient-button">Nuevo Evento</ion-button>
 </ion-content>

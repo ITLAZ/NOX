@@ -38,9 +38,8 @@
   ion-button[color="gradient"] {
     --border-radius: 30px;
     background: linear-gradient(90deg, #6030ff, #3FBA9A) border-box;
-    color: #fff;
-    font-weight: bold;
     margin-top: 1.5rem;
+    text-transform: capitalize;
   }
 }
 

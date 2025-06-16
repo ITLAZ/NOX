@@ -1,5 +1,11 @@
-<toolbar [pageTitle]="'Añadir al Menú'" [showSearch]="false" [showCart]="false" [showBack]="true" [setRoute]="'/panel-admin'" [showNotifications]="false" [setColor]="'var(--ion-color-success)'" [toolColor]="'#171826'"></toolbar>
-
+<ion-header [translucent]="true">
+  <ion-toolbar class="header">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/panel-admin-2" color = "primary"></ion-back-button>
+    </ion-buttons>
+    <ion-title color = "primary">Gestionar menu</ion-title>
+  </ion-toolbar>
+</ion-header>
 <ion-content [fullscreen]="true" >
 
 <div class="menu-upload-card" color = "translucent">

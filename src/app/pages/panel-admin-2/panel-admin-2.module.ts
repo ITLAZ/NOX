@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
@@ -16,6 +16,7 @@ import { InfoRowModule } from 'src/app/shared/info-row/info-row.module';
     IonicModule,
     PanelAdmin2PageRoutingModule,
     InfoRowModule,
+    ReactiveFormsModule
   ],
   declarations: [PanelAdmin2Page]
 })
