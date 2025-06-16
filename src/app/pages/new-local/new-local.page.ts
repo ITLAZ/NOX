@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
 import { DatabaseService } from '../../services/database.service';
-import { AlertController, ToastController } from '@ionic/angular';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-new-local',
   templateUrl: './new-local.page.html',
   styleUrls: ['./new-local.page.scss'],
-  standalone: false,
+  standalone: false
 })
 export class NewLocalPage implements OnInit {
   localForm!: FormGroup;
@@ -17,7 +17,6 @@ export class NewLocalPage implements OnInit {
   constructor(
     private fb: FormBuilder,
     private databaseService: DatabaseService,
-    private alertController: AlertController,
     private toastController: ToastController
   ) {}
 
@@ -25,23 +24,20 @@ export class NewLocalPage implements OnInit {
     this.localForm = this.fb.group({
       nombre: ['', [Validators.required, Validators.maxLength(50)]],
       direccion: ['', [Validators.required, Validators.maxLength(100)]],
-      horario: ['', Validators.required],
+      horarioApertura: ['', [Validators.required, this.horaValidator]],
+      horarioCierre: ['', [Validators.required, this.horaValidator]],
       dias: ['', Validators.required],
       tipo: ['', Validators.required],
-      lat: [
-        '',
-        [
-          Validators.required,
-        ],
-      ],
-      lng: [
-        '',
-        [
-          Validators.required,
-        ],
-      ],
+      lat: ['', [Validators.required]],
+      lng: ['', [Validators.required]],
       imagen: [''],
+      etiquetas: [[]]
     });
+  }
+
+  private horaValidator(control: AbstractControl): ValidationErrors | null {
+    const horaRegex = /^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$/;
+    return horaRegex.test(control.value) ? null : { invalidHora: true };
   }
 
   toggleCoverInput() {
@@ -56,16 +52,34 @@ export class NewLocalPage implements OnInit {
 
     this.isSubmitting = true;
 
+    // Convertir días en array y limpiar espacios
+    const diasArray = this.localForm.value.dias
+      .split(/[,]+/)
+      .map((dia: string) => dia.trim())
+      .filter((dia: string) => dia !== '');
+
     const localData = {
-      ...this.localForm.value,
+      nombre: this.localForm.value.nombre,
+      direccion: this.localForm.value.direccion,
+      horas_atencion: {
+        apertura: this.localForm.value.horarioApertura,
+        cierre: this.localForm.value.horarioCierre
+      },
+      dias_atencion: diasArray,
+      tipo: this.localForm.value.tipo,
+      lat: parseFloat(this.localForm.value.lat),
+      lng: parseFloat(this.localForm.value.lng),
+      imagen: this.localForm.value.imagen,
       esLocal: true,
       open: true,
+      etiquetas: this.localForm.value.etiquetas || []
     };
 
     try {
       await this.databaseService.addFirestoreDocument('locales', localData);
       await this.presentToast('Local agregado exitosamente.', 'success');
       this.localForm.reset();
+      this.localForm.get('etiquetas')?.setValue([]); // Resetear etiquetas
     } catch (error) {
       console.error('Error al agregar el local:', error);
       await this.presentToast('Ocurrió un error al agregar el local.', 'danger');
