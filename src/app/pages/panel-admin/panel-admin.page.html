@@ -1,128 +1,137 @@
 <ion-header [translucent]="true">
-  <ion-toolbar class = "header">
+  <ion-toolbar class="header">
     <ion-buttons slot="start">
-      <ion-icon name="arrow-back-outline" size="large" routerLink="/perfil" color = "primary"></ion-icon>
+      <ion-icon name="arrow-back-outline" size="large" routerLink="/perfil" color="primary"></ion-icon>
     </ion-buttons>
-    <ion-title color = "primary">Gestionar mi Local</ion-title>
+    <ion-title color="primary">Gestionar mi Local</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-
-  <div class = "cover-container">
-    <img src="https://picsum.photos/200" alt="Portada" class="cover-img" />
-    <ion-button expand="block" shape="round" class="gradient-button">
-      Cambiar portada
-    </ion-button>
-  </div>
-
-  <info-row
-    icon = "storefront-outline"
-    label = "Nombre del Establecimiento"
-    [value] = "'Silpanchos - Tienda de Viveres'"
-    [editable] = "false"
-    type = "text">
-  </info-row>
-  <info-row
-    icon="location-outline"
-    label="Dirección"
-    [value]="'Avenida Juan de Vargas #2370, Miraflores'">
-  </info-row>
-
-  <info-row
-    icon="time-outline"
-    label="Horario de Atención"
-    [value]="'11:00 - 20:00'"
-    [editable]="true">
-  </info-row>
-
-  <info-row
-    icon="calendar-outline"
-    label="Días de Atención"
-    [value]="'Lunes - Sábado'"
-    [editable]="true">
-  </info-row>
-
-  <info-row
-    icon="restaurant-outline"
-    label="Tipo de Establecimiento"
-    [value]="'Restaurante'"
-    type="select">
-  </info-row>
-
-  <div class="Etiquetas">
-    <h4>Etiquetas del Local</h4>
-    <p>Usa etiquetas para que tu negocio sea más fácil de encontrar</p>
-    <div class="chips-row">
-      <ion-chip color = "secondary">
-        <ion-icon name="restaurant" color="secondary" ></ion-icon>
-        <ion-label>Tipo de Comida</ion-label>
-        <ion-icon name="caret-down-outline" color="secondary"></ion-icon>
-      </ion-chip>
-      
-      <ion-chip color = "secondary">
-        <ion-icon name="card" color="secondary"></ion-icon>
-        <ion-label>Tipos de Pago</ion-label>
-        <ion-icon name="caret-down-outline" color="secondary"></ion-icon>
-      </ion-chip>
-
-      <ion-chip color = "secondary">
-        <ion-icon name="cash" color="secondary"></ion-icon>
-        <ion-label>Rango de Precios</ion-label>
-        <ion-icon name="caret-down-outline" color="secondary"></ion-icon>
-      </ion-chip>
+  <form [formGroup]="localForm" (ngSubmit)="onSubmit()">
+    <div class="cover-container">
+      <img
+        *ngIf="localForm.value.imagen"
+        [src]="localForm.value.imagen"
+        alt="Portada"
+        class="cover-img"
+      />
+      <ion-button
+        expand="block"
+        shape="round"
+        (click)="toggleCoverInput()"
+        class="gradient-button"
+      >
+        {{ localForm.value.imagen ? 'Cambiar Portada' : 'Agregar Portada' }}
+      </ion-button>
+      <ion-input
+        *ngIf="showCoverInput"
+        formControlName="imagen"
+        placeholder="URL de la imagen (ej: https://ejemplo.com/foto.jpg)"
+      ></ion-input>
     </div>
-  </div>
 
-  <ion-item lines="strong" color = "translucent">
-    <ion-label  class="ion-text-wrap">
-      <h3>Gestionar Menú</h3>
-    </ion-label>
-    <ion-icon slot="end" name="chevron-up-outline" color = "secondary"></ion-icon>
-  </ion-item>
+    <ion-item>
+      <ion-label position="floating">Nombre del Establecimiento</ion-label>
+      <ion-input formControlName="nombre"></ion-input>
+    </ion-item>
 
-  <ion-item lines="strong" color = "translucent" button [routerLink]="'/aniadir-menu'">
-    <ion-label color = primary>
-      Añadir elementos al Menú
-    </ion-label>
-    <ion-icon name="chevron-forward-outline" slot="end" class="option-icon" color = "primary"></ion-icon>
-  </ion-item>
-    <ion-item lines="strong" color = "translucent" button>
-    <ion-label color = primary>
-      Editar el Menú
-    </ion-label>
-    <ion-icon name="chevron-forward-outline" slot="end" class="option-icon" color = "primary"></ion-icon>
-  </ion-item>
-    <ion-item lines="strong" color = "translucent" button>
-    <ion-label color = primary>
-      Ubicación en el Mapa
-    </ion-label>
-    <ion-icon name="chevron-forward-outline" slot="end" class="option-icon" color = "primary"></ion-icon>
-  </ion-item>
-  <ion-item lines="strong" color = "translucent" button>
-    <ion-label color = primary>
-      Gestionar Resenas
-    </ion-label>
-    <ion-icon name="chevron-forward-outline" slot="end" class="option-icon" color = "primary"></ion-icon>
-  </ion-item>
-  <ion-item lines="strong" color = "translucent" button>
-    <ion-label color = primary>
-      Gestionar Publicidad
-    </ion-label>
-    <ion-icon name="chevron-forward-outline" slot="end" class="option-icon" color = "primary"></ion-icon>
-  </ion-item>
-    <ion-item lines="strong" color = "translucent" button>
-    <ion-label color = primary>
-      Cargar fotos  del local
-    </ion-label>
-    <ion-icon name="chevron-forward-outline" slot="end" class="option-icon" color = "primary"></ion-icon>
-  </ion-item>
+    <ion-item>
+      <ion-label position="floating">Dirección</ion-label>
+      <ion-input formControlName="direccion"></ion-input>
+    </ion-item>
 
-  <div class = "cover-container">
-    <ion-button expand="block" shape="round" class="gradient-button">
-      Guardar Cambios
-    </ion-button>
-  </div>
-  
+    <ion-item>
+      <ion-label position="floating">Horario de Atención (ej: 09:00 - 18:00)</ion-label>
+      <ion-input formControlName="horario"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Días de Atención (ej: Lunes a Viernes)</ion-label>
+      <ion-input formControlName="dias"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Tipo de Establecimiento</ion-label>
+      <ion-input formControlName="tipo" placeholder="Ej: Restaurante, Cafetería"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Latitud</ion-label>
+      <ion-input formControlName="lat" type="number"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Longitud</ion-label>
+      <ion-input formControlName="lng" type="number"></ion-input>
+    </ion-item>
+
+    <div class="Etiquetas">
+      <h4>Etiquetas del Local</h4>
+      <p>Usa etiquetas para que tu negocio sea más fácil de encontrar</p>
+      <div class="chips-row">
+        <ion-chip color="secondary">
+          <ion-icon name="restaurant" color="secondary"></ion-icon>
+          <ion-label>Tipo de Comida</ion-label>
+          <ion-icon name="caret-down-outline" color="secondary"></ion-icon>
+        </ion-chip>
+        
+        <ion-chip color="secondary">
+          <ion-icon name="card" color="secondary"></ion-icon>
+          <ion-label>Tipos de Pago</ion-label>
+          <ion-icon name="caret-down-outline" color="secondary"></ion-icon>
+        </ion-chip>
+
+        <ion-chip color="secondary">
+          <ion-icon name="cash" color="secondary"></ion-icon>
+          <ion-label>Rango de Precios</ion-label>
+          <ion-icon name="caret-down-outline" color="secondary"></ion-icon>
+        </ion-chip>
+      </div>
+    </div>
+
+    <ion-item lines="strong" color="translucent">
+      <ion-label class="ion-text-wrap">
+        <h3>Gestionar Menú</h3>
+      </ion-label>
+      <ion-icon slot="end" name="chevron-up-outline" color="secondary"></ion-icon>
+    </ion-item>
+
+    <ion-item lines="strong" color="translucent" button [routerLink]="'/aniadir-menu'">
+      <ion-label color="primary">Añadir elementos al Menú</ion-label>
+      <ion-icon name="chevron-forward-outline" slot="end" class="option-icon" color="primary"></ion-icon>
+    </ion-item>
+    <ion-item lines="strong" color="translucent" button>
+      <ion-label color="primary">Editar el Menú</ion-label>
+      <ion-icon name="chevron-forward-outline" slot="end" class="option-icon" color="primary"></ion-icon>
+    </ion-item>
+    <ion-item lines="strong" color="translucent" button>
+      <ion-label color="primary">Ubicación en el Mapa</ion-label>
+      <ion-icon name="chevron-forward-outline" slot="end" class="option-icon" color="primary"></ion-icon>
+    </ion-item>
+    <ion-item lines="strong" color="translucent" button>
+      <ion-label color="primary">Gestionar Reseñas</ion-label>
+      <ion-icon name="chevron-forward-outline" slot="end" class="option-icon" color="primary"></ion-icon>
+    </ion-item>
+    <ion-item lines="strong" color="translucent" button>
+      <ion-label color="primary">Gestionar Publicidad</ion-label>
+      <ion-icon name="chevron-forward-outline" slot="end" class="option-icon" color="primary"></ion-icon>
+    </ion-item>
+    <ion-item lines="strong" color="translucent" button>
+      <ion-label color="primary">Cargar fotos del local</ion-label>
+      <ion-icon name="chevron-forward-outline" slot="end" class="option-icon" color="primary"></ion-icon>
+    </ion-item>
+
+    <div class="cover-container">
+      <ion-button
+        expand="block"
+        shape="round"
+        type="submit"
+        [disabled]="isSubmitting || localForm.invalid"
+        class="gradient-button"
+      >
+        Guardar Cambios
+      </ion-button>
+    </div>
+  </form>
 </ion-content>
-
