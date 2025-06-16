@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DatabaseService } from '../../services/database.service';
 import { AlertController, ToastController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-new-event',
@@ -17,7 +18,8 @@ export class NewEventPage implements OnInit {
   constructor(
     private fb: FormBuilder,
     private databaseService: DatabaseService,
-    private toastController: ToastController
+    private toastController: ToastController,
+    private router: Router,
   ) {}
 
   ngOnInit() {
@@ -67,6 +69,7 @@ export class NewEventPage implements OnInit {
     try {
       await this.databaseService.addFirestoreDocument('eventos', eventData);
       await this.presentToast('Evento agregado exitosamente.', 'success');
+      this.router.navigate(['/list-events']);
       this.eventForm.reset();
     } catch (error) {
       console.error('Error al agregar el evento:', error);

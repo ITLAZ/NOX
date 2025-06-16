@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
 import { DatabaseService } from '../../services/database.service';
 import { ToastController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-new-local',
@@ -17,7 +18,8 @@ export class NewLocalPage implements OnInit {
   constructor(
     private fb: FormBuilder,
     private databaseService: DatabaseService,
-    private toastController: ToastController
+    private toastController: ToastController,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -80,6 +82,7 @@ export class NewLocalPage implements OnInit {
       await this.presentToast('Local agregado exitosamente.', 'success');
       this.localForm.reset();
       this.localForm.get('etiquetas')?.setValue([]); // Resetear etiquetas
+      this.router.navigate(['/list-locales']);
     } catch (error) {
       console.error('Error al agregar el local:', error);
       await this.presentToast('Ocurrió un error al agregar el local.', 'danger');

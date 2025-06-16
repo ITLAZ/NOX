@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar class = "header">
     <ion-buttons slot="start">
-      <ion-icon name="arrow-back" size="large" [routerLink]="'/perfil'" color = "primary"></ion-icon>
+      <ion-icon name="arrow-back" size="large" [routerLink]="'/list-events'" color = "primary"></ion-icon>
     </ion-buttons>
     <ion-title color = "primary">Gestionar mi Evento</ion-title>
   </ion-toolbar>
@@ -18,26 +18,28 @@
         *ngIf="showCoverInput"
         formControlName="imagen"
         placeholder="Link de la imagen"
+        class="input-custom"
+        id="imagenInput"
       ></ion-input>
     </div>
 
     <ion-item>
-      <ion-label position="floating">Nombre del Evento</ion-label>
-      <ion-input formControlName="nombre"></ion-input>
+      <ion-label position="floating" color="primary">Nombre del Evento</ion-label>
+      <ion-input formControlName="nombre" class="input-custom"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label position="floating">Dirección</ion-label>
-      <ion-input formControlName="direccion"></ion-input>
+      <ion-label position="floating" color="primary">Dirección</ion-label>
+      <ion-input formControlName="direccion" class="input-custom"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label position="floating">Tipo de Evento</ion-label>
-      <ion-input formControlName="tipo"></ion-input>
+      <ion-label position="floating" color="primary">Tipo de Evento</ion-label>
+      <ion-input formControlName="tipo" class="input-custom"></ion-input>
     </ion-item>
 
     <ion-item>
-  <ion-label>Fecha Inicio</ion-label>
+  <ion-label color="primary">Fecha Inicio</ion-label>
   <ion-button fill="clear" (click)="toggleCalendar('fechasInicio')">
     <ion-icon
       [name]="calendarVisibility.fechasInicio ? 'chevron-up-outline' : 'chevron-down-outline'"
@@ -50,7 +52,7 @@
 ></ion-datetime>
 
 <ion-item>
-  <ion-label>Fecha Final</ion-label>
+  <ion-label color="primary">Fecha Final</ion-label>
   <ion-button fill="clear" (click)="toggleCalendar('fechasFinal')">
     <ion-icon
       [name]="calendarVisibility.fechasFinal ? 'chevron-up-outline' : 'chevron-down-outline'"
@@ -62,13 +64,13 @@
   formControlName="fechasFinal"
 ></ion-datetime>
     <ion-item>
-      <ion-label position="floating">Horario Inicio</ion-label>
-      <ion-input formControlName="horarioInicio"></ion-input>
+      <ion-label position="floating" color="primary">Horario Inicio</ion-label>
+      <ion-input formControlName="horarioInicio" class="input-custom"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label position="floating">Horario Cierre</ion-label>
-      <ion-input formControlName="horarioCierre"></ion-input>
+      <ion-label position="floating" color="primary">Horario Cierre</ion-label>
+      <ion-input formControlName="horarioCierre" class="input-custom"></ion-input>
     </ion-item>
 
   <div class="Etiquetas">
