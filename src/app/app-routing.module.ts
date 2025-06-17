@@ -197,12 +197,17 @@ const routes: Routes = [
     path: 'new-event',
     loadChildren: () => import('./pages/new-event/new-event.module').then( m => m.NewEventPageModule)
   },
-
+   {
+    path: 'evento-fecha',
+    loadChildren: () => import('./pages/evento-fecha/evento-fecha.module').then( m => m.EventoFechaPageModule)
+  },
 
   {
     path: '**',
     redirectTo: '/home',
   },
+ 
+
 
 ];
 
