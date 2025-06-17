@@ -39,10 +39,11 @@
       </swiper-slide>
     </swiper-container>
 
+    <!-- Todos los eventos: Swiper en web, Grid en mobile -->
     <h2>Todos los eventos</h2>
-    <ion-grid *ngIf="!isLoading && events.length > 0">
-      <ion-row>
-        <ion-col size="12" *ngFor="let evento of events">
+    <ng-container *ngIf="isWeb; else mobileGrid">
+      <swiper-container slides-per-view="3" space-between="20" class="todos-eventos-swiper">
+        <swiper-slide *ngFor="let evento of events">
           <media-card-evento
             (click)="irAEvento(evento)"
             [imagen]="evento.imagen"
@@ -53,9 +54,27 @@
             [distancia]="evento.direccion || 'Ubicación no disponible'"
             [direccion]="evento.direccion || 'Ubicación no disponible'">
           </media-card-evento>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
+        </swiper-slide>
+      </swiper-container>
+    </ng-container>
+    <ng-template #mobileGrid>
+      <ion-grid *ngIf="!isLoading && events.length > 0">
+        <ion-row>
+          <ion-col size="12" *ngFor="let evento of events">
+            <media-card-evento
+              (click)="irAEvento(evento)"
+              [imagen]="evento.imagen"
+              [nombreLocal]="evento.nombre"
+              [tipo]="evento.tipo"
+              [fecha]="formatFecha(evento.fechas.inicio)"
+              [horario]="evento.horario.inicio"
+              [distancia]="evento.direccion || 'Ubicación no disponible'"
+              [direccion]="evento.direccion || 'Ubicación no disponible'">
+            </media-card-evento>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ng-template>
 
   </div>
 
