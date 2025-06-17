@@ -1,0 +1,16 @@
+<div class="date-event-card">
+  <div class="date-event-img-box">
+    <img *ngIf="imagen" [src]="imagen" alt="Imagen del evento" class="date-event-img" />
+  </div>
+  <div class="date-event-content">
+    <div class="date-event-title">{{ nombreEvento }}</div>
+    <div class="date-event-info">
+      <span *ngIf="fechaInicio && fechaFinal">
+        {{ fechaInicio | date:'dd/MM/yyyy HH:mm' }} - {{ fechaFinal | date:'dd/MM/yyyy HH:mm' }}
+      </span><br />
+      <span *ngIf="lugar">{{ lugar }}</span><br />
+      <span *ngIf="precio">{{ precio }}</span>
+    </div>
+    <button class="date-event-btn">Comprar entradas <span class="arrow">→</span></button>
+  </div>
+</div>

@@ -1,0 +1,74 @@
+.date-event-card {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  background: #181929;
+  border-radius: 4px;
+  padding: 12px 18px;
+  margin-bottom: 16px;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.10);
+  width: 100%;
+  min-height: 120px;
+font-family: 'Montserrat', sans-serif;
+}
+
+.date-event-img-box {
+  width: 120px;
+  height: 120px;
+  background: #d3d3d3;
+  border-radius: 2px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.date-event-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.date-event-content {
+  flex: 1;
+  margin-left: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.date-event-title {
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.15rem;
+  margin-bottom: 4px;
+font-family: 'Forta', sans-serif;
+}
+
+.date-event-info {
+  color: #fff;
+  font-size: 1rem;
+  margin-bottom: 18px;
+  font-weight: 400;
+}
+
+.date-event-btn {
+  align-self: flex-end;
+  background: linear-gradient(90deg, #7be7c9 0%, #a18cd1 100%);
+  color: #222;
+  border: none;
+  border-radius: 20px;
+  padding: 7px 36px;
+  font-size: 0.98rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.10);
+}
+.date-event-btn .arrow {
+  margin-left: 8px;
+}
+.date-event-btn:hover {
+  background: linear-gradient(90deg, #a18cd1 0%, #7be7c9 100%);
+}
