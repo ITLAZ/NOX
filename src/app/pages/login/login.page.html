@@ -57,7 +57,7 @@
           </ion-button>
 
           <!-- Botón Google -->
-          <ion-button expand="block" color="gradient" (click)="loginWithGoogle()" type="button">
+          <ion-button expand="block" color="gradient" (click)="loginWithGoogle()" type="button" *ngIf="isWeb()">
             <ion-icon name="logo-google" slot="start"></ion-icon>
             Iniciar sesión con Google
           </ion-button>

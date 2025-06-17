@@ -44,13 +44,22 @@ interface Book {
   }
 
   async loginWithGoogle() {
-    alert('CLICK GOOGLE LOGIN');
+    //alert('CLICK GOOGLE LOGIN');
     try {
       await this.auth.loginGoogle();
       this.router.navigate(['/home']);
     } catch (e) {
       // El AuthService ya muestra el error
     }
+  }
+
+  isAndroid(): boolean {
+    return /android/i.test(navigator.userAgent);
+  }
+
+  isWeb(): boolean {
+    // Considera web si no es Android ni iOS
+    return !/android|iphone|ipad|ipod/i.test(navigator.userAgent);
   }
 
 }
