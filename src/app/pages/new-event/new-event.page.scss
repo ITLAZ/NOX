@@ -102,3 +102,17 @@ ion-button {
   display: none;
   background-color: transparent;
 }
+
+.input-item-with-line {
+  --border-width: 0px 0px 1px 0px; /* Ancho del borde: arriba, derecha, abajo, izquierda */
+  --border-color: white; /* Color del borde */
+  --border-style: solid; /* Estilo del borde */
+  padding: 0px 10px 0px 10px; /* Ajusta el padding según sea necesario */
+}
+
+/* Opcional: Para Ionic 6+, también puedes usar las variables de borde directamente */
+ion-item.input-item-with-line {
+  --border-color: white;
+  --border-width: 0 0 1px 0; // Top Right Bottom Left
+  
+}

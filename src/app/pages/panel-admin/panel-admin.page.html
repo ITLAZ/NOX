@@ -14,68 +14,76 @@
       <ion-button expand="block" shape="round" (click)="toggleCoverInput()" class="gradient-button">
         {{localForm.value.imagen ? 'Cambiar Portada' : 'Agregar Portada'}}
       </ion-button>
-      <ion-input *ngIf="showCoverInput" formControlName="imagen" placeholder="URL de la imagen" class="input-custom" id="imagenInput"></ion-input>
+      <ion-input
+        *ngIf="showCoverInput"
+        formControlName="imagen"
+        placeholder="URL de la imagen"
+        class="input-custom input-line-bottom"
+        id="imagenInput"
+      ></ion-input>
     </div>
 
-    <ion-item>
+    <ion-item class="ion-align-items-center">
+      <ion-icon name="text-outline" slot="start" color="secondary"></ion-icon>
       <ion-label position="floating" color="primary">Nombre del Establecimiento</ion-label>
-      <ion-input formControlName="nombre" class="input-custom"></ion-input>
+      <ion-input formControlName="nombre" class="input-custom input-line-bottom"></ion-input>
       <ion-note *ngIf="localForm.get('nombre')?.errors?.['required'] && localForm.get('nombre')?.touched" color="danger">
         Este campo es requerido
       </ion-note>
     </ion-item>
 
-    <ion-item>
+    <ion-item class="ion-align-items-center">
+      <ion-icon name="location-outline" slot="start" color="secondary"></ion-icon>
       <ion-label position="floating" color="primary">Dirección</ion-label>
-      <ion-input formControlName="direccion" class="input-custom"></ion-input>
+      <ion-input formControlName="direccion" class="input-custom input-line-bottom"></ion-input>
       <ion-note *ngIf="localForm.get('direccion')?.errors?.['required'] && localForm.get('direccion')?.touched" color="danger">
         Este campo es requerido
       </ion-note>
     </ion-item>
 
-    <ion-item>
+    <ion-item class="ion-align-items-center">
+      <ion-icon name="time-outline" slot="start" color="secondary"></ion-icon>
       <ion-label position="floating" color="primary">Horario de Apertura (HH:MM)</ion-label>
-      <ion-input formControlName="horarioApertura" class="input-custom"></ion-input>
-      <!-- <ion-note *ngIf="localForm.get('horarioApertura')?.errors?.['invalidHora']" color="danger">
-        Formato inválido (use HH:MM)
-      </ion-note> -->
-    </ion-item>
+      <ion-input formControlName="horarioApertura" class="input-custom input-line-bottom"></ion-input>
+      </ion-item>
 
-    <ion-item>
+    <ion-item class="ion-align-items-center">
+      <ion-icon name="time-outline" slot="start" color="secondary"></ion-icon>
       <ion-label position="floating" color="primary">Horario de Cierre (HH:MM)</ion-label>
-      <ion-input formControlName="horarioCierre" class="input-custom" ></ion-input>
-      <!-- <ion-note *ngIf="localForm.get('horarioCierre')?.errors?.['invalidHora']" color="danger">
-        Formato inválido (use HH:MM)
-      </ion-note> -->
-    </ion-item>
+      <ion-input formControlName="horarioCierre" class="input-custom input-line-bottom"></ion-input>
+      </ion-item>
 
-    <ion-item>
+    <ion-item class="ion-align-items-center">
+      <ion-icon name="calendar-outline" slot="start" color="secondary"></ion-icon>
       <ion-label position="floating" color="primary">Días de Atención (separados por comas)</ion-label>
-      <ion-input formControlName="dias" class="input-custom"></ion-input>
+      <ion-input formControlName="dias" class="input-custom input-line-bottom"></ion-input>
       <ion-note *ngIf="localForm.get('dias')?.errors?.['required'] && localForm.get('dias')?.touched" color="danger">
         Este campo es requerido
       </ion-note>
     </ion-item>
 
-    <ion-item>
+    <ion-item class="ion-align-items-center">
+      <ion-icon name="pricetag-outline" slot="start" color="secondary"></ion-icon>
       <ion-label position="floating" color="primary">Tipo de Establecimiento</ion-label>
-      <ion-input formControlName="tipo" class="input-custom"></ion-input>
+      <ion-input formControlName="tipo" class="input-custom input-line-bottom"></ion-input>
       <ion-note *ngIf="localForm.get('tipo')?.errors?.['required'] && localForm.get('tipo')?.touched" color="danger">
         Este campo es requerido
       </ion-note>
     </ion-item>
 
-    <ion-item>
+    <ion-item class="ion-align-items-center">
+      <ion-icon name="map-outline" slot="start" color="secondary"></ion-icon>
       <ion-label position="floating" color="primary">Latitud</ion-label>
-      <ion-input formControlName="lat" type="number" class="input-custom"></ion-input>
+      <ion-input formControlName="lat" type="number" class="input-custom input-line-bottom"></ion-input>
       <ion-note *ngIf="localForm.get('lat')?.errors?.['required'] && localForm.get('lat')?.touched" color="danger">
         Este campo es requerido
       </ion-note>
     </ion-item>
 
-    <ion-item>
+    <ion-item class="ion-align-items-center">
+      <ion-icon name="map-outline" slot="start" color="secondary"></ion-icon>
       <ion-label position="floating" color="primary">Longitud</ion-label>
-      <ion-input formControlName="lng" type="number" class="input-custom"></ion-input>
+      <ion-input formControlName="lng" type="number" class="input-custom input-line-bottom"></ion-input>
       <ion-note *ngIf="localForm.get('lng')?.errors?.['required'] && localForm.get('lng')?.touched" color="danger">
         Este campo es requerido
       </ion-note>

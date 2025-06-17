@@ -1,9 +1,9 @@
 <ion-header [translucent]="true">
-  <ion-toolbar class = "header">
+  <ion-toolbar class="header">
     <ion-buttons slot="start">
-      <ion-icon name="arrow-back" size="large" [routerLink]="'/list-events'" color = "primary"></ion-icon>
+      <ion-icon name="arrow-back" size="large" [routerLink]="'/list-events'" color="primary"></ion-icon>
     </ion-buttons>
-    <ion-title color = "primary">Gestionar mi Evento</ion-title>
+    <ion-title color="primary">Gestionar mi Evento</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -18,106 +18,115 @@
         *ngIf="showCoverInput"
         formControlName="imagen"
         placeholder="Link de la imagen"
-        class="input-custom"
+        class="input-custom input-line-bottom"
         id="imagenInput"
       ></ion-input>
     </div>
 
-    <ion-item>
+    <ion-item class="ion-align-items-center">
+      <ion-icon name="text-outline" slot="start" color="secondary"></ion-icon>
       <ion-label position="floating" color="primary">Nombre del Evento</ion-label>
-      <ion-input formControlName="nombre" class="input-custom"></ion-input>
+      <ion-input formControlName="nombre" class="input-custom input-line-bottom"></ion-input>
     </ion-item>
 
-    <ion-item>
+    <ion-item class="ion-align-items-center">
+      <ion-icon name="location-outline" slot="start" color="secondary"></ion-icon>
       <ion-label position="floating" color="primary">Dirección</ion-label>
-      <ion-input formControlName="direccion" class="input-custom"></ion-input>
+      <ion-input formControlName="direccion" class="input-custom input-line-bottom"></ion-input>
     </ion-item>
 
-    <ion-item>
+    <ion-item class="ion-align-items-center">
+      <ion-icon name="pricetag-outline" slot="start" color="secondary"></ion-icon>
       <ion-label position="floating" color="primary">Tipo de Evento</ion-label>
-      <ion-input formControlName="tipo" class="input-custom"></ion-input>
+      <ion-input formControlName="tipo" class="input-custom input-line-bottom"></ion-input>
     </ion-item>
 
-    <ion-item>
-  <ion-label color="primary">Fecha Inicio</ion-label>
-  <ion-button fill="clear" (click)="toggleCalendar('fechasInicio')">
-    <ion-icon
-      [name]="calendarVisibility.fechasInicio ? 'chevron-up-outline' : 'chevron-down-outline'"
-    ></ion-icon>
-  </ion-button>
-</ion-item>
-<ion-datetime
-  *ngIf="calendarVisibility.fechasInicio"
-  formControlName="fechasInicio"
-></ion-datetime>
+    <ion-item class="ion-align-items-center">
+      <ion-icon name="calendar-outline" slot="start" color="secondary"></ion-icon>
+      <ion-label color="primary">Fecha Inicio</ion-label>
+      <ion-button fill="clear" (click)="toggleCalendar('fechasInicio')">
+        <ion-icon
+          [name]="calendarVisibility.fechasInicio ? 'chevron-up-outline' : 'chevron-down-outline'"
+        ></ion-icon>
+      </ion-button>
+    </ion-item>
+    <ion-datetime
+      *ngIf="calendarVisibility.fechasInicio"
+      formControlName="fechasInicio"
+      class="input-line-bottom-datetime"
+    ></ion-datetime>
 
-<ion-item>
-  <ion-label color="primary">Fecha Final</ion-label>
-  <ion-button fill="clear" (click)="toggleCalendar('fechasFinal')">
-    <ion-icon
-      [name]="calendarVisibility.fechasFinal ? 'chevron-up-outline' : 'chevron-down-outline'"
-    ></ion-icon>
-  </ion-button>
-</ion-item>
-<ion-datetime
-  *ngIf="calendarVisibility.fechasFinal"
-  formControlName="fechasFinal"
-></ion-datetime>
-    <ion-item>
+    <ion-item class="ion-align-items-center">
+      <ion-icon name="calendar-outline" slot="start" color="secondary"></ion-icon>
+      <ion-label color="primary">Fecha Final</ion-label>
+      <ion-button fill="clear" (click)="toggleCalendar('fechasFinal')">
+        <ion-icon
+          [name]="calendarVisibility.fechasFinal ? 'chevron-up-outline' : 'chevron-down-outline'"
+        ></ion-icon>
+      </ion-button>
+    </ion-item>
+    <ion-datetime
+      *ngIf="calendarVisibility.fechasFinal"
+      formControlName="fechasFinal"
+      class="input-line-bottom-datetime"
+    ></ion-datetime>
+
+    <ion-item class="ion-align-items-center">
+      <ion-icon name="time-outline" slot="start" color="secondary"></ion-icon>
       <ion-label position="floating" color="primary">Horario Inicio</ion-label>
-      <ion-input formControlName="horarioInicio" class="input-custom"></ion-input>
+      <ion-input formControlName="horarioInicio" class="input-custom input-line-bottom"></ion-input>
     </ion-item>
 
-    <ion-item>
+    <ion-item class="ion-align-items-center">
+      <ion-icon name="time-outline" slot="start" color="secondary"></ion-icon>
       <ion-label position="floating" color="primary">Horario Cierre</ion-label>
-      <ion-input formControlName="horarioCierre" class="input-custom"></ion-input>
+      <ion-input formControlName="horarioCierre" class="input-custom input-line-bottom"></ion-input>
     </ion-item>
 
-  <div class="Etiquetas">
-    <h4>Etiquetas del Evento</h4>
-    <p>Usa etiquetas para que tu evento sea más fácil de encontrar</p>
-    <div class="chips-row">
-      <ion-chip color = "secondary">
-        <ion-icon name="ticket" color="secondary" ></ion-icon>
-        <ion-label>Precio de Entrada</ion-label>
-        <ion-icon name="caret-down-outline" color="secondary"></ion-icon>
-      </ion-chip>
-      
-      <ion-chip color = "secondary">
-        <ion-icon name="card" color="secondary"></ion-icon>
-        <ion-label>Tipos de Pago</ion-label>
-        <ion-icon name="caret-down-outline" color="secondary"></ion-icon>
-      </ion-chip>
+    <div class="Etiquetas">
+      <h4>Etiquetas del Evento</h4>
+      <p>Usa etiquetas para que tu evento sea más fácil de encontrar</p>
+      <div class="chips-row">
+        <ion-chip color="secondary">
+          <ion-icon name="ticket" color="secondary"></ion-icon>
+          <ion-label>Precio de Entrada</ion-label>
+          <ion-icon name="caret-down-outline" color="secondary"></ion-icon>
+        </ion-chip>
 
+        <ion-chip color="secondary">
+          <ion-icon name="card" color="secondary"></ion-icon>
+          <ion-label>Tipos de Pago</ion-label>
+          <ion-icon name="caret-down-outline" color="secondary"></ion-icon>
+        </ion-chip>
+      </div>
     </div>
-  </div>
 
-  <ion-item lines="strong" color = "translucent" button [routerLink]="'/gestion-entradas'" >
-    <ion-label color = primary>
-      Gestionar Entradas
-    </ion-label>
-    <ion-icon name="chevron-forward-outline" slot="end" class="option-icon" color = "primary"></ion-icon>
-  </ion-item>
-    <ion-item lines="strong" color = "translucent" button >
-    <ion-label color = primary>
-      Ubicación en el Mapa
-    </ion-label>
-    <ion-icon name="chevron-forward-outline" slot="end" class="option-icon" color = "primary"></ion-icon>
-  </ion-item>
-    <ion-item lines="strong" color = "translucent" button >
-    <ion-label color = primary>
-      Gestionar Publicidad
-    </ion-label>
-    <ion-icon name="chevron-forward-outline" slot="end" class="option-icon" color = "primary"></ion-icon>
-  </ion-item>
-  <ion-item lines="strong" color = "translucent" button >
-    <ion-label color = primary>
-      Cargar fotos de Evento
-    </ion-label>
-    <ion-icon name="chevron-forward-outline" slot="end" class="option-icon" color = "primary"></ion-icon>
-  </ion-item>
+    <ion-item lines="strong" color="translucent" button [routerLink]="'/gestion-entradas'">
+      <ion-label color="primary">
+        Gestionar Entradas
+      </ion-label>
+      <ion-icon name="chevron-forward-outline" slot="end" class="option-icon" color="primary"></ion-icon>
+    </ion-item>
+    <ion-item lines="strong" color="translucent" button>
+      <ion-label color="primary">
+        Ubicación en el Mapa
+      </ion-label>
+      <ion-icon name="chevron-forward-outline" slot="end" class="option-icon" color="primary"></ion-icon>
+    </ion-item>
+    <ion-item lines="strong" color="translucent" button>
+      <ion-label color="primary">
+        Gestionar Publicidad
+      </ion-label>
+      <ion-icon name="chevron-forward-outline" slot="end" class="option-icon" color="primary"></ion-icon>
+    </ion-item>
+    <ion-item lines="strong" color="translucent" button>
+      <ion-label color="primary">
+        Cargar fotos de Evento
+      </ion-label>
+      <ion-icon name="chevron-forward-outline" slot="end" class="option-icon" color="primary"></ion-icon>
+    </ion-item>
 
- <div class="cover-container">
+    <div class="cover-container">
       <ion-button
         expand="block"
         shape="round"
@@ -130,4 +139,3 @@
     </div>
   </form>
 </ion-content>
-
