@@ -44,6 +44,7 @@ interface Book {
   }
 
   async loginWithGoogle() {
+    alert('CLICK GOOGLE LOGIN');
     try {
       await this.auth.loginGoogle();
       this.router.navigate(['/home']);

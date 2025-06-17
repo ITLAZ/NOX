@@ -4,6 +4,7 @@ import { Map, tileLayer, marker, icon, circle } from 'leaflet';
 import * as L from 'leaflet';
 import { Router } from '@angular/router';
 import { Geolocation } from '@capacitor/geolocation';
+import { Platform } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -17,7 +18,8 @@ export class HomePage implements OnInit{
   userMarker: any; // Agregado para el marcador de usuario
   constructor(
     public db: DatabaseService,
-    public router: Router
+    public router: Router,
+    private platform: Platform
   ) {
     this.db.fetchFirestoreCollection('locales')
       .subscribe((data: any) => {
@@ -40,9 +42,19 @@ export class HomePage implements OnInit{
 
   async loadMap() {
     try {
+      let userLat: number;
+      let userLng: number;
+      if (this.platform.is('capacitor')) {
+        // Solicitar permisos en Android/iOS
+        const permResult = await Geolocation.requestPermissions();
+        if (permResult.location !== 'granted' && permResult.coarseLocation !== 'granted') {
+          throw new Error('Permiso de ubicación denegado');
+        }
+      }
+      // Obtener ubicación (web o nativo)
       const position = await Geolocation.getCurrentPosition();
-      const userLat = position.coords.latitude;
-      const userLng = position.coords.longitude;
+      userLat = position.coords.latitude;
+      userLng = position.coords.longitude;
 
       // Solución: destruir el mapa si ya existe para evitar el error de inicialización múltiple
       if (this.map) {
