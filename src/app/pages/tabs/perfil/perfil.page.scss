@@ -30,14 +30,14 @@
 
     h2 {
       margin: 0;
-      font-family: "Monstserrat SemiBold";
+      --font-family: "Monstserrat SemiBold";
       font-size: 1.2rem;
       color: #3fba9a;
     }
 
     p {
       margin: 0;
-      font-family: "Montserrat Light";
+      --font-family: "Montserrat Light";
       color: #aaa;
       font-size: 14px;
     }
@@ -72,7 +72,7 @@
 
       ion-label {
         font-size: 16px;
-        font-family: "Montserrat Light";
+        --font-family: "Montserrat Light";
         
       }
     }
@@ -80,7 +80,7 @@
     ion-item-divider {
       background: transparent;
       color: var(--ion-color-secondary-shade);
-      font-family: "Montserrat Regular";
+      --font-family: "Montserrat Regular";
       font-size: 0.9rem;
       margin-top: 1rem;
       padding: 0 0.5rem;
@@ -96,6 +96,7 @@
     }
   }
 }
+
 .app-wrapper {
   width: 100%;
   box-sizing: border-box;

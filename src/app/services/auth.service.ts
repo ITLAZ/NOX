@@ -6,6 +6,9 @@ import { DatabaseService } from './database.service';
 import { ToastController } from '@ionic/angular';
 import { firstValueFrom } from 'rxjs';
 import { GoogleAuthProvider } from 'firebase/auth';
+import { Platform } from '@ionic/angular';
+import { GoogleAuth } from '@codetrix-studio/capacitor-google-auth';
+import { signInWithCredential, GoogleAuthProvider as FirebaseGoogleAuthProvider } from 'firebase/auth';
 
 @Injectable({
   providedIn: 'root'
@@ -35,7 +38,8 @@ export class AuthService {
     public toastCtrl: ToastController,
     public db: DatabaseService,
     public router: Router,
-    private injector: Injector
+    private injector: Injector,
+    private platform: Platform
   ) {
     const user = localStorage.getItem('profile');
     if (user) {
@@ -200,18 +204,41 @@ export class AuthService {
   }
 
   async loginGoogle() {
-    try {
-      const provider = new GoogleAuthProvider();
-      // @ts-ignore
-      const userCredential = await this.afAuth.signInWithPopup(provider);
-      if (userCredential.user) {
-        const user = userCredential.user;
-        await this.handleGoogleUser(user);
-        this.setAuthCookie(user.uid); // Guardar cookie persistente
-        // Quitar navegación aquí, se hará en el componente
+    if (this.platform.is('capacitor')) {
+      // Android/iOS nativo
+      try {
+        const googleUser = await GoogleAuth.signIn();
+        // El objeto googleUser puede variar según la versión del plugin
+        // Generalmente, el idToken está en googleUser.authentication.idToken
+        const idToken = googleUser.authentication?.idToken;
+        if (!idToken) {
+          throw new Error('No se pudo obtener el idToken de Google');
+        }
+        const credential = FirebaseGoogleAuthProvider.credential(idToken);
+        // @ts-ignore
+        const userCredential = await this.afAuth.signInWithCredential(credential);
+        if (userCredential.user) {
+          const user = userCredential.user;
+          await this.handleGoogleUser(user);
+          this.setAuthCookie(user.uid);
+        }
+      } catch (error) {
+        this.handleAuthError(error);
       }
-    } catch (error) {
-      this.handleAuthError(error);
+    } else {
+      // Web
+      try {
+        const provider = new GoogleAuthProvider();
+        // @ts-ignore
+        const userCredential = await this.afAuth.signInWithPopup(provider);
+        if (userCredential.user) {
+          const user = userCredential.user;
+          await this.handleGoogleUser(user);
+          this.setAuthCookie(user.uid);
+        }
+      } catch (error) {
+        this.handleAuthError(error);
+      }
     }
   }
 
