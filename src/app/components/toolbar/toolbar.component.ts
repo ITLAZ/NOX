@@ -27,13 +27,18 @@ export class ToolbarComponent implements OnInit {
 
   ngOnInit() {}
 
-  navigateBack() {
-    if (this.setRoute) {
-      this.router.navigate([this.setRoute]);
+ navigateBack() {
+  if (this.setRoute) {
+    this.router.navigate([this.setRoute]);
+  } else {
+    // Utiliza el historial del navegador como alternativa
+    if (window.history.length > 1) {
+      window.history.back();
     } else {
-      this.router.navigate(['../'], { relativeTo: this.router.routerState.root });
+      this.router.navigate(['/']); // Ruta predeterminada si no hay historial
     }
   }
+}
 
   async openSearchModal() {
     // Detectar la ruta actual
