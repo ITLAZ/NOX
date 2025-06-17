@@ -9,6 +9,7 @@ import { EventoFechaPageRoutingModule } from './evento-fecha-routing.module';
 import { EventoFechaPage } from './evento-fecha.page';
 import { DateEventModule } from 'src/app/shared/date-event/date-event.module';
 import { ToolbarModule } from 'src/app/shared/toolbar/toolbar.module';
+import { BotonModule } from 'src/app/shared/boton/boton.module';
 
 @NgModule({
   imports: [
@@ -17,7 +18,8 @@ import { ToolbarModule } from 'src/app/shared/toolbar/toolbar.module';
     IonicModule,
     EventoFechaPageRoutingModule,
     DateEventModule,
-    ToolbarModule 
+    ToolbarModule,
+    BotonModule
   ],
   declarations: [EventoFechaPage]
 })
