@@ -8,7 +8,8 @@ import { firstValueFrom } from 'rxjs';
 import { GoogleAuthProvider } from 'firebase/auth';
 import { Platform } from '@ionic/angular';
 import { GoogleAuth } from '@codetrix-studio/capacitor-google-auth';
-import { signInWithCredential, GoogleAuthProvider as FirebaseGoogleAuthProvider } from 'firebase/auth';
+import { GoogleAuthProvider as FirebaseGoogleAuthProvider } from 'firebase/auth';
+import { Capacitor } from '@capacitor/core';
 
 @Injectable({
   providedIn: 'root'
@@ -204,39 +205,48 @@ export class AuthService {
   }
 
   async loginGoogle() {
-    if (this.platform.is('capacitor')) {
-      // Android/iOS nativo
+    alert('DEBUG loginGoogle - is capacitor: ' + this.platform.is('capacitor') + ' | Capacitor.isNativePlatform: ' + Capacitor.isNativePlatform());
+    console.log('DEBUG loginGoogle - is capacitor:', this.platform.is('capacitor'), '| Capacitor.isNativePlatform:', Capacitor.isNativePlatform(), 'Platform:', this.platform);
+    if (this.platform.is('capacitor') || Capacitor.isNativePlatform()) {
+      // SOLO para Android/iOS nativo
       try {
+        alert('DEBUG loginGoogle - Usando flujo nativo GoogleAuth.signIn()');
+        console.log('DEBUG loginGoogle - Usando flujo nativo GoogleAuth.signIn()');
         const googleUser = await GoogleAuth.signIn();
-        // El objeto googleUser puede variar según la versión del plugin
-        // Generalmente, el idToken está en googleUser.authentication.idToken
-        const idToken = googleUser.authentication?.idToken;
-        if (!idToken) {
+        alert('DEBUG loginGoogle - googleUser: ' + JSON.stringify(googleUser));
+        if (!googleUser || !googleUser.authentication || !googleUser.authentication.idToken) {
+          alert('No se pudo obtener el idToken de Google. googleUser: ' + JSON.stringify(googleUser));
           throw new Error('No se pudo obtener el idToken de Google');
         }
+        const idToken = googleUser.authentication.idToken;
         const credential = FirebaseGoogleAuthProvider.credential(idToken);
         // @ts-ignore
         const userCredential = await this.afAuth.signInWithCredential(credential);
+        alert('DEBUG loginGoogle - userCredential: ' + JSON.stringify(userCredential));
         if (userCredential.user) {
-          const user = userCredential.user;
-          await this.handleGoogleUser(user);
-          this.setAuthCookie(user.uid);
+          await this.handleGoogleUser(userCredential.user);
+          this.setAuthCookie(userCredential.user.uid);
         }
-      } catch (error) {
+      } catch (error: any) {
+        alert('DEBUG loginGoogle - Error en flujo nativo: ' + (error?.message ? error.message : JSON.stringify(error)));
+        console.error('DEBUG loginGoogle - Error en flujo nativo:', error);
         this.handleAuthError(error);
       }
     } else {
-      // Web
+      // SOLO para web
       try {
+        alert('DEBUG loginGoogle - Usando flujo web signInWithPopup');
+        console.log('DEBUG loginGoogle - Usando flujo web signInWithPopup');
         const provider = new GoogleAuthProvider();
         // @ts-ignore
         const userCredential = await this.afAuth.signInWithPopup(provider);
         if (userCredential.user) {
-          const user = userCredential.user;
-          await this.handleGoogleUser(user);
-          this.setAuthCookie(user.uid);
+          await this.handleGoogleUser(userCredential.user);
+          this.setAuthCookie(userCredential.user.uid);
         }
-      } catch (error) {
+      } catch (error: any) {
+        alert('DEBUG loginGoogle - Error en flujo web: ' + (error?.message ? error.message : JSON.stringify(error)));
+        console.error('DEBUG loginGoogle - Error en flujo web:', error);
         this.handleAuthError(error);
       }
     }

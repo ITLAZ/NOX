@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "445585900604",
+    "project_id": "nox-app-tdig",
+    "storage_bucket": "nox-app-tdig.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:445585900604:android:8c551412179e2ff5ecaf39",
+        "android_client_info": {
+          "package_name": "io.ionic.starter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "445585900604-b82jqge3hagt94ef0b14noffak6cqbas.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "io.ionic.starter",
+            "certificate_hash": "e19f0cb91f1dce86ec97c3fd257d316248d2770e"
+          }
+        },
+        {
+          "client_id": "445585900604-fhih4prmukvng8tdo7o681fqnsfogsos.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBWaOIQrYGAzGr2gm5kHd5JHfIhel-lPjs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "445585900604-fhih4prmukvng8tdo7o681fqnsfogsos.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
