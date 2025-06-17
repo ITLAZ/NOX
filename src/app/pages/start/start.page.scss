@@ -10,19 +10,7 @@ ion-content {
   overflow: hidden !important;
   height: 100vh;
   position: relative;
-  // Se elimina el fondo anterior de imagen:
-  // --background: url('../../../assets/images/Degrade.png') no-repeat center center / cover;
-}
-
-#bg-video {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: 0;
-  pointer-events: none;
+  --background: url('../../../assets/images/Degrade.png') no-repeat center center / cover;
 }
 
 #logo {
