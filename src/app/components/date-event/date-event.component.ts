@@ -7,12 +7,12 @@ import { Component, Input, OnInit } from '@angular/core';
   standalone: false,
 })
 export class DateEventComponent  implements OnInit {
-  @Input () nombreEvento: string = '';
-  @Input () fechaInicio: Date | string = '';
-  @Input () fechaFinal: Date | string = '';
-  @Input () lugar: string = '';
-  @Input () precio: string = '';
-  @Input () imagen: string = '';
+  @Input () nombreEvento: string = 'nombre del evento';
+  @Input () fechaInicio: Date | string = '01/01/2023';
+  @Input () fechaFinal: Date | string = '01/01/2023';
+  @Input () lugar: string = 'tu corazón';
+  @Input () precio: string = 'tu alma';
+  @Input () imagen: string = 'src/assets/images/placeholder.png';
 
   constructor() { }
 
