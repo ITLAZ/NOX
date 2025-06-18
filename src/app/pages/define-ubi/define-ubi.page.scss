@@ -1,11 +1,9 @@
-
 #map {
-  overflow: hidden; 
-  filter: invert(0.9);
   width: 100%;
-  height: 110%;
-  z-index: 0;
-  position: relative;
+  height: 100%;
+  z-index: 1;
+  overflow: hidden;
+  filter: invert(0.9);
 }
 .nombre-ubi {
 position: fixed;

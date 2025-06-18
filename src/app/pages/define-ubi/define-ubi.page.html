@@ -1,14 +1,12 @@
-<toolbar [pageTitle]="'Definir Ubicacion'" [showBack]="true" [showSearch]="false" [showNotifications]="false" [showCart]="false"></toolbar>
+<toolbar [pageTitle]="'Definir Ubicacion'" [showBack]="true" [showSearch]="false" [showNotifications]="false" [showCart]="false" [setColor]="'var(--ion-color-primary)'" [toolColor]="'var(--ion-color-medium)'"></toolbar>
 
 <ion-content [fullscreen]="true">
-<div id="map"></div>
-<div class="nombre-ubi">
-  <ion-item fill="solid" class="custom-input"  lines="none">
-        <ion-icon name="locate-outline" slot="start"></ion-icon>
-        <ion-input type="text">Ubi name</ion-input>
-        <ion-icon name="close-outline"
-          slot="end"
-          class="clear-icon"></ion-icon>
-  </ion-item> 
-</div>
+  <div id="map"></div>
+  <div class="nombre-ubi">
+    <ion-item fill="solid" class="custom-input" lines="none">
+      <ion-icon name="locate-outline" slot="start"></ion-icon>
+      <ion-input type="text" [value]="selectedPlaceName" readonly placeholder="Nombre del lugar"></ion-input>
+      <ion-icon name="close-outline" slot="end" class="clear-icon"></ion-icon>
+    </ion-item>
+  </div>
 </ion-content>
