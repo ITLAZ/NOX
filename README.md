@@ -7,9 +7,6 @@
 ## Consideraciones
 - **El responsive a ratos se raya, hay que quitar la vista responsiva y volverla a poner para corregir el error**
 - **Los errores de aria no afectan al funcionamiento del sistema**
-- **Algunos estilos estan incompletos, se priorizo que funcione**
-- **Algunas paginas no estan conectadas pero sus rutas si estan funcionando**
-- **Es necesario hacer el login para usar el sistema, una vez se inicia sesion no es necesario hacerlo de nuevo, se recomienda usar inicio con google**
 - **Hacer el npm install antes de ionic serve para evitar errores**
   ```bash
      npm install
