@@ -1,7 +1,27 @@
-<toolbar [pageTitle]="'Detalles del Evento'" [showBack]="true" [showSearch]="false"></toolbar>
+<toolbar [pageTitle]="'Calendario de Eventos'" [showBack]="true" [showSearch]="false" [setRoute]="'/eventos'"></toolbar>
 
 <ion-content [fullscreen]="true">
-  <boton-circle iconName="grid-outline"></boton-circle>
-  <date-event></date-event>
+  <boton-circle [iconName]="'swap-vertical-outline'" (click)="cambiarOrden()"></boton-circle>
 
+  <ion-spinner *ngIf="cargando"></ion-spinner>
+
+  <ng-container *ngFor="let grupo of eventosAgrupados">
+    <ion-item-divider>
+      <ion-label>
+        {{ grupo.fecha }}
+      </ion-label>
+    </ion-item-divider>
+    <ng-container *ngFor="let evento of grupo.eventos">
+      <date-event
+        [nombreEvento]="evento.nombreEvento"
+        [fechaInicio]="evento.fechaInicio"
+        [fechaFinal]="evento.fechaFinal"
+        [lugar]="evento.lugar"
+        [precio]="evento.precio"
+        [imagen]="evento.imagen"
+        [id]="evento.id"
+        (irEvento)="irADetalle(evento.id)"
+      ></date-event>
+    </ng-container>
+  </ng-container>
 </ion-content>

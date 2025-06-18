@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'date-event',
@@ -13,9 +13,14 @@ export class DateEventComponent  implements OnInit {
   @Input () lugar: string = 'tu corazón';
   @Input () precio: string = 'tu alma';
   @Input () imagen: string = 'src/assets/images/placeholder.png';
+  @Input () id: string = '';
+  @Output() irEvento = new EventEmitter<void>();
 
   constructor() { }
 
   ngOnInit() {}
 
+  onIrEvento() {
+    this.irEvento.emit();
+  }
 }

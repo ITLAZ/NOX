@@ -11,6 +11,6 @@
       <span *ngIf="lugar">{{ lugar }}</span><br />
       <span *ngIf="precio">{{ precio }}</span>
     </div>
-    <button class="date-event-btn">Comprar entradas <span class="arrow">→</span></button>
+    <button class="date-event-btn" (click)="onIrEvento()">Ir al Evento<span class="arrow">→</span></button>
   </div>
 </div>
