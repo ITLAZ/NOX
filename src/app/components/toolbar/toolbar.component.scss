@@ -5,8 +5,9 @@ ion-toolbar {
   align-items: center;
   justify-content: space-between;
   padding: 0 12px;
-  min-height: 56px;
-  height: 56px; // Asegura altura fija
+  min-height: 80px !important;
+  max-height: 80px !important;
+  height: 80px !important;
   box-sizing: border-box;
 }
 
@@ -17,8 +18,10 @@ ion-title {
   display: flex;
   align-items: center; // Esto alinea verticalmente el contenido
   margin: 0 12px;
-  height: 56px;
-  line-height: 56px;
+  min-height: 56px !important;
+  max-height: 56px !important;
+  height: 56px !important;
+  line-height: 56px !important;
   padding: 0;
 }
 ion-icon {
