@@ -8,6 +8,7 @@ import { NewLocalPageRoutingModule } from './new-local-routing.module';
 
 import { NewLocalPage } from './new-local.page';
 import { InfoRowModule } from 'src/app/shared/info-row/info-row.module';
+import { ToolbarModule } from 'src/app/shared/toolbar/toolbar.module';
 
 @NgModule({
   imports: [
@@ -16,7 +17,8 @@ import { InfoRowModule } from 'src/app/shared/info-row/info-row.module';
     IonicModule,
     NewLocalPageRoutingModule,
     InfoRowModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ToolbarModule
   ],
   declarations: [NewLocalPage]
 })

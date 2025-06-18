@@ -8,6 +8,7 @@ import { PanelAdmin2PageRoutingModule } from './panel-admin-2-routing.module';
 
 import { PanelAdmin2Page } from './panel-admin-2.page';
 import { InfoRowModule } from 'src/app/shared/info-row/info-row.module';
+import { ToolbarModule } from 'src/app/shared/toolbar/toolbar.module';
 
 @NgModule({
   imports: [
@@ -16,7 +17,8 @@ import { InfoRowModule } from 'src/app/shared/info-row/info-row.module';
     IonicModule,
     PanelAdmin2PageRoutingModule,
     InfoRowModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ToolbarModule
   ],
   declarations: [PanelAdmin2Page]
 })

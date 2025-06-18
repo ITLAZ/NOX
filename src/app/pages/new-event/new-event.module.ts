@@ -8,6 +8,7 @@ import { NewEventPageRoutingModule } from './new-event-routing.module';
 
 import { NewEventPage } from './new-event.page';
 import { InfoRowModule } from 'src/app/shared/info-row/info-row.module';
+import { ToolbarModule } from 'src/app/shared/toolbar/toolbar.module';
 
 @NgModule({
   imports: [
@@ -16,7 +17,8 @@ import { InfoRowModule } from 'src/app/shared/info-row/info-row.module';
     IonicModule,
     NewEventPageRoutingModule,
     InfoRowModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ToolbarModule
   ],
   declarations: [NewEventPage]
 })

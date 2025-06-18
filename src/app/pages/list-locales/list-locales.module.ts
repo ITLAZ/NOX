@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { ListLocalesPageRoutingModule } from './list-locales-routing.module';
 
 import { ListLocalesPage } from './list-locales.page';
+import { ToolbarModule } from 'src/app/shared/toolbar/toolbar.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ListLocalesPageRoutingModule
+    ListLocalesPageRoutingModule,
+    ToolbarModule
   ],
   declarations: [ListLocalesPage]
 })

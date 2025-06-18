@@ -9,6 +9,7 @@ import { PanelAdminPageRoutingModule } from './panel-admin-routing.module';
 import { PanelAdminPage } from './panel-admin.page';
 
 import { InfoRowModule } from 'src/app/shared/info-row/info-row.module';
+import { ToolbarModule } from 'src/app/shared/toolbar/toolbar.module';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { InfoRowModule } from 'src/app/shared/info-row/info-row.module';
     IonicModule,
     PanelAdminPageRoutingModule,
     InfoRowModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ToolbarModule
   ],
   declarations: [PanelAdminPage]
 })

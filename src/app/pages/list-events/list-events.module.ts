@@ -7,13 +7,14 @@ import { IonicModule } from '@ionic/angular';
 import { ListEventsPageRoutingModule } from './list-events-routing.module';
 
 import { ListEventsPage } from './list-events.page';
-
+import { ToolbarModule } from 'src/app/shared/toolbar/toolbar.module';
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ListEventsPageRoutingModule
+    ListEventsPageRoutingModule,
+    ToolbarModule
   ],
   declarations: [ListEventsPage]
 })

@@ -1,11 +1,5 @@
-<ion-header [translucent]="true">
-  <ion-toolbar class="header" style="background-color: #30324b;">
-    <ion-buttons slot="start">
-      <ion-icon name="arrow-back-outline" size="large" routerLink="/perfil" color="primary"></ion-icon>
-    </ion-buttons>
-    <ion-title color="primary">Listado de locales</ion-title>
-  </ion-toolbar>
-</ion-header>
+<toolbar [pageTitle]="'Lista de Locales'" [showSearch]="false" [showCart]="false" [setColor]="'var(--ion-color-primary-shade)'" 
+[toolColor]="'var(--ion-color-medium)'" [showBack]="true" [showNotifications]="false"></toolbar>
 
 <ion-content [fullscreen]="true" class="ion-padding">
   <ion-list>

@@ -1,11 +1,5 @@
-<ion-header [translucent]="true">
-  <ion-toolbar class="header">
-    <ion-buttons slot="start">
-      <ion-icon name="arrow-back-outline" size="large" routerLink="/list-locales" color="primary"></ion-icon>
-    </ion-buttons>
-    <ion-title color="primary">Nuevo local</ion-title>
-  </ion-toolbar>
-</ion-header>
+<toolbar [pageTitle]="'Nuevo Local'" [showSearch]="false" [showCart]="false" [setColor]="'var(--ion-color-primary-shade)'" 
+[toolColor]="'var(--ion-color-medium)'" [showBack]="true" [showNotifications]="false"></toolbar>
 
 <ion-content [fullscreen]="true">
   <form [formGroup]="localForm" (ngSubmit)="onSubmit()">
