@@ -1,14 +1,4 @@
-<ion-header [translucent]="true">
-  <ion-toolbar color="primary">
-    <ion-buttons slot="start">
-      <ion-back-button defaultHref="/tabs/home"></ion-back-button>
-      <ion-title>Comprar Entradas</ion-title>
-    </ion-buttons>
-    <ion-icon slot="end" name="cart-outline" [routerLink]="'/cart'">
-    </ion-icon>
-  </ion-toolbar>
-</ion-header>
-
+<toolbar [pageTitle]="'Comprar Entradas'" [showBack]="true" [showSearch]="false"></toolbar>
 <ion-content [fullscreen]="true" style="margin-right:20px ;">
   <div class="app-wrapper">
     <h4>Entradas Disponibles</h4>

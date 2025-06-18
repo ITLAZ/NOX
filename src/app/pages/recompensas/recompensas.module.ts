@@ -11,6 +11,7 @@ import { RecompensasPage } from './recompensas.page';
 import { CuponCardModule } from 'src/app/shared/cupon-card/cupon-card.module'; 
 
 import { InfoRowModule } from 'src/app/shared/info-row/info-row.module';
+import { ToolbarModule } from 'src/app/shared/toolbar/toolbar.module';
 @NgModule({
   imports: [
     CommonModule,
@@ -19,6 +20,7 @@ import { InfoRowModule } from 'src/app/shared/info-row/info-row.module';
     RecompensasPageRoutingModule,
     CuponCardModule,
     InfoRowModule,
+    ToolbarModule
   ],
 
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

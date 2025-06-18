@@ -12,6 +12,7 @@ import { ToolbarModule } from 'src/app/shared/toolbar/toolbar.module';
 import { ItemEntradasModule } from 'src/app/shared/item-entradas/item-entradas.module';
 import { ItemComprasModule } from "../../shared/item-compras/item-compras.module";
 
+
 @NgModule({
   imports: [
     CommonModule,

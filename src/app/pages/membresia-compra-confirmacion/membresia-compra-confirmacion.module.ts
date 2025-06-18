@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { MembresiaCompraConfirmacionPageRoutingModule } from './membresia-compra-confirmacion-routing.module';
 
 import { MembresiaCompraConfirmacionPage } from './membresia-compra-confirmacion.page';
+import { ToolbarModule } from 'src/app/shared/toolbar/toolbar.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    MembresiaCompraConfirmacionPageRoutingModule
+    MembresiaCompraConfirmacionPageRoutingModule,
+    ToolbarModule
   ],
   declarations: [MembresiaCompraConfirmacionPage]
 })

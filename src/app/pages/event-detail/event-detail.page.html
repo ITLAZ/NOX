@@ -1,4 +1,4 @@
-<toolbar [pageTitle]="'Detalles del Evento'" [showBack]="true" [showSearch]="false"></toolbar>
+<toolbar [pageTitle]="evento?.nombre || 'Cargando...'" [showBack]="true" [showSearch]="false"></toolbar>
 <ion-content [fullscreen]="true" class="contenido-local">
   <div class="app-wrapper">
       <!-- 🟠 Sección 1: Información del evento -->

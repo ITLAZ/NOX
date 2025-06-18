@@ -1,10 +1,6 @@
 <ion-header [translucent]="true">
-  <ion-toolbar class="header">
-    <ion-buttons slot="start">
-      <ion-back-button defaultHref="/perfil" color = "secondary"></ion-back-button>
-    </ion-buttons>
-    <ion-title color = "secondary">Membresia Premium</ion-title>
-  </ion-toolbar>
+  <toolbar [pageTitle]="'Membresias '" [showBack]="true" [showSearch]="false" [showNotifications]="false" 
+  [showCart]="false" [setColor]="'var(--ion-color-secondary-shade)'" [toolColor]="'var(--ion-color-medium)'"></toolbar>
   <div class="banner">
     <h2>Membresias</h2>
     <ion-chip >

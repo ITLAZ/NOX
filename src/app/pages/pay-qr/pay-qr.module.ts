@@ -7,13 +7,16 @@ import { IonicModule } from '@ionic/angular';
 import { PayQRPageRoutingModule } from './pay-qr-routing.module';
 
 import { PayQRPage } from './pay-qr.page';
+import { ToolbarModule } from 'src/app/shared/toolbar/toolbar.module';
+
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    PayQRPageRoutingModule
+    PayQRPageRoutingModule,
+    ToolbarModule
   ],
   declarations: [PayQRPage]
 })

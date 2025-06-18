@@ -6,7 +6,7 @@
 .banner {
   width: 100%;
   height: 101px;
-  background: #FC7836 ;
+  background: var(--ion-color-danger);
   padding: 20px 16px;
 
   h2 {
@@ -19,7 +19,7 @@
 
   ion-chip {
     margin-top: 7px;
-    --background: #DE2B46;
+    --background: var(--ion-color-danger);
     --color: #08080D;
     font-weight: bold;
 
@@ -34,7 +34,7 @@
   margin-top: 20px;
 
   h3 {
-    color : #DE2B46;
+    color : var(--ion-color-danger);
     font-size: 20px;
     font-family: "Montserrat", sans-serif;
     padding: 0px 12px 20px 12px;

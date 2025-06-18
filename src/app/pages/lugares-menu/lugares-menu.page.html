@@ -1,18 +1,5 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button defaultHref="/tabs/home"></ion-back-button>
-      <ion-title>Menú</ion-title>
-    </ion-buttons>
-    <ion-buttons slot="end">
-      <ion-button [routerLink]="'/notificaciones'">
-        <ion-icon slot="icon-only" name="notifications-outline"></ion-icon>
-      </ion-button>
-      <ion-button [routerLink]="'/cart'">
-        <ion-icon slot="icon-only" name="cart-outline"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-  </ion-toolbar>
+  <toolbar [pageTitle]="'Menú'" [showBack]="true" [showSearch]="false"></toolbar>
   <ion-toolbar class="category-toolbar">
     <ion-segment [(ngModel)]="tipoSeleccionado" mode="md">
       <ion-segment-button *ngFor="let tipo of tiposMenu" [value]="tipo">
@@ -21,6 +8,7 @@
     </ion-segment>
   </ion-toolbar>
 </ion-header>
+
 
 <ion-content [fullscreen]="true">
   <div class="app-wrapper">

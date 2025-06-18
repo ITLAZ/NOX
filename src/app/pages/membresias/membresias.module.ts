@@ -7,13 +7,14 @@ import { IonicModule } from '@ionic/angular';
 import { MembresiasPageRoutingModule } from './membresias-routing.module';
 
 import { MembresiasPage } from './membresias.page';
-
+import { ToolbarModule } from 'src/app/shared/toolbar/toolbar.module';
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    MembresiasPageRoutingModule
+    MembresiasPageRoutingModule,
+    ToolbarModule
   ],
   declarations: [MembresiasPage]
 })

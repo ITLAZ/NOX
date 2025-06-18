@@ -1,10 +1,7 @@
 <ion-header *ngIf="!isProcessing && paymentSuccess === null" [translucent]="true">
-  <ion-toolbar color="warning">
-    <ion-buttons slot="start">
-      <ion-back-button defaultHref="/buy-check"></ion-back-button>
-    </ion-buttons>
-    <ion-title>Pago con tarjeta</ion-title>
-  </ion-toolbar>
+  <toolbar [pageTitle]="'Pago con Tarjeta'" [showBack]="true" [showSearch]="false" [showNotifications]="false" [showCart]="false" 
+  [setColor]="'var(--ion-color-dark)'" 
+  [toolColor]="'var(--ion-color-warning)'"></toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">

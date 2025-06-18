@@ -1,10 +1,7 @@
 <ion-header *ngIf="!processing && !paymentFailed" [translucent]="true">
-  <ion-toolbar color="warning">
-    <ion-buttons slot="start">
-      <ion-back-button defaultHref="/buy-check"></ion-back-button>
-    </ion-buttons>
-    <ion-title>Pago con QR</ion-title>
-  </ion-toolbar>
+  <toolbar [pageTitle]="'Pago con QR'" [showBack]="true" [showSearch]="false" [showNotifications]="false" [showCart]="false" 
+  [setColor]="'var(--ion-color-dark)'" 
+  [toolColor]="'var(--ion-color-warning)'"></toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true" class="ion-padding">

@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { PayCardPageRoutingModule } from './pay-card-routing.module';
 
 import { PayCardPage } from './pay-card.page';
+import { ToolbarModule } from 'src/app/shared/toolbar/toolbar.module';
 
 @NgModule({
   imports: [
@@ -14,7 +15,8 @@ import { PayCardPage } from './pay-card.page';
     FormsModule,
     IonicModule,
     PayCardPageRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ToolbarModule
   ],
   declarations: [PayCardPage]
 })

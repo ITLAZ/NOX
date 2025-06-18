@@ -1,10 +1,6 @@
 <ion-header [translucent]="true">
-  <ion-toolbar class="header">
-    <ion-buttons slot="start">
-      <ion-back-button defaultHref="/perfil" color = "danger"></ion-back-button>
-    </ion-buttons>
-    <ion-title color = "danger">Recompensas</ion-title>
-  </ion-toolbar>
+ <toolbar [pageTitle]="'Recompensas '" [showBack]="true" [showSearch]="false" [showNotifications]="false" 
+  [showCart]="false" [setColor]="'var(--ion-color-danger)'" [toolColor]="'var(--ion-color-dark)'"></toolbar>
   <div class="banner">
     <h2>Puntos de recompensa</h2>
     <ion-chip >

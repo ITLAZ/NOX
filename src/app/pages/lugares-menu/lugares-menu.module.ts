@@ -10,6 +10,7 @@ import { LugaresMenuPage } from './lugares-menu.page';
 
 import { ItemComprasModule } from 'src/app/shared/item-compras/item-compras.module';
 import { TipoFiltroPipe } from 'src/app/pipes/tipo-filtro.pipe';
+import { ToolbarModule } from 'src/app/shared/toolbar/toolbar.module';
 
 @NgModule({
   imports: [
@@ -18,7 +19,8 @@ import { TipoFiltroPipe } from 'src/app/pipes/tipo-filtro.pipe';
     IonicModule,
     LugaresMenuPageRoutingModule,
     ItemComprasModule,
-    TipoFiltroPipe
+    TipoFiltroPipe,
+    ToolbarModule
   ],
   declarations: [LugaresMenuPage]
 })

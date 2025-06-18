@@ -1,5 +1,6 @@
 .perfil-page {
   color: #fff;
+  font-family: 'Montserrat', sans-serif;
 
   .perfil-header {
   display: flex;
@@ -56,6 +57,7 @@
     background: transparent;
 
     ion-item {
+      font-family: 'Montserrat', sans-serif;
   --background: transparent !important;
   --color: #fff;
   --inner-padding-end: 10px;
@@ -72,7 +74,7 @@
 
       ion-label {
         font-size: 16px;
-        --font-family: "Montserrat Light";
+        font-family: "Montserrat Light";
         
       }
     }
