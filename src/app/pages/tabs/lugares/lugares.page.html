@@ -4,7 +4,7 @@
   <div class="banner-container">
     <swiper-container class="banner-swiper" slides-per-view="1" space-between="10" style="height: auto;"
       [centeredSlides]="true" [loop]="true">
-      <swiper-slide *ngFor="let local of bannerLocalesLimited; trackBy: trackByBannerId">
+      <swiper-slide *ngFor="let local of bannerLocalesLimited; trackBy: trackByBannerId" (click)="irALocal(local)">
         <banner
           [localbanner]="local.nombre"
           [frasebanner]="local.tipo"
@@ -15,7 +15,7 @@
   </div>
 
   <div class="app-wrapper">
-    <filter-actions [lugares]="true" (etiquetaSeleccionada)="onEtiquetaSeleccionada($event)"></filter-actions>
+    <filter-actions [lugares]="true"></filter-actions>
     <h2>Locales recomendados</h2>
     <swiper-container slides-per-view="1.3" space-between="10">
       <swiper-slide *ngFor="let local of locales">

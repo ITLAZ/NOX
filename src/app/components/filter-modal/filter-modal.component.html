@@ -16,12 +16,11 @@
       [showCards]="true" 
       [lugares]="selectedTab === 'tab1'" 
       [eventos]="selectedTab === 'tab2'"
-      (etiquetaSeleccionada)="onEtiquetaSeleccionada($event)"
       (tipoSeleccionado)="onTipoSeleccionado($event)">
     </filter-actions>
 
     <!-- Lista con scroll -->
-    <div style="height: 75vh; overflow-y: auto; display: flex; flex-direction: column; align-items: center;" (ionScroll)="loadMore($event)">
+    <div style="height: 75vh; overflow-y: auto; width: 100%; box-sizing: border-box;" (ionScroll)="loadMore($event)">
       <ng-container *ngIf="selectedTab === 'tab1'">
         <media-card class="fil-media" *ngFor="let lugar of lugares"
           [nombre]="lugar.nombre"

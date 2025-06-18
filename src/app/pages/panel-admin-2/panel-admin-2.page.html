@@ -1,5 +1,6 @@
-<toolbar [pageTitle]="'Editar Evento'" [showSearch]="false" [showCart]="false" [setColor]="'var(--ion-color-primary-shade)'" 
-[toolColor]="'var(--ion-color-medium)'" [showBack]="true" [showNotifications]="false"></toolbar>
+<toolbar [pageTitle]="'Editar Evento'" [showSearch]="false" [showCart]="false"
+  [setColor]="'var(--ion-color-primary-shade)'" [toolColor]="'var(--ion-color-medium)'" [showBack]="true"
+  [showNotifications]="false"></toolbar>
 
 <ion-content [fullscreen]="true">
   <form [formGroup]="eventForm" (ngSubmit)="onSubmit()">
@@ -8,13 +9,8 @@
       <ion-button expand="block" shape="round" (click)="toggleCoverInput()" class="gradient-button">
         {{eventForm.value.imagen ? 'Cambiar Portada' : 'Agregar Portada'}}
       </ion-button>
-      <ion-input
-        *ngIf="showCoverInput"
-        formControlName="imagen"
-        placeholder="URL de la imagen"
-        class="input-custom input-line-bottom"
-        id="imagenInput"
-      ></ion-input>
+      <ion-input *ngIf="showCoverInput" formControlName="imagen" placeholder="URL de la imagen"
+        class="input-custom input-line-bottom" id="imagenInput"></ion-input>
     </div>
 
     <ion-item class="ion-align-items-center">
@@ -39,31 +35,21 @@
       <ion-icon name="calendar-outline" slot="start" color="secondary"></ion-icon>
       <ion-label color="primary">Fecha Inicio</ion-label>
       <ion-button fill="clear" (click)="toggleCalendar('fechasInicio')">
-        <ion-icon
-          [name]="calendarVisibility.fechasInicio ? 'chevron-up-outline' : 'chevron-down-outline'"
-        ></ion-icon>
+        <ion-icon [name]="calendarVisibility.fechasInicio ? 'chevron-up-outline' : 'chevron-down-outline'"></ion-icon>
       </ion-button>
     </ion-item>
-    <ion-datetime
-      *ngIf="calendarVisibility.fechasInicio"
-      formControlName="fechasInicio"
-      class="input-line-bottom-datetime"
-    ></ion-datetime>
+    <ion-datetime *ngIf="calendarVisibility.fechasInicio" formControlName="fechasInicio"
+      class="input-line-bottom-datetime"></ion-datetime>
 
     <ion-item class="ion-align-items-center">
       <ion-icon name="calendar-outline" slot="start" color="secondary"></ion-icon>
       <ion-label color="primary">Fecha Final</ion-label>
       <ion-button fill="clear" (click)="toggleCalendar('fechasFinal')">
-        <ion-icon
-          [name]="calendarVisibility.fechasFinal ? 'chevron-up-outline' : 'chevron-down-outline'"
-        ></ion-icon>
+        <ion-icon [name]="calendarVisibility.fechasFinal ? 'chevron-up-outline' : 'chevron-down-outline'"></ion-icon>
       </ion-button>
     </ion-item>
-    <ion-datetime
-      *ngIf="calendarVisibility.fechasFinal"
-      formControlName="fechasFinal"
-      class="input-line-bottom-datetime"
-    ></ion-datetime>
+    <ion-datetime *ngIf="calendarVisibility.fechasFinal" formControlName="fechasFinal"
+      class="input-line-bottom-datetime"></ion-datetime>
 
     <ion-item class="ion-align-items-center">
       <ion-icon name="time-outline" slot="start" color="secondary"></ion-icon>
@@ -86,7 +72,7 @@
           <ion-label>Precio de Entrada</ion-label>
           <ion-icon name="caret-down-outline" color="secondary"></ion-icon>
         </ion-chip>
-        
+
         <ion-chip color="secondary">
           <ion-icon name="card" color="secondary"></ion-icon>
           <ion-label>Tipos de Pago</ion-label>
@@ -101,33 +87,22 @@
       </ion-label>
       <ion-icon name="chevron-forward-outline" slot="end" class="option-icon" color="primary"></ion-icon>
     </ion-item>
-    <ion-item lines="strong" color="translucent" button>
-      <ion-label color="primary">
-        Ubicación en el Mapa
-      </ion-label>
+    <ion-item lines="strong" color="translucent" button [routerLink]="'/define-ubi'">
+      <ion-label color="primary">Ubicación en el Mapa</ion-label>
       <ion-icon name="chevron-forward-outline" slot="end" class="option-icon" color="primary"></ion-icon>
     </ion-item>
-    <ion-item lines="strong" color="translucent" button>
-      <ion-label color="primary">
-        Gestionar Publicidad
-      </ion-label>
+    <ion-item lines="strong" color="translucent" button [routerLink]="'/gestionar-publicidad'">
+      <ion-label color="primary">Gestionar Publicidad</ion-label>
       <ion-icon name="chevron-forward-outline" slot="end" class="option-icon" color="primary"></ion-icon>
     </ion-item>
-    <ion-item lines="strong" color="translucent" button>
-      <ion-label color="primary">
-        Cargar fotos de Evento
-      </ion-label>
+    <ion-item lines="strong" color="translucent" button [routerLink]="'/upload-photos'">
+      <ion-label color="primary">Cargar fotos del evento</ion-label>
       <ion-icon name="chevron-forward-outline" slot="end" class="option-icon" color="primary"></ion-icon>
     </ion-item>
 
     <div class="cover-container">
-      <ion-button
-        expand="block"
-        shape="round"
-        type="submit"
-        [disabled]="isSubmitting || eventForm.invalid"
-        class="gradient-button"
-      >
+      <ion-button expand="block" shape="round" type="submit" [disabled]="isSubmitting || eventForm.invalid"
+        class="gradient-button">
         Guardar Cambios
       </ion-button>
     </div>

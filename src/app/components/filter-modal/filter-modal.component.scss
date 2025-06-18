@@ -20,7 +20,9 @@ ion-segment-button {
     --color: var(--ion-color-tertiary-tint);
 }
 
-.fil-media{
-    width: 50%;
-    height: 80%;
+.fil-media {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto 16px auto;
+  box-sizing: border-box;
 }
