@@ -35,3 +35,8 @@ ion-card {
     }
     }
 }
+
+.card-activo {
+  border: 2px solid var(--ion-color-primary);
+  box-shadow: 0 4px 24px 0 rgba(44, 18, 67, 0.28);
+}

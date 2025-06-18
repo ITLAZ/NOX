@@ -22,6 +22,8 @@ export class FilterActionsComponent implements OnInit, OnChanges {
   tipos: string[] = [];
   private db: DatabaseService;
   private subscription: Subscription = new Subscription();
+  activeEtiqueta: string | null = null;
+  activeTipo: string | null = null;
 
   constructor(db: DatabaseService) {
     this.db = db;
@@ -74,11 +76,23 @@ export class FilterActionsComponent implements OnInit, OnChanges {
   }
 
   onChipEtiquetaClick(etiqueta: string) {
-    this.etiquetaSeleccionada.emit(etiqueta);
+    if (this.activeEtiqueta === etiqueta) {
+      this.activeEtiqueta = null;
+      this.etiquetaSeleccionada.emit(''); // Emitir vacío o null para desactivar filtro
+    } else {
+      this.activeEtiqueta = etiqueta;
+      this.etiquetaSeleccionada.emit(etiqueta);
+    }
   }
 
   onTipoCardClick(tipo: string) {
-    this.tipoSeleccionado.emit(tipo);
+    if (this.activeTipo === tipo) {
+      this.activeTipo = null;
+      this.tipoSeleccionado.emit(''); // Emitir vacío o null para desactivar filtro
+    } else {
+      this.activeTipo = tipo;
+      this.tipoSeleccionado.emit(tipo);
+    }
   }
 
   ngOnDestroy() {

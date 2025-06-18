@@ -21,7 +21,7 @@
     </filter-actions>
 
     <!-- Lista con scroll -->
-    <div style="height: 50vh; overflow-y: auto;" (ionScroll)="loadMore($event)">
+    <div style="height: 75vh; overflow-y: auto; display: flex; flex-direction: column; align-items: center;" (ionScroll)="loadMore($event)">
       <ng-container *ngIf="selectedTab === 'tab1'">
         <media-card class="fil-media" *ngFor="let lugar of lugares"
           [nombre]="lugar.nombre"
@@ -36,7 +36,7 @@
       </ng-container>
 
       <ng-container *ngIf="selectedTab === 'tab2'">
-        <media-card-evento class="fil-media" style="height: 150px; width: 100%;"
+        <media-card-evento class="fil-media"
           *ngFor="let evento of eventos"
           [nombreLocal]="evento.nombre"
           [horario]="evento.horario?.inicio"
@@ -51,7 +51,3 @@
     </div>
   </ion-content>
 </ion-content>
-<!--
-Solución de accesibilidad: se agrega id="filter-modal" al ion-content raíz para que el botón de búsqueda pueda referenciarlo con aria-controls.
-No se usa aria-hidden en el modal.
--->

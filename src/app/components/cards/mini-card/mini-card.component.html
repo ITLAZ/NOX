@@ -1,5 +1,5 @@
-<ion-card>
-  <img alt="Delicious food" [src]="imagenMini" />
+<ion-card [ngClass]="{'card-activo': activo}">
+  <img alt="Delicious food" [src]="imagenMini" *ngIf="imagen"/>
   <ion-card-header>
     <ion-card-title>{{ tituloLocal }}</ion-card-title>
   </ion-card-header>

@@ -7,35 +7,11 @@
 
     <div class="chips-scroll" style="overflow-x: auto; white-space: nowrap;height: fit-content;">
       <div class="chips-container" style="display: inline-flex; gap: 8px;">
-        <ion-chip *ngFor="let etiqueta of etiquetas" (click)="onChipEtiquetaClick(etiqueta)">
-          <ion-label>{{ etiqueta }}</ion-label>
+        <ion-chip *ngFor="let tipo of tipos" (click)="onChipEtiquetaClick(tipo)"
+          [color]="activeEtiqueta === tipo ? 'primary' : 'secondary'" [outline]="activeEtiqueta !== tipo">
+          <ion-label>{{ tipo }}</ion-label>
         </ion-chip>
       </div>
-      <ion-chip>
-        <ion-label>Ordenar por</ion-label>
-        <ion-icon name="chevron-down"></ion-icon>
-      </ion-chip>
-
-      <ion-chip>
-        <ion-label>Pagar con</ion-label>
-        <ion-icon name="chevron-down"></ion-icon>
-      </ion-chip>
-
-      <ion-chip>
-        <ion-label>Categoría</ion-label>
-        <ion-icon name="chevron-down"></ion-icon>
-      </ion-chip>
-
-      <ion-chip>
-        <ion-label>Precio</ion-label>
-        <ion-icon name="chevron-down"></ion-icon>
-      </ion-chip>
-    </div>
-  </div>
-
-  <div class="cards-scroll" style="overflow-x: auto; white-space: nowrap;" *ngIf="showCards">
-    <div class="cards-container" style="display: inline-flex; gap: 5px;">
-      <mini-card *ngFor="let tipo of tipos" [tituloLocal]="tipo" [imagenMini]="'imagenMini'" (click)="onTipoCardClick(tipo)"></mini-card>
     </div>
   </div>
 </ion-content>
