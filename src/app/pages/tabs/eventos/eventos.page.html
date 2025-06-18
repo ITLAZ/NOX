@@ -3,12 +3,13 @@
 <ion-content>
   <boton-circle [routerLink]="'/evento-fecha'"></boton-circle>
   <div class="banner-container">
-    <swiper-container class="banner-swiper" slides-per-view="1" space-between="10" style="height: auto;">
-      <swiper-slide>
+    <swiper-container class="banner-swiper" slides-per-view="1" space-between="10" style="height: auto;"
+      [centeredSlides]="true" loop="true">
+      <swiper-slide *ngFor="let evento of bannerEventsLimited; trackBy: trackByBannerId">
         <banner
-          [localbanner]="'Pollos Copacabana'"
-          [frasebanner]="'Como te gusta a ti'"
-          [imagenbanner]="'https://picsum.photos/500/200'">
+          [localbanner]="evento.nombre"
+          [frasebanner]="evento.tipo"
+          [imagenbanner]="evento.imagen || 'https://picsum.photos/500/200'">
         </banner>
       </swiper-slide>
     </swiper-container>

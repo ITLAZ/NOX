@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { DatabaseService } from 'src/app/services/database.service';
 import { register } from 'swiper/element/bundle';
 register();
+
 @Component({
   selector: 'app-eventos',
   templateUrl: './eventos.page.html',
@@ -15,6 +16,7 @@ export class EventosPage implements OnInit {
   allEvents: any[] = [];
   isLoading = true;
   isWeb = window.innerWidth >= 769;
+  private bannersInitialized = false;
 
   constructor(private db: DatabaseService, private router: Router) {}
 
@@ -24,11 +26,18 @@ export class EventosPage implements OnInit {
       this.isWeb = window.innerWidth >= 769;
     });
     this.db.getEvents().subscribe(data => {
-      console.log('Eventos cargados directamente:', data);
       this.allEvents = data;
       this.events = data;
       this.isLoading = false;
+      if (!this.bannersInitialized) {
+        this.bannersInitialized = true;
+      }
     });
+  }
+
+  // Quitar lógica de banners aleatorios y exponer solo los primeros 5 eventos
+  get bannerEventsLimited() {
+    return this.events.slice(0, 5);
   }
 
   onEtiquetaSeleccionada(etiqueta: string) {
@@ -57,5 +66,10 @@ export class EventosPage implements OnInit {
       month: 'long',
       year: 'numeric'
     });
+  }
+
+  // Para trackBy en banners y evitar problemas con Swiper
+  trackByBannerId(index: number, item: any) {
+    return item && item.id ? item.id : index;
   }
 }

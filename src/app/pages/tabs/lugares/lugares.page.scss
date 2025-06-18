@@ -32,9 +32,14 @@ swiper-container.mySwiper {
   align-items: center;
   justify-content: center;
   margin-top: 15px;
+  width: 100%;
 
   .banner-swiper {
     width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
     height: auto; // No modifica el alto del banner
     max-height: 100%; // Evita que crezca más que el contenedor
   }

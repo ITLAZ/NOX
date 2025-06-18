@@ -118,3 +118,43 @@ media-card-evento:first-of-type {
     padding-right: 0 !important;
   }
 }
+
+.banner-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 15px;
+  width: 100%;
+  min-height: 160px;
+}
+
+.banner-swiper {
+  width: 100vw;
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  min-height: 160px;
+}
+
+@media (max-width: 768px) {
+  .banner-container {
+    min-height: 140px;
+    margin-top: 8px;
+  }
+  .banner-swiper {
+    min-height: 140px;
+    max-width: 98vw;
+    width: 98vw;
+    padding: 0;
+  }
+  swiper-slide {
+    min-width: 0;
+    max-width: none;
+    width: 100vw !important;
+    box-sizing: border-box;
+    margin-right: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+}

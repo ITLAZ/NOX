@@ -2,12 +2,13 @@
 
 <ion-content>
   <div class="banner-container">
-    <swiper-container class="banner-swiper" slides-per-view="1" space-between="10" style="height: auto;">
-      <swiper-slide >
+    <swiper-container class="banner-swiper" slides-per-view="1" space-between="10" style="height: auto;"
+      [centeredSlides]="true" [loop]="true">
+      <swiper-slide *ngFor="let local of bannerLocalesLimited; trackBy: trackByBannerId">
         <banner
-          [localbanner]="'Pollos Copacabana'"
-          [frasebanner]="'Como te gusta a ti'"
-         [imagenbanner]="'https://picsum.photos/500/200'">
+          [localbanner]="local.nombre"
+          [frasebanner]="local.tipo"
+          [imagenbanner]="local.imagen || 'https://picsum.photos/500/200'">
         </banner>
       </swiper-slide>
     </swiper-container>

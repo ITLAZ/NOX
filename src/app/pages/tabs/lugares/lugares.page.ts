@@ -14,6 +14,7 @@ export class LugaresPage implements OnInit {
   locales: any[] = [];
   allLocales: any[] = [];
   isLoading = true;
+  private bannersInitialized = false;
 
   constructor(private db: DatabaseService, private router: Router) {}
 
@@ -23,7 +24,15 @@ ngOnInit() {
     this.allLocales = data;
     this.locales = data;
     this.isLoading = false;
+    if (!this.bannersInitialized) {
+      this.bannersInitialized = true;
+    }
   });
+}
+
+// Quitar lógica de banners aleatorios y exponer solo los primeros 5 locales
+get bannerLocalesLimited() {
+  return this.locales.slice(0, 5);
 }
 
 onEtiquetaSeleccionada(etiqueta: string) {
@@ -38,5 +47,10 @@ onEtiquetaSeleccionada(etiqueta: string) {
     this.router.navigate(['/lugares-card'], {
       queryParams: { id: local.id }
     });
+  }
+
+  // Para trackBy en banners y evitar problemas con Swiper
+  trackByBannerId(index: number, item: any) {
+    return item && item.id ? item.id : index;
   }
 }
